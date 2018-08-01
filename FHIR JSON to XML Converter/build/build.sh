@@ -93,7 +93,7 @@ if [ $force -eq 1 -o $fetched -eq 1 -o ! -e ../dist/fhir-convert.js -o ! -e ../s
     if [ $verbose -eq 1 ]; then
 	echo "creating $PWD/dist/fhir-convert.js from schemas..."
     fi
-    java -cp /home/builder/idea-IU-181.5540.7/plugins/xslt-debugger/lib/rt/xalan.jar org.apache.xalan.xslt.Process -IN schema/fhir-single.xsd -XSL src/processFHIRSchema.xsl -OUT dist/fhir-convert.js
+    java -cp lib/xalan.jar org.apache.xalan.xslt.Process -IN schema/fhir-single.xsd -XSL src/processFHIRSchema.xsl -OUT dist/fhir-convert.js
 else
     echo "skipping rebuild of $PWD/dist/fhir-convert.js because everything was up to date and --force wasn't specified"    
 fi
