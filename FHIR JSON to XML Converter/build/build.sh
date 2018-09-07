@@ -18,6 +18,12 @@ cd "$source_dir"
 force=0
 verbose=0
 
+# r3:
+# fhir_base_url="http://www.hl7.org/fhir"
+
+# r4:
+fhir_base_url="http://hl7.org/fhir/2018May"
+
 while [ $# -gt 0 ]; do
     case "$1" in
 	-f | --force)
@@ -49,34 +55,34 @@ fi
 fetched=0
 if [ $force -eq 1 ]; then
     if [ $verbose -eq 1 ]; then
-	echo "forcing fetch of fhir-all-xsd.zip from hl7.org to $PWD/../schema/..."
+	echo "forcing fetch of fhir-all-xsd.zip from $fhir_base_url to $PWD/../schema/..."
     fi
 
-    curl -o ../schema/fhir-all-xsd.zip http://www.hl7.org/fhir/fhir-all-xsd.zip
+    curl -o ../schema/fhir-all-xsd.zip $fhir_base_url/fhir-all-xsd.zip
     fetched=1
 elif [ -e ../schema/fhir-all-xsd.zip ]; then
     if [ $verbose -eq 1 ]; then
-	echo "fetching fhir-all-xsd.zip from hl7.org to $PWD/../schema/ iff our copy is out of date..."
+	echo "fetching fhir-all-xsd.zip from $fhir_base_url to $PWD/../schema/ iff our copy is out of date..."
     fi
 
     # already exists
     old_date=`stat -c %Y ../schema/fhir-all-xsd.zip`
-    curl -o ../schema/fhir-all-xsd.zip --time-cond ../schema/fhir-all-xsd.zip http://www.hl7.org/fhir/fhir-all-xsd.zip
+    curl -o ../schema/fhir-all-xsd.zip --time-cond ../schema/fhir-all-xsd.zip $fhir_base_url/fhir-all-xsd.zip
     if [ `stat -c %Y ../schema/fhir-all-xsd.zip` -ne $old_date ]; then
 	fetched=1
     fi
 else
     # doesn't already exist
     if [ $verbose -eq 1 ]; then
-	echo "fetching fhir-all-xsd.zip from hl7.org to $PWD/../schema/..."
+	echo "fetching fhir-all-xsd.zip from $fhir_base_url to $PWD/../schema/..."
     fi
 
-    curl -o ../schema/fhir-all-xsd.zip http://www.hl7.org/fhir/fhir-all-xsd.zip
+    curl -o ../schema/fhir-all-xsd.zip $fhir_base_url/fhir-all-xsd.zip
     fetched=1
 fi
 
 if [ $verbose -eq 1 -a $fetched -eq 1 ]; then
-    echo "fetched fhir-all-xsd.zip from hl7.org to $PWD/../schema/"
+    echo "fetched fhir-all-xsd.zip from $fhir_base_url to $PWD/../schema/"
 fi
 
 if [ $force -eq 1 -o $fetched -eq 1 -o ! -e ../dist/fhir-convert.js -o ! -e ../schema/fhir-single.xsd ]; then

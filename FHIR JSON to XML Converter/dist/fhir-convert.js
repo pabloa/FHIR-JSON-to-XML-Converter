@@ -54,7 +54,7 @@ function FHIRConverter(indent) {
   ]
 },
 "string": {
-    /*A sequence of Unicode charactersNote that FHIR strings may not exceed 1MB in sizeIf the element is present, it must have either a @value, an @id, or extensions
+    /*A sequence of Unicode charactersNote that FHIR strings SHALL not exceed 1MB in sizeIf the element is present, it must have either a @value, an @id, or extensions
      */
   "name": "string",
   "base": "Element", 
@@ -92,6 +92,19 @@ function FHIRConverter(indent) {
   "elems": [
   ]
 },
+"canonical": {
+    /*A URI that is a reference to a canonical URI on a FHIR resourcesee [Canonical References](references.html#canonical)If the element is present, it must have either a @value, an @id referenced from the Narrative, or extensions
+     */
+  "name": "canonical",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "canonical-primitive" }, 
+  ],
+  "elems": [
+  ]
+},
 "uri": {
     /*String of characters used to identify a name or a resourcesee http://en.wikipedia.org/wiki/Uniform_resource_identifierIf the element is present, it must have either a @value, an @id, or extensions
      */
@@ -114,6 +127,19 @@ function FHIRConverter(indent) {
     { 
       "name": "value", 
       "type": "uuid-primitive" }, 
+  ],
+  "elems": [
+  ]
+},
+"url": {
+    /*A URI that is a literal referenceIf the element is present, it must have either a @value, an @id referenced from the Narrative, or extensions
+     */
+  "name": "url",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "url-primitive" }, 
   ],
   "elems": [
   ]
@@ -171,7 +197,7 @@ function FHIRConverter(indent) {
   ]
 },
 "markdown": {
-    /*A string that may contain markdown syntax for optional processing by a mark down presentation engineSystems are not required to have markdown support, and there is considerable variation in markdown syntax, so the text should be readable without markdown processing. The preferred markdown syntax is described here: http://daringfireball.net/projects/markdown/syntax (and tests here: http://daringfireball.net/projects/downloads/MarkdownTest_1.0.zip)If the element is present, it must have either a @value, an @id referenced from the Narrative, or extensions
+    /*A string that may contain Github Flavored Markdown syntax for optional processing by a mark down presentation engineSystems are not required to have markdown support, so the text should be readable without markdown processing. The markdown syntax is GFM - see https://github.github.com/gfm/If the element is present, it must have either a @value, an @id referenced from the Narrative, or extensions
      */
   "name": "markdown",
   "base": "Element", 
@@ -295,11 +321,17 @@ function FHIRConverter(indent) {
           "max": "1", 
           "type": "Binary",
           "isPrimitive": false }, 
-        {   "name": "BodySite", 
+        {   "name": "BiologicallyDerivedProduct", 
         
           "min": "1", 
           "max": "1", 
-          "type": "BodySite",
+          "type": "BiologicallyDerivedProduct",
+          "isPrimitive": false }, 
+        {   "name": "BodyStructure", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "BodyStructure",
           "isPrimitive": false }, 
         {   "name": "Bundle", 
         
@@ -409,12 +441,6 @@ function FHIRConverter(indent) {
           "max": "1", 
           "type": "Coverage",
           "isPrimitive": false }, 
-        {   "name": "DataElement", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "DataElement",
-          "isPrimitive": false }, 
         {   "name": "DetectedIssue", 
         
           "min": "1", 
@@ -505,11 +531,29 @@ function FHIRConverter(indent) {
           "max": "1", 
           "type": "EnrollmentResponse",
           "isPrimitive": false }, 
+        {   "name": "EntryDefinition", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "EntryDefinition",
+          "isPrimitive": false }, 
         {   "name": "EpisodeOfCare", 
         
           "min": "1", 
           "max": "1", 
           "type": "EpisodeOfCare",
+          "isPrimitive": false }, 
+        {   "name": "EventDefinition", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "EventDefinition",
+          "isPrimitive": false }, 
+        {   "name": "ExampleScenario", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "ExampleScenario",
           "isPrimitive": false }, 
         {   "name": "ExpansionProfile", 
         
@@ -565,12 +609,6 @@ function FHIRConverter(indent) {
           "max": "1", 
           "type": "HealthcareService",
           "isPrimitive": false }, 
-        {   "name": "ImagingManifest", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "ImagingManifest",
-          "isPrimitive": false }, 
         {   "name": "ImagingStudy", 
         
           "min": "1", 
@@ -583,6 +621,12 @@ function FHIRConverter(indent) {
           "max": "1", 
           "type": "Immunization",
           "isPrimitive": false }, 
+        {   "name": "ImmunizationEvaluation", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "ImmunizationEvaluation",
+          "isPrimitive": false }, 
         {   "name": "ImmunizationRecommendation", 
         
           "min": "1", 
@@ -594,6 +638,18 @@ function FHIRConverter(indent) {
           "min": "1", 
           "max": "1", 
           "type": "ImplementationGuide",
+          "isPrimitive": false }, 
+        {   "name": "Invoice", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Invoice",
+          "isPrimitive": false }, 
+        {   "name": "ItemInstance", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "ItemInstance",
           "isPrimitive": false }, 
         {   "name": "Library", 
         
@@ -667,6 +723,48 @@ function FHIRConverter(indent) {
           "max": "1", 
           "type": "MedicationStatement",
           "isPrimitive": false }, 
+        {   "name": "MedicinalProduct", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "MedicinalProduct",
+          "isPrimitive": false }, 
+        {   "name": "MedicinalProductAuthorization", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "MedicinalProductAuthorization",
+          "isPrimitive": false }, 
+        {   "name": "MedicinalProductClinicals", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "MedicinalProductClinicals",
+          "isPrimitive": false }, 
+        {   "name": "MedicinalProductDeviceSpec", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "MedicinalProductDeviceSpec",
+          "isPrimitive": false }, 
+        {   "name": "MedicinalProductIngredient", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "MedicinalProductIngredient",
+          "isPrimitive": false }, 
+        {   "name": "MedicinalProductPackaged", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "MedicinalProductPackaged",
+          "isPrimitive": false }, 
+        {   "name": "MedicinalProductPharmaceutical", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "MedicinalProductPharmaceutical",
+          "isPrimitive": false }, 
         {   "name": "MessageDefinition", 
         
           "min": "1", 
@@ -697,6 +795,18 @@ function FHIRConverter(indent) {
           "max": "1", 
           "type": "Observation",
           "isPrimitive": false }, 
+        {   "name": "ObservationDefinition", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "ObservationDefinition",
+          "isPrimitive": false }, 
+        {   "name": "OccupationalData", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "OccupationalData",
+          "isPrimitive": false }, 
         {   "name": "OperationDefinition", 
         
           "min": "1", 
@@ -714,6 +824,12 @@ function FHIRConverter(indent) {
           "min": "1", 
           "max": "1", 
           "type": "Organization",
+          "isPrimitive": false }, 
+        {   "name": "OrganizationRole", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "OrganizationRole",
           "isPrimitive": false }, 
         {   "name": "Patient", 
         
@@ -763,12 +879,6 @@ function FHIRConverter(indent) {
           "max": "1", 
           "type": "Procedure",
           "isPrimitive": false }, 
-        {   "name": "ProcedureRequest", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "ProcedureRequest",
-          "isPrimitive": false }, 
         {   "name": "ProcessRequest", 
         
           "min": "1", 
@@ -780,6 +890,12 @@ function FHIRConverter(indent) {
           "min": "1", 
           "max": "1", 
           "type": "ProcessResponse",
+          "isPrimitive": false }, 
+        {   "name": "ProductPlan", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "ProductPlan",
           "isPrimitive": false }, 
         {   "name": "Provenance", 
         
@@ -798,12 +914,6 @@ function FHIRConverter(indent) {
           "min": "1", 
           "max": "1", 
           "type": "QuestionnaireResponse",
-          "isPrimitive": false }, 
-        {   "name": "ReferralRequest", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "ReferralRequest",
           "isPrimitive": false }, 
         {   "name": "RelatedPerson", 
         
@@ -853,11 +963,11 @@ function FHIRConverter(indent) {
           "max": "1", 
           "type": "Sequence",
           "isPrimitive": false }, 
-        {   "name": "ServiceDefinition", 
+        {   "name": "ServiceRequest", 
         
           "min": "1", 
           "max": "1", 
-          "type": "ServiceDefinition",
+          "type": "ServiceRequest",
           "isPrimitive": false }, 
         {   "name": "Slot", 
         
@@ -870,6 +980,12 @@ function FHIRConverter(indent) {
           "min": "1", 
           "max": "1", 
           "type": "Specimen",
+          "isPrimitive": false }, 
+        {   "name": "SpecimenDefinition", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "SpecimenDefinition",
           "isPrimitive": false }, 
         {   "name": "StructureDefinition", 
         
@@ -895,6 +1011,24 @@ function FHIRConverter(indent) {
           "max": "1", 
           "type": "Substance",
           "isPrimitive": false }, 
+        {   "name": "SubstancePolymer", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "SubstancePolymer",
+          "isPrimitive": false }, 
+        {   "name": "SubstanceReferenceInformation", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "SubstanceReferenceInformation",
+          "isPrimitive": false }, 
+        {   "name": "SubstanceSpecification", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "SubstanceSpecification",
+          "isPrimitive": false }, 
         {   "name": "SupplyDelivery", 
         
           "min": "1", 
@@ -913,6 +1047,12 @@ function FHIRConverter(indent) {
           "max": "1", 
           "type": "Task",
           "isPrimitive": false }, 
+        {   "name": "TerminologyCapabilities", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "TerminologyCapabilities",
+          "isPrimitive": false }, 
         {   "name": "TestReport", 
         
           "min": "1", 
@@ -925,11 +1065,23 @@ function FHIRConverter(indent) {
           "max": "1", 
           "type": "TestScript",
           "isPrimitive": false }, 
+        {   "name": "UserSession", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "UserSession",
+          "isPrimitive": false }, 
         {   "name": "ValueSet", 
         
           "min": "1", 
           "max": "1", 
           "type": "ValueSet",
+          "isPrimitive": false }, 
+        {   "name": "VerificationResult", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "VerificationResult",
           "isPrimitive": false }, 
         {   "name": "VisionPrescription", 
         
@@ -971,6 +1123,12 @@ function FHIRConverter(indent) {
           "min": "1", 
           "max": "1", 
           "type": "boolean",
+          "isPrimitive": true }, 
+        {   "name": "valueCanonical", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "canonical",
           "isPrimitive": true }, 
         {   "name": "valueCode", 
         
@@ -1055,6 +1213,18 @@ function FHIRConverter(indent) {
           "min": "1", 
           "max": "1", 
           "type": "uri",
+          "isPrimitive": true }, 
+        {   "name": "valueUrl", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "url",
+          "isPrimitive": true }, 
+        {   "name": "valueUuid", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "uuid",
           "isPrimitive": true }, 
         {   "name": "valueAddress", 
         
@@ -1182,11 +1352,53 @@ function FHIRConverter(indent) {
           "max": "1", 
           "type": "Timing",
           "isPrimitive": false }, 
-        {   "name": "valueMeta", 
+        {   "name": "valueParameterDefinition", 
         
           "min": "1", 
           "max": "1", 
-          "type": "Meta",
+          "type": "ParameterDefinition",
+          "isPrimitive": false }, 
+        {   "name": "valueDataRequirement", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "DataRequirement",
+          "isPrimitive": false }, 
+        {   "name": "valueRelatedArtifact", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "RelatedArtifact",
+          "isPrimitive": false }, 
+        {   "name": "valueContactDetail", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "ContactDetail",
+          "isPrimitive": false }, 
+        {   "name": "valueContributor", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Contributor",
+          "isPrimitive": false }, 
+        {   "name": "valueTriggerDefinition", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "TriggerDefinition",
+          "isPrimitive": false }, 
+        {   "name": "valueUsageContext", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "UsageContext",
+          "isPrimitive": false }, 
+        {   "name": "valueDosage", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Dosage",
           "isPrimitive": false }, 
     ], 
   ]
@@ -1200,7 +1412,7 @@ function FHIRConverter(indent) {
   ],
   "elems": [
     { 
-    /*May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+    /*May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
      */  "name": "modifierExtension", 
     
       "min": "0", 
@@ -1259,7 +1471,7 @@ function FHIRConverter(indent) {
   ],
   "elems": [
     { 
-    /*May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+    /*May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
      */  "name": "extension", 
     
       "min": "0", 
@@ -1268,647 +1480,8 @@ function FHIRConverter(indent) {
       "isPrimitive": false }, 
   ]
 },
-"Reference": {
-    /*A reference from one resource to another.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
-     */
-  "name": "Reference",
-  "base": "Element", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*A reference to a location at which the other resource is found. The reference may be a relative reference, in which case it is relative to the service base URL, or an absolute URL that resolves to the location where the resource is found. The reference may be version specific or not. If the reference is not to a FHIR RESTful server, then it should be assumed to be version specific. Internal fragment references (start with '#') refer to contained resources.
-     */  "name": "reference", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*An identifier for the other resource. This is used when there is no way to reference the other resource directly, either because the entity is not available through a FHIR server, or because there is no way for the author of the resource to convert a known identifier to an actual location. There is no requirement that a Reference.identifier point to something that is actually exposed as a FHIR instance, but it SHALL point to a business concept that would be expected to be exposed as a FHIR instance, and that instance would need to be of a FHIR resource type allowed by the reference.
-     */  "name": "identifier", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Identifier",
-      "isPrimitive": false }, 
-    { 
-    /*Plain text narrative that identifies the resource in addition to the resource reference.
-     */  "name": "display", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-  ]
-},
-"Quantity": {
-    /*A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
-     */
-  "name": "Quantity",
-  "base": "Element", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*The value of the measured amount. The value includes an implicit precision in the presentation of the value.
-     */  "name": "value", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "decimal",
-      "isPrimitive": true }, 
-    { 
-    /*How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is "<" , then the real value is < stated value.
-     */  "name": "comparator", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "QuantityComparator",
-      "isPrimitive": true }, 
-    { 
-    /*A human-readable form of the unit.
-     */  "name": "unit", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*The identification of the system that provides the coded form of the unit.
-     */  "name": "system", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "uri",
-      "isPrimitive": true }, 
-    { 
-    /*A computer processable form of the unit in some unit representation system.
-     */  "name": "code", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "code",
-      "isPrimitive": true }, 
-  ]
-},
-"QuantityComparator": {
-    /*How the Quantity should be understood and represented.If the element is present, it must have either a @value, an @id, or extensions
-     */
-  "name": "QuantityComparator",
-  "base": "Element", 
-  "attrs": [
-    { 
-      "name": "value", 
-      "type": "QuantityComparator-list" }, 
-  ],
-  "elems": [
-  ]
-},
-"Period": {
-    /*A time period defined by a start and end date and optionally time.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
-     */
-  "name": "Period",
-  "base": "Element", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*The start of the period. The boundary is inclusive.
-     */  "name": "start", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "dateTime",
-      "isPrimitive": true }, 
-    { 
-    /*The end of the period. If the end of the period is missing, it means that the period is ongoing. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time.
-     */  "name": "end", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "dateTime",
-      "isPrimitive": true }, 
-  ]
-},
-"Attachment": {
-    /*For referring to data content defined in other formats.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
-     */
-  "name": "Attachment",
-  "base": "Element", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate.
-     */  "name": "contentType", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "code",
-      "isPrimitive": true }, 
-    { 
-    /*The human language of the content. The value can be any valid value according to BCP 47.
-     */  "name": "language", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "code",
-      "isPrimitive": true }, 
-    { 
-    /*The actual data of the attachment - a sequence of bytes. In XML, represented using base64.
-     */  "name": "data", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "base64Binary",
-      "isPrimitive": true }, 
-    { 
-    /*An alternative location where the data can be accessed.
-     */  "name": "url", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "uri",
-      "isPrimitive": true }, 
-    { 
-    /*The number of bytes of data that make up this attachment (before base64 encoding, if that is done).
-     */  "name": "size", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "unsignedInt",
-      "isPrimitive": true }, 
-    { 
-    /*The calculated hash of the data using SHA-1. Represented using base64.
-     */  "name": "hash", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "base64Binary",
-      "isPrimitive": true }, 
-    { 
-    /*A label or set of text to display in place of the data.
-     */  "name": "title", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*The date that the attachment was first created.
-     */  "name": "creation", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "dateTime",
-      "isPrimitive": true }, 
-  ]
-},
-"Duration": {
-    /*A length of time.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
-     */
-  "name": "Duration",
-  "base": "Quantity", 
-  "attrs": [
-  ],
-  "elems": [
-  ]
-},
-"Count": {
-    /*A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
-     */
-  "name": "Count",
-  "base": "Quantity", 
-  "attrs": [
-  ],
-  "elems": [
-  ]
-},
-"Range": {
-    /*A set of ordered Quantities defined by a low and high limit.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
-     */
-  "name": "Range",
-  "base": "Element", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*The low limit. The boundary is inclusive.
-     */  "name": "low", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Quantity",
-      "isPrimitive": false }, 
-    { 
-    /*The high limit. The boundary is inclusive.
-     */  "name": "high", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Quantity",
-      "isPrimitive": false }, 
-  ]
-},
-"Annotation": {
-    /*A  text note which also  contains information about who made the statement and when.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
-     */
-  "name": "Annotation",
-  "base": "Element", 
-  "attrs": [
-  ],
-  "elems": [
-    [ /* Choice */ 
-    /*The individual responsible for making the annotation.
-     */
-        {   "name": "authorReference", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Reference",
-          "isPrimitive": false }, 
-        {   "name": "authorString", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "string",
-          "isPrimitive": true }, 
-    ], 
-    { 
-    /*Indicates when this particular annotation was made.
-     */  "name": "time", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "dateTime",
-      "isPrimitive": true }, 
-    { 
-    /*The text of the annotation.
-     */  "name": "text", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-  ]
-},
-"Money": {
-    /*An amount of economic utility in some recognized currency.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
-     */
-  "name": "Money",
-  "base": "Quantity", 
-  "attrs": [
-  ],
-  "elems": [
-  ]
-},
-"Identifier": {
-    /*A technical identifier - identifies some entity uniquely and unambiguously.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
-     */
-  "name": "Identifier",
-  "base": "Element", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*The purpose of this identifier.
-     */  "name": "use", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "IdentifierUse",
-      "isPrimitive": true }, 
-    { 
-    /*A coded type for the identifier that can be used to determine which identifier to use for a specific purpose.
-     */  "name": "type", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*Establishes the namespace for the value - that is, a URL that describes a set values that are unique.
-     */  "name": "system", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "uri",
-      "isPrimitive": true }, 
-    { 
-    /*The portion of the identifier typically relevant to the user and which is unique within the context of the system.
-     */  "name": "value", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*Time period during which identifier is/was valid for use.
-     */  "name": "period", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Period",
-      "isPrimitive": false }, 
-    { 
-    /*Organization that issued/manages the identifier.
-     */  "name": "assigner", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-  ]
-},
-"IdentifierUse": {
-    /*Identifies the purpose for this identifier, if known .If the element is present, it must have either a @value, an @id, or extensions
-     */
-  "name": "IdentifierUse",
-  "base": "Element", 
-  "attrs": [
-    { 
-      "name": "value", 
-      "type": "IdentifierUse-list" }, 
-  ],
-  "elems": [
-  ]
-},
-"Coding": {
-    /*A reference to a code defined by a terminology system.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
-     */
-  "name": "Coding",
-  "base": "Element", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*The identification of the code system that defines the meaning of the symbol in the code.
-     */  "name": "system", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "uri",
-      "isPrimitive": true }, 
-    { 
-    /*The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured. and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged.
-     */  "name": "version", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination).
-     */  "name": "code", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "code",
-      "isPrimitive": true }, 
-    { 
-    /*A representation of the meaning of the code in the system, following the rules of the system.
-     */  "name": "display", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*Indicates that this coding was chosen by a user directly - i.e. off a pick list of available items (codes or displays).
-     */  "name": "userSelected", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "boolean",
-      "isPrimitive": true }, 
-  ]
-},
-"Signature": {
-    /*A digital signature along with supporting context. The signature may be electronic/cryptographic in nature, or a graphical image representing a hand-written signature, or a signature process. Different signature approaches have different utilities.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
-     */
-  "name": "Signature",
-  "base": "Element", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*An indication of the reason that the entity signed this document. This may be explicitly included as part of the signature information and can be used when determining accountability for various actions concerning the document.
-     */  "name": "type", 
-    
-      "min": "1", 
-      "max": "unbounded", 
-      "type": "Coding",
-      "isPrimitive": false }, 
-    { 
-    /*When the digital signature was signed.
-     */  "name": "when", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "instant",
-      "isPrimitive": true }, 
-    [ /* Choice */ 
-    /*A reference to an application-usable description of the identity that signed  (e.g. the signature used their private key).
-     */
-        {   "name": "whoUri", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "uri",
-          "isPrimitive": true }, 
-        {   "name": "whoReference", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Reference",
-          "isPrimitive": false }, 
-    ], 
-    [ /* Choice */ 
-    /*A reference to an application-usable description of the identity that is represented by the signature.
-     */
-        {   "name": "onBehalfOfUri", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "uri",
-          "isPrimitive": true }, 
-        {   "name": "onBehalfOfReference", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Reference",
-          "isPrimitive": false }, 
-    ], 
-    { 
-    /*A mime type that indicates the technical format of the signature. Important mime types are application/signature+xml for X ML DigSig, application/jwt for JWT, and image/* for a graphical image of a signature, etc.
-     */  "name": "contentType", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "code",
-      "isPrimitive": true }, 
-    { 
-    /*The base64 encoding of the Signature content. When signature is not recorded electronically this element would be empty.
-     */  "name": "blob", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "base64Binary",
-      "isPrimitive": true }, 
-  ]
-},
-"SampledData": {
-    /*A series of measurements taken by a device, with upper and lower limits. There may be more than one dimension in the data.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
-     */
-  "name": "SampledData",
-  "base": "Element", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*The base quantity that a measured value of zero represents. In addition, this provides the units of the entire measurement series.
-     */  "name": "origin", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "Quantity",
-      "isPrimitive": false }, 
-    { 
-    /*The length of time between sampling times, measured in milliseconds.
-     */  "name": "period", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "decimal",
-      "isPrimitive": true }, 
-    { 
-    /*A correction factor that is applied to the sampled data points before they are added to the origin.
-     */  "name": "factor", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "decimal",
-      "isPrimitive": true }, 
-    { 
-    /*The lower limit of detection of the measured points. This is needed if any of the data points have the value "L" (lower than detection limit).
-     */  "name": "lowerLimit", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "decimal",
-      "isPrimitive": true }, 
-    { 
-    /*The upper limit of detection of the measured points. This is needed if any of the data points have the value "U" (higher than detection limit).
-     */  "name": "upperLimit", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "decimal",
-      "isPrimitive": true }, 
-    { 
-    /*The number of sample points at each time point. If this value is greater than one, then the dimensions will be interlaced - all the sample points for a point in time will be recorded at once.
-     */  "name": "dimensions", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "positiveInt",
-      "isPrimitive": true }, 
-    { 
-    /*A series of data points which are decimal values separated by a single space (character u20). The special values "E" (error), "L" (below detection limit) and "U" (above detection limit) can also be used in place of a decimal value.
-     */  "name": "data", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "SampledDataDataType",
-      "isPrimitive": true }, 
-  ]
-},
-"SampledDataDataType": {
-  "name": "SampledDataDataType",
-  "base": "Element", 
-  "attrs": [
-    { 
-      "name": "value", 
-      "type": "SampledDataDataType-primitive" }, 
-  ],
-  "elems": [
-  ]
-},
-"Ratio": {
-    /*A relationship of two Quantity values - expressed as a numerator and a denominator.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
-     */
-  "name": "Ratio",
-  "base": "Element", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*The value of the numerator.
-     */  "name": "numerator", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Quantity",
-      "isPrimitive": false }, 
-    { 
-    /*The value of the denominator.
-     */  "name": "denominator", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Quantity",
-      "isPrimitive": false }, 
-  ]
-},
-"Distance": {
-    /*A length - a value with a unit that is a physical distance.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
-     */
-  "name": "Distance",
-  "base": "Quantity", 
-  "attrs": [
-  ],
-  "elems": [
-  ]
-},
-"Age": {
-    /*A duration of time during which an organism (or a process) has existed.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
-     */
-  "name": "Age",
-  "base": "Quantity", 
-  "attrs": [
-  ],
-  "elems": [
-  ]
-},
-"CodeableConcept": {
-    /*A concept that may be defined by a formal reference to a terminology or ontology or may be provided by text.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
-     */
-  "name": "CodeableConcept",
-  "base": "Element", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*A reference to a code defined by a terminology system.
-     */  "name": "coding", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Coding",
-      "isPrimitive": false }, 
-    { 
-    /*A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user.
-     */  "name": "text", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-  ]
-},
 "Meta": {
-    /*The metadata about a resource. This is content in the resource that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+    /*The metadata about a resource. This is content in the resource that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
      */
   "name": "Meta",
   "base": "Element", 
@@ -1916,7 +1489,7 @@ function FHIRConverter(indent) {
   ],
   "elems": [
     { 
-    /*The version specific identifier, as it appears in the version portion of the URL. This values changes when the resource is created, updated, or deleted.
+    /*The version specific identifier, as it appears in the version portion of the URL. This value changes when the resource is created, updated, or deleted.
      */  "name": "versionId", 
     
       "min": "0", 
@@ -1932,12 +1505,20 @@ function FHIRConverter(indent) {
       "type": "instant",
       "isPrimitive": true }, 
     { 
+    /*A uri that identifies the source system of the resource. This provides a minimal amount of [[[Provenance]]] information that can be used to track or differentiate the source of information in the resource. The source may identify another FHIR server, document, message, database, etc.
+     */  "name": "source", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "uri",
+      "isPrimitive": true }, 
+    { 
     /*A list of profiles (references to [[[StructureDefinition]]] resources) that this resource claims to conform to. The URL is a reference to [[[StructureDefinition.url]]].
      */  "name": "profile", 
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "uri",
+      "type": "canonical",
       "isPrimitive": true }, 
     { 
     /*Security labels applied to this resource. These tags connect specific resources to the overall security policy and infrastructure.
@@ -1982,7 +1563,7 @@ function FHIRConverter(indent) {
       "type": "AddressType",
       "isPrimitive": true }, 
     { 
-    /*A full text representation of the address.
+    /*Specifies the entire address as it should be displayed e.g. on a postal label. This may be provided instead of or as well as the specific parts.
      */  "name": "text", 
     
       "min": "0", 
@@ -2073,81 +1654,6 @@ function FHIRConverter(indent) {
   "elems": [
   ]
 },
-"TriggerDefinition": {
-    /*A description of a triggering event.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
-     */
-  "name": "TriggerDefinition",
-  "base": "Element", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*The type of triggering event.
-     */  "name": "type", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "TriggerType",
-      "isPrimitive": true }, 
-    { 
-    /*The name of the event (if this is a named-event trigger).
-     */  "name": "eventName", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    [ /* Choice */ 
-    /*The timing of the event (if this is a period trigger).
-     */
-        {   "name": "eventTimingTiming", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Timing",
-          "isPrimitive": false }, 
-        {   "name": "eventTimingReference", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Reference",
-          "isPrimitive": false }, 
-        {   "name": "eventTimingDate", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "date",
-          "isPrimitive": true }, 
-        {   "name": "eventTimingDateTime", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "dateTime",
-          "isPrimitive": true }, 
-    ], 
-    { 
-    /*The triggering data of the event (if this is a data trigger).
-     */  "name": "eventData", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "DataRequirement",
-      "isPrimitive": false }, 
-  ]
-},
-"TriggerType": {
-    /*The type of triggerIf the element is present, it must have either a @value, an @id, or extensions
-     */
-  "name": "TriggerType",
-  "base": "Element", 
-  "attrs": [
-    { 
-      "name": "value", 
-      "type": "TriggerType-list" }, 
-  ],
-  "elems": [
-  ]
-},
 "Contributor": {
     /*A contributor to the content of a knowledge asset, including authors, editors, reviewers, and endorsers.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
      */
@@ -2195,6 +1701,90 @@ function FHIRConverter(indent) {
   "elems": [
   ]
 },
+"Attachment": {
+    /*For referring to data content defined in other formats.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+     */
+  "name": "Attachment",
+  "base": "Element", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate.
+     */  "name": "contentType", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "code",
+      "isPrimitive": true }, 
+    { 
+    /*The human language of the content. The value can be any valid value according to BCP 47.
+     */  "name": "language", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "code",
+      "isPrimitive": true }, 
+    { 
+    /*The actual data of the attachment - a sequence of bytes. In XML, represented using base64.
+     */  "name": "data", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "base64Binary",
+      "isPrimitive": true }, 
+    { 
+    /*An alternative location where the data can be accessed.
+     */  "name": "url", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "url",
+      "isPrimitive": true }, 
+    { 
+    /*The number of bytes of data that make up this attachment (before base64 encoding, if that is done).
+     */  "name": "size", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "unsignedInt",
+      "isPrimitive": true }, 
+    { 
+    /*The calculated hash of the data using SHA-1. Represented using base64.
+     */  "name": "hash", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "base64Binary",
+      "isPrimitive": true }, 
+    { 
+    /*A label or set of text to display in place of the data.
+     */  "name": "title", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The date that the attachment was first created.
+     */  "name": "creation", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+  ]
+},
+"Count": {
+    /*A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+     */
+  "name": "Count",
+  "base": "Quantity", 
+  "attrs": [
+  ],
+  "elems": [
+  ]
+},
 "DataRequirement": {
     /*Describes a required data item for evaluation in terms of the type of data, and optional code or date-based filters of the data.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
      */
@@ -2217,8 +1807,24 @@ function FHIRConverter(indent) {
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "uri",
+      "type": "canonical",
       "isPrimitive": true }, 
+    [ /* Choice */ 
+    /*The intended subjects of the data requirement. If this element is not provided, a Patient subject is assumed.
+     */
+        {   "name": "subjectCodeableConcept", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "CodeableConcept",
+          "isPrimitive": false }, 
+        {   "name": "subjectReference", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Reference",
+          "isPrimitive": false }, 
+    ], 
     { 
     /*Indicates that specific elements of the type are referenced by the knowledge module and must be supported by the consumer in order to obtain an effective evaluation. This does not mean that a value is required for this element, only that the consuming system must understand the element and be able to provide values for it if they are available. Note that the value for this element can be a path to allow references to nested elements. In that case, all the elements along the path must be supported.
      */  "name": "mustSupport", 
@@ -2228,7 +1834,7 @@ function FHIRConverter(indent) {
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*Code filters specify additional constraints on the data, specifying the value set of interest for a particular element of the data.
+    /*Code filters specify additional constraints on the data, specifying the value set of interest for a particular element of the data. Each code filter defines an additional constraint on the data, i.e. code filters are AND'ed, not OR'ed.
      */  "name": "codeFilter", 
     
       "min": "0", 
@@ -2236,12 +1842,28 @@ function FHIRConverter(indent) {
       "type": "DataRequirement.CodeFilter",
       "isPrimitive": false }, 
     { 
-    /*Date filters specify additional constraints on the data in terms of the applicable date range for specific elements.
+    /*Date filters specify additional constraints on the data in terms of the applicable date range for specific elements. Each date filter specifies an additional constraint on the data, i.e. date filters are AND'ed, not OR'ed.
      */  "name": "dateFilter", 
     
       "min": "0", 
       "max": "unbounded", 
       "type": "DataRequirement.DateFilter",
+      "isPrimitive": false }, 
+    { 
+    /*Specifies a maximum number of results that are required.
+     */  "name": "limit", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "positiveInt",
+      "isPrimitive": true }, 
+    { 
+    /*Specifies the order of the results to be returned.
+     */  "name": "sort", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "DataRequirement.Sort",
       "isPrimitive": false }, 
   ]
 },
@@ -2262,44 +1884,28 @@ function FHIRConverter(indent) {
       "type": "string",
       "isPrimitive": true }, 
     [ /* Choice */ 
-    /*The valueset for the code filter. The valueSet and value elements are exclusive. If valueSet is specified, the filter will return only those data items for which the value of the code-valued element specified in the path is a member of the specified valueset.
+    /*The valueset for the code filter. The valueSet and code elements are additive. If valueSet is specified, the filter will return only those data items for which the value of the code-valued element specified in the path is a member of the specified valueset.
      */
-        {   "name": "valueSetString", 
+        {   "name": "valueSetUri", 
         
           "min": "1", 
           "max": "1", 
-          "type": "string",
+          "type": "uri",
           "isPrimitive": true }, 
-        {   "name": "valueSetReference", 
+        {   "name": "valueSetCanonical", 
         
           "min": "1", 
           "max": "1", 
-          "type": "Reference",
-          "isPrimitive": false }, 
+          "type": "canonical",
+          "isPrimitive": true }, 
     ], 
     { 
-    /*The codes for the code filter. Only one of valueSet, valueCode, valueCoding, or valueCodeableConcept may be specified. If values are given, the filter will return only those data items for which the code-valued attribute specified by the path has a value that is one of the specified codes.
-     */  "name": "valueCode", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "code",
-      "isPrimitive": true }, 
-    { 
-    /*The Codings for the code filter. Only one of valueSet, valueCode, valueConding, or valueCodeableConcept may be specified. If values are given, the filter will return only those data items for which the code-valued attribute specified by the path has a value that is one of the specified Codings.
-     */  "name": "valueCoding", 
+    /*The codes for the code filter. If values are given, the filter will return only those data items for which the code-valued attribute specified by the path has a value that is one of the specified codes. If codes are specified in addition to a value set, the filter returns items matching a code in the value set or one of the specified codes.
+     */  "name": "code", 
     
       "min": "0", 
       "max": "unbounded", 
       "type": "Coding",
-      "isPrimitive": false }, 
-    { 
-    /*The CodeableConcepts for the code filter. Only one of valueSet, valueCode, valueConding, or valueCodeableConcept may be specified. If values are given, the filter will return only those data items for which the code-valued attribute specified by the path has a value that is one of the specified CodeableConcepts.
-     */  "name": "valueCodeableConcept", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "CodeableConcept",
       "isPrimitive": false }, 
   ]
 },
@@ -2320,7 +1926,7 @@ function FHIRConverter(indent) {
       "type": "string",
       "isPrimitive": true }, 
     [ /* Choice */ 
-    /*The value of the filter. If period is specified, the filter will return only those data items that fall within the bounds determined by the Period, inclusive of the period boundaries. If dateTime is specified, the filter will return only those data items that are equal to the specified dateTime. If a Duration is specified, the filter will return only those data items that fall within Duration from now.
+    /*The value of the filter. If period is specified, the filter will return only those data items that fall within the bounds determined by the Period, inclusive of the period boundaries. If dateTime is specified, the filter will return only those data items that are equal to the specified dateTime. If a Duration is specified, the filter will return only those data items that fall within Duration before now.
      */
         {   "name": "valueDateTime", 
         
@@ -2341,6 +1947,45 @@ function FHIRConverter(indent) {
           "type": "Duration",
           "isPrimitive": false }, 
     ], 
+  ]
+},
+"DataRequirement.Sort": {
+    /*Describes a required data item for evaluation in terms of the type of data, and optional code or date-based filters of the data.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+     */
+  "name": "DataRequirement.Sort",
+  "base": "Element", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The attribute of the sort. The specified path must be resolvable from the type of the required data. The path is allowed to contain qualifiers (.) to traverse sub-elements, as well as indexers ([x]) to traverse multiple-cardinality sub-elements. Note that the index must be an integer constant.
+     */  "name": "path", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The direction of the sort, ascending or descending.
+     */  "name": "direction", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "SortDirection",
+      "isPrimitive": true }, 
+  ]
+},
+"SortDirection": {
+    /*The possible sort directions, ascending or descendingIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "SortDirection",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "SortDirection-list" }, 
+  ],
+  "elems": [
   ]
 },
 "Dosage": {
@@ -2368,7 +2013,7 @@ function FHIRConverter(indent) {
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*Supplemental instruction - e.g. "with meals".
+    /*Supplemental instructions to the patient on how to take the medication  (e.g. "with meals" or"take half to one hour before food") or warnings for the patient about the medication (e.g. "may cause drowsiness" or "avoid exposure of skin to direct sunlight or sunlamps").
      */  "name": "additionalInstruction", 
     
       "min": "0", 
@@ -2431,22 +2076,14 @@ function FHIRConverter(indent) {
       "max": "1", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
-    [ /* Choice */ 
-    /*Amount of medication per dose.
-     */
-        {   "name": "doseRange", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Range",
-          "isPrimitive": false }, 
-        {   "name": "doseQuantity", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Quantity",
-          "isPrimitive": false }, 
-    ], 
+    { 
+    /*The amount of medication administered.
+     */  "name": "doseAndRate", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Dosage.DoseAndRate",
+      "isPrimitive": false }, 
     { 
     /*Upper limit on medication per unit of time.
      */  "name": "maxDosePerPeriod", 
@@ -2471,6 +2108,40 @@ function FHIRConverter(indent) {
       "max": "1", 
       "type": "Quantity",
       "isPrimitive": false }, 
+  ]
+},
+"Dosage.DoseAndRate": {
+    /*Indicates how the medication is/was taken or should be taken by the patient.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+     */
+  "name": "Dosage.DoseAndRate",
+  "base": "Element", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The kind of dose or rate specified, for example, ordered or calculated.
+     */  "name": "type", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    [ /* Choice */ 
+    /*Amount of medication per dose.
+     */
+        {   "name": "doseRange", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Range",
+          "isPrimitive": false }, 
+        {   "name": "doseQuantity", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Quantity",
+          "isPrimitive": false }, 
+    ], 
     [ /* Choice */ 
     /*Amount of medication per unit of time.
      */
@@ -2495,101 +2166,14 @@ function FHIRConverter(indent) {
     ], 
   ]
 },
-"RelatedArtifact": {
-    /*Related artifacts such as additional documentation, justification, or bibliographic references.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+"Money": {
+    /*An amount of economic utility in some recognized currency.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
      */
-  "name": "RelatedArtifact",
-  "base": "Element", 
+  "name": "Money",
+  "base": "Quantity", 
   "attrs": [
   ],
   "elems": [
-    { 
-    /*The type of relationship to the related artifact.
-     */  "name": "type", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "RelatedArtifactType",
-      "isPrimitive": true }, 
-    { 
-    /*A brief description of the document or knowledge resource being referenced, suitable for display to a consumer.
-     */  "name": "display", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*A bibliographic citation for the related artifact. This text SHOULD be formatted according to an accepted citation format.
-     */  "name": "citation", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*A url for the artifact that can be followed to access the actual content.
-     */  "name": "url", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "uri",
-      "isPrimitive": true }, 
-    { 
-    /*The document being referenced, represented as an attachment. This is exclusive with the resource element.
-     */  "name": "document", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Attachment",
-      "isPrimitive": false }, 
-    { 
-    /*The related resource, such as a library, value set, profile, or other knowledge resource.
-     */  "name": "resource", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-  ]
-},
-"RelatedArtifactType": {
-    /*The type of relationship to the related artifactIf the element is present, it must have either a @value, an @id, or extensions
-     */
-  "name": "RelatedArtifactType",
-  "base": "Element", 
-  "attrs": [
-    { 
-      "name": "value", 
-      "type": "RelatedArtifactType-list" }, 
-  ],
-  "elems": [
-  ]
-},
-"ContactDetail": {
-    /*Specifies contact information for a person or organization.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
-     */
-  "name": "ContactDetail",
-  "base": "Element", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*The name of an individual to contact.
-     */  "name": "name", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*The contact details for the individual (if a name was provided) or the organization.
-     */  "name": "telecom", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "ContactPoint",
-      "isPrimitive": false }, 
   ]
 },
 "HumanName": {
@@ -2609,7 +2193,7 @@ function FHIRConverter(indent) {
       "type": "NameUse",
       "isPrimitive": true }, 
     { 
-    /*A full text representation of the name.
+    /*Specifies the entire name as it should be displayed e.g. on an application UI. This may be provided instead of or as well as the specific parts.
      */  "name": "text", 
     
       "min": "0", 
@@ -2747,8 +2331,690 @@ function FHIRConverter(indent) {
   "elems": [
   ]
 },
+"Identifier": {
+    /*A technical identifier - identifies some entity uniquely and unambiguously.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+     */
+  "name": "Identifier",
+  "base": "Element", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The purpose of this identifier.
+     */  "name": "use", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "IdentifierUse",
+      "isPrimitive": true }, 
+    { 
+    /*A coded type for the identifier that can be used to determine which identifier to use for a specific purpose.
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Establishes the namespace for the value - that is, a URL that describes a set values that are unique.
+     */  "name": "system", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "uri",
+      "isPrimitive": true }, 
+    { 
+    /*The portion of the identifier typically relevant to the user and which is unique within the context of the system.
+     */  "name": "value", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Time period during which identifier is/was valid for use.
+     */  "name": "period", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Period",
+      "isPrimitive": false }, 
+    { 
+    /*Organization that issued/manages the identifier.
+     */  "name": "assigner", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+  ]
+},
+"IdentifierUse": {
+    /*Identifies the purpose for this identifier, if known .If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "IdentifierUse",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "IdentifierUse-list" }, 
+  ],
+  "elems": [
+  ]
+},
+"Coding": {
+    /*A reference to a code defined by a terminology system.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+     */
+  "name": "Coding",
+  "base": "Element", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The identification of the code system that defines the meaning of the symbol in the code.
+     */  "name": "system", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "uri",
+      "isPrimitive": true }, 
+    { 
+    /*The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured, and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged.
+     */  "name": "version", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination).
+     */  "name": "code", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "code",
+      "isPrimitive": true }, 
+    { 
+    /*A representation of the meaning of the code in the system, following the rules of the system.
+     */  "name": "display", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Indicates that this coding was chosen by a user directly - i.e. off a pick list of available items (codes or displays).
+     */  "name": "userSelected", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+  ]
+},
+"SampledData": {
+    /*A series of measurements taken by a device, with upper and lower limits. There may be more than one dimension in the data.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+     */
+  "name": "SampledData",
+  "base": "Element", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The base quantity that a measured value of zero represents. In addition, this provides the units of the entire measurement series.
+     */  "name": "origin", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Quantity",
+      "isPrimitive": false }, 
+    { 
+    /*The length of time between sampling times, measured in milliseconds.
+     */  "name": "period", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "decimal",
+      "isPrimitive": true }, 
+    { 
+    /*A correction factor that is applied to the sampled data points before they are added to the origin.
+     */  "name": "factor", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "decimal",
+      "isPrimitive": true }, 
+    { 
+    /*The lower limit of detection of the measured points. This is needed if any of the data points have the value "L" (lower than detection limit).
+     */  "name": "lowerLimit", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "decimal",
+      "isPrimitive": true }, 
+    { 
+    /*The upper limit of detection of the measured points. This is needed if any of the data points have the value "U" (higher than detection limit).
+     */  "name": "upperLimit", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "decimal",
+      "isPrimitive": true }, 
+    { 
+    /*The number of sample points at each time point. If this value is greater than one, then the dimensions will be interlaced - all the sample points for a point in time will be recorded at once.
+     */  "name": "dimensions", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "positiveInt",
+      "isPrimitive": true }, 
+    { 
+    /*A series of data points which are decimal values separated by a single space (character u20). The special values "E" (error), "L" (below detection limit) and "U" (above detection limit) can also be used in place of a decimal value.
+     */  "name": "data", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "SampledDataDataType",
+      "isPrimitive": true }, 
+  ]
+},
+"SampledDataDataType": {
+  "name": "SampledDataDataType",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "SampledDataDataType-primitive" }, 
+  ],
+  "elems": [
+  ]
+},
+"Ratio": {
+    /*A relationship of two Quantity values - expressed as a numerator and a denominator.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+     */
+  "name": "Ratio",
+  "base": "Element", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The value of the numerator.
+     */  "name": "numerator", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Quantity",
+      "isPrimitive": false }, 
+    { 
+    /*The value of the denominator.
+     */  "name": "denominator", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Quantity",
+      "isPrimitive": false }, 
+  ]
+},
+"Distance": {
+    /*A length - a value with a unit that is a physical distance.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+     */
+  "name": "Distance",
+  "base": "Quantity", 
+  "attrs": [
+  ],
+  "elems": [
+  ]
+},
+"Age": {
+    /*A duration of time during which an organism (or a process) has existed.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+     */
+  "name": "Age",
+  "base": "Quantity", 
+  "attrs": [
+  ],
+  "elems": [
+  ]
+},
+"Reference": {
+    /*A reference from one resource to another.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+     */
+  "name": "Reference",
+  "base": "Element", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*A reference to a location at which the other resource is found. The reference may be a relative reference, in which case it is relative to the service base URL, or an absolute URL that resolves to the location where the resource is found. The reference may be version specific or not. If the reference is not to a FHIR RESTful server, then it should be assumed to be version specific. Internal fragment references (start with '#') refer to contained resources.
+     */  "name": "reference", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The expected type of the target of the reference. If both Reference.type and Reference.reference are populated and Reference.reference is a FHIR URL, both SHALL be consistent.
+
+The type is the Canonical URL of Resource Definition that is the type this reference refers to. References are URLs that are relative to http://hl7.org/fhir/StructureDefinition/ e.g. "Patient" is a reference to http://hl7.org/fhir/StructureDefinition/Patient. Absolute URLs are only allowed for logical models (and can only be used in references in logical models, not resources).
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "uri",
+      "isPrimitive": true }, 
+    { 
+    /*An identifier for the target resource. This is used when there is no way to reference the other resource directly, either because the entity it represents is not available through a FHIR server, or because there is no way for the author of the resource to convert a known identifier to an actual location. There is no requirement that a Reference.identifier point to something that is actually exposed as a FHIR instance, but it SHALL point to a business concept that would be expected to be exposed as a FHIR instance, and that instance would need to be of a FHIR resource type allowed by the reference.
+     */  "name": "identifier", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*Plain text narrative that identifies the resource in addition to the resource reference.
+     */  "name": "display", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+  ]
+},
+"TriggerDefinition": {
+    /*A description of a triggering event. Triggering events can be named events, data events, or periodic, as determined by the type element.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+     */
+  "name": "TriggerDefinition",
+  "base": "Element", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The type of triggering event.
+     */  "name": "type", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "TriggerType",
+      "isPrimitive": true }, 
+    { 
+    /*A formal name for the event. This may be an absolute URI that identifies the event formally (e.g. from a trigger registry), or a simple relative URI that identifies the event in a local context.
+     */  "name": "name", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    [ /* Choice */ 
+    /*The timing of the event (if this is a periodic trigger).
+     */
+        {   "name": "timingTiming", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Timing",
+          "isPrimitive": false }, 
+        {   "name": "timingReference", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Reference",
+          "isPrimitive": false }, 
+        {   "name": "timingDate", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "date",
+          "isPrimitive": true }, 
+        {   "name": "timingDateTime", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "dateTime",
+          "isPrimitive": true }, 
+    ], 
+    { 
+    /*The triggering data of the event (if this is a data trigger).
+     */  "name": "data", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "DataRequirement",
+      "isPrimitive": false }, 
+    { 
+    /*A boolean-valued expression that is evaluated in the context of the container of the trigger definition and returns whether or not the trigger fires.
+     */  "name": "condition", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "TriggerDefinition.Condition",
+      "isPrimitive": false }, 
+  ]
+},
+"TriggerDefinition.Condition": {
+    /*A description of a triggering event. Triggering events can be named events, data events, or periodic, as determined by the type element.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+     */
+  "name": "TriggerDefinition.Condition",
+  "base": "Element", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*A brief, natural language description of the condition that effectively communicates the intended semantics.
+     */  "name": "description", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The media type of the language for the expression.
+     */  "name": "language", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "ExpressionLanguage",
+      "isPrimitive": true }, 
+    { 
+    /*An expression that returns true or false, indicating whether or not the condition is satisfied.
+     */  "name": "expression", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+  ]
+},
+"TriggerType": {
+    /*The type of triggerIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "TriggerType",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "TriggerType-list" }, 
+  ],
+  "elems": [
+  ]
+},
+"ExpressionLanguage": {
+    /*The media type of the expression languageIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "ExpressionLanguage",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "ExpressionLanguage-list" }, 
+  ],
+  "elems": [
+  ]
+},
+"Quantity": {
+    /*A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+     */
+  "name": "Quantity",
+  "base": "Element", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The value of the measured amount. The value includes an implicit precision in the presentation of the value.
+     */  "name": "value", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "decimal",
+      "isPrimitive": true }, 
+    { 
+    /*How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is "<" , then the real value is < stated value.
+     */  "name": "comparator", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "QuantityComparator",
+      "isPrimitive": true }, 
+    { 
+    /*A human-readable form of the unit.
+     */  "name": "unit", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The identification of the system that provides the coded form of the unit.
+     */  "name": "system", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "uri",
+      "isPrimitive": true }, 
+    { 
+    /*A computer processable form of the unit in some unit representation system.
+     */  "name": "code", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "code",
+      "isPrimitive": true }, 
+  ]
+},
+"QuantityComparator": {
+    /*How the Quantity should be understood and represented.If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "QuantityComparator",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "QuantityComparator-list" }, 
+  ],
+  "elems": [
+  ]
+},
+"Period": {
+    /*A time period defined by a start and end date and optionally time.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+     */
+  "name": "Period",
+  "base": "Element", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The start of the period. The boundary is inclusive.
+     */  "name": "start", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+    { 
+    /*The end of the period. If the end of the period is missing, it means that the period is ongoing. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time.
+     */  "name": "end", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+  ]
+},
+"Duration": {
+    /*A length of time.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+     */
+  "name": "Duration",
+  "base": "Quantity", 
+  "attrs": [
+  ],
+  "elems": [
+  ]
+},
+"Range": {
+    /*A set of ordered Quantities defined by a low and high limit.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+     */
+  "name": "Range",
+  "base": "Element", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The low limit. The boundary is inclusive.
+     */  "name": "low", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Quantity",
+      "isPrimitive": false }, 
+    { 
+    /*The high limit. The boundary is inclusive.
+     */  "name": "high", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Quantity",
+      "isPrimitive": false }, 
+  ]
+},
+"RelatedArtifact": {
+    /*Related artifacts such as additional documentation, justification, or bibliographic references.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+     */
+  "name": "RelatedArtifact",
+  "base": "Element", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The type of relationship to the related artifact.
+     */  "name": "type", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "RelatedArtifactType",
+      "isPrimitive": true }, 
+    { 
+    /*A brief description of the document or knowledge resource being referenced, suitable for display to a consumer.
+     */  "name": "display", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*A bibliographic citation for the related artifact. This text SHOULD be formatted according to an accepted citation format.
+     */  "name": "citation", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*A url for the artifact that can be followed to access the actual content.
+     */  "name": "url", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "url",
+      "isPrimitive": true }, 
+    { 
+    /*The document being referenced, represented as an attachment. This is exclusive with the resource element.
+     */  "name": "document", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Attachment",
+      "isPrimitive": false }, 
+    { 
+    /*The related resource, such as a library, value set, profile, or other knowledge resource.
+     */  "name": "resource", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "canonical",
+      "isPrimitive": true }, 
+  ]
+},
+"RelatedArtifactType": {
+    /*The type of relationship to the related artifactIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "RelatedArtifactType",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "RelatedArtifactType-list" }, 
+  ],
+  "elems": [
+  ]
+},
+"Annotation": {
+    /*A  text note which also  contains information about who made the statement and when.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+     */
+  "name": "Annotation",
+  "base": "Element", 
+  "attrs": [
+  ],
+  "elems": [
+    [ /* Choice */ 
+    /*The individual responsible for making the annotation.
+     */
+        {   "name": "authorReference", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Reference",
+          "isPrimitive": false }, 
+        {   "name": "authorString", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "string",
+          "isPrimitive": true }, 
+    ], 
+    { 
+    /*Indicates when this particular annotation was made.
+     */  "name": "time", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+    { 
+    /*The text of the annotation.
+     */  "name": "text", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+  ]
+},
+"ContactDetail": {
+    /*Specifies contact information for a person or organization.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+     */
+  "name": "ContactDetail",
+  "base": "Element", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The name of an individual to contact.
+     */  "name": "name", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The contact details for the individual (if a name was provided) or the organization.
+     */  "name": "telecom", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ContactPoint",
+      "isPrimitive": false }, 
+  ]
+},
 "UsageContext": {
-    /*Specifies clinical/business/etc metadata that can be used to retrieve, index and/or categorize an artifact. This metadata can either be specific to the applicable population (e.g., age category, DRG) or the specific context of care (e.g., venue, care setting, provider of care).If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+    /*Specifies clinical/business/etc. metadata that can be used to retrieve, index and/or categorize an artifact. This metadata can either be specific to the applicable population (e.g., age category, DRG) or the specific context of care (e.g., venue, care setting, provider of care).If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
      */
   "name": "UsageContext",
   "base": "Element", 
@@ -2787,6 +3053,88 @@ function FHIRConverter(indent) {
     ], 
   ]
 },
+"Signature": {
+    /*A signature along with supporting context. The signature may be a digital signature that is cryptographic in nature, or some other signature acceptable to the domain. This other signature may be as simple as a graphical image representing a hand-written signature, or a signature ceremony Different signature approaches have different utilities.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+     */
+  "name": "Signature",
+  "base": "Element", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*An indication of the reason that the entity signed this document. This may be explicitly included as part of the signature information and can be used when determining accountability for various actions concerning the document.
+     */  "name": "type", 
+    
+      "min": "1", 
+      "max": "unbounded", 
+      "type": "Coding",
+      "isPrimitive": false }, 
+    { 
+    /*When the digital signature was signed.
+     */  "name": "when", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "instant",
+      "isPrimitive": true }, 
+    [ /* Choice */ 
+    /*A reference to an application-usable description of the identity that signed  (e.g. the signature used their private key).
+     */
+        {   "name": "whoUri", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "uri",
+          "isPrimitive": true }, 
+        {   "name": "whoReference", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Reference",
+          "isPrimitive": false }, 
+    ], 
+    [ /* Choice */ 
+    /*A reference to an application-usable description of the identity that is represented by the signature.
+     */
+        {   "name": "onBehalfOfUri", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "uri",
+          "isPrimitive": true }, 
+        {   "name": "onBehalfOfReference", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Reference",
+          "isPrimitive": false }, 
+    ], 
+    { 
+    /*A mime type that indicates the technical format of the target resources signed by the signature.
+     */  "name": "targetFormat", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "code",
+      "isPrimitive": true }, 
+    { 
+    /*A mime type that indicates the technical format of the signature. Important mime types are application/signature+xml for X ML DigSig, application/jose for JWS, and image/* for a graphical image of a signature, etc.
+     */  "name": "sigFormat", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "code",
+      "isPrimitive": true }, 
+    { 
+    /*The base64 encoding of the Signature content. When signature is not recorded electronically this element would be empty.
+     */  "name": "blob", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "base64Binary",
+      "isPrimitive": true }, 
+  ]
+},
 "Timing": {
     /*Specifies an event that may occur multiple times. Timing schedules are used to record when things are planned, expected or requested to occur. The most common usage is in dosage instructions for medications. They are also used when planning care of various kinds, and may be used for reporting the schedule to which past regular activities were carried out.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
      */
@@ -2812,7 +3160,7 @@ function FHIRConverter(indent) {
       "type": "Timing.Repeat",
       "isPrimitive": false }, 
     { 
-    /*A code for the timing schedule. Some codes such as BID are ubiquitous, but many institutions define their own additional codes. If a code is provided, the code is understood to be a complete statement of whatever is specified in the structured timing data, and either the code or the data may be used to interpret the Timing, with the exception that .repeat.bounds still applies over the code (and is not contained in the code).
+    /*A code for the timing schedule (or just text in code.text). Some codes such as BID are ubiquitous, but many institutions define their own additional codes. If a code is provided, the code is understood to be a complete statement of whatever is specified in the structured timing data, and either the code or the data may be used to interpret the Timing, with the exception that .repeat.bounds still applies over the code (and is not contained in the code).
      */  "name": "code", 
     
       "min": "0", 
@@ -2852,7 +3200,7 @@ function FHIRConverter(indent) {
           "isPrimitive": false }, 
     ], 
     { 
-    /*A total count of the desired number of repetitions.
+    /*A total count of the desired number of repetitions across the duration of the entire timing specification.
      */  "name": "count", 
     
       "min": "0", 
@@ -2948,7 +3296,7 @@ function FHIRConverter(indent) {
       "type": "time",
       "isPrimitive": true }, 
     { 
-    /*Real world events that the occurrence of the event should be tied to.
+    /*An approximate time period during the day, potentially linked to an event of daily living that indicates when the action should occur.
      */  "name": "when", 
     
       "min": "0", 
@@ -2989,6 +3337,230 @@ function FHIRConverter(indent) {
       "type": "EventTiming-list" }, 
   ],
   "elems": [
+  ]
+},
+"CodeableConcept": {
+    /*A concept that may be defined by a formal reference to a terminology or ontology or may be provided by text.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+     */
+  "name": "CodeableConcept",
+  "base": "Element", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*A reference to a code defined by a terminology system.
+     */  "name": "coding", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Coding",
+      "isPrimitive": false }, 
+    { 
+    /*A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user.
+     */  "name": "text", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+  ]
+},
+"ParameterDefinition": {
+    /*The parameters to the module. This collection specifies both the input and output parameters. Input parameters are provided by the caller as part of the $evaluate operation. Output parameters are included in the GuidanceResponse.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+     */
+  "name": "ParameterDefinition",
+  "base": "Element", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The name of the parameter used to allow access to the value of the parameter in evaluation contexts.
+     */  "name": "name", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "code",
+      "isPrimitive": true }, 
+    { 
+    /*Whether the parameter is input or output for the module.
+     */  "name": "use", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "code",
+      "isPrimitive": true }, 
+    { 
+    /*The minimum number of times this parameter SHALL appear in the request or response.
+     */  "name": "min", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "integer",
+      "isPrimitive": true }, 
+    { 
+    /*The maximum number of times this element is permitted to appear in the request or response.
+     */  "name": "max", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*A brief discussion of what the parameter is for and how it is used by the module.
+     */  "name": "documentation", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The type of the parameter.
+     */  "name": "type", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "code",
+      "isPrimitive": true }, 
+    { 
+    /*If specified, this indicates a profile that the input data must conform to, or that the output data will conform to.
+     */  "name": "profile", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "canonical",
+      "isPrimitive": true }, 
+  ]
+},
+"MarketingStatus": {
+    /*The marketing status describes the date when a medicinal product is actually put on the market or the date as of which it is no longer available.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+     */
+  "name": "MarketingStatus",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The country in which the marketing authorisation has been granted shall be specified It should be specified using the ISO 3166 ‑ 1 alpha-2 code elements.
+     */  "name": "country", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Where a Medicines Regulatory Agency has granted a marketing authorisation for which specific provisions within a jurisdiction apply, the jurisdiction can be specified using an appropriate controlled terminology The controlled term and the controlled term identifier shall be specified.
+     */  "name": "jurisdiction", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*This attribute provides information on the status of the marketing of the medicinal product See ISO/TS 20443 for more information and examples.
+     */  "name": "status", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The date when the Medicinal Product is placed on the market by the Marketing Authorisation Holder (or where applicable, the manufacturer/distributor) in a country and/or jurisdiction shall be provided A complete date consisting of day, month and year shall be specified using the ISO 8601 date format NOTE “Placed on the market” refers to the release of the Medicinal Product into the distribution chain.
+     */  "name": "dateRange", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Period",
+      "isPrimitive": false }, 
+    { 
+    /*The date when the Medicinal Product is placed on the market by the Marketing Authorisation Holder (or where applicable, the manufacturer/distributor) in a country and/or jurisdiction shall be provided A complete date consisting of day, month and year shall be specified using the ISO 8601 date format NOTE “Placed on the market” refers to the release of the Medicinal Product into the distribution chain.
+     */  "name": "restoreDate", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+  ]
+},
+"SubstanceAmount": {
+    /*Chemical substances are a single substance type whose primary defining element is the molecular structure. Chemical substances shall be defined on the basis of their complete covalent molecular structure; the presence of a salt (counter-ion) and/or solvates (water, alcohols) is also captured. Purity, grade, physical form or particle size are not taken into account in the definition of a chemical substance or in the assignment of a Substance ID.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+     */
+  "name": "SubstanceAmount",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    [ /* Choice */ 
+    /*Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field.
+     */
+        {   "name": "amountQuantity", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Quantity",
+          "isPrimitive": false }, 
+        {   "name": "amountRange", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Range",
+          "isPrimitive": false }, 
+        {   "name": "amountString", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "string",
+          "isPrimitive": true }, 
+    ], 
+    { 
+    /*Most elements that require a quantitative value will also have a field called amount type. Amount type should always be specified because the actual value of the amount is often dependent on it. EXAMPLE: In capturing the actual relative amounts of substances or molecular fragments it is essential to indicate whether the amount refers to a mole ratio or weight ratio. For any given element an effort should be made to use same the amount type for all related definitional elements.
+     */  "name": "amountType", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*A textual comment on a numeric value.
+     */  "name": "amountText", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Reference range of possible or expected values.
+     */  "name": "referenceRange", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "SubstanceAmount.ReferenceRange",
+      "isPrimitive": false }, 
+  ]
+},
+"SubstanceAmount.ReferenceRange": {
+    /*Chemical substances are a single substance type whose primary defining element is the molecular structure. Chemical substances shall be defined on the basis of their complete covalent molecular structure; the presence of a salt (counter-ion) and/or solvates (water, alcohols) is also captured. Purity, grade, physical form or particle size are not taken into account in the definition of a chemical substance or in the assignment of a Substance ID.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+     */
+  "name": "SubstanceAmount.ReferenceRange",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Lower limit possible or expected.
+     */  "name": "lowLimit", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Quantity",
+      "isPrimitive": false }, 
+    { 
+    /*Upper limit possible or expected.
+     */  "name": "highLimit", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Quantity",
+      "isPrimitive": false }, 
   ]
 },
 "ElementDefinition": {
@@ -3104,7 +3676,7 @@ function FHIRConverter(indent) {
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. This information is provided when the element definition is not the original definition of an element - i.g. either in a constraint on another type, or for elements from a super type in a snap shot.
+    /*Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. When the element definition is not the original definition of an element - i.g. either in a constraint on another type, or for elements from a super type in a snap shot - then the information in provided in the element definition may be different to the base definition. On the original definition of the element, it will be same.
      */  "name": "base", 
     
       "min": "0", 
@@ -3141,6 +3713,12 @@ function FHIRConverter(indent) {
           "min": "1", 
           "max": "1", 
           "type": "boolean",
+          "isPrimitive": true }, 
+        {   "name": "defaultValueCanonical", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "canonical",
           "isPrimitive": true }, 
         {   "name": "defaultValueCode", 
         
@@ -3225,6 +3803,18 @@ function FHIRConverter(indent) {
           "min": "1", 
           "max": "1", 
           "type": "uri",
+          "isPrimitive": true }, 
+        {   "name": "defaultValueUrl", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "url",
+          "isPrimitive": true }, 
+        {   "name": "defaultValueUuid", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "uuid",
           "isPrimitive": true }, 
         {   "name": "defaultValueAddress", 
         
@@ -3352,11 +3942,53 @@ function FHIRConverter(indent) {
           "max": "1", 
           "type": "Timing",
           "isPrimitive": false }, 
-        {   "name": "defaultValueMeta", 
+        {   "name": "defaultValueParameterDefinition", 
         
           "min": "1", 
           "max": "1", 
-          "type": "Meta",
+          "type": "ParameterDefinition",
+          "isPrimitive": false }, 
+        {   "name": "defaultValueDataRequirement", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "DataRequirement",
+          "isPrimitive": false }, 
+        {   "name": "defaultValueRelatedArtifact", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "RelatedArtifact",
+          "isPrimitive": false }, 
+        {   "name": "defaultValueContactDetail", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "ContactDetail",
+          "isPrimitive": false }, 
+        {   "name": "defaultValueContributor", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Contributor",
+          "isPrimitive": false }, 
+        {   "name": "defaultValueTriggerDefinition", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "TriggerDefinition",
+          "isPrimitive": false }, 
+        {   "name": "defaultValueUsageContext", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "UsageContext",
+          "isPrimitive": false }, 
+        {   "name": "defaultValueDosage", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Dosage",
           "isPrimitive": false }, 
     ], 
     { 
@@ -3389,6 +4021,12 @@ function FHIRConverter(indent) {
           "min": "1", 
           "max": "1", 
           "type": "boolean",
+          "isPrimitive": true }, 
+        {   "name": "fixedCanonical", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "canonical",
           "isPrimitive": true }, 
         {   "name": "fixedCode", 
         
@@ -3473,6 +4111,18 @@ function FHIRConverter(indent) {
           "min": "1", 
           "max": "1", 
           "type": "uri",
+          "isPrimitive": true }, 
+        {   "name": "fixedUrl", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "url",
+          "isPrimitive": true }, 
+        {   "name": "fixedUuid", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "uuid",
           "isPrimitive": true }, 
         {   "name": "fixedAddress", 
         
@@ -3600,11 +4250,53 @@ function FHIRConverter(indent) {
           "max": "1", 
           "type": "Timing",
           "isPrimitive": false }, 
-        {   "name": "fixedMeta", 
+        {   "name": "fixedParameterDefinition", 
         
           "min": "1", 
           "max": "1", 
-          "type": "Meta",
+          "type": "ParameterDefinition",
+          "isPrimitive": false }, 
+        {   "name": "fixedDataRequirement", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "DataRequirement",
+          "isPrimitive": false }, 
+        {   "name": "fixedRelatedArtifact", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "RelatedArtifact",
+          "isPrimitive": false }, 
+        {   "name": "fixedContactDetail", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "ContactDetail",
+          "isPrimitive": false }, 
+        {   "name": "fixedContributor", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Contributor",
+          "isPrimitive": false }, 
+        {   "name": "fixedTriggerDefinition", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "TriggerDefinition",
+          "isPrimitive": false }, 
+        {   "name": "fixedUsageContext", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "UsageContext",
+          "isPrimitive": false }, 
+        {   "name": "fixedDosage", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Dosage",
           "isPrimitive": false }, 
     ], 
     [ /* Choice */ 
@@ -3621,6 +4313,12 @@ function FHIRConverter(indent) {
           "min": "1", 
           "max": "1", 
           "type": "boolean",
+          "isPrimitive": true }, 
+        {   "name": "patternCanonical", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "canonical",
           "isPrimitive": true }, 
         {   "name": "patternCode", 
         
@@ -3705,6 +4403,18 @@ function FHIRConverter(indent) {
           "min": "1", 
           "max": "1", 
           "type": "uri",
+          "isPrimitive": true }, 
+        {   "name": "patternUrl", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "url",
+          "isPrimitive": true }, 
+        {   "name": "patternUuid", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "uuid",
           "isPrimitive": true }, 
         {   "name": "patternAddress", 
         
@@ -3832,11 +4542,53 @@ function FHIRConverter(indent) {
           "max": "1", 
           "type": "Timing",
           "isPrimitive": false }, 
-        {   "name": "patternMeta", 
+        {   "name": "patternParameterDefinition", 
         
           "min": "1", 
           "max": "1", 
-          "type": "Meta",
+          "type": "ParameterDefinition",
+          "isPrimitive": false }, 
+        {   "name": "patternDataRequirement", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "DataRequirement",
+          "isPrimitive": false }, 
+        {   "name": "patternRelatedArtifact", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "RelatedArtifact",
+          "isPrimitive": false }, 
+        {   "name": "patternContactDetail", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "ContactDetail",
+          "isPrimitive": false }, 
+        {   "name": "patternContributor", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Contributor",
+          "isPrimitive": false }, 
+        {   "name": "patternTriggerDefinition", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "TriggerDefinition",
+          "isPrimitive": false }, 
+        {   "name": "patternUsageContext", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "UsageContext",
+          "isPrimitive": false }, 
+        {   "name": "patternDosage", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Dosage",
           "isPrimitive": false }, 
     ], 
     { 
@@ -4004,6 +4756,14 @@ function FHIRConverter(indent) {
       "type": "boolean",
       "isPrimitive": true }, 
     { 
+    /*Explains how that element affects the interpretation of the resource or element that contains it.
+     */  "name": "isModifierReason", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
     /*Whether the element should be included if a client requests a search with the parameter _summary=true.
      */  "name": "isSummary", 
     
@@ -4070,7 +4830,7 @@ function FHIRConverter(indent) {
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*A [FHIRPath](http://hl7.org/fluentpath) expression of constraint that can be executed to see if this constraint is met.
+    /*A [FHIRPath](fhirpath.html) expression of constraint that can be executed to see if this constraint is met.
      */  "name": "expression", 
     
       "min": "1", 
@@ -4091,7 +4851,7 @@ function FHIRConverter(indent) {
     
       "min": "0", 
       "max": "1", 
-      "type": "uri",
+      "type": "canonical",
       "isPrimitive": true }, 
   ]
 },
@@ -4188,20 +4948,20 @@ function FHIRConverter(indent) {
       "type": "uri",
       "isPrimitive": true }, 
     { 
-    /*Identifies a profile structure or implementation Guide that SHALL hold for the datatype this element refers to. Can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.
+    /*Identifies a profile structure or implementation Guide that applies to the datatype this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the type SHALL conform to at least one profile defined in the implementation guide.
      */  "name": "profile", 
     
       "min": "0", 
-      "max": "1", 
-      "type": "uri",
+      "max": "unbounded", 
+      "type": "canonical",
       "isPrimitive": true }, 
     { 
-    /*Identifies a profile structure or implementation Guide that SHALL hold for the target of the reference this element refers to. Can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.
+    /*Used when the type is "Reference", and Identifies a profile structure or implementation Guide that applies to the target of the reference this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the target resource SHALL conform to at least one profile defined in the implementation guide.
      */  "name": "targetProfile", 
     
       "min": "0", 
-      "max": "1", 
-      "type": "uri",
+      "max": "unbounded", 
+      "type": "canonical",
       "isPrimitive": true }, 
     { 
     /*If the type is a reference to another resource, how the resource is or can be aggregated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle.
@@ -4251,6 +5011,12 @@ function FHIRConverter(indent) {
           "min": "1", 
           "max": "1", 
           "type": "boolean",
+          "isPrimitive": true }, 
+        {   "name": "valueCanonical", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "canonical",
           "isPrimitive": true }, 
         {   "name": "valueCode", 
         
@@ -4335,6 +5101,18 @@ function FHIRConverter(indent) {
           "min": "1", 
           "max": "1", 
           "type": "uri",
+          "isPrimitive": true }, 
+        {   "name": "valueUrl", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "url",
+          "isPrimitive": true }, 
+        {   "name": "valueUuid", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "uuid",
           "isPrimitive": true }, 
         {   "name": "valueAddress", 
         
@@ -4462,11 +5240,53 @@ function FHIRConverter(indent) {
           "max": "1", 
           "type": "Timing",
           "isPrimitive": false }, 
-        {   "name": "valueMeta", 
+        {   "name": "valueParameterDefinition", 
         
           "min": "1", 
           "max": "1", 
-          "type": "Meta",
+          "type": "ParameterDefinition",
+          "isPrimitive": false }, 
+        {   "name": "valueDataRequirement", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "DataRequirement",
+          "isPrimitive": false }, 
+        {   "name": "valueRelatedArtifact", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "RelatedArtifact",
+          "isPrimitive": false }, 
+        {   "name": "valueContactDetail", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "ContactDetail",
+          "isPrimitive": false }, 
+        {   "name": "valueContributor", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Contributor",
+          "isPrimitive": false }, 
+        {   "name": "valueTriggerDefinition", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "TriggerDefinition",
+          "isPrimitive": false }, 
+        {   "name": "valueUsageContext", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "UsageContext",
+          "isPrimitive": false }, 
+        {   "name": "valueDosage", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Dosage",
           "isPrimitive": false }, 
     ], 
   ]
@@ -4538,7 +5358,7 @@ function FHIRConverter(indent) {
       "type": "string",
       "isPrimitive": true }, 
     [ /* Choice */ 
-    /*Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used. If the binding refers to an explicit value set - the normal case - then use a Reference(ValueSet) preferably containing the canonical URL for the value set. If the reference is to an implicit value set - usually, an IETF RFC that defines a grammar, such as mime types - then use a uri.
+    /*Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used. If the binding refers to an explicit value set - the normal case - then use a canonical(ValueSet) preferably containing the canonical URL for the value set. If the reference is to an implicit value set - usually, an IETF RFC that defines a grammar, such as mime types - then use a uri.
      */
         {   "name": "valueSetUri", 
         
@@ -4546,12 +5366,12 @@ function FHIRConverter(indent) {
           "max": "1", 
           "type": "uri",
           "isPrimitive": true }, 
-        {   "name": "valueSetReference", 
+        {   "name": "valueSetCanonical", 
         
           "min": "1", 
           "max": "1", 
-          "type": "Reference",
-          "isPrimitive": false }, 
+          "type": "canonical",
+          "isPrimitive": true }, 
     ], 
   ]
 },
@@ -4572,7 +5392,7 @@ function FHIRConverter(indent) {
       "type": "DiscriminatorType",
       "isPrimitive": true }, 
     { 
-    /*A FHIRPath expression, using a restricted subset of FHIRPath, that is used to identify the element on which discrimination is based.
+    /*A FHIRPath expression, using [the simple subset of FHIRPath](fhirpath.html#simple), that is used to identify the element on which discrimination is based.
      */  "name": "path", 
     
       "min": "1", 
@@ -4672,69 +5492,209 @@ function FHIRConverter(indent) {
   "elems": [
   ]
 },
-"ParameterDefinition": {
-    /*The parameters to the module. This collection specifies both the input and output parameters. Input parameters are provided by the caller as part of the $evaluate operation. Output parameters are included in the GuidanceResponse.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+"SubstanceMoiety": {
+    /*Chemical substances are a single substance type whose primary defining element is the molecular structure. Chemical substances shall be defined on the basis of their complete covalent molecular structure; the presence of a salt (counter-ion) and/or solvates (water, alcohols) is also captured. Purity, grade, physical form or particle size are not taken into account in the definition of a chemical substance or in the assignment of a Substance ID.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
      */
-  "name": "ParameterDefinition",
-  "base": "Element", 
+  "name": "SubstanceMoiety",
+  "base": "BackboneElement", 
   "attrs": [
   ],
   "elems": [
     { 
-    /*The name of the parameter used to allow access to the value of the parameter in evaluation contexts.
+    /*The role of the moiety should be specified if there is a specific role the moiety is playing.
+     */  "name": "role", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The unique identifier assigned to the substance representing the moiety based on the ISO 11238 substance controlled vocabulary.
+     */  "name": "identifier", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*The name of the moiety shall be provided.
      */  "name": "name", 
     
       "min": "0", 
       "max": "1", 
-      "type": "code",
+      "type": "string",
       "isPrimitive": true }, 
     { 
-    /*Whether the parameter is input or output for the module.
-     */  "name": "use", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "code",
-      "isPrimitive": true }, 
-    { 
-    /*The minimum number of times this parameter SHALL appear in the request or response.
-     */  "name": "min", 
+    /*Stereochemistry shall be captured as described in 4.7.1.
+     */  "name": "stereochemistry", 
     
       "min": "0", 
       "max": "1", 
-      "type": "integer",
-      "isPrimitive": true }, 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
     { 
-    /*The maximum number of times this element is permitted to appear in the request or response.
-     */  "name": "max", 
+    /*Optical activity shall be captured as described in 4.7.2.
+     */  "name": "opticalActivity", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Molecular formula shall be captured as described in 4.7.3.
+     */  "name": "molecularFormula", 
     
       "min": "0", 
       "max": "1", 
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*A brief discussion of what the parameter is for and how it is used by the module.
-     */  "name": "documentation", 
+    /*Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field.
+     */  "name": "amount", 
     
       "min": "0", 
       "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
+      "type": "SubstanceAmount",
+      "isPrimitive": false }, 
+  ]
+},
+"ProductShelfLife": {
+    /*The shelf-life and storage information for a medicinal product item or container can be described using this class.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+     */
+  "name": "ProductShelfLife",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
     { 
-    /*The type of the parameter.
+    /*Unique identifier for the packaged Medicinal Product.
+     */  "name": "identifier", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*This describes the shelf life, taking into account various scenarios such as shelf life of the packaged Medicinal Product itself, shelf life after transformation where necessary and shelf life after the first opening of a bottle, etc. The shelf life type shall be specified using an appropriate controlled vocabulary The controlled term and the controlled term identifier shall be specified.
      */  "name": "type", 
     
       "min": "1", 
       "max": "1", 
-      "type": "code",
-      "isPrimitive": true }, 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
     { 
-    /*If specified, this indicates a profile that the input data must conform to, or that the output data will conform to.
-     */  "name": "profile", 
+    /*The shelf life time period can be specified using a numerical value for the period of time and its unit of time measurement The unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the symbol identifier shall be used.
+     */  "name": "period", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Quantity",
+      "isPrimitive": false }, 
+    { 
+    /*Special precautions for storage, if any, can be specified using an appropriate controlled vocabulary The controlled term and the controlled term identifier shall be specified.
+     */  "name": "specialPrecautionsForStorage", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+  ]
+},
+"ProdCharacteristic": {
+    /*The marketing status describes the date when a medicinal product is actually put on the market or the date as of which it is no longer available.If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
+     */
+  "name": "ProdCharacteristic",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Where applicable, the height can be specified using a numerical value and its unit of measurement The unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the symbol identifier shall be used.
+     */  "name": "height", 
     
       "min": "0", 
       "max": "1", 
-      "type": "Reference",
+      "type": "Quantity",
+      "isPrimitive": false }, 
+    { 
+    /*Where applicable, the width can be specified using a numerical value and its unit of measurement The unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the symbol identifier shall be used.
+     */  "name": "width", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Quantity",
+      "isPrimitive": false }, 
+    { 
+    /*Where applicable, the depth can be specified using a numerical value and its unit of measurement The unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the symbol identifier shall be used.
+     */  "name": "depth", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Quantity",
+      "isPrimitive": false }, 
+    { 
+    /*Where applicable, the weight can be specified using a numerical value and its unit of measurement The unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the symbol identifier shall be used.
+     */  "name": "weight", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Quantity",
+      "isPrimitive": false }, 
+    { 
+    /*Where applicable, the nominal volume can be specified using a numerical value and its unit of measurement The unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the symbol identifier shall be used.
+     */  "name": "nominalVolume", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Quantity",
+      "isPrimitive": false }, 
+    { 
+    /*Where applicable, the external diameter can be specified using a numerical value and its unit of measurement The unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the symbol identifier shall be used.
+     */  "name": "externalDiameter", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Quantity",
+      "isPrimitive": false }, 
+    { 
+    /*Where applicable, the shape can be specified An appropriate controlled vocabulary shall be used The term and the term identifier shall be used.
+     */  "name": "shape", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Where applicable, the color can be specified An appropriate controlled vocabulary shall be used The term and the term identifier shall be used.
+     */  "name": "color", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Where applicable, the imprint can be specified as text.
+     */  "name": "imprint", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Where applicable, the image can be provided The format of the image attachment shall be specified by regional implementations.
+     */  "name": "image", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Attachment",
+      "isPrimitive": false }, 
+    { 
+    /*Where applicable, the scoring can be specified An appropriate controlled vocabulary shall be used The term and the term identifier shall be used.
+     */  "name": "scoring", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
       "isPrimitive": false }, 
   ]
 },
@@ -4747,7 +5707,7 @@ function FHIRConverter(indent) {
   ],
   "elems": [
     { 
-    /*A human-readable narrative that contains a summary of the resource, and may be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it "clinically safe" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.
+    /*A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it "clinically safe" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.
      */  "name": "text", 
     
       "min": "0", 
@@ -4763,7 +5723,7 @@ function FHIRConverter(indent) {
       "type": "ResourceContainer",
       "isPrimitive": false }, 
     { 
-    /*May be used to represent additional information that is not part of the basic definition of the resource. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+    /*May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
      */  "name": "extension", 
     
       "min": "0", 
@@ -4771,7 +5731,7 @@ function FHIRConverter(indent) {
       "type": "Extension",
       "isPrimitive": false }, 
     { 
-    /*May be used to represent additional information that is not part of the basic definition of the resource, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+    /*May be used to represent additional information that is not part of the basic definition of the resource, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
      */  "name": "modifierExtension", 
     
       "min": "0", 
@@ -4796,7 +5756,7 @@ function FHIRConverter(indent) {
       "type": "id",
       "isPrimitive": true }, 
     { 
-    /*The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
+    /*The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.
      */  "name": "meta", 
     
       "min": "0", 
@@ -4804,7 +5764,7 @@ function FHIRConverter(indent) {
       "type": "Meta",
       "isPrimitive": false }, 
     { 
-    /*A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content.
+    /*A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc.
      */  "name": "implicitRules", 
     
       "min": "0", 
@@ -4921,7 +5881,7 @@ function FHIRConverter(indent) {
   ],
   "elems": [
     { 
-    /*Unique identifier used to reference the account.  May or may not be intended for human use (e.g. credit card number).
+    /*Unique identifier used to reference the account.  Might or might not be intended for human use (e.g. credit card number).
      */  "name": "identifier", 
     
       "min": "0", 
@@ -4932,7 +5892,7 @@ function FHIRConverter(indent) {
     /*Indicates whether the account is presently used/usable or not.
      */  "name": "status", 
     
-      "min": "0", 
+      "min": "1", 
       "max": "1", 
       "type": "AccountStatus",
       "isPrimitive": true }, 
@@ -4961,29 +5921,12 @@ function FHIRConverter(indent) {
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*Identifies the period of time the account applies to; e.g. accounts created per fiscal year, quarter, etc.
-     */  "name": "period", 
+    /*The date range of services associated with this account.
+     */  "name": "servicePeriod", 
     
       "min": "0", 
       "max": "1", 
       "type": "Period",
-      "isPrimitive": false }, 
-    { 
-    /*Indicates the period of time over which the account is allowed to have transactions posted to it.
-This period may be different to the coveragePeriod which is the duration of time that services may occur.
-     */  "name": "active", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Period",
-      "isPrimitive": false }, 
-    { 
-    /*Represents the sum of all credits less all debits associated with the account.  Might be positive, zero or negative.
-     */  "name": "balance", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Money",
       "isPrimitive": false }, 
     { 
     /*The party(s) that are responsible for covering the payment of this account, and what order should they be applied to the account.
@@ -5016,6 +5959,14 @@ This period may be different to the coveragePeriod which is the duration of time
       "min": "0", 
       "max": "unbounded", 
       "type": "Account.Guarantor",
+      "isPrimitive": false }, 
+    { 
+    /*Reference to a parent Account.
+     */  "name": "partOf", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
       "isPrimitive": false }, 
   ]
 },
@@ -5103,7 +6054,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ],
   "elems": [
     { 
-    /*An absolute URI that is used to identify this activity definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this activity definition is (or will be) published. The URL SHOULD include the major version of the activity definition. For more information see [Technical and Business Versions](resource.html#versions).
+    /*An absolute URI that is used to identify this activity definition when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which this activity definition is (or will be) published.
      */  "name": "url", 
     
       "min": "0", 
@@ -5143,6 +6094,14 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "string",
       "isPrimitive": true }, 
     { 
+    /*An explanatory or alternate title for the activity definition giving additional information about its content.
+     */  "name": "subtitle", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
     /*The status of this activity definition. Enables tracking the life-cycle of the content.
      */  "name": "status", 
     
@@ -5151,15 +6110,31 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "PublicationStatus",
       "isPrimitive": true }, 
     { 
-    /*A boolean value to indicate that this activity definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+    /*A Boolean value to indicate that this activity definition is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.
      */  "name": "experimental", 
     
       "min": "0", 
       "max": "1", 
       "type": "boolean",
       "isPrimitive": true }, 
+    [ /* Choice */ 
+    /*A code or group definition that describes the intended subject of the activity being defined.
+     */
+        {   "name": "subjectCodeableConcept", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "CodeableConcept",
+          "isPrimitive": false }, 
+        {   "name": "subjectReference", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Reference",
+          "isPrimitive": false }, 
+    ], 
     { 
-    /*The date  (and optionally time) when the activity definition was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the activity definition changes.
+    /*The date  (and optionally time) when the activity definition was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the activity definition changes.
      */  "name": "date", 
     
       "min": "0", 
@@ -5167,13 +6142,21 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*The name of the individual or organization that published the activity definition.
+    /*The name of the organization or individual that published the activity definition.
      */  "name": "publisher", 
     
       "min": "0", 
       "max": "1", 
       "type": "string",
       "isPrimitive": true }, 
+    { 
+    /*Contact details to assist a user in finding and communicating with the publisher.
+     */  "name": "contact", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ContactDetail",
+      "isPrimitive": false }, 
     { 
     /*A free text natural language description of the activity definition from a consumer's perspective.
      */  "name": "description", 
@@ -5182,46 +6165,6 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "max": "1", 
       "type": "markdown",
       "isPrimitive": true }, 
-    { 
-    /*Explaination of why this activity definition is needed and why it has been designed as it has.
-     */  "name": "purpose", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "markdown",
-      "isPrimitive": true }, 
-    { 
-    /*A detailed description of how the asset is used from a clinical perspective.
-     */  "name": "usage", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.
-     */  "name": "approvalDate", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "date",
-      "isPrimitive": true }, 
-    { 
-    /*The date on which the resource content was last reviewed. Review happens periodically after approval, but doesn't change the original approval date.
-     */  "name": "lastReviewDate", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "date",
-      "isPrimitive": true }, 
-    { 
-    /*The period during which the activity definition content was or is planned to be in active use.
-     */  "name": "effectivePeriod", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Period",
-      "isPrimitive": false }, 
     { 
     /*The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate activity definition instances.
      */  "name": "useContext", 
@@ -5239,29 +6182,21 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Descriptive topics related to the content of the activity. Topics provide a high-level categorization of the activity that can be useful for filtering and searching.
-     */  "name": "topic", 
+    /*Explanation of why this activity definition is needed and why it has been designed as it has.
+     */  "name": "purpose", 
     
       "min": "0", 
-      "max": "unbounded", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
+      "max": "1", 
+      "type": "markdown",
+      "isPrimitive": true }, 
     { 
-    /*A contributor to the content of the asset, including authors, editors, reviewers, and endorsers.
-     */  "name": "contributor", 
+    /*A detailed description of how the activity definition is used from a clinical perspective.
+     */  "name": "usage", 
     
       "min": "0", 
-      "max": "unbounded", 
-      "type": "Contributor",
-      "isPrimitive": false }, 
-    { 
-    /*Contact details to assist a user in finding and communicating with the publisher.
-     */  "name": "contact", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "ContactDetail",
-      "isPrimitive": false }, 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
     { 
     /*A copyright statement relating to the activity definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the activity definition.
      */  "name": "copyright", 
@@ -5271,6 +6206,46 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "markdown",
       "isPrimitive": true }, 
     { 
+    /*The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.
+     */  "name": "approvalDate", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "date",
+      "isPrimitive": true }, 
+    { 
+    /*The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.
+     */  "name": "lastReviewDate", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "date",
+      "isPrimitive": true }, 
+    { 
+    /*The period during which the activity definition content was or is planned to be in active use.
+     */  "name": "effectivePeriod", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Period",
+      "isPrimitive": false }, 
+    { 
+    /*Descriptive topics related to the content of the activity. Topics provide a high-level categorization of the activity that can be useful for filtering and searching.
+     */  "name": "topic", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*A contributor to the content of the activity definition, including authors, editors, reviewers, and endorsers.
+     */  "name": "contributor", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Contributor",
+      "isPrimitive": false }, 
+    { 
     /*Related artifacts such as additional documentation, justification, or bibliographic references.
      */  "name": "relatedArtifact", 
     
@@ -5279,15 +6254,15 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "RelatedArtifact",
       "isPrimitive": false }, 
     { 
-    /*A reference to a Library resource containing any formal logic used by the asset.
+    /*A reference to a Library resource containing any formal logic used by the activity definition.
      */  "name": "library", 
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
+      "type": "canonical",
+      "isPrimitive": true }, 
     { 
-    /*A description of the kind of resource the activity definition is representing. For example, a MedicationRequest, a ProcedureRequest, or a CommunicationRequest. Typically, but not always, this is a Request resource.
+    /*A description of the kind of resource the activity definition is representing. For example, a MedicationRequest, a ServiceRequest, or a CommunicationRequest. Typically, but not always, this is a Request resource.
      */  "name": "kind", 
     
       "min": "0", 
@@ -5302,6 +6277,14 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "max": "1", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
+    { 
+    /*Set this to true if the definition is to indicate that a particular activity should NOT be performed. If true, this element should be interpreted to reinforce a negative coding. For example NPO as a code with a doNotPerform of true would still indicate to NOT perform the action.
+     */  "name": "doNotPerform", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
     [ /* Choice */ 
     /*The period, timing or frequency upon which the described activity is to occur.
      */
@@ -5317,6 +6300,12 @@ A coverage may only be resposible for specific types of charges, and the sequenc
           "max": "1", 
           "type": "dateTime",
           "isPrimitive": true }, 
+        {   "name": "timingAge", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Age",
+          "isPrimitive": false }, 
         {   "name": "timingPeriod", 
         
           "min": "1", 
@@ -5328,6 +6317,12 @@ A coverage may only be resposible for specific types of charges, and the sequenc
           "min": "1", 
           "max": "1", 
           "type": "Range",
+          "isPrimitive": false }, 
+        {   "name": "timingDuration", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Duration",
           "isPrimitive": false }, 
     ], 
     { 
@@ -5387,15 +6382,23 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
+    /*Defines specimen requirements for the action to be performed, such as required specimens for a lab test.
+     */  "name": "specimenRequirement", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
     /*A reference to a StructureMap resource that defines a transform that can be executed to produce the intent resource using the ActivityDefinition instance as the input.
      */  "name": "transform", 
     
       "min": "0", 
       "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
+      "type": "canonical",
+      "isPrimitive": true }, 
     { 
-    /*Dynamic values that will be evaluated to produce values for elements of the resulting resource. For example, if the dosage of a medication must be computed based on the patient's weight, a dynamic value would be used to specify an expression that calculated the weight, and the path on the intent resource that would contain the result.
+    /*Dynamic values that will be evaluated to produce values for elements of the resulting resource. For example, if the dosage of a medication must be computed based on the patient's weight, a dynamic value would be used to specify an expression that calculated the weight, and the path on the request resource that would contain the result.
      */  "name": "dynamicValue", 
     
       "min": "0", 
@@ -5507,7 +6510,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ],
   "elems": [
     { 
-    /*The identifier(s) of this adverse event that are assigned by business processes and/or used to refer to it when a direct URL reference to the resource itsefl is not appropriate.
+    /*Business identifiers assigned to this adverse event by the performer or other systems which remain constant as the resource is updated and propagates from server to server.
      */  "name": "identifier", 
     
       "min": "0", 
@@ -5515,24 +6518,40 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
-    /*The type of event which is important to characterize what occurred and caused harm to the subject, or had the potential to cause harm to the subject.
+    /*Whether the event actually happened, or just had the potential to. Note that this is independent of whether anyone was affected or harmed or how severely.
+     */  "name": "actuality", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "AdverseEventActuality",
+      "isPrimitive": true }, 
+    { 
+    /*The overall type of event, intended for search and filtering purposes.
      */  "name": "category", 
     
       "min": "0", 
-      "max": "1", 
-      "type": "AdverseEventCategory",
-      "isPrimitive": true }, 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
     { 
     /*This element defines the specific type of event that occurred or that was prevented from occurring.
-     */  "name": "type", 
+     */  "name": "event", 
     
       "min": "0", 
       "max": "1", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*This subject or group impacted by the event.  With a prospective adverse event, there will be no subject as the adverse event was prevented.
+    /*This subject or group impacted by the event.
      */  "name": "subject", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*The encounter or episode of care that establishes the context for this AdverseEvent.
+     */  "name": "context", 
     
       "min": "0", 
       "max": "1", 
@@ -5548,7 +6567,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "isPrimitive": true }, 
     { 
     /*Includes information about the reaction that occurred as a result of exposure to a substance (for example, a drug or a chemical).
-     */  "name": "reaction", 
+     */  "name": "resultingCondition", 
     
       "min": "0", 
       "max": "unbounded", 
@@ -5563,8 +6582,16 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*Describes the seriousness or severity of the adverse event.
+    /*Assessment whether this event was of real importance.
      */  "name": "seriousness", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Describes the severity of the adverse event, in relation to the subject. Contrast to AdverseEvent.serious - a severe rash might not be serious, but a mild heart problem is.
+     */  "name": "severity", 
     
       "min": "0", 
       "max": "1", 
@@ -5587,21 +6614,13 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*Parties that may or should contribute or have contributed information to the Act. Such information includes information leading to the decision to perform the Act and how to perform the Act (e.g. consultant), information that the Act itself seeks to reveal (e.g. informant of clinical history), or information about what Act was performed (e.g. informant witness).
-     */  "name": "eventParticipant", 
+    /*Parties that may or should contribute or have contributed information to the adverse event, which can consist of one or more activities.  Such information includes information leading to the decision to perform the activity and how to perform the activity (e.g. consultant), information that the activity itself seeks to reveal (e.g. informant of clinical history), or information about what activity was performed (e.g. informant witness).
+     */  "name": "contributor", 
     
       "min": "0", 
-      "max": "1", 
+      "max": "unbounded", 
       "type": "Reference",
       "isPrimitive": false }, 
-    { 
-    /*Describes the adverse event in text.
-     */  "name": "description", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
     { 
     /*Describes the entity that is suspected to have caused the adverse event.
      */  "name": "suspectEntity", 
@@ -5653,16 +6672,26 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*causality1 | causality2.
+    /*Information on the possible cause of the event.
      */  "name": "causality", 
     
       "min": "0", 
-      "max": "1", 
-      "type": "AdverseEventCausality",
-      "isPrimitive": true }, 
+      "max": "unbounded", 
+      "type": "AdverseEvent.Causality",
+      "isPrimitive": false }, 
+  ]
+},
+"AdverseEvent.Causality": {
+    /*Actual or  potential/avoided event causing unintended physical injury resulting from or contributed to by medical care, a research study or other healthcare setting factors that requires additional monitoring, treatment, or hospitalization, or that results in death.
+     */
+  "name": "AdverseEvent.Causality",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
     { 
-    /*assess1 | assess2.
-     */  "name": "causalityAssessment", 
+    /*Assessment of if the entity caused the event.
+     */  "name": "assessment", 
     
       "min": "0", 
       "max": "1", 
@@ -5670,31 +6699,23 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "isPrimitive": false }, 
     { 
     /*AdverseEvent.suspectEntity.causalityProductRelatedness.
-     */  "name": "causalityProductRelatedness", 
+     */  "name": "productRelatedness", 
     
       "min": "0", 
       "max": "1", 
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*method1 | method2.
-     */  "name": "causalityMethod", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
     /*AdverseEvent.suspectEntity.causalityAuthor.
-     */  "name": "causalityAuthor", 
+     */  "name": "author", 
     
       "min": "0", 
       "max": "1", 
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*result1 | result2.
-     */  "name": "causalityResult", 
+    /*ProbabilityScale | Bayesian | Checklist.
+     */  "name": "method", 
     
       "min": "0", 
       "max": "1", 
@@ -5702,28 +6723,15 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "isPrimitive": false }, 
   ]
 },
-"AdverseEventCausality": {
-    /*TODOIf the element is present, it must have either a @value, an @id, or extensions
+"AdverseEventActuality": {
+    /*Overall nature of the event, e.g. real or potentialIf the element is present, it must have either a @value, an @id, or extensions
      */
-  "name": "AdverseEventCausality",
+  "name": "AdverseEventActuality",
   "base": "Element", 
   "attrs": [
     { 
       "name": "value", 
-      "type": "AdverseEventCausality-list" }, 
-  ],
-  "elems": [
-  ]
-},
-"AdverseEventCategory": {
-    /*Overall categorization of the event, e.g. real or potentialIf the element is present, it must have either a @value, an @id, or extensions
-     */
-  "name": "AdverseEventCategory",
-  "base": "Element", 
-  "attrs": [
-    { 
-      "name": "value", 
-      "type": "AdverseEventCategory-list" }, 
+      "type": "AdverseEventActuality-list" }, 
   ],
   "elems": [
   ]
@@ -5737,7 +6745,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ],
   "elems": [
     { 
-    /*This records identifiers associated with this allergy/intolerance concern that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
+    /*Business identifiers assigned to this AllergyIntolerance by the performer or other systems which remain constant as the resource is updated and propagates from server to server.
      */  "name": "identifier", 
     
       "min": "0", 
@@ -5756,7 +6764,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     /*Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified substance (including pharmaceutical product).
      */  "name": "verificationStatus", 
     
-      "min": "1", 
+      "min": "0", 
       "max": "1", 
       "type": "AllergyIntoleranceVerificationStatus",
       "isPrimitive": true }, 
@@ -5785,7 +6793,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "AllergyIntoleranceCriticality",
       "isPrimitive": true }, 
     { 
-    /*Code for an allergy or intolerance statement (either a positive or a negated/excluded statement).  This may be a code for a substance or pharmaceutical product that is considered to be responsible for the adverse reaction risk (e.g., "Latex"), an allergy or intolerance condition (e.g., "Latex allergy"), or a negated/excluded code for a specific substance or class (e.g., "No latex allergy") or a general or categorical negated statement (e.g.,  "No known allergy", "No known drug allergies").
+    /*Code for an allergy or intolerance statement (either a positive or a negated/excluded statement).  This may be a code for a substance or pharmaceutical product that is considered to be responsible for the adverse reaction risk (e.g., "Latex"), an allergy or intolerance condition (e.g., "Latex allergy"), or a negated/excluded code for a specific substance or class (e.g., "No latex allergy") or a general or categorical negated statement (e.g.,  "No known allergy", "No known drug allergies").  Note: the substance for a specific reaction may be different from the substance identified as the cause of the risk, but it must be consistent with it. For instance, it may be a more specific substance (e.g. a brand medication) or a composite product that includes the identified substance. It must be clinically safe to only process the 'code' and ignore the 'reaction.substance'.  If a receiving system is unable to confirm that AllergyIntolerance.reaction.substance falls within the semantic scope of AllergyIntolerance.code, then the receiving system should ignore AllergyIntolerance.reaction.substance.
      */  "name": "code", 
     
       "min": "0", 
@@ -5797,6 +6805,14 @@ A coverage may only be resposible for specific types of charges, and the sequenc
      */  "name": "patient", 
     
       "min": "1", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*The encounter when the allergy or intolerance was asserted.
+     */  "name": "encounter", 
+    
+      "min": "0", 
       "max": "1", 
       "type": "Reference",
       "isPrimitive": false }, 
@@ -5835,7 +6851,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
           "isPrimitive": true }, 
     ], 
     { 
-    /*The date on which the existance of the AllergyIntolerance was first asserted or acknowledged.
+    /*The date on which the existence of the AllergyIntolerance was first asserted or acknowledged.
      */  "name": "assertedDate", 
     
       "min": "0", 
@@ -5893,7 +6909,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ],
   "elems": [
     { 
-    /*Identification of the specific substance (or pharmaceutical product) considered to be responsible for the Adverse Reaction event. Note: the substance for a specific reaction may be different from the substance identified as the cause of the risk, but it must be consistent with it. For instance, it may be a more specific substance (e.g. a brand medication) or a composite product that includes the identified substance. It must be clinically safe to only process the 'code' and ignore the 'reaction.substance'.
+    /*Identification of the specific substance (or pharmaceutical product) considered to be responsible for the Adverse Reaction event. Note: the substance for a specific reaction may be different from the substance identified as the cause of the risk, but it must be consistent with it. For instance, it may be a more specific substance (e.g. a brand medication) or a composite product that includes the identified substance. It must be clinically safe to only process the 'code' and ignore the 'reaction.substance'.  If a receiving system is unable to confirm that AllergyIntolerance.reaction.substance falls within the semantic scope of AllergyIntolerance.code, then the receiving system should ignore AllergyIntolerance.reaction.substance.
      */  "name": "substance", 
     
       "min": "0", 
@@ -6053,11 +7069,11 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "AppointmentStatus",
       "isPrimitive": true }, 
     { 
-    /*A broad categorisation of the service that is to be performed during this appointment.
+    /*A broad categorization of the service that is to be performed during this appointment.
      */  "name": "serviceCategory", 
     
       "min": "0", 
-      "max": "1", 
+      "max": "unbounded", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
@@ -6141,7 +7157,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "instant",
       "isPrimitive": true }, 
     { 
-    /*Number of minutes that the appointment is to take. This can be less than the duration between the start and end times (where actual time of appointment is only an estimate or is a planned appointment request).
+    /*Number of minutes that the appointment is to take. This can be less than the duration between the start and end times.  For example, where the actual time of appointment is only an estimate or if a 30 minute appointment is being requested, but any time would work.  Also, if there is, for example, a planned 15 minute break in the middle of a long appointment, the duration may be 15 minutes less than the difference between the start and end.
      */  "name": "minutesDuration", 
     
       "min": "0", 
@@ -6173,8 +7189,16 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*The referral request this appointment is allocated to assess (incoming referral).
-     */  "name": "incomingReferral", 
+    /*While Appointment.comment contains information for internal use, Appointment.patientInstructions is used to capture patient facing information about the Appointment (e.g. please bring your referral or fast from 8pm night before).
+     */  "name": "patientInstruction", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The service request this appointment is allocated to assess (e.g. incoming referral or procedure request).
+     */  "name": "basedOn", 
     
       "min": "0", 
       "max": "unbounded", 
@@ -6189,7 +7213,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Appointment.Participant",
       "isPrimitive": false }, 
     { 
-    /*A set of date ranges (potentially including times) that the appointment is preferred to be scheduled within. When using these values, the minutes duration should be provided to indicate the length of the appointment to fill and populate the start/end times for the actual allocated time.
+    /*A set of date ranges (potentially including times) that the appointment is preferred to be scheduled within. When using these values, the duration (usually in minutes) should be provided to indicate the length of the appointment to fill and populate the start/end times for the actual allocated time.
      */  "name": "requestedPeriod", 
     
       "min": "0", 
@@ -6223,7 +7247,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*Is this participant required to be present at the meeting. This covers a use-case where 2 doctors need to meet to discuss the results for a specific patient, and the patient is not required to be present.
+    /*Whether this participant is required to be present at the meeting. This covers a use-case where two doctors need to meet to discuss the results for a specific patient, and the patient is not required to be present.
      */  "name": "required", 
     
       "min": "0", 
@@ -6238,6 +7262,14 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "max": "1", 
       "type": "ParticipationStatus",
       "isPrimitive": true }, 
+    { 
+    /*Participation period of the actor.
+     */  "name": "period", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Period",
+      "isPrimitive": false }, 
   ]
 },
 "ParticipantRequired": {
@@ -6328,7 +7360,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*A Person, Location/HealthcareService or Device that is participating in the appointment.
+    /*A Person, Location, HealthcareService, or Device that is participating in the appointment.
      */  "name": "actor", 
     
       "min": "0", 
@@ -6386,7 +7418,15 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "AuditEventAction",
       "isPrimitive": true }, 
     { 
-    /*The time when the event occurred on the source.
+    /*The period during which the activity occurred.
+     */  "name": "period", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Period",
+      "isPrimitive": false }, 
+    { 
+    /*The time when the event was recorded.
      */  "name": "recorded", 
     
       "min": "1", 
@@ -6451,6 +7491,14 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   "attrs": [
   ],
   "elems": [
+    { 
+    /*Specification of the participation type the user plays when performing the event.
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
     { 
     /*The security role that the user was acting under, that come from local codes defined by the access control security system (e.g. RBAC, ABAC) used in the local context.
      */  "name": "role", 
@@ -6707,14 +7755,22 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "max": "1", 
       "type": "string",
       "isPrimitive": true }, 
-    { 
-    /*The details, base64 encoded. Used to carry bulk information.
-     */  "name": "value", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "base64Binary",
-      "isPrimitive": true }, 
+    [ /* Choice */ 
+    /*The  value of the extra detail.
+     */
+        {   "name": "valueString", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "string",
+          "isPrimitive": true }, 
+        {   "name": "valueBase64Binary", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "base64Binary",
+          "isPrimitive": true }, 
+    ], 
   ]
 },
 "AuditEventOutcome": {
@@ -6840,16 +7896,326 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "isPrimitive": true }, 
   ]
 },
-"BodySite": {
-    /*Record details about the anatomical location of a specimen or body part.  This resource may be used when a coded concept does not provide the necessary detail needed for the use case.If the element is present, it must have either a @value, an @id, or extensions
+"BiologicallyDerivedProduct": {
+    /*A material substance originating from a biological entity intended to be transplanted or infused
+into another (possibly the same) biological entity.If the element is present, it must have either a @value, an @id, or extensions
      */
-  "name": "BodySite",
+  "name": "BiologicallyDerivedProduct",
   "base": "DomainResource", 
   "attrs": [
   ],
   "elems": [
     { 
-    /*Identifier for this instance of the anatomical location.
+    /*This records identifiers associated with this biologically derived product instance that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
+     */  "name": "identifier", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*Broad category of this product.
+     */  "name": "productCategory", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "BiologicallyDerivedProductCategory",
+      "isPrimitive": true }, 
+    { 
+    /*A code that identifies the kind of this biologically derived product (SNOMED Ctcode).
+     */  "name": "productCode", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Whether the product is currently available.
+     */  "name": "status", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "BiologicallyDerivedProductStatus",
+      "isPrimitive": true }, 
+    { 
+    /*Procedure request to obtain this biologically derived product.
+     */  "name": "request", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Number of discrete units within this product.
+     */  "name": "quantity", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "integer",
+      "isPrimitive": true }, 
+    { 
+    /*Parent product (if any).
+     */  "name": "parent", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*How this product was collected.
+     */  "name": "collection", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "BiologicallyDerivedProduct.Collection",
+      "isPrimitive": false }, 
+    { 
+    /*Any processing of the product during collection.
+     */  "name": "processing", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "BiologicallyDerivedProduct.Processing",
+      "isPrimitive": false }, 
+    { 
+    /*Any manipulation of product post-collection.
+     */  "name": "manipulation", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "BiologicallyDerivedProduct.Manipulation",
+      "isPrimitive": false }, 
+    { 
+    /*Product storage.
+     */  "name": "storage", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "BiologicallyDerivedProduct.Storage",
+      "isPrimitive": false }, 
+  ]
+},
+"BiologicallyDerivedProduct.Collection": {
+    /*A material substance originating from a biological entity intended to be transplanted or infused
+into another (possibly the same) biological entity.
+     */
+  "name": "BiologicallyDerivedProduct.Collection",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*HealthCare Professional performing collection.
+     */  "name": "collector", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Person or entity providing product.
+     */  "name": "source", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    [ /* Choice */ 
+    /*Time of product collection.
+     */
+        {   "name": "collectedDateTime", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "dateTime",
+          "isPrimitive": true }, 
+        {   "name": "collectedPeriod", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Period",
+          "isPrimitive": false }, 
+    ], 
+  ]
+},
+"BiologicallyDerivedProduct.Processing": {
+    /*A material substance originating from a biological entity intended to be transplanted or infused
+into another (possibly the same) biological entity.
+     */
+  "name": "BiologicallyDerivedProduct.Processing",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Description of of processing.
+     */  "name": "description", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Procesing code.
+     */  "name": "procedure", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Substance added during processing.
+     */  "name": "additive", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    [ /* Choice */ 
+    /*Time of processing.
+     */
+        {   "name": "timeDateTime", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "dateTime",
+          "isPrimitive": true }, 
+        {   "name": "timePeriod", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Period",
+          "isPrimitive": false }, 
+    ], 
+  ]
+},
+"BiologicallyDerivedProduct.Manipulation": {
+    /*A material substance originating from a biological entity intended to be transplanted or infused
+into another (possibly the same) biological entity.
+     */
+  "name": "BiologicallyDerivedProduct.Manipulation",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Description of manipulation.
+     */  "name": "description", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    [ /* Choice */ 
+    /*Time of manipulation.
+     */
+        {   "name": "timeDateTime", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "dateTime",
+          "isPrimitive": true }, 
+        {   "name": "timePeriod", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Period",
+          "isPrimitive": false }, 
+    ], 
+  ]
+},
+"BiologicallyDerivedProduct.Storage": {
+    /*A material substance originating from a biological entity intended to be transplanted or infused
+into another (possibly the same) biological entity.
+     */
+  "name": "BiologicallyDerivedProduct.Storage",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Description of storage.
+     */  "name": "description", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Storage temperature.
+     */  "name": "temperature", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "decimal",
+      "isPrimitive": true }, 
+    { 
+    /*Temperature scale used.
+     */  "name": "scale", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "BiologicallyDerivedProductStorageScale",
+      "isPrimitive": true }, 
+    { 
+    /*Storage timeperiod.
+     */  "name": "duration", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Period",
+      "isPrimitive": false }, 
+  ]
+},
+"BiologicallyDerivedProductCategory": {
+    /*Biologically Derived Product CategoryIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "BiologicallyDerivedProductCategory",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "BiologicallyDerivedProductCategory-list" }, 
+  ],
+  "elems": [
+  ]
+},
+"BiologicallyDerivedProductStatus": {
+    /*Biologically Derived Product StatusIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "BiologicallyDerivedProductStatus",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "BiologicallyDerivedProductStatus-list" }, 
+  ],
+  "elems": [
+  ]
+},
+"BiologicallyDerivedProductStorageScale": {
+    /*BiologicallyDerived Product Storage ScaleIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "BiologicallyDerivedProductStorageScale",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "BiologicallyDerivedProductStorageScale-list" }, 
+  ],
+  "elems": [
+  ]
+},
+"BodyStructure": {
+    /*Record details about an anatomical structure.  This resource may be used when a coded concept does not provide the necessary detail needed for the use case.If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "BodyStructure",
+  "base": "DomainResource", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Identifier for this instance of the anatomical structure.
      */  "name": "identifier", 
     
       "min": "0", 
@@ -6865,8 +8231,16 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "boolean",
       "isPrimitive": true }, 
     { 
-    /*Named anatomical location - ideally coded where possible.
-     */  "name": "code", 
+    /*The kind of structure being represented by the body structure at `BodyStructure.location`.  This can define both normal and abnormal morphologies.
+     */  "name": "morphology", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The anatomical location or region of the specimen, lesion, or body structure.
+     */  "name": "location", 
     
       "min": "0", 
       "max": "1", 
@@ -6874,14 +8248,14 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "isPrimitive": false }, 
     { 
     /*Qualifier to refine the anatomical location.  These include qualifiers for laterality, relative location, directionality, number, and plane.
-     */  "name": "qualifier", 
+     */  "name": "locationQualifier", 
     
       "min": "0", 
       "max": "unbounded", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*A summary, charactarization or explanation of the anatomic location.
+    /*A summary, charactarization or explanation of the body structure.
      */  "name": "description", 
     
       "min": "0", 
@@ -6931,6 +8305,14 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "BundleType",
       "isPrimitive": true }, 
     { 
+    /*The date/time that the bundle was assembled - i.e. when the resources were placed in the bundle.
+     */  "name": "timestamp", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "instant",
+      "isPrimitive": true }, 
+    { 
     /*If a set of search matches, this is the total number of matches for the search (as opposed to the number of results in this bundle).
      */  "name": "total", 
     
@@ -6955,7 +8337,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Bundle.Entry",
       "isPrimitive": false }, 
     { 
-    /*Digital Signature - base64 encoded. XML-DSIg or a JWT.
+    /*Digital Signature - base64 encoded. XML-DSig or a JWT.
      */  "name": "signature", 
     
       "min": "0", 
@@ -7159,7 +8541,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "uri",
       "isPrimitive": true }, 
     { 
-    /*The etag for the resource, it the operation for the entry produced a versioned resource (see [Resource Metadata and Versioning](http.html#versioning) and [Managing Resource Contention](http.html#concurrency)).
+    /*The Etag for the resource, it the operation for the entry produced a versioned resource (see [Resource Metadata and Versioning](http.html#versioning) and [Managing Resource Contention](http.html#concurrency)).
      */  "name": "etag", 
     
       "min": "0", 
@@ -7232,7 +8614,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ],
   "elems": [
     { 
-    /*An absolute URI that is used to identify this capability statement when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this capability statement is (or will be) published. The URL SHOULD include the major version of the capability statement. For more information see [Technical and Business Versions](resource.html#versions).
+    /*An absolute URI that is used to identify this capability statement when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which this capability statement is (or will be) published.
      */  "name": "url", 
     
       "min": "0", 
@@ -7272,7 +8654,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "PublicationStatus",
       "isPrimitive": true }, 
     { 
-    /*A boolean value to indicate that this capability statement is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+    /*A Boolean value to indicate that this capability statement is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.
      */  "name": "experimental", 
     
       "min": "0", 
@@ -7280,7 +8662,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "boolean",
       "isPrimitive": true }, 
     { 
-    /*The date  (and optionally time) when the capability statement was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the capability statement changes.
+    /*The date  (and optionally time) when the capability statement was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the capability statement changes.
      */  "name": "date", 
     
       "min": "1", 
@@ -7288,7 +8670,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*The name of the individual or organization that published the capability statement.
+    /*The name of the organization or individual that published the capability statement.
      */  "name": "publisher", 
     
       "min": "0", 
@@ -7328,7 +8710,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Explaination of why this capability statement is needed and why it has been designed as it has.
+    /*Explanation of why this capability statement is needed and why it has been designed as it has.
      */  "name": "purpose", 
     
       "min": "0", 
@@ -7344,7 +8726,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "markdown",
       "isPrimitive": true }, 
     { 
-    /*The way that this statement is intended to be used, to describe an actual running instance of software, a particular product (kind not instance of software) or a class of implementation (e.g. a desired purchase).
+    /*The way that this statement is intended to be used, to describe an actual running instance of software, a particular product (kind, not instance of software) or a class of implementation (e.g. a desired purchase).
      */  "name": "kind", 
     
       "min": "1", 
@@ -7357,7 +8739,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "uri",
+      "type": "canonical",
       "isPrimitive": true }, 
     { 
     /*Software that is covered by this capability statement.  It is used when the capability statement describes the capabilities of a particular software version, independent of an installation.
@@ -7384,14 +8766,6 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "id",
       "isPrimitive": true }, 
     { 
-    /*A code that indicates whether the application accepts unknown elements or extensions when reading resources.
-     */  "name": "acceptUnknown", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "UnknownContentCode",
-      "isPrimitive": true }, 
-    { 
     /*A list of the formats supported by this implementation using their content types.
      */  "name": "format", 
     
@@ -7413,16 +8787,8 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "uri",
+      "type": "canonical",
       "isPrimitive": true }, 
-    { 
-    /*A list of profiles that represent different use cases supported by the system. For a server, "supported by the system" means the system hosts/produces a set of resources that are conformant to a particular profile, and allows clients that use its services to search using this profile and to find appropriate data. For a client, it means the system will search by this profile and process data according to the guidance implicit in the profile. See further discussion in [Using Profiles](profiling.html#profile-uses).
-     */  "name": "profile", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
     { 
     /*A definition of the restful capabilities of the solution, if any.
      */  "name": "rest", 
@@ -7458,7 +8824,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ],
   "elems": [
     { 
-    /*Name software is known by.
+    /*Name the software is known by.
      */  "name": "name", 
     
       "min": "1", 
@@ -7505,7 +8871,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     
       "min": "0", 
       "max": "1", 
-      "type": "uri",
+      "type": "url",
       "isPrimitive": true }, 
   ]
 },
@@ -7579,7 +8945,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "uri",
+      "type": "canonical",
       "isPrimitive": true }, 
   ]
 },
@@ -7592,7 +8958,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ],
   "elems": [
     { 
-    /*Server adds CORS headers when responding to requests - this enables javascript applications to use the server.
+    /*Server adds CORS headers when responding to requests - this enables Javascript applications to use the server.
      */  "name": "cors", 
     
       "min": "0", 
@@ -7614,40 +8980,6 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "min": "0", 
       "max": "1", 
       "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*Certificates associated with security profiles.
-     */  "name": "certificate", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "CapabilityStatement.Certificate",
-      "isPrimitive": false }, 
-  ]
-},
-"CapabilityStatement.Certificate": {
-    /*A Capability Statement documents a set of capabilities (behaviors) of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
-     */
-  "name": "CapabilityStatement.Certificate",
-  "base": "BackboneElement", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*Mime type for a certificate.
-     */  "name": "type", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "code",
-      "isPrimitive": true }, 
-    { 
-    /*Actual certificate.
-     */  "name": "blob", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "base64Binary",
       "isPrimitive": true }, 
   ]
 },
@@ -7673,8 +9005,16 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     
       "min": "0", 
       "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
+      "type": "canonical",
+      "isPrimitive": true }, 
+    { 
+    /*A list of profiles that represent different use cases supported by the system. For a server, "supported by the system" means the system hosts/produces a set of resources that are conformant to a particular profile, and allows clients that use its services to search using this profile and to find appropriate data. For a client, it means the system will search by this profile and process data according to the guidance implicit in the profile. See further discussion in [Using Profiles](profiling.html#profile-uses).
+     */  "name": "supportedProfile", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "canonical",
+      "isPrimitive": true }, 
     { 
     /*Additional information about the resource type used by the system.
      */  "name": "documentation", 
@@ -7687,7 +9027,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     /*Identifies a restful operation supported by the solution.
      */  "name": "interaction", 
     
-      "min": "1", 
+      "min": "0", 
       "max": "unbounded", 
       "type": "CapabilityStatement.Interaction",
       "isPrimitive": false }, 
@@ -7708,7 +9048,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "boolean",
       "isPrimitive": true }, 
     { 
-    /*A flag to indicate that the server allows or needs to allow the client to create new identities on the server (e.g. that is, the client PUTs to a location where there is no existing resource). Allowing this operation means that the server allows the client to create new identities on the server.
+    /*A flag to indicate that the server allows or needs to allow the client to create new identities on the server (that is, the client PUTs to a location where there is no existing resource). Allowing this operation means that the server allows the client to create new identities on the server.
      */  "name": "updateCreate", 
     
       "min": "0", 
@@ -7779,6 +9119,14 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "max": "unbounded", 
       "type": "CapabilityStatement.SearchParam",
       "isPrimitive": false }, 
+    { 
+    /*Definition of an operation or a named query together with its parameters and their meaning and type. Consult the definition of the operation for details about how to invoke the operation, and the parameters.
+     */  "name": "operation", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CapabilityStatement.Operation",
+      "isPrimitive": false }, 
   ]
 },
 "CapabilityStatement.Interaction": {
@@ -7829,7 +9177,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     
       "min": "0", 
       "max": "1", 
-      "type": "uri",
+      "type": "canonical",
       "isPrimitive": true }, 
     { 
     /*The type of value a search parameter refers to, and how the content is interpreted.
@@ -7841,32 +9189,6 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "isPrimitive": true }, 
     { 
     /*This allows documentation of any distinct behaviors about how the search parameter is used.  For example, text matching algorithms.
-     */  "name": "documentation", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-  ]
-},
-"CapabilityStatement.Interaction1": {
-    /*A Capability Statement documents a set of capabilities (behaviors) of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
-     */
-  "name": "CapabilityStatement.Interaction1",
-  "base": "BackboneElement", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*A coded identifier of the operation, supported by the system.
-     */  "name": "code", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "SystemRestfulInteraction",
-      "isPrimitive": true }, 
-    { 
-    /*Guidance specific to the implementation of this operation, such as limitations on the kind of transactions allowed, or information about system wide search is implemented.
      */  "name": "documentation", 
     
       "min": "0", 
@@ -7897,8 +9219,42 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     
       "min": "1", 
       "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
+      "type": "canonical",
+      "isPrimitive": true }, 
+    { 
+    /*Documentation that describes anything special about the operation behavior, possibly detailing different behavior for system, type and instance-level invocation of the operation.
+     */  "name": "documentation", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "markdown",
+      "isPrimitive": true }, 
+  ]
+},
+"CapabilityStatement.Interaction1": {
+    /*A Capability Statement documents a set of capabilities (behaviors) of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
+     */
+  "name": "CapabilityStatement.Interaction1",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*A coded identifier of the operation, supported by the system.
+     */  "name": "code", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "SystemRestfulInteraction",
+      "isPrimitive": true }, 
+    { 
+    /*Guidance specific to the implementation of this operation, such as limitations on the kind of transactions allowed, or information about system wide search is implemented.
+     */  "name": "documentation", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
   ]
 },
 "CapabilityStatement.Messaging": {
@@ -7941,14 +9297,6 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "max": "unbounded", 
       "type": "CapabilityStatement.SupportedMessage",
       "isPrimitive": false }, 
-    { 
-    /*A description of the solution's support for an event at this end-point.
-     */  "name": "event", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "CapabilityStatement.Event",
-      "isPrimitive": false }, 
   ]
 },
 "CapabilityStatement.Endpoint": {
@@ -7968,12 +9316,12 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Coding",
       "isPrimitive": false }, 
     { 
-    /*The network address of the end-point. For solutions that do not use network addresses for routing, it can be just an identifier.
+    /*The network address of the endpoint. For solutions that do not use network addresses for routing, it can be just an identifier.
      */  "name": "address", 
     
       "min": "1", 
       "max": "1", 
-      "type": "uri",
+      "type": "url",
       "isPrimitive": true }, 
   ]
 },
@@ -7999,73 +9347,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     
       "min": "1", 
       "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-  ]
-},
-"CapabilityStatement.Event": {
-    /*A Capability Statement documents a set of capabilities (behaviors) of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
-     */
-  "name": "CapabilityStatement.Event",
-  "base": "BackboneElement", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*A coded identifier of a supported messaging event.
-     */  "name": "code", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "Coding",
-      "isPrimitive": false }, 
-    { 
-    /*The impact of the content of the message.
-     */  "name": "category", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "MessageSignificanceCategory",
-      "isPrimitive": true }, 
-    { 
-    /*The mode of this event declaration - whether an application is a sender or receiver.
-     */  "name": "mode", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "EventCapabilityMode",
-      "isPrimitive": true }, 
-    { 
-    /*A resource associated with the event.  This is the resource that defines the event.
-     */  "name": "focus", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "ResourceType",
-      "isPrimitive": true }, 
-    { 
-    /*Information about the request for this event.
-     */  "name": "request", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*Information about the response for this event.
-     */  "name": "response", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*Guidance on how this event is handled, such as internal system trigger points, business rules, etc.
-     */  "name": "documentation", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
+      "type": "canonical",
       "isPrimitive": true }, 
   ]
 },
@@ -8094,13 +9376,13 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*A constraint on a resource used in the document.
+    /*A profile on the document Bundle that constrains which resources are present, and their contents.
      */  "name": "profile", 
     
       "min": "1", 
       "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
+      "type": "canonical",
+      "isPrimitive": true }, 
   ]
 },
 "CapabilityStatementKind": {
@@ -8142,19 +9424,6 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   "elems": [
   ]
 },
-"MessageSignificanceCategory": {
-    /*The impact of the content of a message.If the element is present, it must have either a @value, an @id, or extensions
-     */
-  "name": "MessageSignificanceCategory",
-  "base": "Element", 
-  "attrs": [
-    { 
-      "name": "value", 
-      "type": "MessageSignificanceCategory-list" }, 
-  ],
-  "elems": [
-  ]
-},
 "DocumentMode": {
     /*Whether the application produces or consumes documents.If the element is present, it must have either a @value, an @id, or extensions
      */
@@ -8177,19 +9446,6 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     { 
       "name": "value", 
       "type": "RestfulCapabilityMode-list" }, 
-  ],
-  "elems": [
-  ]
-},
-"UnknownContentCode": {
-    /*A code that indicates whether an application accepts unknown elements or extensions when reading resources.If the element is present, it must have either a @value, an @id, or extensions
-     */
-  "name": "UnknownContentCode",
-  "base": "Element", 
-  "attrs": [
-    { 
-      "name": "value", 
-      "type": "UnknownContentCode-list" }, 
   ],
   "elems": [
   ]
@@ -8268,7 +9524,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ],
   "elems": [
     { 
-    /*This records identifiers associated with this care plan that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
+    /*Business identifiers assigned to this care plan by the performer or other systems which remain constant as the resource is updated and propagates from server to server.
      */  "name": "identifier", 
     
       "min": "0", 
@@ -8277,12 +9533,12 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "isPrimitive": false }, 
     { 
     /*Identifies the protocol, questionnaire, guideline or other specification the care plan should be conducted in accordance with.
-     */  "name": "definition", 
+     */  "name": "instantiates", 
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
+      "type": "uri",
+      "isPrimitive": true }, 
     { 
     /*A care plan that is fulfilled in whole or in part by this care plan.
      */  "name": "basedOn", 
@@ -8332,7 +9588,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Human-friendly name for the CarePlan.
+    /*Human-friendly name for the care plan.
      */  "name": "title", 
     
       "min": "0", 
@@ -8356,7 +9612,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*Identifies the original context in which this particular CarePlan was created.
+    /*Identifies the original context in which this particular care plan was created.
      */  "name": "context", 
     
       "min": "0", 
@@ -8372,7 +9628,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Period",
       "isPrimitive": false }, 
     { 
-    /*Identifies the individual(s) or ogranization who is responsible for the content of the care plan.
+    /*Identifies the individual(s) or organization who is responsible for the content of the care plan.
      */  "name": "author", 
     
       "min": "0", 
@@ -8396,7 +9652,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*Identifies portions of the patient's record that specifically influenced the formation of the plan.  These might include co-morbidities, recent procedures, limitations, recent assessments, etc.
+    /*Identifies portions of the patient's record that specifically influenced the formation of the plan.  These might include comorbidities, recent procedures, limitations, recent assessments, etc.
      */  "name": "supportingInfo", 
     
       "min": "0", 
@@ -8488,23 +9744,23 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ],
   "elems": [
     { 
-    /*High-level categorization of the type of activity in a care plan.
-     */  "name": "category", 
+    /*A description of the kind of resource the in-line definition of a care plan activity is representing.  The CarePlan.activity.detail is an in-line definition when a resource is not referenced using CarePlan.activity.reference.  For example, a MedicationRequest, a ServiceRequest, or a CommunicationRequest.
+     */  "name": "kind", 
     
       "min": "0", 
       "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
+      "type": "CarePlanActivityKind",
+      "isPrimitive": true }, 
     { 
     /*Identifies the protocol, questionnaire, guideline or other specification the planned activity should be conducted in accordance with.
-     */  "name": "definition", 
+     */  "name": "instantiates", 
     
       "min": "0", 
       "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
+      "type": "uri",
+      "isPrimitive": true }, 
     { 
-    /*Detailed description of the type of planned activity; e.g. What lab test, what procedure, what kind of encounter.
+    /*Detailed description of the type of planned activity; e.g. what lab test, what procedure, what kind of encounter.
      */  "name": "code", 
     
       "min": "0", 
@@ -8520,7 +9776,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Provides the health condition(s) that drove the inclusion of this particular activity as part of the plan.
+    /*Indicates another resource, such as the health condition(s), whose existence justifies this request and drove the inclusion of this particular activity as part of the plan.
      */  "name": "reasonReference", 
     
       "min": "0", 
@@ -8552,8 +9808,8 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*If true, indicates that the described activity is one that must NOT be engaged in when following the plan.  If false, indicates that the described activity is one that should be engaged in when following the plan.
-     */  "name": "prohibited", 
+    /*If true, indicates that the described activity is one that must NOT be engaged in when following the plan.  If false, or missing, indicates that the described activity is one that should be engaged in when following the plan.
+     */  "name": "doNotPerform", 
     
       "min": "0", 
       "max": "1", 
@@ -8639,6 +9895,19 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "isPrimitive": true }, 
   ]
 },
+"CarePlanActivityKind": {
+    /*Resource types defined as part of FHIR that can be represented as in-line definitions of a care plan activity.If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "CarePlanActivityKind",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "CarePlanActivityKind-list" }, 
+  ],
+  "elems": [
+  ]
+},
 "CarePlanStatus": {
     /*Indicates whether the plan is currently being acted upon, represents future intentions or is now a historical record.If the element is present, it must have either a @value, an @id, or extensions
      */
@@ -8687,7 +9956,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ],
   "elems": [
     { 
-    /*This records identifiers associated with this care team that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate.
+    /*Business identifiers assigned to this care team by the performer or other systems which remain constant as the resource is updated and propagates from server to server.
      */  "name": "identifier", 
     
       "min": "0", 
@@ -8775,6 +10044,14 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Reference",
       "isPrimitive": false }, 
     { 
+    /*A central contact detail for the care team (that applies to all members).
+     */  "name": "telecom", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ContactPoint",
+      "isPrimitive": false }, 
+    { 
     /*Comments made about the CareTeam.
      */  "name": "note", 
     
@@ -8852,7 +10129,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
      */  "name": "identifier", 
     
       "min": "0", 
-      "max": "1", 
+      "max": "unbounded", 
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
@@ -8950,6 +10227,14 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Reference",
       "isPrimitive": false }, 
     { 
+    /*The financial cost center permits the tracking of charge attribution.
+     */  "name": "costCenter", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
     /*Quantity of which the charge item has been serviced.
      */  "name": "quantity", 
     
@@ -9038,7 +10323,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Annotation",
       "isPrimitive": false }, 
     { 
-    /*Further information supporting the this charge.
+    /*Further information supporting this charge.
      */  "name": "supportingInformation", 
     
       "min": "0", 
@@ -9074,7 +10359,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ]
 },
 "ChargeItemStatus": {
-    /*Codes identifying the stage lifecycle stage of a ChargeItemIf the element is present, it must have either a @value, an @id, or extensions
+    /*Codes identifying the lifecycle stage of a ChargeItemIf the element is present, it must have either a @value, an @id, or extensions
      */
   "name": "ChargeItemStatus",
   "base": "Element", 
@@ -9177,14 +10462,6 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     { 
     /*The provider which is responsible for the bill, claim pre-determination, pre-authorization.
      */  "name": "provider", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*The organization which is responsible for the bill, claim pre-determination, pre-authorization.
-     */  "name": "organization", 
     
       "min": "0", 
       "max": "1", 
@@ -9303,22 +10580,6 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Claim.Accident",
       "isPrimitive": false }, 
     { 
-    /*The start and optional end dates of when the patient was precluded from working due to the treatable condition(s).
-     */  "name": "employmentImpacted", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Period",
-      "isPrimitive": false }, 
-    { 
-    /*The start and optional end dates of when the patient was confined to a treatment center.
-     */  "name": "hospitalization", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Period",
-      "isPrimitive": false }, 
-    { 
     /*First tier of goods and services.
      */  "name": "item", 
     
@@ -9388,7 +10649,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "isPrimitive": false }, 
     { 
     /*organization | patient | practitioner | relatedperson.
-     */  "name": "resourceType", 
+     */  "name": "resource", 
     
       "min": "0", 
       "max": "1", 
@@ -9505,6 +10766,12 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     [ /* Choice */ 
     /*Additional data or information such as resources, documents, images etc. including references to the data or the actual inclusion of the data.
      */
+        {   "name": "valueBoolean", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "boolean",
+          "isPrimitive": true }, 
         {   "name": "valueString", 
         
           "min": "1", 
@@ -9657,6 +10924,14 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "boolean",
       "isPrimitive": true }, 
     { 
+    /*The business identifier for the instance: claim number, pre-determination or pre-authorization number.
+     */  "name": "identifier", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
     /*Reference to the program or plan identification, underwriter or payor.
      */  "name": "coverage", 
     
@@ -9750,7 +11025,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "isPrimitive": true }, 
     { 
     /*CareTeam applicable for this service or product line.
-     */  "name": "careTeamLinkId", 
+     */  "name": "careTeamSequence", 
     
       "min": "0", 
       "max": "unbounded", 
@@ -9758,7 +11033,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "isPrimitive": true }, 
     { 
     /*Diagnosis applicable for this service or product line.
-     */  "name": "diagnosisLinkId", 
+     */  "name": "diagnosisSequence", 
     
       "min": "0", 
       "max": "unbounded", 
@@ -9766,7 +11041,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "isPrimitive": true }, 
     { 
     /*Procedures applicable for this service or product line.
-     */  "name": "procedureLinkId", 
+     */  "name": "procedureSequence", 
     
       "min": "0", 
       "max": "unbounded", 
@@ -9774,7 +11049,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "isPrimitive": true }, 
     { 
     /*Exceptions, special conditions and supporting information pplicable for this service or product line.
-     */  "name": "informationLinkId", 
+     */  "name": "informationSequence", 
     
       "min": "0", 
       "max": "unbounded", 
@@ -9899,7 +11174,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*Physical service site on the patient (limb, tooth, etc).
+    /*Physical service site on the patient (limb, tooth, etc.).
      */  "name": "bodySite", 
     
       "min": "0", 
@@ -10187,6 +11462,30 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "FinancialResourceStatusCodes",
       "isPrimitive": true }, 
     { 
+    /*The category of claim, eg, oral, pharmacy, vision, insitutional, professional.
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*A finer grained suite of claim subtype codes which may convey Inpatient vs Outpatient and/or a specialty service. In the US the BillType.
+     */  "name": "subType", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Complete (Bill or Claim), Proposed (Pre-Authorization), Exploratory (Pre-determination).
+     */  "name": "use", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Use",
+      "isPrimitive": true }, 
+    { 
     /*Patient Resource.
      */  "name": "patient", 
     
@@ -10219,14 +11518,6 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*The organization which is responsible for the services rendered to the patient.
-     */  "name": "requestOrganization", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
     /*Original request resource referrence.
      */  "name": "request", 
     
@@ -10235,13 +11526,13 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*Processing outcome errror, partial or complete processing.
+    /*Transaction: error, complete, partial processing.
      */  "name": "outcome", 
     
       "min": "0", 
       "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
+      "type": "ClaimProcessingCodes",
+      "isPrimitive": true }, 
     { 
     /*A description of the status of the adjudication.
      */  "name": "disposition", 
@@ -10283,28 +11574,12 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "ClaimResponse.Error",
       "isPrimitive": false }, 
     { 
-    /*The total cost of the services reported.
-     */  "name": "totalCost", 
+    /*Totals for amounts submitted, co-pays, benefits payable etc.
+     */  "name": "total", 
     
       "min": "0", 
-      "max": "1", 
-      "type": "Money",
-      "isPrimitive": false }, 
-    { 
-    /*The amount of deductible applied which was not allocated to any particular service line.
-     */  "name": "unallocDeductable", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Money",
-      "isPrimitive": false }, 
-    { 
-    /*Total amount of benefit payable (Equal to sum of the Benefit amounts from all detail lines and additions less the Unallocated Deductible).
-     */  "name": "totalBenefit", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Money",
+      "max": "unbounded", 
+      "type": "ClaimResponse.Total",
       "isPrimitive": false }, 
     { 
     /*Payment details for the claim if the claim has been paid.
@@ -10366,7 +11641,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   "elems": [
     { 
     /*A service line number.
-     */  "name": "sequenceLinkId", 
+     */  "name": "itemSequence", 
     
       "min": "1", 
       "max": "1", 
@@ -10450,7 +11725,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   "elems": [
     { 
     /*A service line number.
-     */  "name": "sequenceLinkId", 
+     */  "name": "detailSequence", 
     
       "min": "1", 
       "max": "1", 
@@ -10492,7 +11767,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   "elems": [
     { 
     /*A service line number.
-     */  "name": "sequenceLinkId", 
+     */  "name": "subDetailSequence", 
     
       "min": "1", 
       "max": "1", 
@@ -10526,102 +11801,28 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   "elems": [
     { 
     /*List of input service items which this service line is intended to replace.
-     */  "name": "sequenceLinkId", 
+     */  "name": "itemSequence", 
     
       "min": "0", 
       "max": "unbounded", 
       "type": "positiveInt",
       "isPrimitive": true }, 
     { 
-    /*The type of reveneu or cost center providing the product and/or service.
-     */  "name": "revenue", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*Health Care Service Type Codes  to identify the classification of service or benefits.
-     */  "name": "category", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*A code to indicate the Professional Service or Product supplied.
-     */  "name": "service", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*Item typification or modifiers codes, eg for Oral whether the treatment is cosmetic or associated with TMJ, or for medical whether the treatment was outside the clinic or out of office hours.
-     */  "name": "modifier", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*The fee charged for the professional service or product..
-     */  "name": "fee", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Money",
-      "isPrimitive": false }, 
-    { 
-    /*A list of note references to the notes provided below.
-     */  "name": "noteNumber", 
+    /*The sequence number of the addition within the line item submitted which contains the error. This value is omitted when the error is not related to an Addition.
+     */  "name": "detailSequence", 
     
       "min": "0", 
       "max": "unbounded", 
       "type": "positiveInt",
       "isPrimitive": true }, 
     { 
-    /*The adjudications results.
-     */  "name": "adjudication", 
+    /*The sequence number of the addition within the line item submitted which contains the error. This value is omitted when the error is not related to an Addition.
+     */  "name": "subdetailSequence", 
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "ClaimResponse.Adjudication",
-      "isPrimitive": false }, 
-    { 
-    /*The second tier service adjudications for payor added services.
-     */  "name": "detail", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "ClaimResponse.Detail1",
-      "isPrimitive": false }, 
-  ]
-},
-"ClaimResponse.Detail1": {
-    /*This resource provides the adjudication details from the processing of a Claim resource.
-     */
-  "name": "ClaimResponse.Detail1",
-  "base": "BackboneElement", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*The type of reveneu or cost center providing the product and/or service.
-     */  "name": "revenue", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*Health Care Service Type Codes  to identify the classification of service or benefits.
-     */  "name": "category", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
+      "type": "positiveInt",
+      "isPrimitive": true }, 
     { 
     /*A code to indicate the Professional Service or Product supplied.
      */  "name": "service", 
@@ -10674,7 +11875,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   "elems": [
     { 
     /*The sequence number of the line item submitted which contains the error. This value is omitted when the error is elsewhere.
-     */  "name": "sequenceLinkId", 
+     */  "name": "itemSequence", 
     
       "min": "0", 
       "max": "1", 
@@ -10682,7 +11883,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "isPrimitive": true }, 
     { 
     /*The sequence number of the addition within the line item submitted which contains the error. This value is omitted when the error is not related to an Addition.
-     */  "name": "detailSequenceLinkId", 
+     */  "name": "detailSequence", 
     
       "min": "0", 
       "max": "1", 
@@ -10690,7 +11891,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "isPrimitive": true }, 
     { 
     /*The sequence number of the addition within the line item submitted which contains the error. This value is omitted when the error is not related to an Addition.
-     */  "name": "subdetailSequenceLinkId", 
+     */  "name": "subDetailSequence", 
     
       "min": "0", 
       "max": "1", 
@@ -10703,6 +11904,32 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "min": "1", 
       "max": "1", 
       "type": "CodeableConcept",
+      "isPrimitive": false }, 
+  ]
+},
+"ClaimResponse.Total": {
+    /*This resource provides the adjudication details from the processing of a Claim resource.
+     */
+  "name": "ClaimResponse.Total",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Code indicating: Submitted, Co-Pay, deductable, elegible, benefit, tax, etc.
+     */  "name": "category", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Monitory amount associated with the code.
+     */  "name": "amount", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Money",
       "isPrimitive": false }, 
   ]
 },
@@ -10786,8 +12013,8 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     
       "min": "0", 
       "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
+      "type": "NoteType",
+      "isPrimitive": true }, 
     { 
     /*The note text.
      */  "name": "text", 
@@ -10864,6 +12091,19 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "isPrimitive": false }, 
   ]
 },
+"ClaimProcessingCodes": {
+    /*The result of the claim processingIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "ClaimProcessingCodes",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "ClaimProcessingCodes-list" }, 
+  ],
+  "elems": [
+  ]
+},
 "ClinicalImpression": {
     /*A record of a clinical assessment performed to determine what problem(s) may affect the patient and before planning the treatments or management strategies that are best to manage a patient's condition. Assessments are often 1:1 with a clinical consultation / encounter,  but this varies greatly depending on the clinical workflow. This resource is called "ClinicalImpression" rather than "ClinicalAssessment" to avoid confusion with the recording of assessment tools such as Apgar score.If the element is present, it must have either a @value, an @id, or extensions
      */
@@ -10873,7 +12113,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ],
   "elems": [
     { 
-    /*A unique identifier assigned to the clinical impression that remains consistent regardless of what server the impression is stored on.
+    /*Business identifiers assigned to this clinical impression by the performer or other systems which remain constant as the resource is updated and propagates from server to server.
      */  "name": "identifier", 
     
       "min": "0", 
@@ -10953,7 +12193,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*A reference to the last assesment that was conducted bon this patient. Assessments are often/usually ongoing in nature; a care provider (practitioner or team) will make new assessments on an ongoing basis as new data arises or the patient's conditions changes.
+    /*A reference to the last assessment that was conducted on this patient. Assessments are often/usually ongoing in nature; a care provider (practitioner or team) will make new assessments on an ongoing basis as new data arises or the patient's conditions changes.
      */  "name": "previous", 
     
       "min": "0", 
@@ -10969,7 +12209,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*One or more sets of investigations (signs, symptions, etc.). The actual grouping of investigations vary greatly depending on the type and context of the assessment. These investigations may include data generated during the assessment process, or data previously generated and recorded that is pertinent to the outcomes.
+    /*One or more sets of investigations (signs, symptoms, etc.). The actual grouping of investigations varies greatly depending on the type and context of the assessment. These investigations may include data generated during the assessment process, or data previously generated and recorded that is pertinent to the outcomes.
      */  "name": "investigation", 
     
       "min": "0", 
@@ -11043,7 +12283,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ],
   "elems": [
     { 
-    /*A name/code for the group ("set") of investigations. Typically, this will be something like "signs", "symptoms", "clinical", "diagnostic", but the list is not constrained, and others such groups such as (exposure|family|travel|nutitirional) history may be used.
+    /*A name/code for the group ("set") of investigations. Typically, this will be something like "signs", "symptoms", "clinical", "diagnostic", but the list is not constrained, and others such groups such as (exposure|family|travel|nutritional) history may be used.
      */  "name": "code", 
     
       "min": "1", 
@@ -11068,22 +12308,22 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   "attrs": [
   ],
   "elems": [
-    [ /* Choice */ 
-    /*Specific text, code or reference for finding or diagnosis, which may include ruled-out or resolved conditions.
-     */
-        {   "name": "itemCodeableConcept", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "CodeableConcept",
-          "isPrimitive": false }, 
-        {   "name": "itemReference", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Reference",
-          "isPrimitive": false }, 
-    ], 
+    { 
+    /*Specific text or code for finding or diagnosis, which may include ruled-out or resolved conditions.
+     */  "name": "itemCodeableConcept", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Specific reference for finding or diagnosis, which may include ruled-out or resolved conditions.
+     */  "name": "itemReference", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
     { 
     /*Which investigations support finding or diagnosis.
      */  "name": "basis", 
@@ -11108,7 +12348,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ]
 },
 "CodeSystem": {
-    /*A code system resource specifies a set of codes drawn from one or more code systems.If the element is present, it must have either a @value, an @id, or extensions
+    /*The CodeSystem resource is used to declare the existence of and describe a code system or code system supplement and its key properties, and optionally define a part or all of its content.If the element is present, it must have either a @value, an @id, or extensions
      */
   "name": "CodeSystem",
   "base": "DomainResource", 
@@ -11116,7 +12356,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ],
   "elems": [
     { 
-    /*An absolute URI that is used to identify this code system when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this code system is (or will be) published. The URL SHOULD include the major version of the code system. For more information see [Technical and Business Versions](resource.html#versions). This is used in [Coding]{datatypes.html#Coding}.system.
+    /*An absolute URI that is used to identify this code system when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which this code system is (or will be) published. This is used in [Coding](datatypes.html#Coding).system.
      */  "name": "url", 
     
       "min": "0", 
@@ -11132,7 +12372,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
-    /*The identifier that is used to identify this version of the code system when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the code system author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence. This is used in [Coding]{datatypes.html#Coding}.version.
+    /*The identifier that is used to identify this version of the code system when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the code system author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence. This is used in [Coding](datatypes.html#Coding).version.
      */  "name": "version", 
     
       "min": "0", 
@@ -11164,7 +12404,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "PublicationStatus",
       "isPrimitive": true }, 
     { 
-    /*A boolean value to indicate that this code system is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+    /*A Boolean value to indicate that this code system is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.
      */  "name": "experimental", 
     
       "min": "0", 
@@ -11172,7 +12412,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "boolean",
       "isPrimitive": true }, 
     { 
-    /*The date  (and optionally time) when the code system was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the code system changes.
+    /*The date  (and optionally time) when the code system was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the code system changes.
      */  "name": "date", 
     
       "min": "0", 
@@ -11180,7 +12420,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*The name of the individual or organization that published the code system.
+    /*The name of the organization or individual that published the code system.
      */  "name": "publisher", 
     
       "min": "0", 
@@ -11220,7 +12460,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Explaination of why this code system is needed and why it has been designed as it has.
+    /*Explanation of why this code system is needed and why it has been designed as it has.
      */  "name": "purpose", 
     
       "min": "0", 
@@ -11249,7 +12489,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     
       "min": "0", 
       "max": "1", 
-      "type": "uri",
+      "type": "canonical",
       "isPrimitive": true }, 
     { 
     /*The meaning of the hierarchy of concepts.
@@ -11282,6 +12522,14 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "min": "1", 
       "max": "1", 
       "type": "CodeSystemContentMode",
+      "isPrimitive": true }, 
+    { 
+    /*References the code system that this code system supplement is adding designations and properties to.
+     */  "name": "supplements", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "canonical",
       "isPrimitive": true }, 
     { 
     /*The total number of concepts defined by the code system. Where the code system has a compositional grammar, the count refers to the number of base (primitive) concepts.
@@ -11318,7 +12566,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ]
 },
 "CodeSystem.Filter": {
-    /*A code system resource specifies a set of codes drawn from one or more code systems.
+    /*The CodeSystem resource is used to declare the existence of and describe a code system or code system supplement and its key properties, and optionally define a part or all of its content.
      */
   "name": "CodeSystem.Filter",
   "base": "BackboneElement", 
@@ -11360,7 +12608,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ]
 },
 "CodeSystem.Property": {
-    /*A code system resource specifies a set of codes drawn from one or more code systems.
+    /*The CodeSystem resource is used to declare the existence of and describe a code system or code system supplement and its key properties, and optionally define a part or all of its content.
      */
   "name": "CodeSystem.Property",
   "base": "BackboneElement", 
@@ -11392,7 +12640,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*The type of the property value. Properties of type "code" contain a code defined by the code system (e.g. a reference to anotherr defined concept).
+    /*The type of the property value. Properties of type "code" contain a code defined by the code system (e.g. a reference to another defined concept).
      */  "name": "type", 
     
       "min": "1", 
@@ -11402,7 +12650,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ]
 },
 "CodeSystem.Concept": {
-    /*A code system resource specifies a set of codes drawn from one or more code systems.
+    /*The CodeSystem resource is used to declare the existence of and describe a code system or code system supplement and its key properties, and optionally define a part or all of its content.
      */
   "name": "CodeSystem.Concept",
   "base": "BackboneElement", 
@@ -11460,7 +12708,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ]
 },
 "CodeSystem.Designation": {
-    /*A code system resource specifies a set of codes drawn from one or more code systems.
+    /*The CodeSystem resource is used to declare the existence of and describe a code system or code system supplement and its key properties, and optionally define a part or all of its content.
      */
   "name": "CodeSystem.Designation",
   "base": "BackboneElement", 
@@ -11494,7 +12742,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ]
 },
 "CodeSystem.Property1": {
-    /*A code system resource specifies a set of codes drawn from one or more code systems.
+    /*The CodeSystem resource is used to declare the existence of and describe a code system or code system supplement and its key properties, and optionally define a part or all of its content.
      */
   "name": "CodeSystem.Property1",
   "base": "BackboneElement", 
@@ -11547,6 +12795,12 @@ A coverage may only be resposible for specific types of charges, and the sequenc
           "min": "1", 
           "max": "1", 
           "type": "dateTime",
+          "isPrimitive": true }, 
+        {   "name": "valueDecimal", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "decimal",
           "isPrimitive": true }, 
     ], 
   ]
@@ -11612,7 +12866,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ],
   "elems": [
     { 
-    /*Identifiers associated with this Communication that are defined by business processes and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
+    /*Business identifiers assigned to this communication by the performer or other systems which remain constant as the resource is updated and propagates from server to server.
      */  "name": "identifier", 
     
       "min": "0", 
@@ -11621,12 +12875,12 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "isPrimitive": false }, 
     { 
     /*A protocol, guideline, or other definition that was adhered to in whole or in part by this communication event.
-     */  "name": "definition", 
+     */  "name": "instantiates", 
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
+      "type": "uri",
+      "isPrimitive": true }, 
     { 
     /*An order, proposal or plan fulfilled in whole or in part by this Communication.
      */  "name": "basedOn", 
@@ -11644,6 +12898,14 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Reference",
       "isPrimitive": false }, 
     { 
+    /*Prior communication that this communication is in response to.
+     */  "name": "inResponseTo", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
     /*The status of the transmission.
      */  "name": "status", 
     
@@ -11652,16 +12914,8 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "EventStatus",
       "isPrimitive": true }, 
     { 
-    /*If true, indicates that the described communication event did not actually occur.
-     */  "name": "notDone", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "boolean",
-      "isPrimitive": true }, 
-    { 
-    /*Describes why the communication event did not occur in coded and/or textual form.
-     */  "name": "notDoneReason", 
+    /*Captures the reason for the current state of the Communication.
+     */  "name": "statusReason", 
     
       "min": "0", 
       "max": "1", 
@@ -11675,6 +12929,14 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "max": "unbounded", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
+    { 
+    /*Characterizes how quickly the planned or in progress communication must be addressed. Includes concepts such as stat, urgent, routine.
+     */  "name": "priority", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "RequestPriority",
+      "isPrimitive": true }, 
     { 
     /*A channel that was used for this communication (e.g. email, fax).
      */  "name": "medium", 
@@ -11692,7 +12954,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*The entity (e.g. person, organization, clinical information system, or device) which was the target of the communication. If receipts need to be tracked by individual, a separate resource instance will need to be created for each recipient.  Multiple recipient communications are intended where either a receipt(s) is not tracked (e.g. a mass mail-out) or is captured in aggregate (all emails confirmed received by a particular time).
+    /*The entity (e.g. person, organization, clinical information system, care team or device) which was the target of the communication. If receipts need to be tracked by individual, a separate resource instance will need to be created for each recipient.  Multiple recipient communications are intended where either a receipt(s) is not tracked (e.g. a mass mail-out) or is captured in aggregate (all emails confirmed received by a particular time).
      */  "name": "recipient", 
     
       "min": "0", 
@@ -11700,8 +12962,16 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*The resources which were responsible for or related to producing this communication.
+    /*Description of the purpose/content, similar to a subject line in an email.
      */  "name": "topic", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Other resources that pertain to this communication and to which this communication should be associated.
+     */  "name": "about", 
     
       "min": "0", 
       "max": "unbounded", 
@@ -11818,6 +13088,19 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   "elems": [
   ]
 },
+"RequestPriority": {
+    /*Codes indicating the relative importance of a communication.If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "RequestPriority",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "RequestPriority-list" }, 
+  ],
+  "elems": [
+  ]
+},
 "CommunicationRequest": {
     /*A request to convey information; e.g. the CDS system proposes that an alert be sent to a responsible provider, the CDS system proposes that the public health agency be notified about a reportable condition.If the element is present, it must have either a @value, an @id, or extensions
      */
@@ -11827,7 +13110,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ],
   "elems": [
     { 
-    /*A unique ID of this request for reference purposes. It must be provided if user wants it returned as part of any output, otherwise it will be autogenerated, if needed, by CDS system. Does not need to be the actual ID of the source system.
+    /*Business identifiers assigned to this communication request by the performer or other systems which remain constant as the resource is updated and propagates from server to server.
      */  "name": "identifier", 
     
       "min": "0", 
@@ -11907,8 +13190,8 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*The resources which were related to producing this communication request.
-     */  "name": "topic", 
+    /*Other resources that pertain to this communication request and to which this communication request should be associated.
+     */  "name": "about", 
     
       "min": "0", 
       "max": "unbounded", 
@@ -11955,20 +13238,20 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*The entity (e.g. person, organization, clinical information system, or device) which is to be the source of the communication.
-     */  "name": "sender", 
+    /*The device, individual, or organization who initiated the request and has responsibility for its activation.
+     */  "name": "requester", 
     
       "min": "0", 
       "max": "1", 
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*The individual who initiated the request and has responsibility for its activation.
-     */  "name": "requester", 
+    /*The entity (e.g. person, organization, clinical information system, or device) which is to be the source of the communication.
+     */  "name": "sender", 
     
       "min": "0", 
       "max": "1", 
-      "type": "CommunicationRequest.Requester",
+      "type": "Reference",
       "isPrimitive": false }, 
     { 
     /*Describes why the request is being made in coded or textual form.
@@ -12028,32 +13311,6 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     ], 
   ]
 },
-"CommunicationRequest.Requester": {
-    /*A request to convey information; e.g. the CDS system proposes that an alert be sent to a responsible provider, the CDS system proposes that the public health agency be notified about a reportable condition.
-     */
-  "name": "CommunicationRequest.Requester",
-  "base": "BackboneElement", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*The device, practitioner, etc. who initiated the request.
-     */  "name": "agent", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*The organization the device or practitioner was acting on behalf of.
-     */  "name": "onBehalfOf", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-  ]
-},
 "RequestStatus": {
     /*The status of the communication request.If the element is present, it must have either a @value, an @id, or extensions
      */
@@ -12067,19 +13324,6 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   "elems": [
   ]
 },
-"RequestPriority": {
-    /*Codes indicating the relative importance of a communication request.If the element is present, it must have either a @value, an @id, or extensions
-     */
-  "name": "RequestPriority",
-  "base": "Element", 
-  "attrs": [
-    { 
-      "name": "value", 
-      "type": "RequestPriority-list" }, 
-  ],
-  "elems": [
-  ]
-},
 "CompartmentDefinition": {
     /*A compartment definition that defines how resources are accessed on a server.If the element is present, it must have either a @value, an @id, or extensions
      */
@@ -12089,7 +13333,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ],
   "elems": [
     { 
-    /*An absolute URI that is used to identify this compartment definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this compartment definition is (or will be) published. The URL SHOULD include the major version of the compartment definition. For more information see [Technical and Business Versions](resource.html#versions).
+    /*An absolute URI that is used to identify this compartment definition when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which this compartment definition is (or will be) published.
      */  "name": "url", 
     
       "min": "1", 
@@ -12121,7 +13365,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "PublicationStatus",
       "isPrimitive": true }, 
     { 
-    /*A boolean value to indicate that this compartment definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+    /*A Boolean value to indicate that this compartment definition is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.
      */  "name": "experimental", 
     
       "min": "0", 
@@ -12129,7 +13373,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "boolean",
       "isPrimitive": true }, 
     { 
-    /*The date  (and optionally time) when the compartment definition was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the compartment definition changes.
+    /*The date  (and optionally time) when the compartment definition was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the compartment definition changes.
      */  "name": "date", 
     
       "min": "0", 
@@ -12137,7 +13381,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*The name of the individual or organization that published the compartment definition.
+    /*The name of the organization or individual that published the compartment definition.
      */  "name": "publisher", 
     
       "min": "0", 
@@ -12161,14 +13405,6 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "markdown",
       "isPrimitive": true }, 
     { 
-    /*Explaination of why this compartment definition is needed and why it has been designed as it has.
-     */  "name": "purpose", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "markdown",
-      "isPrimitive": true }, 
-    { 
     /*The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate compartment definition instances.
      */  "name": "useContext", 
     
@@ -12184,6 +13420,14 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "max": "unbounded", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
+    { 
+    /*Explanation of why this compartment definition is needed and why it has been designed as it has.
+     */  "name": "purpose", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "markdown",
+      "isPrimitive": true }, 
     { 
     /*Which compartment this definition describes.
      */  "name": "code", 
@@ -12258,7 +13502,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ]
 },
 "Composition": {
-    /*A set of healthcare-related information that is assembled together into a single logical document that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. While a Composition defines the structure, it does not actually contain the content: rather the full content of a document is contained in a Bundle, of which the Composition is the first resource contained.If the element is present, it must have either a @value, an @id, or extensions
+    /*A set of healthcare-related information that is assembled together into a single logical package that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. A Composition defines the structure and narrative content necessary for a document. However, a Composition alone does not constitute a document. Rather, the Composition must be the first entry in a Bundle where Bundle.type=document, and any other resources referenced from Composition must be included as subsequent entries in the Bundle (for example Patient, Practitioner, Encounter, etc.).If the element is present, it must have either a @value, an @id, or extensions
      */
   "name": "Composition",
   "base": "DomainResource", 
@@ -12266,7 +13510,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ],
   "elems": [
     { 
-    /*Logical identifier for the composition, assigned when created. This identifier stays constant as the composition is changed over time.
+    /*A version-independent identifier for the Composition. This identifier stays constant as the composition is changed over time.
      */  "name": "identifier", 
     
       "min": "0", 
@@ -12301,7 +13545,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     /*Who or what the composition is about. The composition can be about a person, (patient or healthcare practitioner), a device (e.g. a machine) or even a group of subjects (such as a document about a herd of livestock, or a set of patients that share a common exposure).
      */  "name": "subject", 
     
-      "min": "1", 
+      "min": "0", 
       "max": "1", 
       "type": "Reference",
       "isPrimitive": false }, 
@@ -12388,7 +13632,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ]
 },
 "Composition.Attester": {
-    /*A set of healthcare-related information that is assembled together into a single logical document that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. While a Composition defines the structure, it does not actually contain the content: rather the full content of a document is contained in a Bundle, of which the Composition is the first resource contained.
+    /*A set of healthcare-related information that is assembled together into a single logical package that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. A Composition defines the structure and narrative content necessary for a document. However, a Composition alone does not constitute a document. Rather, the Composition must be the first entry in a Bundle where Bundle.type=document, and any other resources referenced from Composition must be included as subsequent entries in the Bundle (for example Patient, Practitioner, Encounter, etc.).
      */
   "name": "Composition.Attester",
   "base": "BackboneElement", 
@@ -12400,7 +13644,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
      */  "name": "mode", 
     
       "min": "1", 
-      "max": "unbounded", 
+      "max": "1", 
       "type": "CompositionAttestationMode",
       "isPrimitive": true }, 
     { 
@@ -12422,7 +13666,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ]
 },
 "Composition.RelatesTo": {
-    /*A set of healthcare-related information that is assembled together into a single logical document that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. While a Composition defines the structure, it does not actually contain the content: rather the full content of a document is contained in a Bundle, of which the Composition is the first resource contained.
+    /*A set of healthcare-related information that is assembled together into a single logical package that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. A Composition defines the structure and narrative content necessary for a document. However, a Composition alone does not constitute a document. Rather, the Composition must be the first entry in a Bundle where Bundle.type=document, and any other resources referenced from Composition must be included as subsequent entries in the Bundle (for example Patient, Practitioner, Encounter, etc.).
      */
   "name": "Composition.RelatesTo",
   "base": "BackboneElement", 
@@ -12456,7 +13700,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ]
 },
 "Composition.Event": {
-    /*A set of healthcare-related information that is assembled together into a single logical document that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. While a Composition defines the structure, it does not actually contain the content: rather the full content of a document is contained in a Bundle, of which the Composition is the first resource contained.
+    /*A set of healthcare-related information that is assembled together into a single logical package that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. A Composition defines the structure and narrative content necessary for a document. However, a Composition alone does not constitute a document. Rather, the Composition must be the first entry in a Bundle where Bundle.type=document, and any other resources referenced from Composition must be included as subsequent entries in the Bundle (for example Patient, Practitioner, Encounter, etc.).
      */
   "name": "Composition.Event",
   "base": "BackboneElement", 
@@ -12490,7 +13734,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ]
 },
 "Composition.Section": {
-    /*A set of healthcare-related information that is assembled together into a single logical document that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. While a Composition defines the structure, it does not actually contain the content: rather the full content of a document is contained in a Bundle, of which the Composition is the first resource contained.
+    /*A set of healthcare-related information that is assembled together into a single logical package that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. A Composition defines the structure and narrative content necessary for a document. However, a Composition alone does not constitute a document. Rather, the Composition must be the first entry in a Bundle where Bundle.type=document, and any other resources referenced from Composition must be included as subsequent entries in the Bundle (for example Patient, Practitioner, Encounter, etc.).
      */
   "name": "Composition.Section",
   "base": "BackboneElement", 
@@ -12512,6 +13756,14 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "min": "0", 
       "max": "1", 
       "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Identifies who is responsible for the information in this section, not necessarily who typed it in.
+     */  "name": "author", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
       "isPrimitive": false }, 
     { 
     /*A human-readable narrative that contains the attested content of the section, used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it "clinically safe" for a human to just read the narrative.
@@ -12637,7 +13889,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ],
   "elems": [
     { 
-    /*An absolute URI that is used to identify this concept map when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this concept map is (or will be) published. The URL SHOULD include the major version of the concept map. For more information see [Technical and Business Versions](resource.html#versions).
+    /*An absolute URI that is used to identify this concept map when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which this concept map is (or will be) published.
      */  "name": "url", 
     
       "min": "0", 
@@ -12685,7 +13937,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "PublicationStatus",
       "isPrimitive": true }, 
     { 
-    /*A boolean value to indicate that this concept map is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+    /*A Boolean value to indicate that this concept map is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.
      */  "name": "experimental", 
     
       "min": "0", 
@@ -12693,7 +13945,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "boolean",
       "isPrimitive": true }, 
     { 
-    /*The date  (and optionally time) when the concept map was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the concept map changes.
+    /*The date  (and optionally time) when the concept map was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the concept map changes.
      */  "name": "date", 
     
       "min": "0", 
@@ -12701,7 +13953,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*The name of the individual or organization that published the concept map.
+    /*The name of the organization or individual that published the concept map.
      */  "name": "publisher", 
     
       "min": "0", 
@@ -12741,7 +13993,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Explaination of why this concept map is needed and why it has been designed as it has.
+    /*Explanation of why this concept map is needed and why it has been designed as it has.
      */  "name": "purpose", 
     
       "min": "0", 
@@ -12757,7 +14009,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "markdown",
       "isPrimitive": true }, 
     [ /* Choice */ 
-    /*The source value set that specifies the concepts that are being mapped.
+    /*Identifier for the source value set that contains the concepts that are being mapped and provides context for the mappings.
      */
         {   "name": "sourceUri", 
         
@@ -12765,15 +14017,15 @@ A coverage may only be resposible for specific types of charges, and the sequenc
           "max": "1", 
           "type": "uri",
           "isPrimitive": true }, 
-        {   "name": "sourceReference", 
+        {   "name": "sourceCanonical", 
         
           "min": "1", 
           "max": "1", 
-          "type": "Reference",
-          "isPrimitive": false }, 
+          "type": "canonical",
+          "isPrimitive": true }, 
     ], 
     [ /* Choice */ 
-    /*The target value set provides context to the mappings. Note that the mapping is made between concepts, not between value sets, but the value set provides important context about how the concept mapping choices are made.
+    /*The target value set provides context for the mappings. Note that the mapping is made between concepts, not between value sets, but the value set provides important context about how the concept mapping choices are made.
      */
         {   "name": "targetUri", 
         
@@ -12781,12 +14033,12 @@ A coverage may only be resposible for specific types of charges, and the sequenc
           "max": "1", 
           "type": "uri",
           "isPrimitive": true }, 
-        {   "name": "targetReference", 
+        {   "name": "targetCanonical", 
         
           "min": "1", 
           "max": "1", 
-          "type": "Reference",
-          "isPrimitive": false }, 
+          "type": "canonical",
+          "isPrimitive": true }, 
     ], 
     { 
     /*A group of mappings that all have the same source and target system.
@@ -12807,7 +14059,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ],
   "elems": [
     { 
-    /*An absolute URI that identifies the Code System (if the source is a value set that crosses more than one code system).
+    /*An absolute URI that identifies the source system where the concepts to be mapped are defined.
      */  "name": "source", 
     
       "min": "0", 
@@ -12823,7 +14075,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*An absolute URI that identifies the code system of the target code (if the target is a value set that cross code systems).
+    /*An absolute URI that identifies the target system that the concepts will be mapped to.
      */  "name": "target", 
     
       "min": "0", 
@@ -12847,7 +14099,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "ConceptMap.Element",
       "isPrimitive": false }, 
     { 
-    /*What to do when there is no match in the mappings in the group.
+    /*What to do when there is no match for the source concept in the target system designated for the group and no mapping is able to be made.
      */  "name": "unmapped", 
     
       "min": "0", 
@@ -12918,7 +14170,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     /*The equivalence between the source and target concepts (counting for the dependencies and products). The equivalence is read from target to source (e.g. the target is 'wider' than the source).
      */  "name": "equivalence", 
     
-      "min": "0", 
+      "min": "1", 
       "max": "1", 
       "type": "ConceptMapEquivalence",
       "isPrimitive": true }, 
@@ -12970,11 +14222,11 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     
       "min": "0", 
       "max": "1", 
-      "type": "uri",
+      "type": "canonical",
       "isPrimitive": true }, 
     { 
-    /*Identity (code or path) or the element/item/ValueSet that the map depends on / refers to.
-     */  "name": "code", 
+    /*Identity (code or path) or the element/item/ValueSet/text that the map depends on / refers to.
+     */  "name": "value", 
     
       "min": "1", 
       "max": "1", 
@@ -12999,7 +14251,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ],
   "elems": [
     { 
-    /*Defines which action to take if there is no match in the group. One of 3 actions is possible: use the unmapped code (this is useful when doing a mapping between versions, and only a few codes have changed), use a fixed code (a default code), or alternatively, a reference to a different concept map can be provided (by canonical URL).
+    /*Defines which action to take if there is no match for the source concept in the target system designated for the group. One of 3 actions is possible: use the unmapped code (this is useful when doing a mapping between versions, and only a few codes have changed), use a fixed code (a default code), or alternatively, a reference to a different concept map can be provided (by canonical URL).
      */  "name": "mode", 
     
       "min": "1", 
@@ -13023,12 +14275,12 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*The canonical URL of the map to use if this map contains no mapping.
+    /*The canonical URI of an additional ConceptMap resource instance to use for mapping if this ConceptMap resource contains no suitable matching concept in the target system that the source concept can be mapped to.
      */  "name": "url", 
     
       "min": "0", 
       "max": "1", 
-      "type": "uri",
+      "type": "canonical",
       "isPrimitive": true }, 
   ]
 },
@@ -13054,7 +14306,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ],
   "elems": [
     { 
-    /*This records identifiers associated with this condition that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
+    /*Business identifiers assigned to this condition by the performer or other systems which remain constant as the resource is updated and propagates from server to server.
      */  "name": "identifier", 
     
       "min": "0", 
@@ -13174,12 +14426,6 @@ A coverage may only be resposible for specific types of charges, and the sequenc
           "max": "1", 
           "type": "Age",
           "isPrimitive": false }, 
-        {   "name": "abatementBoolean", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "boolean",
-          "isPrimitive": true }, 
         {   "name": "abatementPeriod", 
         
           "min": "1", 
@@ -13200,13 +14446,21 @@ A coverage may only be resposible for specific types of charges, and the sequenc
           "isPrimitive": true }, 
     ], 
     { 
-    /*The date on which the existance of the Condition was first asserted or acknowledged.
+    /*The date on which the existence of the Condition was first asserted or acknowledged.
      */  "name": "assertedDate", 
     
       "min": "0", 
       "max": "1", 
       "type": "dateTime",
       "isPrimitive": true }, 
+    { 
+    /*Individual who recorded the record and takes responsibility for its content.
+     */  "name": "recorder", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
     { 
     /*Individual who is making the condition statement.
      */  "name": "asserter", 
@@ -13220,11 +14474,11 @@ A coverage may only be resposible for specific types of charges, and the sequenc
      */  "name": "stage", 
     
       "min": "0", 
-      "max": "1", 
+      "max": "unbounded", 
       "type": "Condition.Stage",
       "isPrimitive": false }, 
     { 
-    /*Supporting Evidence / manifestations that are the basis on which this condition is suspected or confirmed.
+    /*Supporting evidence / manifestations that are the basis of the Condition's verification status, such as evidence that confirmed or refuted the condition.
      */  "name": "evidence", 
     
       "min": "0", 
@@ -13264,6 +14518,14 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "min": "0", 
       "max": "unbounded", 
       "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*The kind of staging, such as pathological or clinical staging.
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
       "isPrimitive": false }, 
   ]
 },
@@ -13320,7 +14582,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ]
 },
 "Consent": {
-    /*A record of a healthcare consumer’s policy choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.If the element is present, it must have either a @value, an @id, or extensions
+    /*A record of a healthcare consumer’s  choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.If the element is present, it must have either a @value, an @id, or extensions
      */
   "name": "Consent",
   "base": "DomainResource", 
@@ -13332,7 +14594,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
      */  "name": "identifier", 
     
       "min": "0", 
-      "max": "1", 
+      "max": "unbounded", 
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
@@ -13341,13 +14603,21 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     
       "min": "1", 
       "max": "1", 
-      "type": "ConsentState",
+      "type": "EventStatus",
       "isPrimitive": true }, 
+    { 
+    /*A selector of the type of consent being presented: ADR, Privacy, Treatment, Research.  This list is now extensible.
+     */  "name": "scope", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
     { 
     /*A classification of the type of consents found in the statement. This element supports indexing and retrieval of consent statements.
      */  "name": "category", 
     
-      "min": "0", 
+      "min": "1", 
       "max": "unbounded", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
@@ -13355,17 +14625,9 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     /*The patient/healthcare consumer to whom this consent applies.
      */  "name": "patient", 
     
-      "min": "1", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*Relevant time or time-period when this Consent is applicable.
-     */  "name": "period", 
-    
       "min": "0", 
       "max": "1", 
-      "type": "Period",
+      "type": "Reference",
       "isPrimitive": false }, 
     { 
     /*When this  Consent was issued / created / indexed.
@@ -13377,27 +14639,11 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "isPrimitive": true }, 
     { 
     /*Either the Grantor, which is the entity responsible for granting the rights listed in a Consent Directive or the Grantee, which is the entity responsible for complying with the Consent Directive, including any obligations or limitations on authorizations and enforcement of prohibitions.
-     */  "name": "consentingParty", 
+     */  "name": "performer", 
     
       "min": "0", 
       "max": "unbounded", 
       "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*Who or what is controlled by this consent. Use group to identify a set of actors by some property they share (e.g. 'admitting officers').
-     */  "name": "actor", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Consent.Actor",
-      "isPrimitive": false }, 
-    { 
-    /*Actions controlled by this consent.
-     */  "name": "action", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
     /*The organization that manages the consent, and the framework within which it is executed.
@@ -13438,83 +14684,33 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Consent.Policy",
       "isPrimitive": false }, 
     { 
-    /*A referece to the specific computable policy.
+    /*A reference to the specific base computable regulation or policy.
      */  "name": "policyRule", 
     
       "min": "0", 
       "max": "1", 
-      "type": "uri",
-      "isPrimitive": true }, 
-    { 
-    /*A set of security labels that define which resources are controlled by this consent. If more than one label is specified, all resources must have all the specified labels.
-     */  "name": "securityLabel", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Coding",
-      "isPrimitive": false }, 
-    { 
-    /*The context of the activities a user is taking - why the user is accessing the data - that are controlled by this consent.
-     */  "name": "purpose", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Coding",
-      "isPrimitive": false }, 
-    { 
-    /*Clinical or Operational Relevant period of time that bounds the data controlled by this consent.
-     */  "name": "dataPeriod", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Period",
-      "isPrimitive": false }, 
-    { 
-    /*The resources controlled by this consent, if specific resources are referenced.
-     */  "name": "data", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Consent.Data",
-      "isPrimitive": false }, 
-    { 
-    /*An exception to the base policy of this consent. An exception can be an addition or removal of access permissions.
-     */  "name": "except", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Consent.Except",
-      "isPrimitive": false }, 
-  ]
-},
-"Consent.Actor": {
-    /*A record of a healthcare consumer’s policy choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.
-     */
-  "name": "Consent.Actor",
-  "base": "BackboneElement", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*How the individual is involved in the resources content that is described in the consent.
-     */  "name": "role", 
-    
-      "min": "1", 
-      "max": "1", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*The resource that identifies the actor. To identify a actors by type, use group to identify a set of actors by some property they share (e.g. 'admitting officers').
-     */  "name": "reference", 
+    /*Whether a treatment instruction (e.g. artificial respiration yes or no) was verified with the patient, his/her family or another authorized person.
+     */  "name": "verification", 
     
-      "min": "1", 
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Consent.Verification",
+      "isPrimitive": false }, 
+    { 
+    /*An exception to the base policy of this consent. An exception can be an addition or removal of access permissions.
+     */  "name": "provision", 
+    
+      "min": "0", 
       "max": "1", 
-      "type": "Reference",
+      "type": "Consent.Provision",
       "isPrimitive": false }, 
   ]
 },
 "Consent.Policy": {
-    /*A record of a healthcare consumer’s policy choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.
+    /*A record of a healthcare consumer’s  choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.
      */
   "name": "Consent.Policy",
   "base": "BackboneElement", 
@@ -13539,8 +14735,166 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "isPrimitive": true }, 
   ]
 },
+"Consent.Verification": {
+    /*A record of a healthcare consumer’s  choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.
+     */
+  "name": "Consent.Verification",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Has the instruction been verified.
+     */  "name": "verified", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+    { 
+    /*Who verified the instruction (Patient, Relative or other Authorized Person).
+     */  "name": "verifiedWith", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Date verification was collected.
+     */  "name": "verificationDate", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+  ]
+},
+"Consent.Provision": {
+    /*A record of a healthcare consumer’s  choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.
+     */
+  "name": "Consent.Provision",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Action  to take - permit or deny - when the rule conditions are met.  Not permitted in root rule, required in all nested rules.
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "ConsentProvisionType",
+      "isPrimitive": true }, 
+    { 
+    /*The timeframe in this rule is valid.
+     */  "name": "period", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Period",
+      "isPrimitive": false }, 
+    { 
+    /*Who or what is controlled by this rule. Use group to identify a set of actors by some property they share (e.g. 'admitting officers').
+     */  "name": "actor", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Consent.Actor",
+      "isPrimitive": false }, 
+    { 
+    /*Actions controlled by this Rule.
+     */  "name": "action", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*A security label, comprised of 0..* security label fields (Privacy tags), which define which resources are controlled by this exception.
+     */  "name": "securityLabel", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Coding",
+      "isPrimitive": false }, 
+    { 
+    /*The context of the activities a user is taking - why the user is accessing the data - that are controlled by this rule.
+     */  "name": "purpose", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Coding",
+      "isPrimitive": false }, 
+    { 
+    /*The class of information covered by this rule. The type can be a FHIR resource type, a profile on a type, or a CDA document, or some other type that indicates what sort of information the consent relates to.
+     */  "name": "class", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Coding",
+      "isPrimitive": false }, 
+    { 
+    /*If this code is found in an instance, then the rule applies.
+     */  "name": "code", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Clinical or Operational Relevant period of time that bounds the data controlled by this rule.
+     */  "name": "dataPeriod", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Period",
+      "isPrimitive": false }, 
+    { 
+    /*The resources controlled by this rule if specific resources are referenced.
+     */  "name": "data", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Consent.Data",
+      "isPrimitive": false }, 
+    { 
+    /*Rules which provide exceptions to the base rule or subrules.
+     */  "name": "provision", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Consent.Provision",
+      "isPrimitive": false }, 
+  ]
+},
+"Consent.Actor": {
+    /*A record of a healthcare consumer’s  choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.
+     */
+  "name": "Consent.Actor",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*How the individual is involved in the resources content that is described in the exception.
+     */  "name": "role", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The resource that identifies the actor. To identify actors by type, use group to identify a set of actors by some property they share (e.g. 'admitting officers').
+     */  "name": "reference", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+  ]
+},
 "Consent.Data": {
-    /*A record of a healthcare consumer’s policy choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.
+    /*A record of a healthcare consumer’s  choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.
      */
   "name": "Consent.Data",
   "base": "BackboneElement", 
@@ -13565,146 +14919,17 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "isPrimitive": false }, 
   ]
 },
-"Consent.Except": {
-    /*A record of a healthcare consumer’s policy choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.
+"ConsentProvisionType": {
+    /*How a rule statement is applied, such as adding additional consent or removing consentIf the element is present, it must have either a @value, an @id, or extensions
      */
-  "name": "Consent.Except",
-  "base": "BackboneElement", 
+  "name": "ConsentProvisionType",
+  "base": "Element", 
   "attrs": [
+    { 
+      "name": "value", 
+      "type": "ConsentProvisionType-list" }, 
   ],
   "elems": [
-    { 
-    /*Action  to take - permit or deny - when the exception conditions are met.
-     */  "name": "type", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "ConsentExceptType",
-      "isPrimitive": true }, 
-    { 
-    /*The timeframe in this exception is valid.
-     */  "name": "period", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Period",
-      "isPrimitive": false }, 
-    { 
-    /*Who or what is controlled by this Exception. Use group to identify a set of actors by some property they share (e.g. 'admitting officers').
-     */  "name": "actor", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Consent.Actor1",
-      "isPrimitive": false }, 
-    { 
-    /*Actions controlled by this Exception.
-     */  "name": "action", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*A set of security labels that define which resources are controlled by this exception. If more than one label is specified, all resources must have all the specified labels.
-     */  "name": "securityLabel", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Coding",
-      "isPrimitive": false }, 
-    { 
-    /*The context of the activities a user is taking - why the user is accessing the data - that are controlled by this exception.
-     */  "name": "purpose", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Coding",
-      "isPrimitive": false }, 
-    { 
-    /*The class of information covered by this exception. The type can be a FHIR resource type, a profile on a type, or a CDA document, or some other type that indicates what sort of information the consent relates to.
-     */  "name": "class", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Coding",
-      "isPrimitive": false }, 
-    { 
-    /*If this code is found in an instance, then the exception applies.
-     */  "name": "code", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Coding",
-      "isPrimitive": false }, 
-    { 
-    /*Clinical or Operational Relevant period of time that bounds the data controlled by this exception.
-     */  "name": "dataPeriod", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Period",
-      "isPrimitive": false }, 
-    { 
-    /*The resources controlled by this exception, if specific resources are referenced.
-     */  "name": "data", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Consent.Data1",
-      "isPrimitive": false }, 
-  ]
-},
-"Consent.Actor1": {
-    /*A record of a healthcare consumer’s policy choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.
-     */
-  "name": "Consent.Actor1",
-  "base": "BackboneElement", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*How the individual is involved in the resources content that is described in the exception.
-     */  "name": "role", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*The resource that identifies the actor. To identify a actors by type, use group to identify a set of actors by some property they share (e.g. 'admitting officers').
-     */  "name": "reference", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-  ]
-},
-"Consent.Data1": {
-    /*A record of a healthcare consumer’s policy choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.
-     */
-  "name": "Consent.Data1",
-  "base": "BackboneElement", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*How the resource reference is interpreted when testing consent restrictions.
-     */  "name": "meaning", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "ConsentDataMeaning",
-      "isPrimitive": true }, 
-    { 
-    /*A reference to a specific resource that defines which resources are covered by this consent.
-     */  "name": "reference", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
   ]
 },
 "ConsentDataMeaning": {
@@ -13720,32 +14945,6 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   "elems": [
   ]
 },
-"ConsentState": {
-    /*Indicates the state of the consentIf the element is present, it must have either a @value, an @id, or extensions
-     */
-  "name": "ConsentState",
-  "base": "Element", 
-  "attrs": [
-    { 
-      "name": "value", 
-      "type": "ConsentState-list" }, 
-  ],
-  "elems": [
-  ]
-},
-"ConsentExceptType": {
-    /*How an exception statement is applied, such as adding additional consent or removing consentIf the element is present, it must have either a @value, an @id, or extensions
-     */
-  "name": "ConsentExceptType",
-  "base": "Element", 
-  "attrs": [
-    { 
-      "name": "value", 
-      "type": "ConsentExceptType-list" }, 
-  ],
-  "elems": [
-  ]
-},
 "Contract": {
     /*A formal agreement between parties regarding the conduct of business, exchange of information or other matters.If the element is present, it must have either a @value, an @id, or extensions
      */
@@ -13755,11 +14954,11 @@ A coverage may only be resposible for specific types of charges, and the sequenc
   ],
   "elems": [
     { 
-    /*Unique identifier for this Contract.
+    /*Unique identifier for this Contract or a derivative that references a Source Contract.
      */  "name": "identifier", 
     
       "min": "0", 
-      "max": "1", 
+      "max": "unbounded", 
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
@@ -13770,6 +14969,14 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "max": "1", 
       "type": "ContractResourceStatusCodes",
       "isPrimitive": true }, 
+    { 
+    /*The minimal content derived from the basal information source at a specific stage in its lifecycle.
+     */  "name": "contentDerivative", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
     { 
     /*When this  Contract was issued.
      */  "name": "issued", 
@@ -13789,14 +14996,6 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     { 
     /*The target entity impacted by or of interest to parties to the agreement.
      */  "name": "subject", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*The matter of concern in the context of this agreement.
-     */  "name": "topic", 
     
       "min": "0", 
       "max": "unbounded", 
@@ -13835,52 +15034,12 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Action stipulated by this Contract.
-     */  "name": "action", 
+    /*One or more Contract Provisions, which may be related and conveyed as a group, and may contain nested groups.
+     */  "name": "term", 
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*Reason for action stipulated by this Contract.
-     */  "name": "actionReason", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*The type of decision made by a grantor with respect to an offer made by a grantee.
-     */  "name": "decisionType", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*The minimal content derived from the basal information source at a specific stage in its lifecycle.
-     */  "name": "contentDerivative", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*A set of security labels that define which resources are controlled by this consent. If more than one label is specified, all resources must have all the specified labels.
-     */  "name": "securityLabel", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Coding",
-      "isPrimitive": false }, 
-    { 
-    /*An actor taking a role in an activity for which it can be assigned some degree of responsibility for the activity taking place.
-     */  "name": "agent", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Contract.Agent",
+      "type": "Contract.Term",
       "isPrimitive": false }, 
     { 
     /*Parties with legal standing in the Contract, including the principal parties, the grantor(s) and grantee(s), which are any person or organization bound by the contract, and any ancillary parties, which facilitate the execution of the contract such as a notary or witness.
@@ -13890,38 +15049,6 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "max": "unbounded", 
       "type": "Contract.Signer",
       "isPrimitive": false }, 
-    { 
-    /*Contract Valued Item List.
-     */  "name": "valuedItem", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Contract.ValuedItem",
-      "isPrimitive": false }, 
-    { 
-    /*One or more Contract Provisions, which may be related and conveyed as a group, and may contain nested groups.
-     */  "name": "term", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Contract.Term",
-      "isPrimitive": false }, 
-    [ /* Choice */ 
-    /*Legally binding Contract: This is the signed and legally recognized representation of the Contract, which is considered the "source of truth" and which would be the basis for legal action related to enforcement of this Contract.
-     */
-        {   "name": "bindingAttachment", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Attachment",
-          "isPrimitive": false }, 
-        {   "name": "bindingReference", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Reference",
-          "isPrimitive": false }, 
-    ], 
     { 
     /*The "patient friendly language" versionof the Contract in whole or in parts. "Patient friendly language" means the representation of the Contract and Contract Provisions in a manner that is readily accessible and understandable by a layperson in accordance with best practices for communication styles that ensure that those agreeing to or signing the Contract understand the roles, actions, obligations, responsibilities, and implication of the agreement.
      */  "name": "friendly", 
@@ -13943,68 +15070,264 @@ A coverage may only be resposible for specific types of charges, and the sequenc
      */  "name": "rule", 
     
       "min": "0", 
-      "max": "unbounded", 
+      "max": "1", 
       "type": "Contract.Rule",
       "isPrimitive": false }, 
+    [ /* Choice */ 
+    /*Legally binding Contract: This is the signed and legally recognized representation of the Contract, which is considered the "source of truth" and which would be the basis for legal action related to enforcement of this Contract.
+     */
+        {   "name": "legallyBindingAttachment", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Attachment",
+          "isPrimitive": false }, 
+        {   "name": "legallyBindingReference", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Reference",
+          "isPrimitive": false }, 
+    ], 
   ]
 },
-"Contract.Agent": {
+"Contract.Term": {
     /*A formal agreement between parties regarding the conduct of business, exchange of information or other matters.
      */
-  "name": "Contract.Agent",
+  "name": "Contract.Term",
   "base": "BackboneElement", 
   "attrs": [
   ],
   "elems": [
     { 
-    /*Who or what parties are assigned roles in this Contract.
-     */  "name": "actor", 
+    /*Unique identifier for this particular Contract Provision.
+     */  "name": "identifier", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*When this Contract Provision was issued.
+     */  "name": "issued", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+    { 
+    /*Relevant time or time-period when this Contract Provision is applicable.
+     */  "name": "applies", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Period",
+      "isPrimitive": false }, 
+    { 
+    /*Type of Contract Provision such as specific requirements, purposes for actions, obligations, prohibitions, e.g. life time maximum benefit.
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Subtype of this Contract Provision, e.g. life time maximum payment for a contract term for specific valued item, e.g. disability payment.
+     */  "name": "subType", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The matter of concern in the context of this provision of the agrement.
+     */  "name": "offer", 
     
       "min": "1", 
       "max": "1", 
-      "type": "Reference",
+      "type": "Contract.Offer",
       "isPrimitive": false }, 
     { 
-    /*Role type of agent assigned roles in this Contract.
-     */  "name": "role", 
+    /*Contract Term Asset List.
+     */  "name": "asset", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Contract.Asset",
+      "isPrimitive": false }, 
+    { 
+    /*An actor taking a role in an activity for which it can be assigned some degree of responsibility for the activity taking place.
+     */  "name": "agent", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Contract.Agent",
+      "isPrimitive": false }, 
+    { 
+    /*Action stipulated by this Contract Provision.
+     */  "name": "action", 
     
       "min": "0", 
       "max": "unbounded", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
+    { 
+    /*Reason or purpose for the action stipulated by this Contract Provision.
+     */  "name": "actionReason", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Nested group of Contract Provisions.
+     */  "name": "group", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Contract.Term",
+      "isPrimitive": false }, 
   ]
 },
-"Contract.Signer": {
+"Contract.Offer": {
     /*A formal agreement between parties regarding the conduct of business, exchange of information or other matters.
      */
-  "name": "Contract.Signer",
+  "name": "Contract.Offer",
   "base": "BackboneElement", 
   "attrs": [
   ],
   "elems": [
     { 
-    /*Role of this Contract signer, e.g. notary, grantee.
-     */  "name": "type", 
+    /*The owner of an asset has the residual control rights over the asset: the right to decide all usages of the asset in any way not inconsistent with a prior contract, custom, or law (Hart, 1995, p. 30).
+     */  "name": "topic", 
     
-      "min": "1", 
-      "max": "1", 
-      "type": "Coding",
-      "isPrimitive": false }, 
-    { 
-    /*Party which is a signator to this Contract.
-     */  "name": "party", 
-    
-      "min": "1", 
+      "min": "0", 
       "max": "1", 
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*Legally binding Contract DSIG signature contents in Base64.
-     */  "name": "signature", 
+    /*Type of Contract Provision such as specific requirements, purposes for actions, obligations, prohibitions, e.g. life time maximum benefit.
+     */  "name": "type", 
     
-      "min": "1", 
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The type of decision made by a grantor with respect to an offer made by a grantee.
+     */  "name": "decision", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Human readable form of this Contract Offer.
+     */  "name": "text", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The id of the clause or question text of the offer in the referenced questionnaire/response.
+     */  "name": "linkId", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+  ]
+},
+"Contract.Asset": {
+    /*A formal agreement between parties regarding the conduct of business, exchange of information or other matters.
+     */
+  "name": "Contract.Asset",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Categorization of the type of asset.
+     */  "name": "class", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Coding",
+      "isPrimitive": false }, 
+    { 
+    /*Code in the content.
+     */  "name": "code", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Coding",
+      "isPrimitive": false }, 
+    { 
+    /*Time period of the asset.
+     */  "name": "period", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Period",
+      "isPrimitive": false }, 
+    { 
+    /*Time period of the data for the asset.
+     */  "name": "dataPeriod", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Period",
+      "isPrimitive": false }, 
+    { 
+    /*Data defined by this Asset.
+     */  "name": "data", 
+    
+      "min": "0", 
       "max": "unbounded", 
-      "type": "Signature",
+      "type": "Contract.Data",
+      "isPrimitive": false }, 
+    { 
+    /*Contract Valued Item List.
+     */  "name": "valuedItem", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Contract.ValuedItem",
+      "isPrimitive": false }, 
+    { 
+    /*A set of security labels that define which terms are controlled by this condition.
+     */  "name": "securityLabel", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Coding",
+      "isPrimitive": false }, 
+  ]
+},
+"Contract.Data": {
+    /*A formal agreement between parties regarding the conduct of business, exchange of information or other matters.
+     */
+  "name": "Contract.Data",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*instance | related | dependents | authoredby.
+     */  "name": "meaning", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "ContractDataMeaning",
+      "isPrimitive": true }, 
+    { 
+    /*The actual data reference.
+     */  "name": "reference", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
       "isPrimitive": false }, 
   ]
 },
@@ -14090,130 +15413,16 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "isPrimitive": false }, 
   ]
 },
-"Contract.Term": {
+"Contract.Agent": {
     /*A formal agreement between parties regarding the conduct of business, exchange of information or other matters.
      */
-  "name": "Contract.Term",
+  "name": "Contract.Agent",
   "base": "BackboneElement", 
   "attrs": [
   ],
   "elems": [
     { 
-    /*Unique identifier for this particular Contract Provision.
-     */  "name": "identifier", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Identifier",
-      "isPrimitive": false }, 
-    { 
-    /*When this Contract Provision was issued.
-     */  "name": "issued", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "dateTime",
-      "isPrimitive": true }, 
-    { 
-    /*Relevant time or time-period when this Contract Provision is applicable.
-     */  "name": "applies", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Period",
-      "isPrimitive": false }, 
-    { 
-    /*Type of Contract Provision such as specific requirements, purposes for actions, obligations, prohibitions, e.g. life time maximum benefit.
-     */  "name": "type", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*Subtype of this Contract Provision, e.g. life time maximum payment for a contract term for specific valued item, e.g. disability payment.
-     */  "name": "subType", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*The matter of concern in the context of this provision of the agrement.
-     */  "name": "topic", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*Action stipulated by this Contract Provision.
-     */  "name": "action", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*Reason or purpose for the action stipulated by this Contract Provision.
-     */  "name": "actionReason", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*A set of security labels that define which terms are controlled by this condition.
-     */  "name": "securityLabel", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Coding",
-      "isPrimitive": false }, 
-    { 
-    /*An actor taking a role in an activity for which it can be assigned some degree of responsibility for the activity taking place.
-     */  "name": "agent", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Contract.Agent1",
-      "isPrimitive": false }, 
-    { 
-    /*Human readable form of this Contract Provision.
-     */  "name": "text", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*Contract Provision Valued Item List.
-     */  "name": "valuedItem", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Contract.ValuedItem1",
-      "isPrimitive": false }, 
-    { 
-    /*Nested group of Contract Provisions.
-     */  "name": "group", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Contract.Term",
-      "isPrimitive": false }, 
-  ]
-},
-"Contract.Agent1": {
-    /*A formal agreement between parties regarding the conduct of business, exchange of information or other matters.
-     */
-  "name": "Contract.Agent1",
-  "base": "BackboneElement", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*The agent assigned a role in this Contract Provision.
+    /*Who or what parties are assigned roles in this Contract.
      */  "name": "actor", 
     
       "min": "1", 
@@ -14221,7 +15430,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*Role played by the agent assigned this role in the execution of this Contract Provision.
+    /*Role type of agent assigned roles in this Contract.
      */  "name": "role", 
     
       "min": "0", 
@@ -14230,85 +15439,37 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "isPrimitive": false }, 
   ]
 },
-"Contract.ValuedItem1": {
+"Contract.Signer": {
     /*A formal agreement between parties regarding the conduct of business, exchange of information or other matters.
      */
-  "name": "Contract.ValuedItem1",
+  "name": "Contract.Signer",
   "base": "BackboneElement", 
   "attrs": [
   ],
   "elems": [
-    [ /* Choice */ 
-    /*Specific type of Contract Provision Valued Item that may be priced.
-     */
-        {   "name": "entityCodeableConcept", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "CodeableConcept",
-          "isPrimitive": false }, 
-        {   "name": "entityReference", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Reference",
-          "isPrimitive": false }, 
-    ], 
     { 
-    /*Identifies a Contract Provision Valued Item instance.
-     */  "name": "identifier", 
+    /*Role of this Contract signer, e.g. notary, grantee.
+     */  "name": "type", 
     
-      "min": "0", 
+      "min": "1", 
       "max": "1", 
-      "type": "Identifier",
+      "type": "Coding",
       "isPrimitive": false }, 
     { 
-    /*Indicates the time during which this Contract Term ValuedItem information is effective.
-     */  "name": "effectiveTime", 
+    /*Party which is a signator to this Contract.
+     */  "name": "party", 
     
-      "min": "0", 
+      "min": "1", 
       "max": "1", 
-      "type": "dateTime",
-      "isPrimitive": true }, 
-    { 
-    /*Specifies the units by which the Contract Provision Valued Item is measured or counted, and quantifies the countable or measurable Contract Term Valued Item instances.
-     */  "name": "quantity", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Quantity",
+      "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*A Contract Provision Valued Item unit valuation measure.
-     */  "name": "unitPrice", 
+    /*Legally binding Contract DSIG signature contents in Base64.
+     */  "name": "signature", 
     
-      "min": "0", 
-      "max": "1", 
-      "type": "Money",
-      "isPrimitive": false }, 
-    { 
-    /*A real number that represents a multiplier used in determining the overall value of the Contract Provision Valued Item delivered. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount.
-     */  "name": "factor", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "decimal",
-      "isPrimitive": true }, 
-    { 
-    /*An amount that expresses the weighting (based on difficulty, cost and/or resource intensiveness) associated with the Contract Provision Valued Item delivered. The concept of Points allows for assignment of point values for a Contract ProvisionValued Item, such that a monetary amount can be assigned to each point.
-     */  "name": "points", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "decimal",
-      "isPrimitive": true }, 
-    { 
-    /*Expresses the product of the Contract Provision Valued Item unitQuantity and the unitPriceAmt. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.
-     */  "name": "net", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Money",
+      "min": "1", 
+      "max": "unbounded", 
+      "type": "Signature",
       "isPrimitive": false }, 
   ]
 },
@@ -14390,6 +15551,19 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     ], 
   ]
 },
+"ContractDataMeaning": {
+    /*How a resource reference is interpreted when evaluating contract offersIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "ContractDataMeaning",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "ContractDataMeaning-list" }, 
+  ],
+  "elems": [
+  ]
+},
 "ContractResourceStatusCodes": {
     /*A code specifying the state of the resource instance.If the element is present, it must have either a @value, an @id, or extensions
      */
@@ -14468,6 +15642,14 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Reference",
       "isPrimitive": false }, 
     { 
+    /*A unique identifier for a dependent under the coverage.
+     */  "name": "dependent", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
     /*The relationship of beneficiary (patient) to the subscriber.
      */  "name": "relationship", 
     
@@ -14493,28 +15675,12 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "isPrimitive": false }, 
     { 
     /*A suite of underwrite specific classifiers, for example may be used to identify a class of coverage or employer group, Policy, Plan.
-     */  "name": "grouping", 
+     */  "name": "class", 
     
       "min": "0", 
-      "max": "1", 
-      "type": "Coverage.Grouping",
+      "max": "unbounded", 
+      "type": "Coverage.Class",
       "isPrimitive": false }, 
-    { 
-    /*A unique identifier for a dependent under the coverage.
-     */  "name": "dependent", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*An optional counter for a particular instance of the identified coverage which increments upon each renewal.
-     */  "name": "sequence", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
     { 
     /*The order of applicability of this coverage relative to other coverages which are currently inforce. Note, there may be gaps in the numbering and this does not imply primary, secondard etc. as the specific positioning of coverages depends upon the episode of care.
      */  "name": "order", 
@@ -14532,6 +15698,14 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "string",
       "isPrimitive": true }, 
     { 
+    /*A suite of underwrite specific classifiers, for example may be used to identify a class of coverage or employer group, Policy, Plan.
+     */  "name": "copay", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Coverage.Copay",
+      "isPrimitive": false }, 
+    { 
     /*The policy(s) which constitute this insurance coverage.
      */  "name": "contract", 
     
@@ -14541,303 +15715,64 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "isPrimitive": false }, 
   ]
 },
-"Coverage.Grouping": {
+"Coverage.Class": {
     /*Financial instrument which may be used to reimburse or pay for health care products and services.
      */
-  "name": "Coverage.Grouping",
+  "name": "Coverage.Class",
   "base": "BackboneElement", 
   "attrs": [
   ],
   "elems": [
     { 
-    /*Identifies a style or collective of coverage issued by the underwriter, for example may be used to identify an employer group. May also be referred to as a Policy or Group ID.
-     */  "name": "group", 
+    /*The type of classification for which an insurer-specific class tag or number and optional name is provided, for example may be used to identify a class of coverage or employer group, Policy, Plan.
+     */  "name": "type", 
     
-      "min": "0", 
+      "min": "1", 
       "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
+      "type": "Coding",
+      "isPrimitive": false }, 
     { 
-    /*A short description for the group.
-     */  "name": "groupDisplay", 
+    /*For example the Group or Plan number.
+     */  "name": "value", 
     
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*Identifies a style or collective of coverage issued by the underwriter, for example may be used to identify a subset of an employer group.
-     */  "name": "subGroup", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*A short description for the subgroup.
-     */  "name": "subGroupDisplay", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*Identifies a style or collective of coverage issued by the underwriter, for example may be used to identify a collection of benefits provided to employees. May be referred to as a Section or Division ID.
-     */  "name": "plan", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*A short description for the plan.
-     */  "name": "planDisplay", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*Identifies a sub-style or sub-collective of coverage issued by the underwriter, for example may be used to identify a subset of a collection of benefits provided to employees.
-     */  "name": "subPlan", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*A short description for the subplan.
-     */  "name": "subPlanDisplay", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*Identifies a style or collective of coverage issues by the underwriter, for example may be used to identify a class of coverage such as a level of deductables or co-payment.
-     */  "name": "class", 
-    
-      "min": "0", 
+      "min": "1", 
       "max": "1", 
       "type": "string",
       "isPrimitive": true }, 
     { 
     /*A short description for the class.
-     */  "name": "classDisplay", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*Identifies a sub-style or sub-collective of coverage issues by the underwriter, for example may be used to identify a subclass of coverage such as a sub-level of deductables or co-payment.
-     */  "name": "subClass", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*A short description for the subclass.
-     */  "name": "subClassDisplay", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-  ]
-},
-"DataElement": {
-    /*The formal description of a single piece of information that can be gathered and reported.If the element is present, it must have either a @value, an @id, or extensions
-     */
-  "name": "DataElement",
-  "base": "DomainResource", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*An absolute URI that is used to identify this data element when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this data element is (or will be) published. The URL SHOULD include the major version of the data element. For more information see [Technical and Business Versions](resource.html#versions).
-     */  "name": "url", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "uri",
-      "isPrimitive": true }, 
-    { 
-    /*A formal identifier that is used to identify this data element when it is represented in other formats, or referenced in a specification, model, design or an instance.
-     */  "name": "identifier", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Identifier",
-      "isPrimitive": false }, 
-    { 
-    /*The identifier that is used to identify this version of the data element when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the data element author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.
-     */  "name": "version", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*The status of this data element. Enables tracking the life-cycle of the content.
-     */  "name": "status", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "PublicationStatus",
-      "isPrimitive": true }, 
-    { 
-    /*A boolean value to indicate that this data element is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
-     */  "name": "experimental", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "boolean",
-      "isPrimitive": true }, 
-    { 
-    /*The date  (and optionally time) when the data element was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the data element changes.
-     */  "name": "date", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "dateTime",
-      "isPrimitive": true }, 
-    { 
-    /*The name of the individual or organization that published the data element.
-     */  "name": "publisher", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*A natural language name identifying the data element. This name should be usable as an identifier for the module by machine processing applications such as code generation.
      */  "name": "name", 
     
       "min": "0", 
       "max": "1", 
       "type": "string",
       "isPrimitive": true }, 
-    { 
-    /*A short, descriptive, user-friendly title for the data element.
-     */  "name": "title", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*Contact details to assist a user in finding and communicating with the publisher.
-     */  "name": "contact", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "ContactDetail",
-      "isPrimitive": false }, 
-    { 
-    /*The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate data element instances.
-     */  "name": "useContext", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "UsageContext",
-      "isPrimitive": false }, 
-    { 
-    /*A legal or geographic region in which the data element is intended to be used.
-     */  "name": "jurisdiction", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*A copyright statement relating to the data element and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the data element.
-     */  "name": "copyright", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "markdown",
-      "isPrimitive": true }, 
-    { 
-    /*Identifies how precise the data element is in its definition.
-     */  "name": "stringency", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "DataElementStringency",
-      "isPrimitive": true }, 
-    { 
-    /*Identifies a specification (other than a terminology) that the elements which make up the DataElement have some correspondence with.
-     */  "name": "mapping", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "DataElement.Mapping",
-      "isPrimitive": false }, 
-    { 
-    /*Defines the structure, type, allowed values and other constraining characteristics of the data element.
-     */  "name": "element", 
-    
-      "min": "1", 
-      "max": "unbounded", 
-      "type": "ElementDefinition",
-      "isPrimitive": false }, 
   ]
 },
-"DataElement.Mapping": {
-    /*The formal description of a single piece of information that can be gathered and reported.
+"Coverage.Copay": {
+    /*Financial instrument which may be used to reimburse or pay for health care products and services.
      */
-  "name": "DataElement.Mapping",
+  "name": "Coverage.Copay",
   "base": "BackboneElement", 
   "attrs": [
   ],
   "elems": [
     { 
-    /*An internal id that is used to identify this mapping set when specific mappings are made on a per-element basis.
-     */  "name": "identity", 
+    /*Types of products or services such as visit, specialist vists, emergency, inpatient care, etc.
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Coding",
+      "isPrimitive": false }, 
+    { 
+    /*The amount of patient payments for various types of services/products, expressed as a percentage of the service/product cost or a fixed amount of currency,.
+     */  "name": "value", 
     
       "min": "1", 
       "max": "1", 
-      "type": "id",
-      "isPrimitive": true }, 
-    { 
-    /*An absolute URI that identifies the specification that this mapping is expressed to.
-     */  "name": "uri", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "uri",
-      "isPrimitive": true }, 
-    { 
-    /*A name for the specification that is being mapped to.
-     */  "name": "name", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*Comments about this mapping, including version notes, issues, scope limitations, and other important notes for usage.
-     */  "name": "comment", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-  ]
-},
-"DataElementStringency": {
-    /*Indicates the degree of precision of the data element definition.If the element is present, it must have either a @value, an @id, or extensions
-     */
-  "name": "DataElementStringency",
-  "base": "Element", 
-  "attrs": [
-    { 
-      "name": "value", 
-      "type": "DataElementStringency-list" }, 
-  ],
-  "elems": [
+      "type": "Quantity",
+      "isPrimitive": false }, 
   ]
 },
 "DetectedIssue": {
@@ -14853,7 +15788,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
      */  "name": "identifier", 
     
       "min": "0", 
-      "max": "1", 
+      "max": "unbounded", 
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
@@ -14929,7 +15864,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "uri",
       "isPrimitive": true }, 
     { 
-    /*Indicates an action that has been taken or is committed to to reduce or eliminate the likelihood of the risk identified by the detected issue from manifesting.  Can also reflect an observation of known mitigating factors that may reduce/eliminate the need for any action.
+    /*Indicates an action that has been taken or is committed to reduce or eliminate the likelihood of the risk identified by the detected issue from manifesting.  Can also reflect an observation of known mitigating factors that may reduce/eliminate the need for any action.
      */  "name": "mitigation", 
     
       "min": "0", 
@@ -15015,7 +15950,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
-    /*[Unique device identifier (UDI)](device.html#5.11.3.2.2) assigned to device label or package.
+    /*[Unique device identifier (UDI)](device.html#udi) assigned to device label or package.
      */  "name": "udi", 
     
       "min": "0", 
@@ -15169,7 +16104,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*The identity of the authoritative source for UDI generation within a  jurisdiction.  All UDIs are globally unique within a single namespace. with the appropriate repository uri as the system.  For example,  UDIs of devices managed in the U.S. by the FDA, the value is  http://hl7.org/fhir/NamingSystem/fda-udi.
+    /*The identity of the authoritative source for UDI generation within a  jurisdiction.  All UDIs are globally unique within a single namespace with the appropriate repository uri as the system.  For example,  UDIs of devices managed in the U.S. by the FDA, the value is  http://hl7.org/fhir/NamingSystem/fda-udi.
      */  "name": "jurisdiction", 
     
       "min": "0", 
@@ -15185,7 +16120,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*The full UDI carrier of the Automatic Identification and Data Capture (AIDC) technology representation of the barcode string as printed on the packaging of the device - E.g a barcode or RFID.   Because of limitations on character sets in XML and the need to round-trip JSON data through XML, AIDC Formats *SHALL* be base64 encoded.
+    /*The full UDI carrier of the Automatic Identification and Data Capture (AIDC) technology representation of the barcode string as printed on the packaging of the device - e.g., a barcode or RFID.   Because of limitations on character sets in XML and the need to round-trip JSON data through XML, AIDC Formats *SHALL* be base64 encoded.
      */  "name": "carrierAIDC", 
     
       "min": "0", 
@@ -15253,11 +16188,11 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
   ],
   "elems": [
     { 
-    /*The locally assigned unique identification by the software. For example: handle ID.
+    /*Unique instance identifiers assigned to a device by the software, manufacturers, other organizations or owners. For example: handle ID.
      */  "name": "identifier", 
     
-      "min": "1", 
-      "max": "1", 
+      "min": "0", 
+      "max": "unbounded", 
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
@@ -15332,6 +16267,14 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
       "max": "1", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
+    { 
+    /*Other device properties expressed as a `type` which identifies the property and a value(s) either as a quantity or a code.
+     */  "name": "property", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "DeviceComponent.Property",
+      "isPrimitive": false }, 
   ]
 },
 "DeviceComponent.ProductionSpecification": {
@@ -15368,6 +16311,40 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
       "isPrimitive": true }, 
   ]
 },
+"DeviceComponent.Property": {
+    /*The characteristics, operational status and capabilities of a medical-related component of a medical device.
+     */
+  "name": "DeviceComponent.Property",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The code for the device property identifying the property being reported such as 'time capability'.
+     */  "name": "type", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The property value when the property being reported is a quantity such as the resolution of a real time clock.
+     */  "name": "valueQuantity", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Quantity",
+      "isPrimitive": false }, 
+    { 
+    /*The property value when the property being reported is a code, such as the code indicating that the device supports a real time clock using absolute time.
+     */  "name": "valueCode", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+  ]
+},
 "MeasmntPrinciple": {
     /*Different measurement principle supported by the device.If the element is present, it must have either a @value, an @id, or extensions
      */
@@ -15390,11 +16367,11 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
   ],
   "elems": [
     { 
-    /*Describes the unique identification of this metric that has been assigned by the device or gateway software. For example: handle ID.  It should be noted that in order to make the identifier unique, the system element of the identifier should be set to the unique identifier of the device.
+    /*Unique instance identifiers assigned to a device by the device or gateway software, manufacturers, other organizations or owners. For example: handle ID.
      */  "name": "identifier", 
     
-      "min": "1", 
-      "max": "1", 
+      "min": "0", 
+      "max": "unbounded", 
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
@@ -15588,12 +16565,12 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
       "isPrimitive": false }, 
     { 
     /*Protocol or definition followed by this request. For example: The proposed act must be performed if the indicated conditions occur, e.g.., shortness of breath, SpO2 less than x%.
-     */  "name": "definition", 
+     */  "name": "instantiates", 
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
+      "type": "uri",
+      "isPrimitive": true }, 
     { 
     /*Plan/proposal/order fulfilled by this request.
      */  "name": "basedOn", 
@@ -15659,6 +16636,14 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
           "isPrimitive": false }, 
     ], 
     { 
+    /*Specific parameters for the ordered item.  For example, the prism value for lenses.
+     */  "name": "parameter", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "DeviceRequest.Parameter",
+      "isPrimitive": false }, 
+    { 
     /*The patient who will use the device.
      */  "name": "subject", 
     
@@ -15710,7 +16695,7 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
     
       "min": "0", 
       "max": "1", 
-      "type": "DeviceRequest.Requester",
+      "type": "Reference",
       "isPrimitive": false }, 
     { 
     /*Desired type of performer for doing the diagnostic testing.
@@ -15721,7 +16706,7 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*The desired perfomer for doing the diagnostic testing.
+    /*The desired performer for doing the diagnostic testing.
      */  "name": "performer", 
     
       "min": "0", 
@@ -15745,7 +16730,15 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*Additional clinical information about the patient that may influence the request fulfilment.  For example, this may includes body where on the subject's the device will be used ( i.e. the target site).
+    /*Insurance plans, coverage extensions, pre-authorizations and/or pre-determinations that may be required for delivering the requested service.
+     */  "name": "insurance", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Additional clinical information about the patient that may influence the request fulfilment.  For example, this may include where on the subject's body the device will be used (i.e. the target site).
      */  "name": "supportingInfo", 
     
       "min": "0", 
@@ -15770,30 +16763,50 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
       "isPrimitive": false }, 
   ]
 },
-"DeviceRequest.Requester": {
+"DeviceRequest.Parameter": {
     /*Represents a request for a patient to employ a medical device. The device may be an implantable device, or an external assistive device, such as a walker.
      */
-  "name": "DeviceRequest.Requester",
+  "name": "DeviceRequest.Parameter",
   "base": "BackboneElement", 
   "attrs": [
   ],
   "elems": [
     { 
-    /*The device, practitioner, etc. who initiated the request.
-     */  "name": "agent", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*The organization the device or practitioner was acting on behalf of.
-     */  "name": "onBehalfOf", 
+    /*A code or string that identifies the device detail being asserted.
+     */  "name": "code", 
     
       "min": "0", 
       "max": "1", 
-      "type": "Reference",
+      "type": "CodeableConcept",
       "isPrimitive": false }, 
+    [ /* Choice */ 
+    /*The value of the device detail.
+     */
+        {   "name": "valueCodeableConcept", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "CodeableConcept",
+          "isPrimitive": false }, 
+        {   "name": "valueQuantity", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Quantity",
+          "isPrimitive": false }, 
+        {   "name": "valueRange", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Range",
+          "isPrimitive": false }, 
+        {   "name": "valueBoolean", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "boolean",
+          "isPrimitive": true }, 
+    ], 
   ]
 },
 "DeviceUseStatement": {
@@ -15813,6 +16826,14 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
+    /*A plan, proposal or order that is fulfilled in whole or in part by this DeviceUseStatement.
+     */  "name": "basedOn", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
     /*A code representing the patient or other source's judgment about the state of the device used that this statement is about.  Generally this will be active or completed.
      */  "name": "status", 
     
@@ -15829,12 +16850,12 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*The time period over which the device was used.
-     */  "name": "whenUsed", 
+    /*Allows linking the DeviceUseStatement to the underlying Request, or to other information that supports or is used to derive the DeviceUseStatement.
+     */  "name": "derivedFrom", 
     
       "min": "0", 
-      "max": "1", 
-      "type": "Period",
+      "max": "unbounded", 
+      "type": "Reference",
       "isPrimitive": false }, 
     [ /* Choice */ 
     /*How often the device was used.
@@ -15884,14 +16905,22 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
       "isPrimitive": false }, 
     { 
     /*Reason or justification for the use of the device.
-     */  "name": "indication", 
+     */  "name": "reasonCode", 
     
       "min": "0", 
       "max": "unbounded", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Indicates the site on the subject's body where the device was used ( i.e. the target site).
+    /*Indicates another resource whose existence justifies this DeviceUseStatement.
+     */  "name": "reasonReference", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Indicates the anotomic location on the subject's body where the device was used ( i.e. the target).
      */  "name": "bodySite", 
     
       "min": "0", 
@@ -15938,7 +16967,7 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
-    /*Details concerning a test or procedure requested.
+    /*Details concerning a service requested.
      */  "name": "basedOn", 
     
       "min": "0", 
@@ -15946,7 +16975,7 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*The status of the diagnostic report as a whole.
+    /*The status of the diagnostic report.
      */  "name": "status", 
     
       "min": "1", 
@@ -16002,7 +17031,7 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
           "isPrimitive": false }, 
     ], 
     { 
-    /*The date and time that this version of the report was released from the source diagnostic service.
+    /*The date and time that this version of the report was made available to providers, typically after the report was reviewed and verified.
      */  "name": "issued", 
     
       "min": "0", 
@@ -16010,12 +17039,20 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
       "type": "instant",
       "isPrimitive": true }, 
     { 
-    /*Indicates who or what participated in producing the report.
+    /*The diagnostic service that is responsible for issuing the report.
      */  "name": "performer", 
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "DiagnosticReport.Performer",
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*The practitioner or organization that is responsible for the report's conclusions and interpretations.
+     */  "name": "resultsInterpreter", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
       "isPrimitive": false }, 
     { 
     /*Details about the specimens on which this diagnostic report is based.
@@ -16043,11 +17080,11 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
       "isPrimitive": false }, 
     { 
     /*A list of key images associated with this report. The images are generally created during the diagnostic process, and may be directly of the patient, or of treated specimens (i.e. slides of interest).
-     */  "name": "image", 
+     */  "name": "media", 
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "DiagnosticReport.Image",
+      "type": "DiagnosticReport.Media",
       "isPrimitive": false }, 
     { 
     /*Concise and clinically contextualized impression / summary of the diagnostic report.
@@ -16075,36 +17112,10 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
       "isPrimitive": false }, 
   ]
 },
-"DiagnosticReport.Performer": {
+"DiagnosticReport.Media": {
     /*The findings and interpretation of diagnostic  tests performed on patients, groups of patients, devices, and locations, and/or specimens derived from these. The report includes clinical context such as requesting and provider information, and some mix of atomic results, images, textual and coded interpretations, and formatted representation of diagnostic reports.
      */
-  "name": "DiagnosticReport.Performer",
-  "base": "BackboneElement", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*Describes the type of participation (e.g.  a responsible party, author, or verifier).
-     */  "name": "role", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*The reference to the  practitioner or organization involved in producing the report. For example, the diagnostic service that is responsible for issuing the report.
-     */  "name": "actor", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-  ]
-},
-"DiagnosticReport.Image": {
-    /*The findings and interpretation of diagnostic  tests performed on patients, groups of patients, devices, and locations, and/or specimens derived from these. The report includes clinical context such as requesting and provider information, and some mix of atomic results, images, textual and coded interpretations, and formatted representation of diagnostic reports.
-     */
-  "name": "DiagnosticReport.Image",
+  "name": "DiagnosticReport.Media",
   "base": "BackboneElement", 
   "attrs": [
   ],
@@ -16128,7 +17139,7 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
   ]
 },
 "DiagnosticReportStatus": {
-    /*The status of the diagnostic report as a whole.If the element is present, it must have either a @value, an @id, or extensions
+    /*The status of the diagnostic report.If the element is present, it must have either a @value, an @id, or extensions
      */
   "name": "DiagnosticReportStatus",
   "base": "Element", 
@@ -16197,12 +17208,12 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*Identifies who is responsible for creating the manifest, and adding  documents to it.
-     */  "name": "author", 
+    /*An actor taking an active role in the manifest.
+     */  "name": "agent", 
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "Reference",
+      "type": "DocumentManifest.Agent",
       "isPrimitive": false }, 
     { 
     /*A patient, practitioner, or organization for which this set of documents is intended.
@@ -16229,12 +17240,12 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*The list of Documents included in the manifest.
+    /*The list of Resources that consist of the parts of this manifest.
      */  "name": "content", 
     
       "min": "1", 
       "max": "unbounded", 
-      "type": "DocumentManifest.Content",
+      "type": "Reference",
       "isPrimitive": false }, 
     { 
     /*Related identifiers or resources associated with the DocumentManifest.
@@ -16246,30 +17257,30 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
       "isPrimitive": false }, 
   ]
 },
-"DocumentManifest.Content": {
+"DocumentManifest.Agent": {
     /*A collection of documents compiled for a purpose together with metadata that applies to the collection.
      */
-  "name": "DocumentManifest.Content",
+  "name": "DocumentManifest.Agent",
   "base": "BackboneElement", 
   "attrs": [
   ],
   "elems": [
-    [ /* Choice */ 
-    /*The list of references to document content, or Attachment that consist of the parts of this document manifest. Usually, these would be document references, but direct references to Media or Attachments are also allowed.
-     */
-        {   "name": "pAttachment", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Attachment",
-          "isPrimitive": false }, 
-        {   "name": "pReference", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Reference",
-          "isPrimitive": false }, 
-    ], 
+    { 
+    /*Specification of the participation type the agent played.
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Identifies who is the agent. Such as the author of the manifest, and adding  documents to it.
+     */  "name": "who", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
   ]
 },
 "DocumentManifest.Related": {
@@ -16289,7 +17300,7 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
-    /*Related Resource to this DocumentManifest. For example, Order, ProcedureRequest,  Procedure, EligibilityRequest, etc.
+    /*Related Resource to this DocumentManifest. For example, Order, ServiceRequest,  Procedure, EligibilityRequest, etc.
      */  "name": "ref", 
     
       "min": "0", 
@@ -16342,7 +17353,7 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
     /*Specifies the particular kind of document referenced  (e.g. History and Physical, Discharge Summary, Progress Note). This usually equates to the purpose of making the document referenced.
      */  "name": "type", 
     
-      "min": "1", 
+      "min": "0", 
       "max": "1", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
@@ -16372,19 +17383,19 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
       "isPrimitive": true }, 
     { 
     /*When the document reference was created.
-     */  "name": "indexed", 
+     */  "name": "date", 
     
-      "min": "1", 
+      "min": "0", 
       "max": "1", 
       "type": "instant",
       "isPrimitive": true }, 
     { 
-    /*Identifies who is responsible for adding the information to the document.
-     */  "name": "author", 
+    /*An actor taking an active role in the document.
+     */  "name": "agent", 
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "Reference",
+      "type": "DocumentReference.Agent",
       "isPrimitive": false }, 
     { 
     /*Which person or organization authenticates that this document is valid.
@@ -16441,6 +17452,32 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
       "min": "0", 
       "max": "1", 
       "type": "DocumentReference.Context",
+      "isPrimitive": false }, 
+  ]
+},
+"DocumentReference.Agent": {
+    /*A reference to a document.
+     */
+  "name": "DocumentReference.Agent",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Specification of the participation type the agent played.
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Identifies who is responsible for adding the information to the document.
+     */  "name": "who", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Reference",
       "isPrimitive": false }, 
   ]
 },
@@ -16513,7 +17550,7 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*This list of codes represents the main clinical acts, such as a colonoscopy or an appendectomy, being documented. In some cases, the event is inherent in the typeCode, such as a "History and Physical Report" in which the procedure being documented is necessarily a "History and Physical" act.
+    /*This list of codes represents the main clinical acts, such as a colonoscopy or an appendectomy, being documented. In some cases, the event is inherent in the type code, such as a "History and Physical Report" in which the procedure being documented is necessarily a "History and Physical" act.
      */  "name": "event", 
     
       "min": "0", 
@@ -16669,14 +17706,6 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*The organization which is responsible for the services rendered to the patient.
-     */  "name": "organization", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
     /*The Insurer who is target  of the request.
      */  "name": "insurer", 
     
@@ -16724,6 +17753,106 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
       "max": "1", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
+    { 
+    /*A list of billable services for which an authorization prior to service delivery may be required by the payor.
+     */  "name": "authorization", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "EligibilityRequest.Authorization",
+      "isPrimitive": false }, 
+  ]
+},
+"EligibilityRequest.Authorization": {
+    /*The EligibilityRequest provides patient and insurance coverage information to an insurer for them to respond, in the form of an EligibilityResponse, with information regarding whether the stated coverage is valid and in-force and optionally to provide the insurance details of the policy.
+     */
+  "name": "EligibilityRequest.Authorization",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Sequence of procedures which serves to order and provide a link.
+     */  "name": "sequence", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "positiveInt",
+      "isPrimitive": true }, 
+    { 
+    /*A code to indicate the Professional Service or Product supplied (eg. CTP, HCPCS,USCLS,ICD10, NCPDP,DIN,ACHI,CCI).
+     */  "name": "service", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Item typification or modifiers codes, eg for Oral whether the treatment is cosmetic or associated with TMJ, or for medical whether the treatment was outside the clinic or out of office hours.
+     */  "name": "modifier", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The number of repetitions of a service or product.
+     */  "name": "quantity", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Quantity",
+      "isPrimitive": false }, 
+    { 
+    /*The fee for an addittional service or product or charge.
+     */  "name": "unitPrice", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Money",
+      "isPrimitive": false }, 
+    { 
+    /*Facility where the services were provided.
+     */  "name": "facility", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*List of patient diagnosis for which care is sought.
+     */  "name": "diagnosis", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "EligibilityRequest.Diagnosis",
+      "isPrimitive": false }, 
+  ]
+},
+"EligibilityRequest.Diagnosis": {
+    /*The EligibilityRequest provides patient and insurance coverage information to an insurer for them to respond, in the form of an EligibilityResponse, with information regarding whether the stated coverage is valid and in-force and optionally to provide the insurance details of the policy.
+     */
+  "name": "EligibilityRequest.Diagnosis",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    [ /* Choice */ 
+    /*The diagnosis.
+     */
+        {   "name": "diagnosisCodeableConcept", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "CodeableConcept",
+          "isPrimitive": false }, 
+        {   "name": "diagnosisReference", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Reference",
+          "isPrimitive": false }, 
+    ], 
   ]
 },
 "EligibilityResponse": {
@@ -16767,14 +17896,6 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*The organization which is responsible for the services rendered to the patient.
-     */  "name": "requestOrganization", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
     /*Original request resource reference.
      */  "name": "request", 
     
@@ -16788,8 +17909,8 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
     
       "min": "0", 
       "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
+      "type": "RemittanceOutcome",
+      "isPrimitive": true }, 
     { 
     /*A description of the status of the adjudication.
      */  "name": "disposition", 
@@ -16821,6 +17942,22 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
       "min": "0", 
       "max": "unbounded", 
       "type": "EligibilityResponse.Insurance",
+      "isPrimitive": false }, 
+    { 
+    /*A reference from the Insurer to which these services pertain.
+     */  "name": "preAuthRef", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*A list of billable services for which an authorization prior to service delivery may be required by the payor.
+     */  "name": "authorization", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "EligibilityResponse.Authorization",
       "isPrimitive": false }, 
     { 
     /*The form to be used for printing the content.
@@ -17012,6 +18149,40 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
     ], 
   ]
 },
+"EligibilityResponse.Authorization": {
+    /*This resource provides eligibility and plan details from the processing of an Eligibility resource.
+     */
+  "name": "EligibilityResponse.Authorization",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Sequence of procedures which serves to order and provide a link.
+     */  "name": "authorizationSequence", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "positiveInt",
+      "isPrimitive": true }, 
+    { 
+    /*A boolean flag indicating whether a prior authorization or pre-authorization is required prior to actual service delivery.
+     */  "name": "required", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+    { 
+    /*Any comments regarding information or actions assciated with the pre-authorization.
+     */  "name": "note", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Annotation",
+      "isPrimitive": false }, 
+  ]
+},
 "EligibilityResponse.Error": {
     /*This resource provides eligibility and plan details from the processing of an Eligibility resource.
      */
@@ -17063,17 +18234,15 @@ http://hl7.org/fhir/NamingSystem/iccbba-other-di.
       "type": "Encounter.StatusHistory",
       "isPrimitive": false }, 
     { 
-    /*inpatient | outpatient | ambulatory | emergency +.
+    /*Concepts representing classification of patient encounter such as ambulatory (outpatient), inpatient, emergency, home health or others due to local variations.
      */  "name": "class", 
     
-      "min": "0", 
+      "min": "1", 
       "max": "1", 
       "type": "Coding",
       "isPrimitive": false }, 
     { 
-    /*The class history permits the tracking of the encounters transitions without needing to go  through the resource history.
-
-This would be used for a case where an admission starts of as an emergency encounter, then transisions into an inpatient scenario. Doing this and not restarting a new encounter ensures that any lab/diagnostic results can more easily follow the patient and not require re-processing and not get lost or cancelled during a kindof discharge from emergency to inpatient.
+    /*The class history permits the tracking of the encounters transitions without needing to go  through the resource history.  This would be used for a case where an admission starts of as an emergency encounter, then transisions into an inpatient scenario. Doing this and not restarting a new encounter ensures that any lab/diagnostic results can more easily follow the patient and not require re-processing and not get lost or cancelled during a kindof discharge from emergency to inpatient.
      */  "name": "classHistory", 
     
       "min": "0", 
@@ -17089,6 +18258,14 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
+    /*Broad categorization of the service that is to be provided (e.g. cardiology).
+     */  "name": "serviceType", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
     /*Indicates the urgency of the encounter.
      */  "name": "priority", 
     
@@ -17097,7 +18274,7 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*The patient ro group present at the encounter.
+    /*The patient or group present at the encounter.
      */  "name": "subject", 
     
       "min": "0", 
@@ -17113,8 +18290,8 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*The referral request this encounter satisfies (incoming referral).
-     */  "name": "incomingReferral", 
+    /*The request this encounter satisfies (e.g. incoming referral or procedure request).
+     */  "name": "basedOn", 
     
       "min": "0", 
       "max": "unbounded", 
@@ -17193,7 +18370,7 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "Encounter.Location",
       "isPrimitive": false }, 
     { 
-    /*An organization that is in charge of maintaining the information of this Encounter (e.g. who maintains the report or the master service catalog item, etc.). This MAY be the same as the organization on the Patient record, however it could be different. This MAY not be not the Service Delivery Location's Organization.
+    /*The organization that is primarily responsible for this Encounter's services. This MAY be the same as the organization on the Patient record, however it could be different, such as if the actor performing the services was from an external organization (which may be billed seperately) for an external consultation.  Refer to the example bundle showing an abbreviated set of Encounters for a colonoscopy.
      */  "name": "serviceProvider", 
     
       "min": "0", 
@@ -17347,7 +18524,7 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
-    /*The location from which the patient came before admission.
+    /*The location/organization from which the patient came before admission.
      */  "name": "origin", 
     
       "min": "0", 
@@ -17395,7 +18572,7 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Location to which the patient is discharged.
+    /*Location/organization to which the patient is discharged.
      */  "name": "destination", 
     
       "min": "0", 
@@ -17513,7 +18690,7 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*The organization that manages this endpoint (even if technically another organisation is hosting this in the cloud, it is the organisation associated with the data).
+    /*The organization that manages this endpoint (even if technically another organization is hosting this in the cloud, it is the organization associated with the data).
      */  "name": "managingOrganization", 
     
       "min": "0", 
@@ -17558,7 +18735,7 @@ This would be used for a case where an admission starts of as an emergency encou
     
       "min": "1", 
       "max": "1", 
-      "type": "uri",
+      "type": "url",
       "isPrimitive": true }, 
     { 
     /*Additional headers / information to send as part of the notification.
@@ -17632,16 +18809,8 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*The organization which is responsible for the services rendered to the patient.
-     */  "name": "organization", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
     /*Patient Resource.
-     */  "name": "subject", 
+     */  "name": "candidate", 
     
       "min": "0", 
       "max": "1", 
@@ -17695,8 +18864,8 @@ This would be used for a case where an admission starts of as an emergency encou
     
       "min": "0", 
       "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
+      "type": "RemittanceOutcome",
+      "isPrimitive": true }, 
     { 
     /*A description of the status of the adjudication.
      */  "name": "disposition", 
@@ -17729,11 +18898,135 @@ This would be used for a case where an admission starts of as an emergency encou
       "max": "1", 
       "type": "Reference",
       "isPrimitive": false }, 
+  ]
+},
+"EntryDefinition": {
+    /*Catalog entries are wrappers that contextualize items included in a catalog.If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "EntryDefinition",
+  "base": "DomainResource", 
+  "attrs": [
+  ],
+  "elems": [
     { 
-    /*The organization which is responsible for the services rendered to the patient.
-     */  "name": "requestOrganization", 
+    /*The type of item - medication, device, service, protocol or other.
+     */  "name": "type", 
     
       "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Whether the entry represents an orderable item, or other.
+     */  "name": "purpose", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Content of the catalog.
+     */  "name": "referencedItem", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Used in supporting different identifiers for the same product, e.g. manufacturer code and retailer code.
+     */  "name": "identifier", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*Used in supporting related concepts, e.g. NDC to RxNorm.
+     */  "name": "additionalIdentifier", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*Classes of devices, or ATC for medication.
+     */  "name": "classification", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Used to support catalog exchange even for unsupported products, e.g. getting list of medications even if not prescribable.
+     */  "name": "status", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The time period in which this catalog entry is expected to be active.
+     */  "name": "validityPeriod", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Period",
+      "isPrimitive": false }, 
+    { 
+    /*Typically date of issue is different from the beginning of the validity. This can be used to see when an item was last updated.
+     */  "name": "lastUpdated", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+    { 
+    /*Used for examplefor Out of Formulary, or any specifics.
+     */  "name": "additionalCharacteristic", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*User for example for ATC classification, or.
+     */  "name": "additionalClassification", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Used for example, to point to a substance, or to a device used to administer a medication.
+     */  "name": "relatedEntry", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "EntryDefinition.RelatedEntry",
+      "isPrimitive": false }, 
+  ]
+},
+"EntryDefinition.RelatedEntry": {
+    /*Catalog entries are wrappers that contextualize items included in a catalog.
+     */
+  "name": "EntryDefinition.RelatedEntry",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The type of relation to the related item: child, parent, packageContent, containerPackage, usedIn, uses, requires, etc.
+     */  "name": "relationtype", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The reference to the related item.
+     */  "name": "item", 
+    
+      "min": "1", 
       "max": "1", 
       "type": "Reference",
       "isPrimitive": false }, 
@@ -17820,7 +19113,7 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*The practitioner that is the care manager/care co-ordinator for this patient.
+    /*The practitioner that is the care manager/care coordinator for this patient.
      */  "name": "careManager", 
     
       "min": "0", 
@@ -17918,6 +19211,777 @@ This would be used for a case where an admission starts of as an emergency encou
   "elems": [
   ]
 },
+"EventDefinition": {
+    /*The EventDefinition resource provides a reusable description of when a particular event can occur.If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "EventDefinition",
+  "base": "DomainResource", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*An absolute URI that is used to identify this event definition when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which this event definition is (or will be) published.
+     */  "name": "url", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "uri",
+      "isPrimitive": true }, 
+    { 
+    /*A formal identifier that is used to identify this event definition when it is represented in other formats, or referenced in a specification, model, design or an instance.
+     */  "name": "identifier", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*The identifier that is used to identify this version of the event definition when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the event definition author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.
+     */  "name": "version", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*A natural language name identifying the event definition. This name should be usable as an identifier for the module by machine processing applications such as code generation.
+     */  "name": "name", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*A short, descriptive, user-friendly title for the event definition.
+     */  "name": "title", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*An explanatory or alternate title for the event definition giving additional information about its content.
+     */  "name": "subtitle", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The status of this event definition. Enables tracking the life-cycle of the content.
+     */  "name": "status", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "PublicationStatus",
+      "isPrimitive": true }, 
+    { 
+    /*A Boolean value to indicate that this event definition is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.
+     */  "name": "experimental", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+    [ /* Choice */ 
+    /*A code or group definition that describes the intended subject of the event definition.
+     */
+        {   "name": "subjectCodeableConcept", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "CodeableConcept",
+          "isPrimitive": false }, 
+        {   "name": "subjectReference", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Reference",
+          "isPrimitive": false }, 
+    ], 
+    { 
+    /*The date  (and optionally time) when the event definition was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the event definition changes.
+     */  "name": "date", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+    { 
+    /*The name of the organization or individual that published the event definition.
+     */  "name": "publisher", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Contact details to assist a user in finding and communicating with the publisher.
+     */  "name": "contact", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ContactDetail",
+      "isPrimitive": false }, 
+    { 
+    /*A free text natural language description of the event definition from a consumer's perspective.
+     */  "name": "description", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "markdown",
+      "isPrimitive": true }, 
+    { 
+    /*The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate event definition instances.
+     */  "name": "useContext", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "UsageContext",
+      "isPrimitive": false }, 
+    { 
+    /*A legal or geographic region in which the event definition is intended to be used.
+     */  "name": "jurisdiction", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Explanation of why this event definition is needed and why it has been designed as it has.
+     */  "name": "purpose", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "markdown",
+      "isPrimitive": true }, 
+    { 
+    /*A detailed description of how the event definition is used from a clinical perspective.
+     */  "name": "usage", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*A copyright statement relating to the event definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the event definition.
+     */  "name": "copyright", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "markdown",
+      "isPrimitive": true }, 
+    { 
+    /*The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.
+     */  "name": "approvalDate", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "date",
+      "isPrimitive": true }, 
+    { 
+    /*The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.
+     */  "name": "lastReviewDate", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "date",
+      "isPrimitive": true }, 
+    { 
+    /*The period during which the event definition content was or is planned to be in active use.
+     */  "name": "effectivePeriod", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Period",
+      "isPrimitive": false }, 
+    { 
+    /*Descriptive topics related to the module. Topics provide a high-level categorization of the module that can be useful for filtering and searching.
+     */  "name": "topic", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*A contributor to the content of the module, including authors, editors, reviewers, and endorsers.
+     */  "name": "contributor", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Contributor",
+      "isPrimitive": false }, 
+    { 
+    /*Related resources such as additional documentation, justification, or bibliographic references.
+     */  "name": "relatedArtifact", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "RelatedArtifact",
+      "isPrimitive": false }, 
+    { 
+    /*The trigger element defines when the event occurs.
+     */  "name": "trigger", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "TriggerDefinition",
+      "isPrimitive": false }, 
+  ]
+},
+"ExampleScenario": {
+    /*Example of workflow instance.If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "ExampleScenario",
+  "base": "DomainResource", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*An absolute URI that is used to identify this example scenario when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which this example scenario is (or will be) published.
+     */  "name": "url", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "uri",
+      "isPrimitive": true }, 
+    { 
+    /*A formal identifier that is used to identify this example scenario when it is represented in other formats, or referenced in a specification, model, design or an instance.
+     */  "name": "identifier", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*The identifier that is used to identify this version of the example scenario when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the example scenario author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.
+     */  "name": "version", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*A natural language name identifying the example scenario. This name should be usable as an identifier for the module by machine processing applications such as code generation.
+     */  "name": "name", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The status of this example scenario. Enables tracking the life-cycle of the content.
+     */  "name": "status", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "PublicationStatus",
+      "isPrimitive": true }, 
+    { 
+    /*A Boolean value to indicate that this example scenario is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.
+     */  "name": "experimental", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+    { 
+    /*The date  (and optionally time) when the example scenario was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the example scenario changes. (e.g. the 'content logical definition').
+     */  "name": "date", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+    { 
+    /*The name of the organization or individual that published the example scenario.
+     */  "name": "publisher", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Contact details to assist a user in finding and communicating with the publisher.
+     */  "name": "contact", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ContactDetail",
+      "isPrimitive": false }, 
+    { 
+    /*The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate example scenario instances.
+     */  "name": "useContext", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "UsageContext",
+      "isPrimitive": false }, 
+    { 
+    /*A legal or geographic region in which the example scenario is intended to be used.
+     */  "name": "jurisdiction", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*A copyright statement relating to the example scenario and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the example scenario.
+     */  "name": "copyright", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "markdown",
+      "isPrimitive": true }, 
+    { 
+    /*What the example scenario resource is created for. This should not be used to show the business purpose of the scenario itself, but the purpose of documenting a scenario.
+     */  "name": "purpose", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "markdown",
+      "isPrimitive": true }, 
+    { 
+    /*Actor participating in the resource.
+     */  "name": "actor", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ExampleScenario.Actor",
+      "isPrimitive": false }, 
+    { 
+    /*Each resource and each version that is present in the workflow.
+     */  "name": "instance", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ExampleScenario.Instance",
+      "isPrimitive": false }, 
+    { 
+    /*Each major process - a group of operations.
+     */  "name": "process", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ExampleScenario.Process",
+      "isPrimitive": false }, 
+    { 
+    /*Another nested workflow.
+     */  "name": "workflow", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "canonical",
+      "isPrimitive": true }, 
+  ]
+},
+"ExampleScenario.Actor": {
+    /*Example of workflow instance.
+     */
+  "name": "ExampleScenario.Actor",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*ID or acronym of actor.
+     */  "name": "actorId", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The type of actor - person or system.
+     */  "name": "type", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "ExampleScenarioActorType",
+      "isPrimitive": true }, 
+    { 
+    /*The name of the actor as shown in the page.
+     */  "name": "name", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The description of the actor.
+     */  "name": "description", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "markdown",
+      "isPrimitive": true }, 
+  ]
+},
+"ExampleScenario.Instance": {
+    /*Example of workflow instance.
+     */
+  "name": "ExampleScenario.Instance",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The id of the resource for referencing.
+     */  "name": "resourceId", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The type of the resource.
+     */  "name": "resourceType", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "ResourceType",
+      "isPrimitive": true }, 
+    { 
+    /*A short name for the resource instance.
+     */  "name": "name", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Human-friendly description of the resource instance.
+     */  "name": "description", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "markdown",
+      "isPrimitive": true }, 
+    { 
+    /*A specific version of the resource.
+     */  "name": "version", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ExampleScenario.Version",
+      "isPrimitive": false }, 
+    { 
+    /*Resources contained in the instance (e.g. the observations contained in a bundle).
+     */  "name": "containedInstance", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ExampleScenario.ContainedInstance",
+      "isPrimitive": false }, 
+  ]
+},
+"ExampleScenario.Version": {
+    /*Example of workflow instance.
+     */
+  "name": "ExampleScenario.Version",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The identifier of a specific version of a resource.
+     */  "name": "versionId", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The description of the resource version.
+     */  "name": "description", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "markdown",
+      "isPrimitive": true }, 
+  ]
+},
+"ExampleScenario.ContainedInstance": {
+    /*Example of workflow instance.
+     */
+  "name": "ExampleScenario.ContainedInstance",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Each resource contained in the instance.
+     */  "name": "resourceId", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*A specific version of a resource contained in the instance.
+     */  "name": "versionId", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+  ]
+},
+"ExampleScenario.Process": {
+    /*Example of workflow instance.
+     */
+  "name": "ExampleScenario.Process",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The diagram title of the group of operations.
+     */  "name": "title", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*A longer description of the group of operations.
+     */  "name": "description", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "markdown",
+      "isPrimitive": true }, 
+    { 
+    /*Description of initial status before the process starts.
+     */  "name": "preConditions", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "markdown",
+      "isPrimitive": true }, 
+    { 
+    /*Description of final status after the process ends.
+     */  "name": "postConditions", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "markdown",
+      "isPrimitive": true }, 
+    { 
+    /*Each step of the process.
+     */  "name": "step", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ExampleScenario.Step",
+      "isPrimitive": false }, 
+  ]
+},
+"ExampleScenario.Step": {
+    /*Example of workflow instance.
+     */
+  "name": "ExampleScenario.Step",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Nested process.
+     */  "name": "process", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ExampleScenario.Process",
+      "isPrimitive": false }, 
+    { 
+    /*If there is a pause in the flow.
+     */  "name": "pause", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+    { 
+    /*Each interaction or action.
+     */  "name": "operation", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "ExampleScenario.Operation",
+      "isPrimitive": false }, 
+    { 
+    /*Each interaction in the workflow.
+     */  "name": "alternative", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "ExampleScenario.Alternative",
+      "isPrimitive": false }, 
+  ]
+},
+"ExampleScenario.Operation": {
+    /*Example of workflow instance.
+     */
+  "name": "ExampleScenario.Operation",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The sequential number of the interaction.
+     */  "name": "number", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The type of operation - CRUD.
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The human-friendly name of the interaction.
+     */  "name": "name", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Who starts the transaction.
+     */  "name": "initiator", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Who receives the transaction.
+     */  "name": "receiver", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*A comment to be inserted in the diagram.
+     */  "name": "description", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "markdown",
+      "isPrimitive": true }, 
+    { 
+    /*Whether the initiator is deactivated right after the transaction.
+     */  "name": "initiatorActive", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+    { 
+    /*Whether the receiver is deactivated right after the transaction.
+     */  "name": "receiverActive", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+    { 
+    /*Each resource instance used by the initiator.
+     */  "name": "request", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "ExampleScenario.ContainedInstance",
+      "isPrimitive": false }, 
+    { 
+    /*Each resource instance used by the responder.
+     */  "name": "response", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "ExampleScenario.ContainedInstance",
+      "isPrimitive": false }, 
+  ]
+},
+"ExampleScenario.Alternative": {
+    /*Example of workflow instance.
+     */
+  "name": "ExampleScenario.Alternative",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The name of each alternative.
+     */  "name": "name", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Each of the possible options in an alternative.
+     */  "name": "option", 
+    
+      "min": "1", 
+      "max": "unbounded", 
+      "type": "ExampleScenario.Option",
+      "isPrimitive": false }, 
+  ]
+},
+"ExampleScenario.Option": {
+    /*Example of workflow instance.
+     */
+  "name": "ExampleScenario.Option",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*A human-readable description of each option.
+     */  "name": "description", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "markdown",
+      "isPrimitive": true }, 
+    { 
+    /*What happens in each alternative option.
+     */  "name": "step", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ExampleScenario.Step",
+      "isPrimitive": false }, 
+    { 
+    /*If there is a pause in the flow.
+     */  "name": "pause", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+  ]
+},
+"ExampleScenarioActorType": {
+    /*The type of actor - system or humanIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "ExampleScenarioActorType",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "ExampleScenarioActorType-list" }, 
+  ],
+  "elems": [
+  ]
+},
 "ExpansionProfile": {
     /*Resource to define constraints on the Expansion of a FHIR ValueSet.If the element is present, it must have either a @value, an @id, or extensions
      */
@@ -17927,7 +19991,7 @@ This would be used for a case where an admission starts of as an emergency encou
   ],
   "elems": [
     { 
-    /*An absolute URI that is used to identify this expansion profile when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this expansion profile is (or will be) published. The URL SHOULD include the major version of the expansion profile. For more information see [Technical and Business Versions](resource.html#versions).
+    /*An absolute URI that is used to identify this expansion profile when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which this expansion profile is (or will be) published.
      */  "name": "url", 
     
       "min": "0", 
@@ -17967,7 +20031,7 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "PublicationStatus",
       "isPrimitive": true }, 
     { 
-    /*A boolean value to indicate that this expansion profile is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+    /*A Boolean value to indicate that this expansion profile is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.
      */  "name": "experimental", 
     
       "min": "0", 
@@ -17975,7 +20039,7 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "boolean",
       "isPrimitive": true }, 
     { 
-    /*The date  (and optionally time) when the expansion profile was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the expansion profile changes.
+    /*The date  (and optionally time) when the expansion profile was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the expansion profile changes.
      */  "name": "date", 
     
       "min": "0", 
@@ -17983,7 +20047,7 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*The name of the individual or organization that published the expansion profile.
+    /*The name of the organization or individual that published the expansion profile.
      */  "name": "publisher", 
     
       "min": "0", 
@@ -18340,6 +20404,14 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
+    /*Complete (Bill or Claim), Proposed (Pre-Authorization), Exploratory (Pre-determination).
+     */  "name": "use", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Use",
+      "isPrimitive": true }, 
+    { 
     /*Patient Resource.
      */  "name": "patient", 
     
@@ -18388,14 +20460,6 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*The provider which is responsible for the claim.
-     */  "name": "organization", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
     /*The referral resource which lists the date, practitioner, reason and other supporting information.
      */  "name": "referral", 
     
@@ -18433,8 +20497,8 @@ This would be used for a case where an admission starts of as an emergency encou
     
       "min": "0", 
       "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
+      "type": "ClaimProcessingCodes",
+      "isPrimitive": true }, 
     { 
     /*A description of the status of the adjudication.
      */  "name": "disposition", 
@@ -18532,22 +20596,6 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "ExplanationOfBenefit.Accident",
       "isPrimitive": false }, 
     { 
-    /*The start and optional end dates of when the patient was precluded from working due to the treatable condition(s).
-     */  "name": "employmentImpacted", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Period",
-      "isPrimitive": false }, 
-    { 
-    /*The start and optional end dates of when the patient was confined to a treatment center.
-     */  "name": "hospitalization", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Period",
-      "isPrimitive": false }, 
-    { 
     /*First tier of goods and services.
      */  "name": "item", 
     
@@ -18564,28 +20612,12 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "ExplanationOfBenefit.AddItem",
       "isPrimitive": false }, 
     { 
-    /*The total cost of the services reported.
-     */  "name": "totalCost", 
+    /*Totals for amounts submitted, co-pays, benefits payable etc.
+     */  "name": "total", 
     
       "min": "0", 
-      "max": "1", 
-      "type": "Money",
-      "isPrimitive": false }, 
-    { 
-    /*The amount of deductable applied which was not allocated to any particular service line.
-     */  "name": "unallocDeductable", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Money",
-      "isPrimitive": false }, 
-    { 
-    /*Total amount of benefit payable (Equal to sum of the Benefit amounts from all detail lines and additions less the Unallocated Deductable).
-     */  "name": "totalBenefit", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Money",
+      "max": "unbounded", 
+      "type": "ExplanationOfBenefit.Total",
       "isPrimitive": false }, 
     { 
     /*Payment details for the claim if the claim has been paid.
@@ -18673,11 +20705,11 @@ This would be used for a case where an admission starts of as an emergency encou
       "isPrimitive": false }, 
     { 
     /*organization | patient | practitioner | relatedperson.
-     */  "name": "resourceType", 
+     */  "name": "resource", 
     
       "min": "0", 
       "max": "1", 
-      "type": "CodeableConcept",
+      "type": "Coding",
       "isPrimitive": false }, 
     { 
     /*Party to be reimbursed: Subscriber, provider, other.
@@ -18740,6 +20772,12 @@ This would be used for a case where an admission starts of as an emergency encou
     [ /* Choice */ 
     /*Additional data or information such as resources, documents, images etc. including references to the data or the actual inclusion of the data.
      */
+        {   "name": "valueBoolean", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "boolean",
+          "isPrimitive": true }, 
         {   "name": "valueString", 
         
           "min": "1", 
@@ -19003,7 +21041,7 @@ This would be used for a case where an admission starts of as an emergency encou
       "isPrimitive": true }, 
     { 
     /*Careteam applicable for this service or product line.
-     */  "name": "careTeamLinkId", 
+     */  "name": "careTeamSequence", 
     
       "min": "0", 
       "max": "unbounded", 
@@ -19011,7 +21049,7 @@ This would be used for a case where an admission starts of as an emergency encou
       "isPrimitive": true }, 
     { 
     /*Diagnosis applicable for this service or product line.
-     */  "name": "diagnosisLinkId", 
+     */  "name": "diagnosisSequence", 
     
       "min": "0", 
       "max": "unbounded", 
@@ -19019,7 +21057,7 @@ This would be used for a case where an admission starts of as an emergency encou
       "isPrimitive": true }, 
     { 
     /*Procedures applicable for this service or product line.
-     */  "name": "procedureLinkId", 
+     */  "name": "procedureSequence", 
     
       "min": "0", 
       "max": "unbounded", 
@@ -19027,7 +21065,7 @@ This would be used for a case where an admission starts of as an emergency encou
       "isPrimitive": true }, 
     { 
     /*Exceptions, special conditions and supporting information pplicable for this service or product line.
-     */  "name": "informationLinkId", 
+     */  "name": "informationSequence", 
     
       "min": "0", 
       "max": "unbounded", 
@@ -19152,7 +21190,7 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*Physical service site on the patient (limb, tooth, etc).
+    /*Physical service site on the patient (limb, tooth, etc.).
      */  "name": "bodySite", 
     
       "min": "0", 
@@ -19259,14 +21297,6 @@ This would be used for a case where an admission starts of as an emergency encou
       "max": "1", 
       "type": "positiveInt",
       "isPrimitive": true }, 
-    { 
-    /*The type of product or service.
-     */  "name": "type", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
     { 
     /*The type of reveneu or cost center providing the product and/or service.
      */  "name": "revenue", 
@@ -19390,14 +21420,6 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "positiveInt",
       "isPrimitive": true }, 
     { 
-    /*The type of product or service.
-     */  "name": "type", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
     /*The type of reveneu or cost center providing the product and/or service.
      */  "name": "revenue", 
     
@@ -19505,28 +21527,28 @@ This would be used for a case where an admission starts of as an emergency encou
   "elems": [
     { 
     /*List of input service items which this service line is intended to replace.
-     */  "name": "sequenceLinkId", 
+     */  "name": "itemSequence", 
     
       "min": "0", 
       "max": "unbounded", 
       "type": "positiveInt",
       "isPrimitive": true }, 
     { 
-    /*The type of reveneu or cost center providing the product and/or service.
-     */  "name": "revenue", 
+    /*The sequence number of the addition within the line item submitted which contains the error. This value is omitted when the error is not related to an Addition.
+     */  "name": "detailSequence", 
     
       "min": "0", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
+      "max": "unbounded", 
+      "type": "positiveInt",
+      "isPrimitive": true }, 
     { 
-    /*Health Care Service Type Codes  to identify the classification of service or benefits.
-     */  "name": "category", 
+    /*The sequence number of the addition within the line item submitted which contains the error. This value is omitted when the error is not related to an Addition.
+     */  "name": "subDetailSequence", 
     
       "min": "0", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
+      "max": "unbounded", 
+      "type": "positiveInt",
+      "isPrimitive": true }, 
     { 
     /*If this is an actual service or product line, ie. not a Group, then use code to indicate the Professional Service or Product supplied (eg. CTP, HCPCS,USCLS,ICD10, NCPDP,DIN,ACHI,CCI). If a grouping item then use a group code to indicate the type of thing being grouped eg. 'glasses' or 'compound'.
      */  "name": "service", 
@@ -19567,79 +21589,31 @@ This would be used for a case where an admission starts of as an emergency encou
       "max": "unbounded", 
       "type": "ExplanationOfBenefit.Adjudication",
       "isPrimitive": false }, 
-    { 
-    /*The second tier service adjudications for payor added services.
-     */  "name": "detail", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "ExplanationOfBenefit.Detail1",
-      "isPrimitive": false }, 
   ]
 },
-"ExplanationOfBenefit.Detail1": {
+"ExplanationOfBenefit.Total": {
     /*This resource provides: the claim details; adjudication details from the processing of a Claim; and optionally account balance information, for informing the subscriber of the benefits provided.
      */
-  "name": "ExplanationOfBenefit.Detail1",
+  "name": "ExplanationOfBenefit.Total",
   "base": "BackboneElement", 
   "attrs": [
   ],
   "elems": [
     { 
-    /*The type of reveneu or cost center providing the product and/or service.
-     */  "name": "revenue", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*Health Care Service Type Codes  to identify the classification of service or benefits.
+    /*Code indicating: Submitted, Co-Pay, deductable, elegible, benefit, tax, etc.
      */  "name": "category", 
     
-      "min": "0", 
+      "min": "1", 
       "max": "1", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*A code to indicate the Professional Service or Product supplied (eg. CTP, HCPCS,USCLS,ICD10, NCPDP,DIN,ACHI,CCI).
-     */  "name": "service", 
+    /*Monitory amount associated with the code.
+     */  "name": "amount", 
     
-      "min": "0", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*Item typification or modifiers codes, eg for Oral whether the treatment is cosmetic or associated with TMJ, or for medical whether the treatment was outside the clinic or out of office hours.
-     */  "name": "modifier", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*The fee charged for the professional service or product.
-     */  "name": "fee", 
-    
-      "min": "0", 
+      "min": "1", 
       "max": "1", 
       "type": "Money",
-      "isPrimitive": false }, 
-    { 
-    /*A list of note references to the notes provided below.
-     */  "name": "noteNumber", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "positiveInt",
-      "isPrimitive": true }, 
-    { 
-    /*The adjudications results.
-     */  "name": "adjudication", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "ExplanationOfBenefit.Adjudication",
       "isPrimitive": false }, 
   ]
 },
@@ -19723,8 +21697,8 @@ This would be used for a case where an admission starts of as an emergency encou
     
       "min": "0", 
       "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
+      "type": "NoteType",
+      "isPrimitive": true }, 
     { 
     /*The note text.
      */  "name": "text", 
@@ -19895,7 +21869,7 @@ This would be used for a case where an admission starts of as an emergency encou
   ]
 },
 "FamilyMemberHistory": {
-    /*Significant health events and conditions for a person related to the patient relevant in the context of care for the patient.If the element is present, it must have either a @value, an @id, or extensions
+    /*Significant health conditions for a person related to the patient relevant in the context of care for the patient.If the element is present, it must have either a @value, an @id, or extensions
      */
   "name": "FamilyMemberHistory",
   "base": "DomainResource", 
@@ -19903,7 +21877,7 @@ This would be used for a case where an admission starts of as an emergency encou
   ],
   "elems": [
     { 
-    /*This records identifiers associated with this family member history record that are defined by business processes and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
+    /*Business identifiers assigned to this family member history by the performer or other systems which remain constant as the resource is updated and propagates from server to server.
      */  "name": "identifier", 
     
       "min": "0", 
@@ -19912,12 +21886,12 @@ This would be used for a case where an admission starts of as an emergency encou
       "isPrimitive": false }, 
     { 
     /*A protocol or questionnaire that was adhered to in whole or in part by this event.
-     */  "name": "definition", 
+     */  "name": "instantiates", 
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
+      "type": "uri",
+      "isPrimitive": true }, 
     { 
     /*A code specifying the status of the record of the family history of a specific family member.
      */  "name": "status", 
@@ -19927,16 +21901,8 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "FamilyHistoryStatus",
       "isPrimitive": true }, 
     { 
-    /*If true, indicates the taking of an individual family member's history did not occur. The notDone element should not be used to document negated conditions, such as a family member that did not have a condition.
-     */  "name": "notDone", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "boolean",
-      "isPrimitive": true }, 
-    { 
-    /*Describes why the family member's history is absent.
-     */  "name": "notDoneReason", 
+    /*Describes why the family member's history is not available.
+     */  "name": "dataAbsentReason", 
     
       "min": "0", 
       "max": "1", 
@@ -19951,7 +21917,7 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*The date (and possibly time) when the family member history was taken.
+    /*The date (and possibly time) when the family member history was recorded or last updated.
      */  "name": "date", 
     
       "min": "0", 
@@ -20103,7 +22069,7 @@ This would be used for a case where an admission starts of as an emergency encou
   ]
 },
 "FamilyMemberHistory.Condition": {
-    /*Significant health events and conditions for a person related to the patient relevant in the context of care for the patient.
+    /*Significant health conditions for a person related to the patient relevant in the context of care for the patient.
      */
   "name": "FamilyMemberHistory.Condition",
   "base": "BackboneElement", 
@@ -20186,7 +22152,7 @@ This would be used for a case where an admission starts of as an emergency encou
   ],
   "elems": [
     { 
-    /*Identifier assigned to the flag for external use (outside the FHIR environment).
+    /*Business identifiers assigned to this flag by the performer or other systems which remain constant as the resource is updated and propagates from server to server.
      */  "name": "identifier", 
     
       "min": "0", 
@@ -20202,11 +22168,11 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "FlagStatus",
       "isPrimitive": true }, 
     { 
-    /*Allows an flag to be divided into different categories like clinical, administrative etc. Intended to be used as a means of filtering which flags are displayed to particular user or in a given context.
+    /*Allows a flag to be divided into different categories like clinical, administrative etc. Intended to be used as a means of filtering which flags are displayed to particular user or in a given context.
      */  "name": "category", 
     
       "min": "0", 
-      "max": "1", 
+      "max": "unbounded", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
@@ -20218,7 +22184,7 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*The patient, location, group , organization , or practitioner, etc. this is about record this flag is associated with.
+    /*The patient, location, group, organization, or practitioner etc. this is about record this flag is associated with.
      */  "name": "subject", 
     
       "min": "1", 
@@ -20273,7 +22239,7 @@ This would be used for a case where an admission starts of as an emergency encou
   ],
   "elems": [
     { 
-    /*This records identifiers associated with this care plan that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
+    /*Business identifiers assigned to this goal by the performer or other systems which remain constant as the resource is updated and propagates from server to server.
      */  "name": "identifier", 
     
       "min": "0", 
@@ -20316,7 +22282,7 @@ This would be used for a case where an admission starts of as an emergency encou
     /*Identifies the patient, group or organization for whom the goal is being established.
      */  "name": "subject", 
     
-      "min": "0", 
+      "min": "1", 
       "max": "1", 
       "type": "Reference",
       "isPrimitive": false }, 
@@ -20480,7 +22446,7 @@ This would be used for a case where an admission starts of as an emergency encou
   ],
   "elems": [
     { 
-    /*An absolute URI that is used to identify this graph definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this graph definition is (or will be) published. The URL SHOULD include the major version of the graph definition. For more information see [Technical and Business Versions](resource.html#versions).
+    /*An absolute URI that is used to identify this graph definition when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which this graph definition is (or will be) published.
      */  "name": "url", 
     
       "min": "0", 
@@ -20512,7 +22478,7 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "PublicationStatus",
       "isPrimitive": true }, 
     { 
-    /*A boolean value to indicate that this graph definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+    /*A Boolean value to indicate that this graph definition is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.
      */  "name": "experimental", 
     
       "min": "0", 
@@ -20520,7 +22486,7 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "boolean",
       "isPrimitive": true }, 
     { 
-    /*The date  (and optionally time) when the graph definition was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the graph definition changes.
+    /*The date  (and optionally time) when the graph definition was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the graph definition changes.
      */  "name": "date", 
     
       "min": "0", 
@@ -20528,7 +22494,7 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*The name of the individual or organization that published the graph definition.
+    /*The name of the organization or individual that published the graph definition.
      */  "name": "publisher", 
     
       "min": "0", 
@@ -20568,7 +22534,7 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Explaination of why this graph definition is needed and why it has been designed as it has.
+    /*Explanation of why this graph definition is needed and why it has been designed as it has.
      */  "name": "purpose", 
     
       "min": "0", 
@@ -20589,7 +22555,7 @@ This would be used for a case where an admission starts of as an emergency encou
     
       "min": "0", 
       "max": "1", 
-      "type": "uri",
+      "type": "canonical",
       "isPrimitive": true }, 
     { 
     /*Links this graph makes rules about.
@@ -20610,10 +22576,10 @@ This would be used for a case where an admission starts of as an emergency encou
   ],
   "elems": [
     { 
-    /*Path in the resource that contains the link.
+    /*A FHIR expression that identifies one of FHIR References to other resources.
      */  "name": "path", 
     
-      "min": "1", 
+      "min": "0", 
       "max": "1", 
       "type": "string",
       "isPrimitive": true }, 
@@ -20653,7 +22619,7 @@ This would be used for a case where an admission starts of as an emergency encou
     /*Potential target for the link.
      */  "name": "target", 
     
-      "min": "1", 
+      "min": "0", 
       "max": "unbounded", 
       "type": "GraphDefinition.Target",
       "isPrimitive": false }, 
@@ -20676,12 +22642,20 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "ResourceType",
       "isPrimitive": true }, 
     { 
+    /*A set of parameters to look up.
+     */  "name": "params", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
     /*Profile for the target resource.
      */  "name": "profile", 
     
       "min": "0", 
       "max": "1", 
-      "type": "uri",
+      "type": "canonical",
       "isPrimitive": true }, 
     { 
     /*Compartment Consistency Rules.
@@ -20709,6 +22683,14 @@ This would be used for a case where an admission starts of as an emergency encou
   "attrs": [
   ],
   "elems": [
+    { 
+    /*Defines how the compartment rule is used - whether it it is used to test whether resources are subject to the rule, or whether it is a rule that must be followed.
+     */  "name": "use", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "GraphCompartmentUse",
+      "isPrimitive": true }, 
     { 
     /*Identifies the compartment.
      */  "name": "code", 
@@ -20741,6 +22723,19 @@ This would be used for a case where an admission starts of as an emergency encou
       "max": "1", 
       "type": "string",
       "isPrimitive": true }, 
+  ]
+},
+"GraphCompartmentUse": {
+    /*Defines how a compartment rule is usedIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "GraphCompartmentUse",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "GraphCompartmentUse-list" }, 
+  ],
+  "elems": [
   ]
 },
 "GraphCompartmentRule": {
@@ -20964,21 +22959,35 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "id",
       "isPrimitive": true }, 
     { 
-    /*Allows a service to provide a unique, business identifier for the response.
+    /*Allows a service to provide  unique, business identifiers for the response.
      */  "name": "identifier", 
     
       "min": "0", 
-      "max": "1", 
+      "max": "unbounded", 
       "type": "Identifier",
       "isPrimitive": false }, 
-    { 
-    /*A reference to the knowledge module that was invoked.
-     */  "name": "module", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
+    [ /* Choice */ 
+    /*An identifier, CodeableConcept or canonical reference to the guidance that was requested.
+     */
+        {   "name": "moduleUri", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "uri",
+          "isPrimitive": true }, 
+        {   "name": "moduleCanonical", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "canonical",
+          "isPrimitive": true }, 
+        {   "name": "moduleCodeableConcept", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "CodeableConcept",
+          "isPrimitive": false }, 
+    ], 
     { 
     /*The status of the response. If the evaluation is completed successfully, the status will indicate success. However, in order to complete the evaluation, the engine may require more information. In this case, the status will be data-required, and the response will contain a description of the additional required information. If the evaluation completed successfully, but the engine determines that a potentially more accurate response could be provided if more data was available, the status will be data-requested, and the response will contain a description of the additional requested information.
      */  "name": "status", 
@@ -21019,22 +23028,22 @@ This would be used for a case where an admission starts of as an emergency encou
       "max": "1", 
       "type": "Reference",
       "isPrimitive": false }, 
-    [ /* Choice */ 
+    { 
+    /*Describes the reason for the guidance response in coded or textual form.
+     */  "name": "reasonCode", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
     /*Indicates the reason the request was initiated. This is typically provided as a parameter to the evaluation and echoed by the service, although for some use cases, such as subscription- or event-based scenarios, it may provide an indication of the cause for the response.
-     */
-        {   "name": "reasonCodeableConcept", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "CodeableConcept",
-          "isPrimitive": false }, 
-        {   "name": "reasonReference", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Reference",
-          "isPrimitive": false }, 
-    ], 
+     */  "name": "reasonReference", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
     { 
     /*Provides a mechanism to communicate additional information about the response.
      */  "name": "note", 
@@ -21107,7 +23116,7 @@ This would be used for a case where an admission starts of as an emergency encou
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
-    /*Whether this healthcareservice record is in active use.
+    /*This flag is used to mark the record to not be used. This is not used when a center is closed for maintenance, or for holidays, the notAvailable period is to be used for this.
      */  "name": "active", 
     
       "min": "0", 
@@ -21127,7 +23136,7 @@ This would be used for a case where an admission starts of as an emergency encou
      */  "name": "category", 
     
       "min": "0", 
-      "max": "1", 
+      "max": "unbounded", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
@@ -21373,167 +23382,6 @@ This would be used for a case where an admission starts of as an emergency encou
   "elems": [
   ]
 },
-"ImagingManifest": {
-    /*A text description of the DICOM SOP instances selected in the ImagingManifest; or the reason for, or significance of, the selection.If the element is present, it must have either a @value, an @id, or extensions
-     */
-  "name": "ImagingManifest",
-  "base": "DomainResource", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*Unique identifier of the DICOM Key Object Selection (KOS) that this resource represents.
-     */  "name": "identifier", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Identifier",
-      "isPrimitive": false }, 
-    { 
-    /*A patient resource reference which is the patient subject of all DICOM SOP Instances in this ImagingManifest.
-     */  "name": "patient", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*Date and time when the selection of the referenced instances were made. It is (typically) different from the creation date of the selection resource, and from dates associated with the referenced instances (e.g. capture time of the referenced image).
-     */  "name": "authoringTime", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "dateTime",
-      "isPrimitive": true }, 
-    { 
-    /*Author of ImagingManifest. It can be a human author or a device which made the decision of the SOP instances selected. For example, a radiologist selected a set of imaging SOP instances to attach in a diagnostic report, and a CAD application may author a selection to describe SOP instances it used to generate a detection conclusion.
-     */  "name": "author", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*Free text narrative description of the ImagingManifest.  
-The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions (e.g. Best in Set, Complete Study Content). Note that those values cover the wide range of uses of the DICOM Key Object Selection object, several of which are not supported by ImagingManifest. Specifically, there is no expected behavior associated with descriptions that suggest referenced images be removed or not used.
-     */  "name": "description", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*Study identity and locating information of the DICOM SOP instances in the selection.
-     */  "name": "study", 
-    
-      "min": "1", 
-      "max": "unbounded", 
-      "type": "ImagingManifest.Study",
-      "isPrimitive": false }, 
-  ]
-},
-"ImagingManifest.Study": {
-    /*A text description of the DICOM SOP instances selected in the ImagingManifest; or the reason for, or significance of, the selection.
-     */
-  "name": "ImagingManifest.Study",
-  "base": "BackboneElement", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*Study instance UID of the SOP instances in the selection.
-     */  "name": "uid", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "oid",
-      "isPrimitive": true }, 
-    { 
-    /*Reference to the Imaging Study in FHIR form.
-     */  "name": "imagingStudy", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*The network service providing access (e.g., query, view, or retrieval) for the study. See implementation notes for information about using DICOM endpoints. A study-level endpoint applies to each series in the study, unless overridden by a series-level endpoint with the same Endpoint.type.
-     */  "name": "endpoint", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*Series identity and locating information of the DICOM SOP instances in the selection.
-     */  "name": "series", 
-    
-      "min": "1", 
-      "max": "unbounded", 
-      "type": "ImagingManifest.Series",
-      "isPrimitive": false }, 
-  ]
-},
-"ImagingManifest.Series": {
-    /*A text description of the DICOM SOP instances selected in the ImagingManifest; or the reason for, or significance of, the selection.
-     */
-  "name": "ImagingManifest.Series",
-  "base": "BackboneElement", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*Series instance UID of the SOP instances in the selection.
-     */  "name": "uid", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "oid",
-      "isPrimitive": true }, 
-    { 
-    /*The network service providing access (e.g., query, view, or retrieval) for this series. See implementation notes for information about using DICOM endpoints. A series-level endpoint, if present, has precedence over a study-level endpoint with the same Endpoint.type.
-     */  "name": "endpoint", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*Identity and locating information of the selected DICOM SOP instances.
-     */  "name": "instance", 
-    
-      "min": "1", 
-      "max": "unbounded", 
-      "type": "ImagingManifest.Instance",
-      "isPrimitive": false }, 
-  ]
-},
-"ImagingManifest.Instance": {
-    /*A text description of the DICOM SOP instances selected in the ImagingManifest; or the reason for, or significance of, the selection.
-     */
-  "name": "ImagingManifest.Instance",
-  "base": "BackboneElement", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*SOP class UID of the selected instance.
-     */  "name": "sopClass", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "oid",
-      "isPrimitive": true }, 
-    { 
-    /*SOP Instance UID of the selected instance.
-     */  "name": "uid", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "oid",
-      "isPrimitive": true }, 
-  ]
-},
 "ImagingStudy": {
     /*Representation of the content produced in a DICOM imaging study. A study comprises a set of series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A series is of only one modality (e.g. X-ray, CT, MR, ultrasound), but a study may have multiple series of different modalities.If the element is present, it must have either a @value, an @id, or extensions
      */
@@ -21543,23 +23391,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
   ],
   "elems": [
     { 
-    /*Formal identifier for the study.
-     */  "name": "uid", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "oid",
-      "isPrimitive": true }, 
-    { 
-    /*Accession Number is an identifier related to some aspect of imaging workflow and data management. Usage may vary across different institutions.  See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Rev13.0_Vol1_FT_2014-07-30.pdf).
-     */  "name": "accession", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Identifier",
-      "isPrimitive": false }, 
-    { 
-    /*Other identifiers for the study.
+    /*DICOM Study Instance UID, and Accession Number.
      */  "name": "identifier", 
     
       "min": "0", 
@@ -21567,24 +23399,24 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
-    /*Availability of study (online, offline, or nearline).
-     */  "name": "availability", 
+    /*The current state of the ImagingStudy.
+     */  "name": "status", 
     
-      "min": "0", 
+      "min": "1", 
       "max": "1", 
-      "type": "InstanceAvailability",
+      "type": "ImagingStudyStatus",
       "isPrimitive": true }, 
     { 
-    /*A list of all the Series.ImageModality values that are actual acquisition modalities, i.e. those in the DICOM Context Group 29 (value set OID 1.2.840.10008.6.1.19).
-     */  "name": "modalityList", 
+    /*A list of all the series.modality values that are actual acquisition modalities, i.e. those in the DICOM Context Group 29 (value set OID 1.2.840.10008.6.1.19).
+     */  "name": "modality", 
     
       "min": "0", 
       "max": "unbounded", 
       "type": "Coding",
       "isPrimitive": false }, 
     { 
-    /*The patient imaged in the study.
-     */  "name": "patient", 
+    /*The subject, typically a patient, of the imaging study.
+     */  "name": "subject", 
     
       "min": "1", 
       "max": "1", 
@@ -21631,7 +23463,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*The network service providing access (e.g., query, view, or retrieval) for the study. See implementation notes for information about using DICOM endpoints. A study-level endpoint applies to each series in the study, unless overridden by a series-level endpoint with the same Endpoint.type.
+    /*The network service providing access (e.g., query, view, or retrieval) for the study. See implementation notes for information about using DICOM endpoints. A study-level endpoint applies to each series in the study, unless overridden by a series-level endpoint with the same Endpoint.connectionType.
      */  "name": "endpoint", 
     
       "min": "0", 
@@ -21659,7 +23491,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
      */  "name": "procedureReference", 
     
       "min": "0", 
-      "max": "unbounded", 
+      "max": "1", 
       "type": "Reference",
       "isPrimitive": false }, 
     { 
@@ -21671,21 +23503,37 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Description of clinical condition indicating why the ImagingStudy was requested.
-     */  "name": "reason", 
+    /*The principal physical location where the ImagingStudy was performed.
+     */  "name": "location", 
     
       "min": "0", 
       "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Description of clinical condition indicating why the ImagingStudy was requested.
+     */  "name": "reasonCode", 
+    
+      "min": "0", 
+      "max": "unbounded", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Institution-generated description or classification of the Study performed.
-     */  "name": "description", 
+    /*Indicates another resource whose existence justifies this Study.
+     */  "name": "reasonReference", 
     
       "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Institution-generated description or classification of the Study performed.
+     */  "name": "note", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Annotation",
+      "isPrimitive": false }, 
     { 
     /*Each study has one or more series of images or other content.
      */  "name": "series", 
@@ -21706,12 +23554,12 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
   "elems": [
     { 
     /*Formal identifier for this series.
-     */  "name": "uid", 
+     */  "name": "identifier", 
     
       "min": "1", 
       "max": "1", 
-      "type": "oid",
-      "isPrimitive": true }, 
+      "type": "Identifier",
+      "isPrimitive": false }, 
     { 
     /*The numeric identifier of this series in the study.
      */  "name": "number", 
@@ -21745,15 +23593,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "unsignedInt",
       "isPrimitive": true }, 
     { 
-    /*Availability of series (online, offline or nearline).
-     */  "name": "availability", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "InstanceAvailability",
-      "isPrimitive": true }, 
-    { 
-    /*The network service providing access (e.g., query, view, or retrieval) for this series. See implementation notes for information about using DICOM endpoints. A series-level endpoint, if present, has precedence over a study-level endpoint with the same Endpoint.type.
+    /*The network service providing access (e.g., query, view, or retrieval) for this series. See implementation notes for information about using DICOM endpoints. A series-level endpoint, if present, has precedence over a study-level endpoint with the same Endpoint.connectionType.
      */  "name": "endpoint", 
     
       "min": "0", 
@@ -21777,6 +23617,14 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "Coding",
       "isPrimitive": false }, 
     { 
+    /*The specimen imaged, e.g., for whole slide imaging of a biopsy.
+     */  "name": "specimen", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
     /*The date and time the series was started.
      */  "name": "started", 
     
@@ -21785,12 +23633,12 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*The physician or operator (often the radiology technician)  who performed the series. The performer is recorded at the series level, since each series in a study may be performed by a different practitioner, at different times, and using different devices. A series may be performed by multiple practitioners.
+    /*Indicates who or what performed the series and how they were involved.
      */  "name": "performer", 
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "Reference",
+      "type": "ImagingStudy.Performer",
       "isPrimitive": false }, 
     { 
     /*A single SOP instance within the series, e.g. an image, or presentation state.
@@ -21799,6 +23647,32 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "min": "0", 
       "max": "unbounded", 
       "type": "ImagingStudy.Instance",
+      "isPrimitive": false }, 
+  ]
+},
+"ImagingStudy.Performer": {
+    /*Representation of the content produced in a DICOM imaging study. A study comprises a set of series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A series is of only one modality (e.g. X-ray, CT, MR, ultrasound), but a study may have multiple series of different modalities.
+     */
+  "name": "ImagingStudy.Performer",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Distinguishes the type of involvement of the performer in the series.
+     */  "name": "function", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Indicates who or what performed the series.
+     */  "name": "actor", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Reference",
       "isPrimitive": false }, 
   ]
 },
@@ -21812,12 +23686,12 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
   "elems": [
     { 
     /*Formal identifier for this image or other content.
-     */  "name": "uid", 
+     */  "name": "identifier", 
     
       "min": "1", 
       "max": "1", 
-      "type": "oid",
-      "isPrimitive": true }, 
+      "type": "Identifier",
+      "isPrimitive": false }, 
     { 
     /*The number of instance in the series.
      */  "name": "number", 
@@ -21832,8 +23706,8 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
     
       "min": "1", 
       "max": "1", 
-      "type": "oid",
-      "isPrimitive": true }, 
+      "type": "Coding",
+      "isPrimitive": false }, 
     { 
     /*The description of the instance.
      */  "name": "title", 
@@ -21844,21 +23718,21 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "isPrimitive": true }, 
   ]
 },
-"InstanceAvailability": {
-    /*Availability of the resourceIf the element is present, it must have either a @value, an @id, or extensions
+"ImagingStudyStatus": {
+    /*The status of the ImagingStudyIf the element is present, it must have either a @value, an @id, or extensions
      */
-  "name": "InstanceAvailability",
+  "name": "ImagingStudyStatus",
   "base": "Element", 
   "attrs": [
     { 
       "name": "value", 
-      "type": "InstanceAvailability-list" }, 
+      "type": "ImagingStudyStatus-list" }, 
   ],
   "elems": [
   ]
 },
 "Immunization": {
-    /*Describes the event of a patient being administered a vaccination or a record of a vaccination as reported by a patient, a clinician or another party and may include vaccine reaction information and what vaccination protocol was followed.If the element is present, it must have either a @value, an @id, or extensions
+    /*Describes the event of a patient being administered a vaccine or a record of an immunization as reported by a patient, a clinician or another party.If the element is present, it must have either a @value, an @id, or extensions
      */
   "name": "Immunization",
   "base": "DomainResource", 
@@ -21874,7 +23748,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
-    /*Indicates the current status of the vaccination event.
+    /*Indicates the current status of the immunization event.
      */  "name": "status", 
     
       "min": "1", 
@@ -21882,13 +23756,13 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "ImmunizationStatusCodes",
       "isPrimitive": true }, 
     { 
-    /*Indicates if the vaccination was or was not given.
-     */  "name": "notGiven", 
+    /*Indicates the reason the immunization event was not performed.
+     */  "name": "statusReason", 
     
-      "min": "1", 
+      "min": "0", 
       "max": "1", 
-      "type": "boolean",
-      "isPrimitive": true }, 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
     { 
     /*Vaccine that was administered or was to be administered.
      */  "name": "vaccineCode", 
@@ -21994,12 +23868,12 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "Quantity",
       "isPrimitive": false }, 
     { 
-    /*Indicates who or what performed the event.
-     */  "name": "practitioner", 
+    /*Indicates who performed the immunization event.
+     */  "name": "performer", 
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "Immunization.Practitioner",
+      "type": "Immunization.Performer",
       "isPrimitive": false }, 
     { 
     /*Extra information about the immunization that is not conveyed by the other attributes.
@@ -22010,49 +23884,81 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "Annotation",
       "isPrimitive": false }, 
     { 
-    /*Reasons why a vaccine was or was not administered.
-     */  "name": "explanation", 
+    /*Reasons why the vaccine was administered.
+     */  "name": "reasonCode", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Condition, Observation or DiagnosticReport that supports why the immunization was administered.
+     */  "name": "reasonReference", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Indication if a dose is considered to be subpotent. By default, a dose should be considered to be potent.
+     */  "name": "isPotent", 
     
       "min": "0", 
       "max": "1", 
-      "type": "Immunization.Explanation",
-      "isPrimitive": false }, 
+      "type": "boolean",
+      "isPrimitive": true }, 
     { 
-    /*Categorical data indicating that an adverse event is associated in time to an immunization.
-     */  "name": "reaction", 
+    /*Reason why a dose is considered to be subpotent.
+     */  "name": "subpotentReason", 
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "Immunization.Reaction",
+      "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Contains information about the protocol(s) under which the vaccine was administered.
-     */  "name": "vaccinationProtocol", 
+    /*Educational material presented to the patient (or guardian) at the time of vaccine administration.
+     */  "name": "education", 
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "Immunization.VaccinationProtocol",
+      "type": "Immunization.Education",
+      "isPrimitive": false }, 
+    { 
+    /*Indicates a patient's eligibility for a funding program.
+     */  "name": "programEligibility", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Indicates the source of the vaccine actually administered. This may be different than the patient eligibility (e.g. the patient may be eligible for a publically purchased vaccine but due to inventory issues, vaccine purchased with private funds was actually administered).
+     */  "name": "fundingSource", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
       "isPrimitive": false }, 
   ]
 },
-"Immunization.Practitioner": {
-    /*Describes the event of a patient being administered a vaccination or a record of a vaccination as reported by a patient, a clinician or another party and may include vaccine reaction information and what vaccination protocol was followed.
+"Immunization.Performer": {
+    /*Describes the event of a patient being administered a vaccine or a record of an immunization as reported by a patient, a clinician or another party.
      */
-  "name": "Immunization.Practitioner",
+  "name": "Immunization.Performer",
   "base": "BackboneElement", 
   "attrs": [
   ],
   "elems": [
     { 
     /*Describes the type of performance (e.g. ordering provider, administering provider, etc.).
-     */  "name": "role", 
+     */  "name": "function", 
     
       "min": "0", 
       "max": "1", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*The device, practitioner, etc. who performed the action.
+    /*The practitioner or organization who performed the action.
      */  "name": "actor", 
     
       "min": "1", 
@@ -22061,138 +23967,46 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "isPrimitive": false }, 
   ]
 },
-"Immunization.Explanation": {
-    /*Describes the event of a patient being administered a vaccination or a record of a vaccination as reported by a patient, a clinician or another party and may include vaccine reaction information and what vaccination protocol was followed.
+"Immunization.Education": {
+    /*Describes the event of a patient being administered a vaccine or a record of an immunization as reported by a patient, a clinician or another party.
      */
-  "name": "Immunization.Explanation",
+  "name": "Immunization.Education",
   "base": "BackboneElement", 
   "attrs": [
   ],
   "elems": [
     { 
-    /*Reasons why a vaccine was administered.
-     */  "name": "reason", 
+    /*Identifier of the material presented to the patient.
+     */  "name": "documentType", 
     
       "min": "0", 
-      "max": "unbounded", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
     { 
-    /*Reason why a vaccine was not administered.
-     */  "name": "reasonNotGiven", 
+    /*Reference pointer to the educational material given to the patient if the information was on line.
+     */  "name": "reference", 
     
       "min": "0", 
-      "max": "unbounded", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-  ]
-},
-"Immunization.Reaction": {
-    /*Describes the event of a patient being administered a vaccination or a record of a vaccination as reported by a patient, a clinician or another party and may include vaccine reaction information and what vaccination protocol was followed.
-     */
-  "name": "Immunization.Reaction",
-  "base": "BackboneElement", 
-  "attrs": [
-  ],
-  "elems": [
+      "max": "1", 
+      "type": "uri",
+      "isPrimitive": true }, 
     { 
-    /*Date of reaction to the immunization.
-     */  "name": "date", 
+    /*Date the educational material was published.
+     */  "name": "publicationDate", 
     
       "min": "0", 
       "max": "1", 
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*Details of the reaction.
-     */  "name": "detail", 
+    /*Date the educational material was given to the patient.
+     */  "name": "presentationDate", 
     
       "min": "0", 
       "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*Self-reported indicator.
-     */  "name": "reported", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "boolean",
+      "type": "dateTime",
       "isPrimitive": true }, 
-  ]
-},
-"Immunization.VaccinationProtocol": {
-    /*Describes the event of a patient being administered a vaccination or a record of a vaccination as reported by a patient, a clinician or another party and may include vaccine reaction information and what vaccination protocol was followed.
-     */
-  "name": "Immunization.VaccinationProtocol",
-  "base": "BackboneElement", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*Nominal position in a series.
-     */  "name": "doseSequence", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "positiveInt",
-      "isPrimitive": true }, 
-    { 
-    /*Contains the description about the protocol under which the vaccine was administered.
-     */  "name": "description", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*Indicates the authority who published the protocol.  E.g. ACIP.
-     */  "name": "authority", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*One possible path to achieve presumed immunity against a disease - within the context of an authority.
-     */  "name": "series", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*The recommended number of doses to achieve immunity.
-     */  "name": "seriesDoses", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "positiveInt",
-      "isPrimitive": true }, 
-    { 
-    /*The targeted disease.
-     */  "name": "targetDisease", 
-    
-      "min": "1", 
-      "max": "unbounded", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*Indicates if the immunization event should "count" against  the protocol.
-     */  "name": "doseStatus", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*Provides an explanation as to why an immunization event should or should not count against the protocol.
-     */  "name": "doseStatusReason", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
   ]
 },
 "ImmunizationStatusCodes": {
@@ -22208,8 +24022,151 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
   "elems": [
   ]
 },
+"ImmunizationEvaluation": {
+    /*Describes a comparison of an immunization event against published recommendations to determine if the administration is "valid" in relation to those  recommendations.If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "ImmunizationEvaluation",
+  "base": "DomainResource", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*A unique identifier assigned to this immunization evaluation record.
+     */  "name": "identifier", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*Indicates the current status of the evaluation of the vaccination administration event.
+     */  "name": "status", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "ImmunizationEvaluationStatusCodes",
+      "isPrimitive": true }, 
+    { 
+    /*The individual for whom the evaluation is being done.
+     */  "name": "patient", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*The date the evaluation of the vaccine administration event was performed.
+     */  "name": "date", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+    { 
+    /*Indicates the authority who published the protocol (e.g. ACIP).
+     */  "name": "authority", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*The vaccine preventable disease the dose is being evaluated against.
+     */  "name": "targetDisease", 
+    
+      "min": "1", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The vaccine administration event being evaluated.
+     */  "name": "immunizationEvent", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Indicates if the dose is valid or not valid with respect to the published recommendations.
+     */  "name": "doseStatus", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Provides an explanation as to why the vaccine administration event is valid or not relative to the published recommendations.
+     */  "name": "doseStatusReason", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Additional information about the evaluation.
+     */  "name": "description", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*One possible path to achieve presumed immunity against a disease - within the context of an authority.
+     */  "name": "series", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    [ /* Choice */ 
+    /*Nominal position in a series.
+     */
+        {   "name": "doseNumberPositiveInt", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "positiveInt",
+          "isPrimitive": true }, 
+        {   "name": "doseNumberString", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "string",
+          "isPrimitive": true }, 
+    ], 
+    [ /* Choice */ 
+    /*The recommended number of doses to achieve immunity.
+     */
+        {   "name": "seriesDosesPositiveInt", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "positiveInt",
+          "isPrimitive": true }, 
+        {   "name": "seriesDosesString", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "string",
+          "isPrimitive": true }, 
+    ], 
+  ]
+},
+"ImmunizationEvaluationStatusCodes": {
+    /*The status of the evaluation being doneIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "ImmunizationEvaluationStatusCodes",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "ImmunizationEvaluationStatusCodes-list" }, 
+  ],
+  "elems": [
+  ]
+},
 "ImmunizationRecommendation": {
-    /*A patient's point-in-time immunization and recommendation (i.e. forecasting a patient's immunization eligibility according to a published schedule) with optional supporting justification.If the element is present, it must have either a @value, an @id, or extensions
+    /*A patient's point-in-time set of recommendations (i.e. forecasting) according to a published schedule with optional supporting justification.If the element is present, it must have either a @value, an @id, or extensions
      */
   "name": "ImmunizationRecommendation",
   "base": "DomainResource", 
@@ -22225,10 +24182,26 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
-    /*The patient the recommendations are for.
+    /*The patient the recommendation(s) are for.
      */  "name": "patient", 
     
       "min": "1", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*The date the immunization recommendation(s) were created.
+     */  "name": "date", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+    { 
+    /*Indicates the authority who published the protocol (e.g. ACIP).
+     */  "name": "authority", 
+    
+      "min": "0", 
       "max": "1", 
       "type": "Reference",
       "isPrimitive": false }, 
@@ -22243,7 +24216,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
   ]
 },
 "ImmunizationRecommendation.Recommendation": {
-    /*A patient's point-in-time immunization and recommendation (i.e. forecasting a patient's immunization eligibility according to a published schedule) with optional supporting justification.
+    /*A patient's point-in-time set of recommendations (i.e. forecasting) according to a published schedule with optional supporting justification.
      */
   "name": "ImmunizationRecommendation.Recommendation",
   "base": "BackboneElement", 
@@ -22251,19 +24224,11 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
   ],
   "elems": [
     { 
-    /*The date the immunization recommendation was created.
-     */  "name": "date", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "dateTime",
-      "isPrimitive": true }, 
-    { 
-    /*Vaccine that pertains to the recommendation.
+    /*Vaccine(s) or vaccine group that pertain to the recommendation.
      */  "name": "vaccineCode", 
     
       "min": "0", 
-      "max": "1", 
+      "max": "unbounded", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
@@ -22275,19 +24240,27 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*The next recommended dose number (e.g. dose 2 is the next recommended dose).
-     */  "name": "doseNumber", 
+    /*Vaccine(s) which should not be used to fulfill the recommendation.
+     */  "name": "contraindicatedVaccineCode", 
     
       "min": "0", 
-      "max": "1", 
-      "type": "positiveInt",
-      "isPrimitive": true }, 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
     { 
-    /*Vaccine administration status.
+    /*Indicates the patient status with respect to the path to immunity for the target disease.
      */  "name": "forecastStatus", 
     
       "min": "1", 
       "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The reason for the assigned forecast status.
+     */  "name": "forecastReason", 
+    
+      "min": "0", 
+      "max": "unbounded", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
@@ -22299,15 +24272,55 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "ImmunizationRecommendation.DateCriterion",
       "isPrimitive": false }, 
     { 
-    /*Contains information about the protocol under which the vaccine was administered.
-     */  "name": "protocol", 
+    /*Contains the description about the protocol under which the vaccine was administered.
+     */  "name": "description", 
     
       "min": "0", 
       "max": "1", 
-      "type": "ImmunizationRecommendation.Protocol",
-      "isPrimitive": false }, 
+      "type": "string",
+      "isPrimitive": true }, 
     { 
-    /*Immunization event history that supports the status and recommendation.
+    /*One possible path to achieve presumed immunity against a disease - within the context of an authority.
+     */  "name": "series", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    [ /* Choice */ 
+    /*Nominal position of the recommended dose in a series (e.g. dose 2 is the next recommended dose).
+     */
+        {   "name": "doseNumberPositiveInt", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "positiveInt",
+          "isPrimitive": true }, 
+        {   "name": "doseNumberString", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "string",
+          "isPrimitive": true }, 
+    ], 
+    [ /* Choice */ 
+    /*The recommended number of doses to achieve immunity.
+     */
+        {   "name": "seriesDosesPositiveInt", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "positiveInt",
+          "isPrimitive": true }, 
+        {   "name": "seriesDosesString", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "string",
+          "isPrimitive": true }, 
+    ], 
+    { 
+    /*Immunization event history and/or evaluation that supports the status and recommendation.
      */  "name": "supportingImmunization", 
     
       "min": "0", 
@@ -22325,7 +24338,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
   ]
 },
 "ImmunizationRecommendation.DateCriterion": {
-    /*A patient's point-in-time immunization and recommendation (i.e. forecasting a patient's immunization eligibility according to a published schedule) with optional supporting justification.
+    /*A patient's point-in-time set of recommendations (i.e. forecasting) according to a published schedule with optional supporting justification.
      */
   "name": "ImmunizationRecommendation.DateCriterion",
   "base": "BackboneElement", 
@@ -22350,48 +24363,6 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "isPrimitive": true }, 
   ]
 },
-"ImmunizationRecommendation.Protocol": {
-    /*A patient's point-in-time immunization and recommendation (i.e. forecasting a patient's immunization eligibility according to a published schedule) with optional supporting justification.
-     */
-  "name": "ImmunizationRecommendation.Protocol",
-  "base": "BackboneElement", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*Indicates the nominal position in a series of the next dose.  This is the recommended dose number as per a specified protocol.
-     */  "name": "doseSequence", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "positiveInt",
-      "isPrimitive": true }, 
-    { 
-    /*Contains the description about the protocol under which the vaccine was administered.
-     */  "name": "description", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*Indicates the authority who published the protocol.  For example, ACIP.
-     */  "name": "authority", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*One possible path to achieve presumed immunity against a disease - within the context of an authority.
-     */  "name": "series", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-  ]
-},
 "ImplementationGuide": {
     /*A set of rules of how FHIR is used to solve a particular problem. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts.If the element is present, it must have either a @value, an @id, or extensions
      */
@@ -22401,7 +24372,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
   ],
   "elems": [
     { 
-    /*An absolute URI that is used to identify this implementation guide when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this implementation guide is (or will be) published. The URL SHOULD include the major version of the implementation guide. For more information see [Technical and Business Versions](resource.html#versions).
+    /*An absolute URI that is used to identify this implementation guide when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which this implementation guide is (or will be) published.
      */  "name": "url", 
     
       "min": "1", 
@@ -22433,7 +24404,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "PublicationStatus",
       "isPrimitive": true }, 
     { 
-    /*A boolean value to indicate that this implementation guide is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+    /*A Boolean value to indicate that this implementation guide is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.
      */  "name": "experimental", 
     
       "min": "0", 
@@ -22441,7 +24412,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "boolean",
       "isPrimitive": true }, 
     { 
-    /*The date  (and optionally time) when the implementation guide was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the implementation guide changes.
+    /*The date  (and optionally time) when the implementation guide was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the implementation guide changes.
      */  "name": "date", 
     
       "min": "0", 
@@ -22449,7 +24420,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*The name of the individual or organization that published the implementation guide.
+    /*The name of the organization or individual that published the implementation guide.
      */  "name": "publisher", 
     
       "min": "0", 
@@ -22497,7 +24468,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "markdown",
       "isPrimitive": true }, 
     { 
-    /*The version of the FHIR specification on which this ImplementationGuide is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 3.0.1 for this version.
+    /*The version of the FHIR specification on which this ImplementationGuide is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 3.3.0 for this version.
      */  "name": "fhirVersion", 
     
       "min": "0", 
@@ -22506,19 +24477,11 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "isPrimitive": true }, 
     { 
     /*Another implementation guide that this implementation depends on. Typically, an implementation guide uses value sets, profiles etc.defined in other implementation guides.
-     */  "name": "dependency", 
+     */  "name": "dependsOn", 
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "ImplementationGuide.Dependency",
-      "isPrimitive": false }, 
-    { 
-    /*A logical group of resources. Logical groups can be used when building pages.
-     */  "name": "package", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "ImplementationGuide.Package",
+      "type": "ImplementationGuide.DependsOn",
       "isPrimitive": false }, 
     { 
     /*A set of profiles that all resources covered by this implementation guide must conform to.
@@ -22529,147 +24492,47 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "ImplementationGuide.Global",
       "isPrimitive": false }, 
     { 
-    /*A binary file that is included in the  implementation guide when it is published.
-     */  "name": "binary", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "uri",
-      "isPrimitive": true }, 
-    { 
-    /*A page / section in the implementation guide. The root page is the implementation guide home page.
-     */  "name": "page", 
+    /*The information needed by an IG publisher tool to publish the whole implementation guide.
+     */  "name": "definition", 
     
       "min": "0", 
       "max": "1", 
-      "type": "ImplementationGuide.Page",
+      "type": "ImplementationGuide.Definition",
+      "isPrimitive": false }, 
+    { 
+    /*Information about an assembled implementation guide, created by the publication tooling.
+     */  "name": "manifest", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "ImplementationGuide.Manifest",
       "isPrimitive": false }, 
   ]
 },
-"ImplementationGuide.Dependency": {
+"ImplementationGuide.DependsOn": {
     /*A set of rules of how FHIR is used to solve a particular problem. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts.
      */
-  "name": "ImplementationGuide.Dependency",
+  "name": "ImplementationGuide.DependsOn",
   "base": "BackboneElement", 
   "attrs": [
   ],
   "elems": [
     { 
-    /*How the dependency is represented when the guide is published.
-     */  "name": "type", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "GuideDependencyType",
-      "isPrimitive": true }, 
-    { 
-    /*Where the dependency is located.
+    /*The canonical URL of the Implementation guide for the dependency.
      */  "name": "uri", 
     
       "min": "1", 
       "max": "1", 
-      "type": "uri",
-      "isPrimitive": true }, 
-  ]
-},
-"ImplementationGuide.Package": {
-    /*A set of rules of how FHIR is used to solve a particular problem. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts.
-     */
-  "name": "ImplementationGuide.Package",
-  "base": "BackboneElement", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*The name for the group, as used in page.package.
-     */  "name": "name", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "string",
+      "type": "canonical",
       "isPrimitive": true }, 
     { 
-    /*Human readable text describing the package.
-     */  "name": "description", 
+    /*The version of the IG that is depended on, when the correct version is required to understand the IG correctly.
+     */  "name": "version", 
     
       "min": "0", 
       "max": "1", 
       "type": "string",
       "isPrimitive": true }, 
-    { 
-    /*A resource that is part of the implementation guide. Conformance resources (value set, structure definition, capability statements etc.) are obvious candidates for inclusion, but any kind of resource can be included as an example resource.
-     */  "name": "resource", 
-    
-      "min": "1", 
-      "max": "unbounded", 
-      "type": "ImplementationGuide.Resource",
-      "isPrimitive": false }, 
-  ]
-},
-"ImplementationGuide.Resource": {
-    /*A set of rules of how FHIR is used to solve a particular problem. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts.
-     */
-  "name": "ImplementationGuide.Resource",
-  "base": "BackboneElement", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*Whether a resource is included in the guide as part of the rules defined by the guide, or just as an example of a resource that conforms to the rules and/or help implementers understand the intent of the guide.
-     */  "name": "example", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "boolean",
-      "isPrimitive": true }, 
-    { 
-    /*A human assigned name for the resource. All resources SHOULD have a name, but the name may be extracted from the resource (e.g. ValueSet.name).
-     */  "name": "name", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*A description of the reason that a resource has been included in the implementation guide.
-     */  "name": "description", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*A short code that may be used to identify the resource throughout the implementation guide.
-     */  "name": "acronym", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    [ /* Choice */ 
-    /*Where this resource is found.
-     */
-        {   "name": "sourceUri", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "uri",
-          "isPrimitive": true }, 
-        {   "name": "sourceReference", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Reference",
-          "isPrimitive": false }, 
-    ], 
-    { 
-    /*Another resource that this resource is an example for. This is mostly used for resources that are included as examples of StructureDefinitions.
-     */  "name": "exampleFor", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
   ]
 },
 "ImplementationGuide.Global": {
@@ -22694,8 +24557,142 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
     
       "min": "1", 
       "max": "1", 
+      "type": "canonical",
+      "isPrimitive": true }, 
+  ]
+},
+"ImplementationGuide.Definition": {
+    /*A set of rules of how FHIR is used to solve a particular problem. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts.
+     */
+  "name": "ImplementationGuide.Definition",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*A logical group of resources. Logical groups can be used when building pages.
+     */  "name": "package", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ImplementationGuide.Package",
+      "isPrimitive": false }, 
+    { 
+    /*A resource that is part of the implementation guide. Conformance resources (value set, structure definition, capability statements etc.) are obvious candidates for inclusion, but any kind of resource can be included as an example resource.
+     */  "name": "resource", 
+    
+      "min": "1", 
+      "max": "unbounded", 
+      "type": "ImplementationGuide.Resource",
+      "isPrimitive": false }, 
+    { 
+    /*A page / section in the implementation guide. The root page is the implementation guide home page.
+     */  "name": "page", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "ImplementationGuide.Page",
+      "isPrimitive": false }, 
+    { 
+    /*Defines how IG is built by tools.
+     */  "name": "parameter", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ImplementationGuide.Parameter",
+      "isPrimitive": false }, 
+    { 
+    /*A template for building resources.
+     */  "name": "template", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ImplementationGuide.Template",
+      "isPrimitive": false }, 
+  ]
+},
+"ImplementationGuide.Package": {
+    /*A set of rules of how FHIR is used to solve a particular problem. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts.
+     */
+  "name": "ImplementationGuide.Package",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The name for the group, as used in ImplementationGuide.definition.resource.package and ImplementationGuide.definition.page.package.
+     */  "name": "name", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Human readable text describing the package.
+     */  "name": "description", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+  ]
+},
+"ImplementationGuide.Resource": {
+    /*A set of rules of how FHIR is used to solve a particular problem. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts.
+     */
+  "name": "ImplementationGuide.Resource",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Where this resource is found.
+     */  "name": "reference", 
+    
+      "min": "1", 
+      "max": "1", 
       "type": "Reference",
       "isPrimitive": false }, 
+    { 
+    /*A human assigned name for the resource. All resources SHOULD have a name, but the name may be extracted from the resource (e.g. ValueSet.name).
+     */  "name": "name", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*A description of the reason that a resource has been included in the implementation guide.
+     */  "name": "description", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    [ /* Choice */ 
+    /*If true or a reference, indicates the resource is an example instance.  If a reference is present, indicates that the example is an example of the specified profile.
+     */
+        {   "name": "exampleBoolean", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "boolean",
+          "isPrimitive": true }, 
+        {   "name": "exampleCanonical", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "canonical",
+          "isPrimitive": true }, 
+    ], 
+    { 
+    /*Reference to the id of the pack this resource appears in.
+     */  "name": "package", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "id",
+      "isPrimitive": true }, 
   ]
 },
 "ImplementationGuide.Page": {
@@ -22706,14 +24703,22 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
   "attrs": [
   ],
   "elems": [
-    { 
+    [ /* Choice */ 
     /*The source address for the page.
-     */  "name": "source", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "uri",
-      "isPrimitive": true }, 
+     */
+        {   "name": "nameUrl", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "url",
+          "isPrimitive": true }, 
+        {   "name": "nameReference", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Reference",
+          "isPrimitive": false }, 
+    ], 
     { 
     /*A short title used to represent this page in navigational structures such as table of contents, bread crumbs, etc.
      */  "name": "title", 
@@ -22723,36 +24728,12 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*The kind of page that this is. Some pages are autogenerated (list, example), and other kinds are of interest so that tools can navigate the user to the page of interest.
-     */  "name": "kind", 
+    /*A code that indicates how the page is generated.
+     */  "name": "generation", 
     
       "min": "1", 
       "max": "1", 
-      "type": "GuidePageKind",
-      "isPrimitive": true }, 
-    { 
-    /*For constructed pages, what kind of resources to include in the list.
-     */  "name": "type", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "ResourceType",
-      "isPrimitive": true }, 
-    { 
-    /*For constructed pages, a list of packages to include in the page (or else empty for everything).
-     */  "name": "package", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*The format of the page.
-     */  "name": "format", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "code",
+      "type": "GuidePageGeneration",
       "isPrimitive": true }, 
     { 
     /*Nested Pages/Sections under this page.
@@ -22764,30 +24745,572 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "isPrimitive": false }, 
   ]
 },
-"GuideDependencyType": {
-    /*How a dependency is represented when the guide is published.If the element is present, it must have either a @value, an @id, or extensions
+"ImplementationGuide.Parameter": {
+    /*A set of rules of how FHIR is used to solve a particular problem. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts.
      */
-  "name": "GuideDependencyType",
+  "name": "ImplementationGuide.Parameter",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*apply-business-version | apply-jurisdiction | path-resource | path-pages | path-tx-cache | expansion-profile | rule-broken-links | generate-xml | generate-json | generate-turtle | html-template.
+     */  "name": "code", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "GuideParameterCode",
+      "isPrimitive": true }, 
+    { 
+    /*Value for named type.
+     */  "name": "value", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+  ]
+},
+"ImplementationGuide.Template": {
+    /*A set of rules of how FHIR is used to solve a particular problem. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts.
+     */
+  "name": "ImplementationGuide.Template",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Type of template specified.
+     */  "name": "code", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "code",
+      "isPrimitive": true }, 
+    { 
+    /*The source location for the template.
+     */  "name": "source", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The scope in which the template applies.
+     */  "name": "scope", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+  ]
+},
+"ImplementationGuide.Manifest": {
+    /*A set of rules of how FHIR is used to solve a particular problem. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts.
+     */
+  "name": "ImplementationGuide.Manifest",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*A pointer to official web page, PDF or other rendering of the implementation guide.
+     */  "name": "rendering", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "url",
+      "isPrimitive": true }, 
+    { 
+    /*A resource that is part of the implementation guide. Conformance resources (value set, structure definition, capability statements etc.) are obvious candidates for inclusion, but any kind of resource can be included as an example resource.
+     */  "name": "resource", 
+    
+      "min": "1", 
+      "max": "unbounded", 
+      "type": "ImplementationGuide.Resource1",
+      "isPrimitive": false }, 
+    { 
+    /*Information about a page within the IG.
+     */  "name": "page", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ImplementationGuide.Page1",
+      "isPrimitive": false }, 
+    { 
+    /*Indicates a relative path to an image that exists within the IG.
+     */  "name": "image", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Indicates the relative path of an additional non-page, non-image file that is part of the IG - e.g. zip, jar and similar files that could be the target of a hyperlink in a derived IG.
+     */  "name": "other", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "string",
+      "isPrimitive": true }, 
+  ]
+},
+"ImplementationGuide.Resource1": {
+    /*A set of rules of how FHIR is used to solve a particular problem. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts.
+     */
+  "name": "ImplementationGuide.Resource1",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Where this resource is found.
+     */  "name": "reference", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    [ /* Choice */ 
+    /*If true or a reference, indicates the resource is an example instance.  If a reference is present, indicates that the example is an example of the specified profile.
+     */
+        {   "name": "exampleBoolean", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "boolean",
+          "isPrimitive": true }, 
+        {   "name": "exampleCanonical", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "canonical",
+          "isPrimitive": true }, 
+    ], 
+    { 
+    /*The relative path for primary page for this resource within the IG.
+     */  "name": "relativePath", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "url",
+      "isPrimitive": true }, 
+  ]
+},
+"ImplementationGuide.Page1": {
+    /*A set of rules of how FHIR is used to solve a particular problem. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts.
+     */
+  "name": "ImplementationGuide.Page1",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Relative path to the page.
+     */  "name": "name", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Label for the page intended for human display.
+     */  "name": "title", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The name of an anchor available on the page.
+     */  "name": "anchor", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "string",
+      "isPrimitive": true }, 
+  ]
+},
+"GuideParameterCode": {
+    /*Code of parameter that is input to the guideIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "GuideParameterCode",
   "base": "Element", 
   "attrs": [
     { 
       "name": "value", 
-      "type": "GuideDependencyType-list" }, 
+      "type": "GuideParameterCode-list" }, 
   ],
   "elems": [
   ]
 },
-"GuidePageKind": {
-    /*The kind of an included page.If the element is present, it must have either a @value, an @id, or extensions
+"GuidePageGeneration": {
+    /*A code that indicates how the page is generatedIf the element is present, it must have either a @value, an @id, or extensions
      */
-  "name": "GuidePageKind",
+  "name": "GuidePageGeneration",
   "base": "Element", 
   "attrs": [
     { 
       "name": "value", 
-      "type": "GuidePageKind-list" }, 
+      "type": "GuidePageGeneration-list" }, 
   ],
   "elems": [
+  ]
+},
+"Invoice": {
+    /*Invoice containing collected ChargeItems from an Account with calculated individual and total price for Billing purpose.If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "Invoice",
+  "base": "DomainResource", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Identifier of this Invoice, often used for reference in corresponcence about this invoice or for tracking of payments.
+     */  "name": "identifier", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*The current state of the Invoice.
+     */  "name": "status", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "InvoiceStatus",
+      "isPrimitive": true }, 
+    { 
+    /*In case of Invoice cancellation a reason must be given (entered in error, superseded by corrected invoice etc.).
+     */  "name": "cancelledReason", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Type of Invoice depending on domain, realm an usage (eg. internal/external, dental, preliminary).
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The individual or set of individuals receiving the goods and services billed in this invoice.
+     */  "name": "subject", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*The individual or Organization responsible for balancing of this invoice.
+     */  "name": "recipient", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Date/time(s) of when this Invoice was posted.
+     */  "name": "date", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+    { 
+    /*Indicates who or what performed or participated in the charged service.
+     */  "name": "participant", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Invoice.Participant",
+      "isPrimitive": false }, 
+    { 
+    /*The organizationissuing the Invoice.
+     */  "name": "issuer", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Account which is supposed to be balanced with this Invoice.
+     */  "name": "account", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Each line item represents one charge for goods ond services rendered. Details such as date, code and amount are found in the referenced ChargeItem resource.
+     */  "name": "lineItem", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Invoice.LineItem",
+      "isPrimitive": false }, 
+    { 
+    /*The total amount for the Invoice may be calculated as the sum of the line items with surcharges/deductions that apply in certain conditions.  The priceComponent element can be used to offer transparency to the recipient of the Invoice of how the total price was calculated.
+     */  "name": "totalPriceComponent", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Invoice.PriceComponent",
+      "isPrimitive": false }, 
+    { 
+    /*Invoice total , taxes excluded.
+     */  "name": "totalNet", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Money",
+      "isPrimitive": false }, 
+    { 
+    /*Invoice total, tax included.
+     */  "name": "totalGross", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Money",
+      "isPrimitive": false }, 
+    { 
+    /*Payment details such as banking details, period of payment, deductables, methods of payment.
+     */  "name": "paymentTerms", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "markdown",
+      "isPrimitive": true }, 
+    { 
+    /*Comments made about the invoice by the issuer, subject or other participants.
+     */  "name": "note", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Annotation",
+      "isPrimitive": false }, 
+  ]
+},
+"Invoice.Participant": {
+    /*Invoice containing collected ChargeItems from an Account with calculated individual and total price for Billing purpose.
+     */
+  "name": "Invoice.Participant",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Describes the type of involvement (e.g. transcriptionist, creator etc.). If the invoice has been created automatically, the Participant may be a billing engine or another kind of device.
+     */  "name": "role", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The device, practitioner, etc. who performed or participated in the service.
+     */  "name": "actor", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+  ]
+},
+"Invoice.LineItem": {
+    /*Invoice containing collected ChargeItems from an Account with calculated individual and total price for Billing purpose.
+     */
+  "name": "Invoice.LineItem",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Sequence in which the items appear on the invoice.
+     */  "name": "sequence", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "positiveInt",
+      "isPrimitive": true }, 
+    { 
+    /*The ChargeItem contains information such as the billing code, date, amount etc.
+     */  "name": "chargeItem", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*The price for a ChargeItem may be calculated as a base price with surcharges/deductions that apply in certain conditions. A ChargeItemDefinition resource that defines the prices, factors and conditions that apply to a billing code is currently under developement. The priceComponent element can be used to offer transparency to the recipient of the Invoice of how the prices have been calculated.
+     */  "name": "priceComponent", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Invoice.PriceComponent",
+      "isPrimitive": false }, 
+  ]
+},
+"Invoice.PriceComponent": {
+    /*Invoice containing collected ChargeItems from an Account with calculated individual and total price for Billing purpose.
+     */
+  "name": "Invoice.PriceComponent",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*This code identifies the type of the component.
+     */  "name": "type", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "InvoicePriceComponentType",
+      "isPrimitive": true }, 
+    { 
+    /*A code that identifies the component. Codes may be used to differentiate between kinds of taxes, surcharges, discounts etc.
+     */  "name": "code", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The amount calculated for this component.
+     */  "name": "factor", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Money",
+      "isPrimitive": false }, 
+    { 
+    /*The factor that has been applied on the base price for calculating this component.
+     */  "name": "amount", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "decimal",
+      "isPrimitive": true }, 
+  ]
+},
+"InvoiceStatus": {
+    /*Codes identifying the lifecycle stage of an InvoiceIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "InvoiceStatus",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "InvoiceStatus-list" }, 
+  ],
+  "elems": [
+  ]
+},
+"InvoicePriceComponentType": {
+    /*Codes indicating the details of what is/was done.  These will vary significantly based on the type of request resource and will often be example/preferred rather than extensible/required.If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "InvoicePriceComponentType",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "InvoicePriceComponentType-list" }, 
+  ],
+  "elems": [
+  ]
+},
+"ItemInstance": {
+    /*A physical, countable instance of an item, for example one box or one unit.If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "ItemInstance",
+  "base": "DomainResource", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The quantity or amount of instances. For example if several units are being counted for inventory, this quantity can be more than one, provided they are not unique. Seriallized items are considered unique and as such would have a quantity max 1. This element is required and its presence asserts that the reource refers to a physical item.
+     */  "name": "count", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "integer",
+      "isPrimitive": true }, 
+    { 
+    /*The location where the item is phisically located.
+     */  "name": "location", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*The patient that the item is associated with (implanted in, given to).
+     */  "name": "subject", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*The manufacture or preparation date and time. Times are necessary for several examples - for example biologically derived products, prepared or coumpounded medication, rapidly decaying isotopes.
+     */  "name": "manufactureDate", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+    { 
+    /*The expiry or preparation date and time.
+     */  "name": "expiryDate", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+    { 
+    /*The Software version associated with the device, typically only used for devices with embedded software or firmware.
+     */  "name": "currentSWVersion", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The lot or batch number.
+     */  "name": "lotNumber", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The serial number if available.
+     */  "name": "serialNumber", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The machine-readable AIDC string in base64 encoding. Can correspond to the UDI pattern in devices.
+     */  "name": "carrierAIDC", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The human-readable barcode string. Can correspond to the UDI pattern in devices.
+     */  "name": "carrierHRF", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
   ]
 },
 "Library": {
@@ -22799,7 +25322,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
   ],
   "elems": [
     { 
-    /*An absolute URI that is used to identify this library when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this library is (or will be) published. The URL SHOULD include the major version of the library. For more information see [Technical and Business Versions](resource.html#versions).
+    /*An absolute URI that is used to identify this library when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which this library is (or will be) published.
      */  "name": "url", 
     
       "min": "0", 
@@ -22839,6 +25362,14 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "string",
       "isPrimitive": true }, 
     { 
+    /*An explanatory or alternate title for the library giving additional information about its content.
+     */  "name": "subtitle", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
     /*The status of this library. Enables tracking the life-cycle of the content.
      */  "name": "status", 
     
@@ -22847,7 +25378,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "PublicationStatus",
       "isPrimitive": true }, 
     { 
-    /*A boolean value to indicate that this library is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+    /*A Boolean value to indicate that this library is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.
      */  "name": "experimental", 
     
       "min": "0", 
@@ -22862,8 +25393,24 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "max": "1", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
+    [ /* Choice */ 
+    /*A code or group definition that describes the intended subject of the contents of the library.
+     */
+        {   "name": "subjectCodeableConcept", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "CodeableConcept",
+          "isPrimitive": false }, 
+        {   "name": "subjectReference", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Reference",
+          "isPrimitive": false }, 
+    ], 
     { 
-    /*The date  (and optionally time) when the library was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the library changes.
+    /*The date  (and optionally time) when the library was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the library changes.
      */  "name": "date", 
     
       "min": "0", 
@@ -22871,13 +25418,21 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*The name of the individual or organization that published the library.
+    /*The name of the organization or individual that published the library.
      */  "name": "publisher", 
     
       "min": "0", 
       "max": "1", 
       "type": "string",
       "isPrimitive": true }, 
+    { 
+    /*Contact details to assist a user in finding and communicating with the publisher.
+     */  "name": "contact", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ContactDetail",
+      "isPrimitive": false }, 
     { 
     /*A free text natural language description of the library from a consumer's perspective.
      */  "name": "description", 
@@ -22886,46 +25441,6 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "max": "1", 
       "type": "markdown",
       "isPrimitive": true }, 
-    { 
-    /*Explaination of why this library is needed and why it has been designed as it has.
-     */  "name": "purpose", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "markdown",
-      "isPrimitive": true }, 
-    { 
-    /*A detailed description of how the library is used from a clinical perspective.
-     */  "name": "usage", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.
-     */  "name": "approvalDate", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "date",
-      "isPrimitive": true }, 
-    { 
-    /*The date on which the resource content was last reviewed. Review happens periodically after approval, but doesn't change the original approval date.
-     */  "name": "lastReviewDate", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "date",
-      "isPrimitive": true }, 
-    { 
-    /*The period during which the library content was or is planned to be in active use.
-     */  "name": "effectivePeriod", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Period",
-      "isPrimitive": false }, 
     { 
     /*The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate library instances.
      */  "name": "useContext", 
@@ -22943,6 +25458,54 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
+    /*Explanation of why this library is needed and why it has been designed as it has.
+     */  "name": "purpose", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "markdown",
+      "isPrimitive": true }, 
+    { 
+    /*A detailed description of how the library is used from a clinical perspective.
+     */  "name": "usage", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*A copyright statement relating to the library and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the library.
+     */  "name": "copyright", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "markdown",
+      "isPrimitive": true }, 
+    { 
+    /*The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.
+     */  "name": "approvalDate", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "date",
+      "isPrimitive": true }, 
+    { 
+    /*The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.
+     */  "name": "lastReviewDate", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "date",
+      "isPrimitive": true }, 
+    { 
+    /*The period during which the library content was or is planned to be in active use.
+     */  "name": "effectivePeriod", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Period",
+      "isPrimitive": false }, 
+    { 
     /*Descriptive topics related to the content of the library. Topics provide a high-level categorization of the library that can be useful for filtering and searching.
      */  "name": "topic", 
     
@@ -22958,22 +25521,6 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "max": "unbounded", 
       "type": "Contributor",
       "isPrimitive": false }, 
-    { 
-    /*Contact details to assist a user in finding and communicating with the publisher.
-     */  "name": "contact", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "ContactDetail",
-      "isPrimitive": false }, 
-    { 
-    /*A copyright statement relating to the library and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the library.
-     */  "name": "copyright", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "markdown",
-      "isPrimitive": true }, 
     { 
     /*Related artifacts such as additional documentation, justification, or bibliographic references.
      */  "name": "relatedArtifact", 
@@ -23033,7 +25580,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*Identifies one of the records that is considered to refer to the same real-world occurrence as well as how the items hould be evaluated within the collection of linked items.
+    /*Identifies one of the records that is considered to refer to the same real-world occurrence as well as how the items should be evaluated within the collection of linked items.
      */  "name": "item", 
     
       "min": "1", 
@@ -23130,7 +25677,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*The common subject (or patient) of the resources that are in the list, if there is one.
+    /*The common subject (or patient) of the resources that are in the list if there is one.
      */  "name": "subject", 
     
       "min": "0", 
@@ -23251,7 +25798,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
   ]
 },
 "Location": {
-    /*Details and position information for a physical place where services are provided  and resources and participants may be stored, found, contained or accommodated.If the element is present, it must have either a @value, an @id, or extensions
+    /*Details and position information for a physical place where services are provided and resources and participants may be stored, found, contained, or accommodated.If the element is present, it must have either a @value, an @id, or extensions
      */
   "name": "Location",
   "base": "DomainResource", 
@@ -23275,7 +25822,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "LocationStatus",
       "isPrimitive": true }, 
     { 
-    /*The Operational status covers operation values most relevant to beds (but can also apply to rooms/units/chair/etc such as an isolation unit/dialisys chair). This typically covers concepts such as contamination, housekeeping and other activities like maintenance.
+    /*The Operational status covers operation values most relevant to beds (but can also apply to rooms/units/chair/etc. such as an isolation unit/dialysis chair). This typically covers concepts such as contamination, housekeeping and other activities like maintenance.
      */  "name": "operationalStatus", 
     
       "min": "0", 
@@ -23291,7 +25838,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*A list of alternate names that the location is known as, or was known as in the past.
+    /*A list of alternate names that the location is known as or was known as in the past.
      */  "name": "alias", 
     
       "min": "0", 
@@ -23319,7 +25866,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
      */  "name": "type", 
     
       "min": "0", 
-      "max": "1", 
+      "max": "unbounded", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
@@ -23371,6 +25918,22 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "Reference",
       "isPrimitive": false }, 
     { 
+    /*What days/times during a week is this location usually open.
+     */  "name": "hoursOfOperation", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Location.HoursOfOperation",
+      "isPrimitive": false }, 
+    { 
+    /*A description of when the locations opening ours are different to normal, e.g. public holiday availability. Succinctly describing all possible exceptions to normal site availability as detailed in the opening hours Times.
+     */  "name": "availabilityExceptions", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
     /*Technical endpoints providing access to services operated for the location.
      */  "name": "endpoint", 
     
@@ -23381,7 +25944,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
   ]
 },
 "Location.Position": {
-    /*Details and position information for a physical place where services are provided  and resources and participants may be stored, found, contained or accommodated.
+    /*Details and position information for a physical place where services are provided and resources and participants may be stored, found, contained, or accommodated.
      */
   "name": "Location.Position",
   "base": "BackboneElement", 
@@ -23411,6 +25974,48 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "min": "0", 
       "max": "1", 
       "type": "decimal",
+      "isPrimitive": true }, 
+  ]
+},
+"Location.HoursOfOperation": {
+    /*Details and position information for a physical place where services are provided and resources and participants may be stored, found, contained, or accommodated.
+     */
+  "name": "Location.HoursOfOperation",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Indicates which days of the week are available between the start and end Times.
+     */  "name": "daysOfWeek", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "DaysOfWeek",
+      "isPrimitive": true }, 
+    { 
+    /*The Location is open all day.
+     */  "name": "allDay", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+    { 
+    /*Time that the Location opens.
+     */  "name": "openingTime", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "time",
+      "isPrimitive": true }, 
+    { 
+    /*Time that the Location closes.
+     */  "name": "closingTime", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "time",
       "isPrimitive": true }, 
   ]
 },
@@ -23449,7 +26054,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
   ],
   "elems": [
     { 
-    /*An absolute URI that is used to identify this measure when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this measure is (or will be) published. The URL SHOULD include the major version of the measure. For more information see [Technical and Business Versions](resource.html#versions).
+    /*An absolute URI that is used to identify this measure when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which this measure is (or will be) published.
      */  "name": "url", 
     
       "min": "0", 
@@ -23489,6 +26094,14 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "string",
       "isPrimitive": true }, 
     { 
+    /*An explanatory or alternate title for the measure giving additional information about its content.
+     */  "name": "subtitle", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
     /*The status of this measure. Enables tracking the life-cycle of the content.
      */  "name": "status", 
     
@@ -23497,15 +26110,31 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "PublicationStatus",
       "isPrimitive": true }, 
     { 
-    /*A boolean value to indicate that this measure is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+    /*A Boolean value to indicate that this measure is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.
      */  "name": "experimental", 
     
       "min": "0", 
       "max": "1", 
       "type": "boolean",
       "isPrimitive": true }, 
+    [ /* Choice */ 
+    /*The intended subjects for the measure. If this element is not provided, a Patient subject is assumed, but the subject of the measure can be anything.
+     */
+        {   "name": "subjectCodeableConcept", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "CodeableConcept",
+          "isPrimitive": false }, 
+        {   "name": "subjectReference", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Reference",
+          "isPrimitive": false }, 
+    ], 
     { 
-    /*The date  (and optionally time) when the measure was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the measure changes.
+    /*The date  (and optionally time) when the measure was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the measure changes.
      */  "name": "date", 
     
       "min": "0", 
@@ -23513,13 +26142,21 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*The name of the individual or organization that published the measure.
+    /*The name of the organization or individual that published the measure.
      */  "name": "publisher", 
     
       "min": "0", 
       "max": "1", 
       "type": "string",
       "isPrimitive": true }, 
+    { 
+    /*Contact details to assist a user in finding and communicating with the publisher.
+     */  "name": "contact", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ContactDetail",
+      "isPrimitive": false }, 
     { 
     /*A free text natural language description of the measure from a consumer's perspective.
      */  "name": "description", 
@@ -23528,46 +26165,6 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "max": "1", 
       "type": "markdown",
       "isPrimitive": true }, 
-    { 
-    /*Explaination of why this measure is needed and why it has been designed as it has.
-     */  "name": "purpose", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "markdown",
-      "isPrimitive": true }, 
-    { 
-    /*A detailed description of how the measure is used from a clinical perspective.
-     */  "name": "usage", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.
-     */  "name": "approvalDate", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "date",
-      "isPrimitive": true }, 
-    { 
-    /*The date on which the resource content was last reviewed. Review happens periodically after approval, but doesn't change the original approval date.
-     */  "name": "lastReviewDate", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "date",
-      "isPrimitive": true }, 
-    { 
-    /*The period during which the measure content was or is planned to be in active use.
-     */  "name": "effectivePeriod", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Period",
-      "isPrimitive": false }, 
     { 
     /*The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate measure instances.
      */  "name": "useContext", 
@@ -23585,7 +26182,55 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Descriptive topics related to the content of the measure. Topics provide a high-level categorization of the type of the measure that can be useful for filtering and searching.
+    /*Explanation of why this measure is needed and why it has been designed as it has.
+     */  "name": "purpose", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "markdown",
+      "isPrimitive": true }, 
+    { 
+    /*A detailed description, from a clinical perspective, of how the measure is used.
+     */  "name": "usage", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*A copyright statement relating to the measure and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the measure.
+     */  "name": "copyright", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "markdown",
+      "isPrimitive": true }, 
+    { 
+    /*The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.
+     */  "name": "approvalDate", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "date",
+      "isPrimitive": true }, 
+    { 
+    /*The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.
+     */  "name": "lastReviewDate", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "date",
+      "isPrimitive": true }, 
+    { 
+    /*The period during which the measure content was or is planned to be in active use.
+     */  "name": "effectivePeriod", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Period",
+      "isPrimitive": false }, 
+    { 
+    /*Descriptive topics related to the content of the measure. Topics provide a high-level categorization grouping types of measures that can be useful for filtering and searching.
      */  "name": "topic", 
     
       "min": "0", 
@@ -23601,22 +26246,6 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "Contributor",
       "isPrimitive": false }, 
     { 
-    /*Contact details to assist a user in finding and communicating with the publisher.
-     */  "name": "contact", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "ContactDetail",
-      "isPrimitive": false }, 
-    { 
-    /*A copyright statement relating to the measure and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the measure.
-     */  "name": "copyright", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "markdown",
-      "isPrimitive": true }, 
-    { 
     /*Related artifacts such as additional documentation, justification, or bibliographic references.
      */  "name": "relatedArtifact", 
     
@@ -23630,10 +26259,10 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
+      "type": "canonical",
+      "isPrimitive": true }, 
     { 
-    /*Notices and disclaimers regarding the use of the measure, or related to intellectual property (such as code systems) referenced by the measure.
+    /*Notices and disclaimers regarding the use of the measure or related to intellectual property (such as code systems) referenced by the measure.
      */  "name": "disclaimer", 
     
       "min": "0", 
@@ -23641,7 +26270,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "markdown",
       "isPrimitive": true }, 
     { 
-    /*Indicates how the calculation is performed for the measure, including proportion, ratio, continuous variable, and cohort. The value set is extensible, allowing additional measure scoring types to be represented.
+    /*Indicates how the calculation is performed for the measure, including proportion, ratio, continuous-variable, and cohort. The value set is extensible, allowing additional measure scoring types to be represented.
      */  "name": "scoring", 
     
       "min": "0", 
@@ -23681,7 +26310,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*Provides a succint statement of the need for the measure. Usually includes statements pertaining to importance criterion: impact, gap in care, and evidence.
+    /*Provides a succinct statement of the need for the measure. Usually includes statements pertaining to importance criterion: impact, gap in care, and evidence.
      */  "name": "rationale", 
     
       "min": "0", 
@@ -23697,7 +26326,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "markdown",
       "isPrimitive": true }, 
     { 
-    /*Information on whether an increase or decrease in score is the preferred result (e.g., a higher score indicates better quality OR a lower score indicates better quality OR quality is whthin a range).
+    /*Information on whether an increase or decrease in score is the preferred result (e.g., a higher score indicates better quality OR a lower score indicates better quality OR quality is within a range).
      */  "name": "improvementNotation", 
     
       "min": "0", 
@@ -23755,21 +26384,13 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
   ],
   "elems": [
     { 
-    /*A unique identifier for the group. This identifier will used to report data for the group in the measure report.
-     */  "name": "identifier", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "Identifier",
-      "isPrimitive": false }, 
-    { 
-    /*Optional name or short description of this group.
-     */  "name": "name", 
+    /*Indicates a meaning for the group. This can be as simple as a unique identifier, or it can establish meaning in a broader context by drawing from a terminology, allowing groups to be correlated across measures.
+     */  "name": "code", 
     
       "min": "0", 
       "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
     { 
     /*The human readable description of this population group.
      */  "name": "description", 
@@ -23787,7 +26408,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "Measure.Population",
       "isPrimitive": false }, 
     { 
-    /*The stratifier criteria for the measure report, specified as either the name of a valid CQL expression defined within a referenced library, or a valid FHIR Resource Path.
+    /*The stratifier criteria for the measure report, specified as either the name of a valid CQL expression defined within a referenced library or a valid FHIR Resource Path.
      */  "name": "stratifier", 
     
       "min": "0", 
@@ -23805,14 +26426,6 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
   ],
   "elems": [
     { 
-    /*A unique identifier for the population criteria. This identifier is used to report data against this criteria within the measure report.
-     */  "name": "identifier", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Identifier",
-      "isPrimitive": false }, 
-    { 
     /*The type of population criteria.
      */  "name": "code", 
     
@@ -23820,14 +26433,6 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "max": "1", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
-    { 
-    /*Optional name or short description of this population.
-     */  "name": "name", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
     { 
     /*The human readable description of this population criteria.
      */  "name": "description", 
@@ -23855,13 +26460,21 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
   ],
   "elems": [
     { 
-    /*The identifier for the stratifier used to coordinate the reported data back to this stratifier.
-     */  "name": "identifier", 
+    /*Indicates a meaning for the stratifier. This can be as simple as a unique identifier, or it can establish meaning in a broader context by drawing from a terminology, allowing stratifiers to be correlated across measures.
+     */  "name": "code", 
     
       "min": "0", 
       "max": "1", 
-      "type": "Identifier",
+      "type": "CodeableConcept",
       "isPrimitive": false }, 
+    { 
+    /*The human readable description of this stratifier criteria.
+     */  "name": "description", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
     { 
     /*The criteria for the stratifier. This must be the name of an expression defined within a referenced library.
      */  "name": "criteria", 
@@ -23889,12 +26502,12 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
   ],
   "elems": [
     { 
-    /*An identifier for the supplemental data.
-     */  "name": "identifier", 
+    /*Indicates a meaning for the supplemental data. This can be as simple as a unique identifier, or it can establish meaning in a broader context by drawing from a terminology, allowing supplemental data to be correlated across measures.
+     */  "name": "code", 
     
       "min": "0", 
       "max": "1", 
-      "type": "Identifier",
+      "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
     /*An indicator of the intended usage for the supplemental data element. Supplemental data indicates the data is additional information requested to augment the measure information. Risk adjustment factor indicates the data is additional information used to calculate risk adjustment factors when applying a risk model to the measure calculation.
@@ -23905,7 +26518,15 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*The criteria for the supplemental data. This must be the name of a valid expression defined within a referenced library, and defines the data to be returned for this element.
+    /*The human readable description of this supplemental data.
+     */  "name": "description", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The criteria for the supplemental data. This must be the name of a valid expression defined within a referenced library. The criteria defines the data to be returned for this element.
      */  "name": "criteria", 
     
       "min": "0", 
@@ -23923,7 +26544,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
   ]
 },
 "MeasureReport": {
-    /*The MeasureReport resource contains the results of evaluating a measure.If the element is present, it must have either a @value, an @id, or extensions
+    /*The MeasureReport resource contains the results of the calculation of a measure; and optionally a reference to the resources involved in that calculation.If the element is present, it must have either a @value, an @id, or extensions
      */
   "name": "MeasureReport",
   "base": "DomainResource", 
@@ -23931,15 +26552,15 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
   ],
   "elems": [
     { 
-    /*A formal identifier that is used to identify this report when it is represented in other formats, or referenced in a specification, model, design or an instance.
+    /*A formal identifier that is used to identify this MeasureReport when it is represented in other formats or referenced in a specification, model, design or an instance.
      */  "name": "identifier", 
     
       "min": "0", 
-      "max": "1", 
+      "max": "unbounded", 
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
-    /*The report status. No data will be available until the report status is complete.
+    /*The MeasureReport status. No data will be available until the MeasureReport status is complete.
      */  "name": "status", 
     
       "min": "1", 
@@ -23947,7 +26568,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "MeasureReportStatus",
       "isPrimitive": true }, 
     { 
-    /*The type of measure report. This may be an individual report, which provides a single patient's score for the measure; a patient listing, which returns the list of patients that meet the various criteria in the measure; or a summary report, which returns a population count for each of the criteria in the measure.
+    /*The type of measure report. This may be an individual report, which provides the score for the measure for an individual member of the population; a subject-listing, which returns the list of members that meet the various criteria in the measure; or a summary report, which returns a population count for each of the criteria in the measure.
      */  "name": "type", 
     
       "min": "1", 
@@ -23955,16 +26576,16 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "MeasureReportType",
       "isPrimitive": true }, 
     { 
-    /*A reference to the Measure that was evaluated to produce this report.
+    /*A reference to the Measure that was calculated to produce this report.
      */  "name": "measure", 
     
       "min": "1", 
       "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
+      "type": "canonical",
+      "isPrimitive": true }, 
     { 
-    /*Optional Patient if the report was requested for a single patient.
-     */  "name": "patient", 
+    /*Optional subject identifying the individual or individuals the report is for.
+     */  "name": "subject", 
     
       "min": "0", 
       "max": "1", 
@@ -23979,8 +26600,8 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*Reporting Organization.
-     */  "name": "reportingOrganization", 
+    /*The individual, location, group, or organization that is reporting the data.
+     */  "name": "reporter", 
     
       "min": "0", 
       "max": "1", 
@@ -24003,7 +26624,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "MeasureReport.Group",
       "isPrimitive": false }, 
     { 
-    /*A reference to a Bundle containing the Resources that were used in the evaluation of this report.
+    /*A reference to a Bundle containing the Resources that were used in the calculation of this measure.
      */  "name": "evaluatedResources", 
     
       "min": "0", 
@@ -24013,7 +26634,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
   ]
 },
 "MeasureReport.Group": {
-    /*The MeasureReport resource contains the results of evaluating a measure.
+    /*The MeasureReport resource contains the results of the calculation of a measure; and optionally a reference to the resources involved in that calculation.
      */
   "name": "MeasureReport.Group",
   "base": "BackboneElement", 
@@ -24021,12 +26642,12 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
   ],
   "elems": [
     { 
-    /*The identifier of the population group as defined in the measure definition.
-     */  "name": "identifier", 
+    /*The meaning of the population group as defined in the measure definition.
+     */  "name": "code", 
     
-      "min": "1", 
+      "min": "0", 
       "max": "1", 
-      "type": "Identifier",
+      "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
     /*The populations that make up the population group, one for each type of population appropriate for the measure.
@@ -24042,8 +26663,8 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
     
       "min": "0", 
       "max": "1", 
-      "type": "decimal",
-      "isPrimitive": true }, 
+      "type": "Quantity",
+      "isPrimitive": false }, 
     { 
     /*When a measure includes multiple stratifiers, there will be a stratifier group for each stratifier defined by the measure.
      */  "name": "stratifier", 
@@ -24055,21 +26676,13 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
   ]
 },
 "MeasureReport.Population": {
-    /*The MeasureReport resource contains the results of evaluating a measure.
+    /*The MeasureReport resource contains the results of the calculation of a measure; and optionally a reference to the resources involved in that calculation.
      */
   "name": "MeasureReport.Population",
   "base": "BackboneElement", 
   "attrs": [
   ],
   "elems": [
-    { 
-    /*The identifier of the population being reported, as defined by the population element of the measure.
-     */  "name": "identifier", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Identifier",
-      "isPrimitive": false }, 
     { 
     /*The type of the population.
      */  "name": "code", 
@@ -24087,8 +26700,8 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "integer",
       "isPrimitive": true }, 
     { 
-    /*This element refers to a List of patient level MeasureReport resources, one for each patient in this population.
-     */  "name": "patients", 
+    /*This element refers to a List of subject level MeasureReport resources, one for each subject in this population.
+     */  "name": "subjects", 
     
       "min": "0", 
       "max": "1", 
@@ -24097,7 +26710,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
   ]
 },
 "MeasureReport.Stratifier": {
-    /*The MeasureReport resource contains the results of evaluating a measure.
+    /*The MeasureReport resource contains the results of the calculation of a measure; and optionally a reference to the resources involved in that calculation.
      */
   "name": "MeasureReport.Stratifier",
   "base": "BackboneElement", 
@@ -24105,12 +26718,12 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
   ],
   "elems": [
     { 
-    /*The identifier of this stratifier, as defined in the measure definition.
-     */  "name": "identifier", 
+    /*The meaning of this stratifier, as defined in the measure definition.
+     */  "name": "code", 
     
       "min": "0", 
       "max": "1", 
-      "type": "Identifier",
+      "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
     /*This element contains the results for a single stratum within the stratifier. For example, when stratifying on administrative gender, there will be four strata, one for each possible gender value.
@@ -24123,7 +26736,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
   ]
 },
 "MeasureReport.Stratum": {
-    /*The MeasureReport resource contains the results of evaluating a measure.
+    /*The MeasureReport resource contains the results of the calculation of a measure; and optionally a reference to the resources involved in that calculation.
      */
   "name": "MeasureReport.Stratum",
   "base": "BackboneElement", 
@@ -24131,13 +26744,13 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
   ],
   "elems": [
     { 
-    /*The value for this stratum, expressed as a string. When defining stratifiers on complex values, the value must be rendered such that the value for each stratum within the stratifier is unique.
+    /*The value for this stratum, expressed as a CodeableConcept. When defining stratifiers on complex values, the value must be rendered such that the value for each stratum within the stratifier is unique.
      */  "name": "value", 
     
       "min": "1", 
       "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
     { 
     /*The populations that make up the stratum, one for each type of population appropriate to the measure.
      */  "name": "population", 
@@ -24152,26 +26765,18 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
     
       "min": "0", 
       "max": "1", 
-      "type": "decimal",
-      "isPrimitive": true }, 
+      "type": "Quantity",
+      "isPrimitive": false }, 
   ]
 },
 "MeasureReport.Population1": {
-    /*The MeasureReport resource contains the results of evaluating a measure.
+    /*The MeasureReport resource contains the results of the calculation of a measure; and optionally a reference to the resources involved in that calculation.
      */
   "name": "MeasureReport.Population1",
   "base": "BackboneElement", 
   "attrs": [
   ],
   "elems": [
-    { 
-    /*The identifier of the population being reported, as defined by the population element of the measure.
-     */  "name": "identifier", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Identifier",
-      "isPrimitive": false }, 
     { 
     /*The type of the population.
      */  "name": "code", 
@@ -24189,8 +26794,8 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "integer",
       "isPrimitive": true }, 
     { 
-    /*This element refers to a List of patient level MeasureReport resources, one for each patient in this population in this stratum.
-     */  "name": "patients", 
+    /*This element refers to a List of subject level MeasureReport resources, one for each subject in this population in this stratum.
+     */  "name": "subjects", 
     
       "min": "0", 
       "max": "1", 
@@ -24249,16 +26854,32 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*Whether the media is a photo (still image), an audio recording, or a video recording.
-     */  "name": "type", 
+    /*A larger event of which this particular event is a component or step.
+     */  "name": "partOf", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*The current state of the {{title}}.
+     */  "name": "status", 
     
       "min": "1", 
       "max": "1", 
-      "type": "DigitalMediaType",
+      "type": "EventStatus",
       "isPrimitive": true }, 
     { 
+    /*A code that classifies whether the media is an image, video or audio recording or some other media category.
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
     /*Details of the type of the media - usually, how it was acquired (what type of device). If images sourced from a DICOM system, are wrapped in a Media resource, then this is the modality.
-     */  "name": "subtype", 
+     */  "name": "modality", 
     
       "min": "0", 
       "max": "1", 
@@ -24291,19 +26912,27 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
     [ /* Choice */ 
     /*The date and time(s) at which the media was collected.
      */
-        {   "name": "occurrenceDateTime", 
+        {   "name": "createdDateTime", 
         
           "min": "1", 
           "max": "1", 
           "type": "dateTime",
           "isPrimitive": true }, 
-        {   "name": "occurrencePeriod", 
+        {   "name": "createdPeriod", 
         
           "min": "1", 
           "max": "1", 
           "type": "Period",
           "isPrimitive": false }, 
     ], 
+    { 
+    /*The date and time this version of the media was made available to providers, typically after having been reviewed.
+     */  "name": "issued", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "instant",
+      "isPrimitive": true }, 
     { 
     /*The person who administered the collection of the image.
      */  "name": "operator", 
@@ -24321,13 +26950,21 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Indicates the site on the subject's body where the media was collected (i.e. the target site).
+    /*Indicates the site on the subject's body where the observation was made (i.e. the target site).
      */  "name": "bodySite", 
     
       "min": "0", 
       "max": "1", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
+    { 
+    /*The name of the device / manufacturer of the device  that was used to make the recording.
+     */  "name": "deviceName", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
     { 
     /*The device used to collect the media.
      */  "name": "device", 
@@ -24366,7 +27003,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
     
       "min": "0", 
       "max": "1", 
-      "type": "unsignedInt",
+      "type": "decimal",
       "isPrimitive": true }, 
     { 
     /*The actual content of the media - inline or by direct reference to the media source file.
@@ -24386,21 +27023,8 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "isPrimitive": false }, 
   ]
 },
-"DigitalMediaType": {
-    /*Whether the media is a photo, video, or audioIf the element is present, it must have either a @value, an @id, or extensions
-     */
-  "name": "DigitalMediaType",
-  "base": "Element", 
-  "attrs": [
-    { 
-      "name": "value", 
-      "type": "DigitalMediaType-list" }, 
-  ],
-  "elems": [
-  ]
-},
 "Medication": {
-    /*This resource is primarily used for the identification and definition of a medication. It covers the ingredients and the packaging for a medication.If the element is present, it must have either a @value, an @id, or extensions
+    /*This resource is primarily used for the identification and definition of a medication for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use.If the element is present, it must have either a @value, an @id, or extensions
      */
   "name": "Medication",
   "base": "DomainResource", 
@@ -24424,22 +27048,6 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "MedicationStatus",
       "isPrimitive": true }, 
     { 
-    /*Set to true if the item is attributable to a specific manufacturer.
-     */  "name": "isBrand", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "boolean",
-      "isPrimitive": true }, 
-    { 
-    /*Set to true if the medication can be obtained without an order from a prescriber.
-     */  "name": "isOverTheCounter", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "boolean",
-      "isPrimitive": true }, 
-    { 
     /*Describes the details of the manufacturer of the medication product.  This is not intended to represent the distributor of a medication product.
      */  "name": "manufacturer", 
     
@@ -24456,6 +27064,14 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
+    /*Specific amount of the drug in the packaged product.  For example, when specifying a product that has the same strength (For example, Insulin glargine 100 unit per mL solution for injection), this attribute provides additional clarification of the package amount (For example, 3 mL, 10mL, etc.).
+     */  "name": "amount", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Quantity",
+      "isPrimitive": false }, 
+    { 
     /*Identifies a particular constituent of interest in the product.
      */  "name": "ingredient", 
     
@@ -24465,24 +27081,16 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "isPrimitive": false }, 
     { 
     /*Information that only applies to packages (not products).
-     */  "name": "package", 
+     */  "name": "batch", 
     
       "min": "0", 
       "max": "1", 
-      "type": "Medication.Package",
-      "isPrimitive": false }, 
-    { 
-    /*Photo(s) or graphic representation(s) of the medication.
-     */  "name": "image", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Attachment",
+      "type": "Medication.Batch",
       "isPrimitive": false }, 
   ]
 },
 "Medication.Ingredient": {
-    /*This resource is primarily used for the identification and definition of a medication. It covers the ingredients and the packaging for a medication.
+    /*This resource is primarily used for the identification and definition of a medication for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use.
      */
   "name": "Medication.Ingredient",
   "base": "BackboneElement", 
@@ -24523,76 +27131,8 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "isPrimitive": false }, 
   ]
 },
-"Medication.Package": {
-    /*This resource is primarily used for the identification and definition of a medication. It covers the ingredients and the packaging for a medication.
-     */
-  "name": "Medication.Package",
-  "base": "BackboneElement", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*The kind of container that this package comes as.
-     */  "name": "container", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*A set of components that go to make up the described item.
-     */  "name": "content", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Medication.Content",
-      "isPrimitive": false }, 
-    { 
-    /*Information about a group of medication produced or packaged from one production run.
-     */  "name": "batch", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Medication.Batch",
-      "isPrimitive": false }, 
-  ]
-},
-"Medication.Content": {
-    /*This resource is primarily used for the identification and definition of a medication. It covers the ingredients and the packaging for a medication.
-     */
-  "name": "Medication.Content",
-  "base": "BackboneElement", 
-  "attrs": [
-  ],
-  "elems": [
-    [ /* Choice */ 
-    /*Identifies one of the items in the package.
-     */
-        {   "name": "itemCodeableConcept", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "CodeableConcept",
-          "isPrimitive": false }, 
-        {   "name": "itemReference", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Reference",
-          "isPrimitive": false }, 
-    ], 
-    { 
-    /*The amount of the product that is in the package.
-     */  "name": "amount", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Quantity",
-      "isPrimitive": false }, 
-  ]
-},
 "Medication.Batch": {
-    /*This resource is primarily used for the identification and definition of a medication. It covers the ingredients and the packaging for a medication.
+    /*This resource is primarily used for the identification and definition of a medication for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use.
      */
   "name": "Medication.Batch",
   "base": "BackboneElement", 
@@ -24614,6 +27154,14 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "min": "0", 
       "max": "1", 
       "type": "dateTime",
+      "isPrimitive": true }, 
+    { 
+    /*An identifier assigned to a drug at the point of manufacturing and repackaging (at the package or pallet level), sufficient to facilitate the identification, validation, authentication, and tracking and tracking of drugs.
+     */  "name": "serialNumber", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
       "isPrimitive": true }, 
   ]
 },
@@ -24639,7 +27187,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
   ],
   "elems": [
     { 
-    /*External identifier - FHIR will generate its own internal identifiers (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated.
+    /*External identifier - FHIR will generate its own internal identifiers (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event. This identifier is particularly important when these records require updates.
      */  "name": "identifier", 
     
       "min": "0", 
@@ -24647,13 +27195,13 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
-    /*A protocol, guideline, orderset or other definition that was adhered to in whole or in part by this event.
-     */  "name": "definition", 
+    /*A protocol, guideline, orderset, or other definition that was adhered to in whole or in part by this event.
+     */  "name": "instantiates", 
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
+      "type": "uri",
+      "isPrimitive": true }, 
     { 
     /*A larger event of which this particular event is a component or step.
      */  "name": "partOf", 
@@ -24663,7 +27211,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions it is possible for an administration to be started but not completed or it may be paused while some other process is under way.
+    /*Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions, it is possible for an administration to be started but not completed or it may be paused while some other process is under way.
      */  "name": "status", 
     
       "min": "1", 
@@ -24703,7 +27251,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*The visit, admission or other contact between patient and health care provider the medication administration was performed as part of.
+    /*The visit, admission, or other contact between patient and health care provider during which the medication administration was performed.
      */  "name": "context", 
     
       "min": "0", 
@@ -24735,7 +27283,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
           "isPrimitive": false }, 
     ], 
     { 
-    /*The individual who was responsible for giving the medication to the patient.
+    /*Indicates who or what performed the medication administration and how they were involved.
      */  "name": "performer", 
     
       "min": "0", 
@@ -24743,16 +27291,8 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "type": "MedicationAdministration.Performer",
       "isPrimitive": false }, 
     { 
-    /*Set this to true if the record is saying that the medication was NOT administered.
-     */  "name": "notGiven", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "boolean",
-      "isPrimitive": true }, 
-    { 
     /*A code indicating why the administration was not performed.
-     */  "name": "reasonNotGiven", 
+     */  "name": "statusReason", 
     
       "min": "0", 
       "max": "unbounded", 
@@ -24776,7 +27316,7 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
       "isPrimitive": false }, 
     { 
     /*The original request, instruction or authority to perform the administration.
-     */  "name": "prescription", 
+     */  "name": "request", 
     
       "min": "0", 
       "max": "1", 
@@ -24825,18 +27365,18 @@ The value may be derived from the DICOM Standard Part 16, CID-7010 descriptions 
   ],
   "elems": [
     { 
-    /*The device, practitioner, etc. who performed the action.
+    /*Distinguishes the type of involvement of the performer in the medication administration.
+     */  "name": "function", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Indicates who or what performed the medication administration.
      */  "name": "actor", 
     
       "min": "1", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*The organization the device or practitioner was acting on behalf of.
-     */  "name": "onBehalfOf", 
-    
-      "min": "0", 
       "max": "1", 
       "type": "Reference",
       "isPrimitive": false }, 
@@ -24940,7 +27480,7 @@ The dosage instructions should reflect the dosage of the medication that was adm
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
-    /*The procedure that the dispense is done because of.
+    /*The procedure that trigger the dispense.
      */  "name": "partOf", 
     
       "min": "0", 
@@ -24951,12 +27491,12 @@ The dosage instructions should reflect the dosage of the medication that was adm
     /*A code specifying the state of the set of dispense events.
      */  "name": "status", 
     
-      "min": "0", 
+      "min": "1", 
       "max": "1", 
       "type": "MedicationDispenseStatus",
       "isPrimitive": true }, 
     { 
-    /*Indicates type of medication dispense and where the medication is expected to be consumed or administered.
+    /*Indicates the type of medication dispense and where the medication is expected to be consumed or administered.
      */  "name": "category", 
     
       "min": "0", 
@@ -25004,12 +27544,20 @@ The dosage instructions should reflect the dosage of the medication that was adm
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*Indicates who or what performed the event.  It should be assumed that the performer is the dispenser of the medication.
+    /*Indicates who or what performed the event.
      */  "name": "performer", 
     
       "min": "0", 
       "max": "unbounded", 
       "type": "MedicationDispense.Performer",
+      "isPrimitive": false }, 
+    { 
+    /*The principal physical location where the dispense was performed.
+     */  "name": "location", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
       "isPrimitive": false }, 
     { 
     /*Indicates the medication order that is being dispensed against.
@@ -25100,31 +27648,23 @@ The dosage instructions should reflect the dosage of the medication that was adm
       "type": "MedicationDispense.Substitution",
       "isPrimitive": false }, 
     { 
-    /*Indicates an actual or potential clinical issue with or between one or more active or proposed clinical actions for a patient; e.g. Drug-drug interaction, duplicate therapy, dosage alert etc.
+    /*Indicates an actual or potential clinical issue with or between one or more active or proposed clinical actions for a patient; e.g. drug-drug interaction, duplicate therapy, dosage alert etc.
      */  "name": "detectedIssue", 
     
       "min": "0", 
       "max": "unbounded", 
       "type": "Reference",
       "isPrimitive": false }, 
-    { 
-    /*True if the dispense was not performed for some reason.
-     */  "name": "notDone", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "boolean",
-      "isPrimitive": true }, 
     [ /* Choice */ 
     /*Indicates the reason why a dispense was not performed.
      */
-        {   "name": "notDoneReasonCodeableConcept", 
+        {   "name": "statusReasonCodeableConcept", 
         
           "min": "1", 
           "max": "1", 
           "type": "CodeableConcept",
           "isPrimitive": false }, 
-        {   "name": "notDoneReasonReference", 
+        {   "name": "statusReasonReference", 
         
           "min": "1", 
           "max": "1", 
@@ -25150,18 +27690,18 @@ The dosage instructions should reflect the dosage of the medication that was adm
   ],
   "elems": [
     { 
+    /*Distinguishes the type of performer in the dispense.  For example, date enterer, packager, final checker.
+     */  "name": "function", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
     /*The device, practitioner, etc. who performed the action.  It should be assumed that the actor is the dispenser of the medication.
      */  "name": "actor", 
     
       "min": "1", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*The organization the device or practitioner was acting on behalf of.
-     */  "name": "onBehalfOf", 
-    
-      "min": "0", 
       "max": "1", 
       "type": "Reference",
       "isPrimitive": false }, 
@@ -25192,7 +27732,7 @@ The dosage instructions should reflect the dosage of the medication that was adm
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Indicates the reason for the substitution of (or lack of substitution) from what was prescribed.
+    /*Indicates the reason for the substitution (or lack of substitution) from what was prescribed.
      */  "name": "reason", 
     
       "min": "0", 
@@ -25231,7 +27771,7 @@ The dosage instructions should reflect the dosage of the medication that was adm
   ],
   "elems": [
     { 
-    /*This records identifiers associated with this medication request that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate. For example a re-imbursement system might issue its own id for each prescription that is created.  This is particularly important where FHIR only provides part of an entire workflow process where records must be tracked through an entire system.
+    /*This records identifiers associated with this medication request that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate. For example a reimbursement system might issue its own id for each prescription that is created.  This is particularly important where FHIR only provides part of an entire workflow process where records must be tracked through an entire system.
      */  "name": "identifier", 
     
       "min": "0", 
@@ -25239,34 +27779,10 @@ The dosage instructions should reflect the dosage of the medication that was adm
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
-    /*Protocol or definition followed by this request.
-     */  "name": "definition", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*A plan or request that is fulfilled in whole or in part by this medication request.
-     */  "name": "basedOn", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*A shared identifier common to all requests that were authorized more or less simultaneously by a single author, representing the identifier of the requisition or prescription.
-     */  "name": "groupIdentifier", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Identifier",
-      "isPrimitive": false }, 
-    { 
-    /*A code specifying the current state of the order.  Generally this will be active or completed state.
+    /*A code specifying the current state of the order.  Generally, this will be active or completed state.
      */  "name": "status", 
     
-      "min": "0", 
+      "min": "1", 
       "max": "1", 
       "type": "MedicationRequestStatus",
       "isPrimitive": true }, 
@@ -25279,11 +27795,11 @@ The dosage instructions should reflect the dosage of the medication that was adm
       "type": "MedicationRequestIntent",
       "isPrimitive": true }, 
     { 
-    /*Indicates the type of medication order and where the medication is expected to be consumed or administered.
+    /*Indicates the type of medication request (for example, where the medication is expected to be consumed or administered (i.e. inpatient or outpatient) or the type of treatment (i.e. chemotherapy or endocrine).
      */  "name": "category", 
     
       "min": "0", 
-      "max": "1", 
+      "max": "unbounded", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
@@ -25292,7 +27808,7 @@ The dosage instructions should reflect the dosage of the medication that was adm
     
       "min": "0", 
       "max": "1", 
-      "type": "MedicationRequestPriority",
+      "type": "RequestPriority",
       "isPrimitive": true }, 
     [ /* Choice */ 
     /*Identifies the medication being requested. This is a link to a resource that represents the medication which may be the details of the medication or simply an attribute carrying a code that identifies the medication from a known list of medications.
@@ -25343,12 +27859,28 @@ The dosage instructions should reflect the dosage of the medication that was adm
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*The individual, organization or device that initiated the request and has responsibility for its activation.
+    /*The individual, organization, or device that initiated the request and has responsibility for its activation.
      */  "name": "requester", 
     
       "min": "0", 
       "max": "1", 
-      "type": "MedicationRequest.Requester",
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*The specified desired performer of the medication treatment (e.g. the performer of the medication administration).
+     */  "name": "performer", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Indicates the type of performer of the administration of the medication.
+     */  "name": "performerType", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
     /*The person who entered the order on behalf of another individual for example in the case of a verbal or a telephone order.
@@ -25369,6 +27901,46 @@ The dosage instructions should reflect the dosage of the medication that was adm
     { 
     /*Condition or observation that supports why the medication was ordered.
      */  "name": "reasonReference", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*The URL pointing to a protocol, guideline, orderset, or other definition that is adhered to in whole or in part by this MedicationRequest.
+     */  "name": "instantiates", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "uri",
+      "isPrimitive": true }, 
+    { 
+    /*A plan or request that is fulfilled in whole or in part by this medication request.
+     */  "name": "basedOn", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*A shared identifier common to all requests that were authorized more or less simultaneously by a single author, representing the identifier of the requisition or prescription.
+     */  "name": "groupIdentifier", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*Captures the reason for the current state of the MedicationRequest.
+     */  "name": "statusReason", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Insurance plans, coverage extensions, pre-authorizations and/or pre-determinations that may be required for delivering the requested service.
+     */  "name": "insurance", 
     
       "min": "0", 
       "max": "unbounded", 
@@ -25432,32 +28004,6 @@ The dosage instructions should reflect the dosage of the medication that was adm
       "isPrimitive": false }, 
   ]
 },
-"MedicationRequest.Requester": {
-    /*An order or request for both supply of the medication and the instructions for administration of the medication to a patient. The resource is called "MedicationRequest" rather than "MedicationPrescription" or "MedicationOrder" to generalize the use across inpatient and outpatient settings, including care plans, etc., and to harmonize with workflow patterns.
-     */
-  "name": "MedicationRequest.Requester",
-  "base": "BackboneElement", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*The healthcare professional responsible for authorizing the initial prescription.
-     */  "name": "agent", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*The organization the device or practitioner was acting on behalf of.
-     */  "name": "onBehalfOf", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-  ]
-},
 "MedicationRequest.DispenseRequest": {
     /*An order or request for both supply of the medication and the instructions for administration of the medication to a patient. The resource is called "MedicationRequest" rather than "MedicationPrescription" or "MedicationOrder" to generalize the use across inpatient and outpatient settings, including care plans, etc., and to harmonize with workflow patterns.
      */
@@ -25475,12 +28021,12 @@ The dosage instructions should reflect the dosage of the medication that was adm
       "type": "Period",
       "isPrimitive": false }, 
     { 
-    /*An integer indicating the number of times, in addition to the original dispense, (aka refills or repeats) that the patient can receive the prescribed medication. Usage Notes: This integer does not include the original order dispense. This means that if an order indicates dispense 30 tablets plus "3 repeats", then the order can be dispensed a total of 4 times and the patient can receive a total of 120 tablets.
+    /*An integer indicating the number of times, in addition to the original dispense, (aka refills or repeats) that the patient can receive the prescribed medication. Usage Notes: This integer does not include the original order dispense. This means that if an order indicates dispense 30 tablets plus "3 repeats", then the order can be dispensed a total of 4 times and the patient can receive a total of 120 tablets.  A prescriber may explicitly say that zero refills are permitted after the initial dispense.
      */  "name": "numberOfRepeatsAllowed", 
     
       "min": "0", 
       "max": "1", 
-      "type": "positiveInt",
+      "type": "unsignedInt",
       "isPrimitive": true }, 
     { 
     /*The amount that is to be dispensed for one fill.
@@ -25547,19 +28093,6 @@ The dosage instructions should reflect the dosage of the medication that was adm
   "elems": [
   ]
 },
-"MedicationRequestPriority": {
-    /*Identifies the level of importance to be assigned to actioning the requestIf the element is present, it must have either a @value, an @id, or extensions
-     */
-  "name": "MedicationRequestPriority",
-  "base": "Element", 
-  "attrs": [
-    { 
-      "name": "value", 
-      "type": "MedicationRequestPriority-list" }, 
-  ],
-  "elems": [
-  ]
-},
 "MedicationRequestIntent": {
     /*The kind of medication orderIf the element is present, it must have either a @value, an @id, or extensions
      */
@@ -25574,7 +28107,7 @@ The dosage instructions should reflect the dosage of the medication that was adm
   ]
 },
 "MedicationStatement": {
-    /*A record of a medication that is being consumed by a patient.   A MedicationStatement may indicate that the patient may be taking the medication now, or has taken the medication in the past or will be taking the medication in the future.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay.   The medication information may come from sources such as the patient's memory, from a prescription bottle,  or from a list of medications the patient, clinician or other party maintains 
+    /*A record of a medication that is being consumed by a patient.   A MedicationStatement may indicate that the patient may be taking the medication now, or has taken the medication in the past or will be taking the medication in the future.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay.   The medication information may come from sources such as the patient's memory, from a prescription bottle,  or from a list of medications the patient, clinician or other party maintains. 
 
 The primary difference between a medication statement and a medication administration is that the medication administration has complete administration information and is based on actual administration information from the person who administered the medication.  A medication statement is often, if not always, less specific.  There is no required date/time when the medication was administered, in fact we only know that a source has reported the patient is taking this medication, where details such as time, quantity, or rate or even medication product may be incomplete or missing or less precise.  As stated earlier, the medication statement information may come from the patient's memory, from a prescription bottle or from a list of medications the patient, clinician or other party maintains.  Medication administration is more formal and is not missing detailed information.If the element is present, it must have either a @value, an @id, or extensions
      */
@@ -25608,14 +28141,6 @@ The primary difference between a medication statement and a medication administr
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*The encounter or episode of care that establishes the context for this MedicationStatement.
-     */  "name": "context", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
     /*A code representing the patient or other source's judgment about the state of the medication used that this statement is about.  Generally this will be active or completed.
      */  "name": "status", 
     
@@ -25624,7 +28149,15 @@ The primary difference between a medication statement and a medication administr
       "type": "MedicationStatementStatus",
       "isPrimitive": true }, 
     { 
-    /*Indicates where type of medication statement and where the medication is expected to be consumed or administered.
+    /*Captures the reason for the current state of the MedicationStatement.
+     */  "name": "statusReason", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Indicates type of medication statement and where the medication is expected to be consumed or administered.
      */  "name": "category", 
     
       "min": "0", 
@@ -25647,8 +28180,24 @@ The primary difference between a medication statement and a medication administr
           "type": "Reference",
           "isPrimitive": false }, 
     ], 
+    { 
+    /*The person, animal or group who is/was taking the medication.
+     */  "name": "subject", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*The encounter or episode of care that establishes the context for this MedicationStatement.
+     */  "name": "context", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
     [ /* Choice */ 
-    /*The interval of time during which it is being asserted that the patient was taking the medication (or was not taking, when the wasNotGiven element is true).
+    /*The interval of time during which it is being asserted that the patient is/was/will be taking the medication ( or was not taking, when the MedicationStatement.taken element is No).
      */
         {   "name": "effectiveDateTime", 
         
@@ -25672,18 +28221,10 @@ The primary difference between a medication statement and a medication administr
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*The person or organization that provided the information about the taking of this medication. Note: Use derivedFrom when a MedicationStatement is derived from other resources, e.g Claim or MedicationRequest.
+    /*The person or organization that provided the information about the taking of this medication. Note: Use derivedFrom when a MedicationStatement is derived from other resources, e.g. Claim or MedicationRequest.
      */  "name": "informationSource", 
     
       "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*The person, animal or group who is/was taking the medication.
-     */  "name": "subject", 
-    
-      "min": "1", 
       "max": "1", 
       "type": "Reference",
       "isPrimitive": false }, 
@@ -25694,22 +28235,6 @@ The primary difference between a medication statement and a medication administr
       "min": "0", 
       "max": "unbounded", 
       "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*Indicator of the certainty of whether the medication was taken by the patient.
-     */  "name": "taken", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "MedicationStatementTaken",
-      "isPrimitive": true }, 
-    { 
-    /*A code indicating why the medication was not taken.
-     */  "name": "reasonNotTaken", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
     /*A reason for why the medication is being/was taken.
@@ -25758,17 +28283,1598 @@ The primary difference between a medication statement and a medication administr
   "elems": [
   ]
 },
-"MedicationStatementTaken": {
-    /*A coded concept identifying level of certainty if patient has taken or has not taken the medicationIf the element is present, it must have either a @value, an @id, or extensions
+"MedicinalProduct": {
+    /*Detailed definition of a medicinal product, typically for uses other than direct patient care (e.g. regulatory use).If the element is present, it must have either a @value, an @id, or extensions
      */
-  "name": "MedicationStatementTaken",
-  "base": "Element", 
+  "name": "MedicinalProduct",
+  "base": "DomainResource", 
   "attrs": [
-    { 
-      "name": "value", 
-      "type": "MedicationStatementTaken-list" }, 
   ],
   "elems": [
+    { 
+    /*Business idenfifier for this product. Could be an MPID.
+     */  "name": "identifier", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*Regulatory type, e.g. Investigational or Authorized.
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The dose form for a single part product, or combined form of a multiple part product.
+     */  "name": "combinedPharmaceuticalDoseForm", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Whether the Medicinal Product is subject to additional monitoring for regulatory reasons.
+     */  "name": "additionalMonitoringIndicator", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Whether the Medicinal Product is subject to special measures for regulatory reasons.
+     */  "name": "specialMeasures", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*If authorised for use in children.
+     */  "name": "paediatricUseIndicator", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Indicates if the medicinal product has an orphan designation for the treatment of a rare disease.
+     */  "name": "orphanDesignationStatus", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Allows the product to be classified by various systems.
+     */  "name": "productClassification", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Product regulatory authorization.
+     */  "name": "marketingAuthorization", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Package representation for the product.
+     */  "name": "packagedMedicinalProduct", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Pharmaceutical aspects of product.
+     */  "name": "pharmaceuticalProduct", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Clinical particulars, indications etc.
+     */  "name": "clinicalParticulars", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Supporting documentation, typically for regulatory submission.
+     */  "name": "attachedDocument", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*A master file for to the medicinal product (e.g. Pharmacovigilance System Master File).
+     */  "name": "masterFile", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*The product's name, including full name and possibly coded parts.
+     */  "name": "name", 
+    
+      "min": "1", 
+      "max": "unbounded", 
+      "type": "MedicinalProduct.Name",
+      "isPrimitive": false }, 
+    { 
+    /*Reference to another product, e.g. for linking authorised to investigational product.
+     */  "name": "crossReference", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*An operation applied to the product, for manufacturing or adminsitrative purpose.
+     */  "name": "manufacturingBusinessOperation", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "MedicinalProduct.ManufacturingBusinessOperation",
+      "isPrimitive": false }, 
+  ]
+},
+"MedicinalProduct.Name": {
+    /*Detailed definition of a medicinal product, typically for uses other than direct patient care (e.g. regulatory use).
+     */
+  "name": "MedicinalProduct.Name",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The full product name.
+     */  "name": "fullName", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Coding words or phrases of the name.
+     */  "name": "namePart", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "MedicinalProduct.NamePart",
+      "isPrimitive": false }, 
+    { 
+    /*Country where the name applies.
+     */  "name": "countryLanguage", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "MedicinalProduct.CountryLanguage",
+      "isPrimitive": false }, 
+  ]
+},
+"MedicinalProduct.NamePart": {
+    /*Detailed definition of a medicinal product, typically for uses other than direct patient care (e.g. regulatory use).
+     */
+  "name": "MedicinalProduct.NamePart",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*A fragment of a product name.
+     */  "name": "part", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Idenifying type for this part of the name (e.g. strength part).
+     */  "name": "type", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Coding",
+      "isPrimitive": false }, 
+  ]
+},
+"MedicinalProduct.CountryLanguage": {
+    /*Detailed definition of a medicinal product, typically for uses other than direct patient care (e.g. regulatory use).
+     */
+  "name": "MedicinalProduct.CountryLanguage",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Country code for where this name applies.
+     */  "name": "country", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Jurisdiction code for where this name applies.
+     */  "name": "jurisdiction", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Language code for this name.
+     */  "name": "language", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+  ]
+},
+"MedicinalProduct.ManufacturingBusinessOperation": {
+    /*Detailed definition of a medicinal product, typically for uses other than direct patient care (e.g. regulatory use).
+     */
+  "name": "MedicinalProduct.ManufacturingBusinessOperation",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The type of manufacturing operation.
+     */  "name": "operationType", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Regulatory authorization reference number.
+     */  "name": "authorisationReferenceNumber", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*Regulatory authorization date.
+     */  "name": "effectiveDate", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+    { 
+    /*To indicate if this proces is commercially confidential.
+     */  "name": "confidentialityIndicator", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The manufacturer or establishment associated with the process.
+     */  "name": "manufacturer", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*A regulator which oversees the operation.
+     */  "name": "regulator", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+  ]
+},
+"MedicinalProductAuthorization": {
+    /*The regulatory authorization of a medicinal product.If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "MedicinalProductAuthorization",
+  "base": "DomainResource", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Business identifier for the marketing authorization, as assigned by a regulator.
+     */  "name": "identifier", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*The country in which the marketing authorization has been granted.
+     */  "name": "country", 
+    
+      "min": "1", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The legal status of supply of the medicinal product as classified by the regulator.
+     */  "name": "legalStatusOfSupply", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The status of the marketing authorization.
+     */  "name": "status", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The date at which the given status has become applicable.
+     */  "name": "statusDate", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+    { 
+    /*The date when a suspended the marketing or the marketing authorization of the product is anticipated to be restored.
+     */  "name": "restoreDate", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+    { 
+    /*The beginning of the time period in which the marketing authorization is in the specific status shall be specified A complete date consisting of day, month and year shall be specified using the ISO 8601 date format.
+     */  "name": "validityPeriod", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Period",
+      "isPrimitive": false }, 
+    { 
+    /*A period of time after authorization before generic product applicatiosn can be submitted.
+     */  "name": "dataExclusivityPeriod", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Period",
+      "isPrimitive": false }, 
+    { 
+    /*The date when the first authorization was granted by a Medicines Regulatory Agency.
+     */  "name": "dateOfFirstAuthorization", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+    { 
+    /*Date of first marketing authorization for a company's new medicinal product in any country in the World.
+     */  "name": "internationalBirthDate", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+    { 
+    /*Authorization in areas within a country.
+     */  "name": "jurisdictionalAuthorization", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "MedicinalProductAuthorization.JurisdictionalAuthorization",
+      "isPrimitive": false }, 
+    { 
+    /*Marketing Authorization Holder.
+     */  "name": "holder", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Medicines Regulatory Agency.
+     */  "name": "regulator", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*The regulatory procedure for granting or amending a marketing authorization.
+     */  "name": "procedure", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "MedicinalProductAuthorization.Procedure",
+      "isPrimitive": false }, 
+    { 
+    /*Marketing status of the medicinal product, in contrast to marketing authorizaton.
+     */  "name": "marketingStatus", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "MarketingStatus",
+      "isPrimitive": false }, 
+  ]
+},
+"MedicinalProductAuthorization.JurisdictionalAuthorization": {
+    /*The regulatory authorization of a medicinal product.
+     */
+  "name": "MedicinalProductAuthorization.JurisdictionalAuthorization",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Country of authorization.
+     */  "name": "country", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Jurisdiction within a country.
+     */  "name": "jurisdiction", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The assigned number for the marketing authorization.
+     */  "name": "number", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*The legal status of supply in a jurisdiction or region.
+     */  "name": "legalStatusOfSupply", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+  ]
+},
+"MedicinalProductAuthorization.Procedure": {
+    /*The regulatory authorization of a medicinal product.
+     */
+  "name": "MedicinalProductAuthorization.Procedure",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Identifier for this procedure.
+     */  "name": "number", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*Type of procedure.
+     */  "name": "type", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Date of procedure.
+     */  "name": "date", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Period",
+      "isPrimitive": false }, 
+    { 
+    /*Applcations submitted to obtain a marketing authorization.
+     */  "name": "application", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "MedicinalProductAuthorization.Application",
+      "isPrimitive": false }, 
+  ]
+},
+"MedicinalProductAuthorization.Application": {
+    /*The regulatory authorization of a medicinal product.
+     */
+  "name": "MedicinalProductAuthorization.Application",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*A unique identifier for the specific instance of an application shall be provided in text. The application identifier/number is usually assigned by a Medicines Regulatory Agency.
+     */  "name": "number", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*The type of the application.
+     */  "name": "type", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Date that the application was made.
+     */  "name": "date", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+  ]
+},
+"MedicinalProductClinicals": {
+    /*The clinical particulars - indications, contraindications etc. of a medicinal product, including for regulatory purposes.If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "MedicinalProductClinicals",
+  "base": "DomainResource", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Describe the undesirable effects of the medicinal product.
+     */  "name": "undesirableEffects", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "MedicinalProductClinicals.UndesirableEffects",
+      "isPrimitive": false }, 
+    { 
+    /*Indication for the Medicinal Product.
+     */  "name": "therapeuticIndication", 
+    
+      "min": "1", 
+      "max": "unbounded", 
+      "type": "MedicinalProductClinicals.TherapeuticIndication",
+      "isPrimitive": false }, 
+    { 
+    /*Contraindication for the medicinal product.
+     */  "name": "contraindication", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "MedicinalProductClinicals.Contraindication",
+      "isPrimitive": false }, 
+    { 
+    /*The interactions of the medicinal product with other medicinal products, or other forms of interactions.
+     */  "name": "interactions", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "MedicinalProductClinicals.Interactions",
+      "isPrimitive": false }, 
+  ]
+},
+"MedicinalProductClinicals.UndesirableEffects": {
+    /*The clinical particulars - indications, contraindications etc. of a medicinal product, including for regulatory purposes.
+     */
+  "name": "MedicinalProductClinicals.UndesirableEffects",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The symptom, condition or undesirable effect.
+     */  "name": "symptomConditionEffect", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Classification of the effect.
+     */  "name": "classification", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The frequency of occurrence of the effect.
+     */  "name": "frequencyOfOccurrence", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The population group to which this applies.
+     */  "name": "population", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "MedicinalProductClinicals.Population",
+      "isPrimitive": false }, 
+  ]
+},
+"MedicinalProductClinicals.Population": {
+    /*The clinical particulars - indications, contraindications etc. of a medicinal product, including for regulatory purposes.
+     */
+  "name": "MedicinalProductClinicals.Population",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    [ /* Choice */ 
+    /*The age of the specific population.
+     */
+        {   "name": "ageRange", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Range",
+          "isPrimitive": false }, 
+        {   "name": "ageCodeableConcept", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "CodeableConcept",
+          "isPrimitive": false }, 
+    ], 
+    { 
+    /*The gender of the specific population.
+     */  "name": "gender", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Race of the specific population.
+     */  "name": "race", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The existing physiological conditions of the specific population to which this applies.
+     */  "name": "physiologicalCondition", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+  ]
+},
+"MedicinalProductClinicals.TherapeuticIndication": {
+    /*The clinical particulars - indications, contraindications etc. of a medicinal product, including for regulatory purposes.
+     */
+  "name": "MedicinalProductClinicals.TherapeuticIndication",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The disease, symptom or procedure that is the indication for treatment.
+     */  "name": "diseaseSymptomProcedure", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The status of the disease or symptom for which the indication applies.
+     */  "name": "diseaseStatus", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Comorbidity (concurrent condition) or co-infection as part of the indication.
+     */  "name": "comorbidity", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The intended effect, aim or strategy to be achieved by the indication.
+     */  "name": "intendedEffect", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Timing or duration information as part of the indication.
+     */  "name": "duration", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Quantity",
+      "isPrimitive": false }, 
+    { 
+    /*Information about the use of the medicinal product in relation to other therapies as part of the indication.
+     */  "name": "undesirableEffects", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "MedicinalProductClinicals.UndesirableEffects",
+      "isPrimitive": false }, 
+    { 
+    /*Information about the use of the medicinal product in relation to other therapies described as part of the indication.
+     */  "name": "otherTherapy", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "MedicinalProductClinicals.OtherTherapy",
+      "isPrimitive": false }, 
+    { 
+    /*The population group to which this applies.
+     */  "name": "population", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "MedicinalProductClinicals.Population",
+      "isPrimitive": false }, 
+  ]
+},
+"MedicinalProductClinicals.OtherTherapy": {
+    /*The clinical particulars - indications, contraindications etc. of a medicinal product, including for regulatory purposes.
+     */
+  "name": "MedicinalProductClinicals.OtherTherapy",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The type of relationship between the medicinal product indication or contraindication and another therapy.
+     */  "name": "therapyRelationshipType", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    [ /* Choice */ 
+    /*Reference to a specific medication (active substance, medicinal product or class of products) as part of an indication or contraindication.
+     */
+        {   "name": "medicationCodeableConcept", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "CodeableConcept",
+          "isPrimitive": false }, 
+        {   "name": "medicationReference", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Reference",
+          "isPrimitive": false }, 
+    ], 
+  ]
+},
+"MedicinalProductClinicals.Contraindication": {
+    /*The clinical particulars - indications, contraindications etc. of a medicinal product, including for regulatory purposes.
+     */
+  "name": "MedicinalProductClinicals.Contraindication",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The disease, symptom or procedure for the contraindication.
+     */  "name": "disease", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The status of the disease or symptom for the contraindication.
+     */  "name": "diseaseStatus", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*A comorbidity (concurrent condition) or coinfection.
+     */  "name": "comorbidity", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Information about the use of the medicinal product in relation to other therapies as part of the indication.
+     */  "name": "therapeuticIndication", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "MedicinalProductClinicals.TherapeuticIndication",
+      "isPrimitive": false }, 
+    { 
+    /*Information about the use of the medicinal product in relation to other therapies described as part of the contraindication.
+     */  "name": "otherTherapy", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "MedicinalProductClinicals.OtherTherapy",
+      "isPrimitive": false }, 
+    { 
+    /*The population group to which this applies.
+     */  "name": "population", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "MedicinalProductClinicals.Population",
+      "isPrimitive": false }, 
+  ]
+},
+"MedicinalProductClinicals.Interactions": {
+    /*The clinical particulars - indications, contraindications etc. of a medicinal product, including for regulatory purposes.
+     */
+  "name": "MedicinalProductClinicals.Interactions",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The specific medication, food or laboratory test that interacts.
+     */  "name": "interactant", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The type of the interaction.
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The effect of the interaction.
+     */  "name": "effect", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The incidence of the interaction.
+     */  "name": "incidence", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Actions for managing the interaction.
+     */  "name": "management", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+  ]
+},
+"MedicinalProductDeviceSpec": {
+    /*A detailed description of a device, typically as part of a regulated medicinal product. It is not intended to relace the Device resource, which covers use of device instances.If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "MedicinalProductDeviceSpec",
+  "base": "DomainResource", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Business identifier.
+     */  "name": "identifier", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*The type of device.
+     */  "name": "type", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Trade name of the device, where applicable.
+     */  "name": "tradeName", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The quantity of the device present in the packaging of a medicinal product.
+     */  "name": "quantity", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Quantity",
+      "isPrimitive": false }, 
+    { 
+    /*Device listing number.
+     */  "name": "listingNumber", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Device model or reference number.
+     */  "name": "modelNumber", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Whether the device is supplied as sterile.
+     */  "name": "sterilityIndicator", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Whether the device must be sterilised before use.
+     */  "name": "sterilisationRequirement", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Usage pattern including the number of times that the device may be used.
+     */  "name": "usage", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*A nomenclature term for the device.
+     */  "name": "nomenclature", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Shelf Life and storage information.
+     */  "name": "shelfLife", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ProductShelfLife",
+      "isPrimitive": false }, 
+    { 
+    /*Dimensions, color etc.
+     */  "name": "physicalCharacteristics", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "ProdCharacteristic",
+      "isPrimitive": false }, 
+    { 
+    /*Other codeable characteristics.
+     */  "name": "otherCharacteristics", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Batch number or expiry date of a device.
+     */  "name": "batchIdentifier", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*Manufacturer of this Device.
+     */  "name": "manufacturer", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*A substance used to create the material(s) of which the device is made.
+     */  "name": "material", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "MedicinalProductDeviceSpec.Material",
+      "isPrimitive": false }, 
+  ]
+},
+"MedicinalProductDeviceSpec.Material": {
+    /*A detailed description of a device, typically as part of a regulated medicinal product. It is not intended to relace the Device resource, which covers use of device instances.
+     */
+  "name": "MedicinalProductDeviceSpec.Material",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The substance.
+     */  "name": "substance", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Indicates an alternative material of the device.
+     */  "name": "alternate", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+    { 
+    /*Whether the substance is a known or suspected allergen.
+     */  "name": "allergenicIndicator", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+  ]
+},
+"MedicinalProductIngredient": {
+    /*An ingredient of a manufactured item or pharmaceutical product.If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "MedicinalProductIngredient",
+  "base": "DomainResource", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The identifier(s) of this Ingredient t that are assigned by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate.
+     */  "name": "identifier", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*Ingredient role e.g. Active ingredient, excipient.
+     */  "name": "role", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*If the ingredient is a known or suspected allergen.
+     */  "name": "allergenicIndicator", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+    { 
+    /*Manufacturer of this Ingredient.
+     */  "name": "manufacturer", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*A specified substance that comprises this ingredient.
+     */  "name": "specifiedSubstance", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "MedicinalProductIngredient.SpecifiedSubstance",
+      "isPrimitive": false }, 
+    { 
+    /*The ingredient substance.
+     */  "name": "substance", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "MedicinalProductIngredient.Substance",
+      "isPrimitive": false }, 
+  ]
+},
+"MedicinalProductIngredient.SpecifiedSubstance": {
+    /*An ingredient of a manufactured item or pharmaceutical product.
+     */
+  "name": "MedicinalProductIngredient.SpecifiedSubstance",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The specified substance.
+     */  "name": "code", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The group of specified substance, e.g. group 1 to 4.
+     */  "name": "group", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Confidentiality level of the specified substance as the ingredient.
+     */  "name": "confidentiality", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Quantity of the substance or specified substance present in the manufactured item or pharmaceutical product.
+     */  "name": "strength", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "MedicinalProductIngredient.Strength",
+      "isPrimitive": false }, 
+  ]
+},
+"MedicinalProductIngredient.Strength": {
+    /*An ingredient of a manufactured item or pharmaceutical product.
+     */
+  "name": "MedicinalProductIngredient.Strength",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The quantity of substance in the unit of presentation, or in the volume (or mass) of the single pharmaceutical product or manufactured item.
+     */  "name": "presentation", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Ratio",
+      "isPrimitive": false }, 
+    { 
+    /*The strength per unitary volume (or mass).
+     */  "name": "concentration", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Ratio",
+      "isPrimitive": false }, 
+    { 
+    /*For when strength is measured at a particular point or distance.
+     */  "name": "measurementPoint", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The country or countries for which the strength range applies.
+     */  "name": "country", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Strength expressed in terms of a reference substance.
+     */  "name": "referenceStrength", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "MedicinalProductIngredient.ReferenceStrength",
+      "isPrimitive": false }, 
+  ]
+},
+"MedicinalProductIngredient.ReferenceStrength": {
+    /*An ingredient of a manufactured item or pharmaceutical product.
+     */
+  "name": "MedicinalProductIngredient.ReferenceStrength",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Relevent refrerence substance.
+     */  "name": "substance", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+  ]
+},
+"MedicinalProductIngredient.Substance": {
+    /*An ingredient of a manufactured item or pharmaceutical product.
+     */
+  "name": "MedicinalProductIngredient.Substance",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The ingredient substance.
+     */  "name": "code", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Quantity of the substance or specified substance present in the manufactured item or pharmaceutical product.
+     */  "name": "strength", 
+    
+      "min": "1", 
+      "max": "unbounded", 
+      "type": "MedicinalProductIngredient.Strength",
+      "isPrimitive": false }, 
+  ]
+},
+"MedicinalProductPackaged": {
+    /*A medicinal product in a container or package.If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "MedicinalProductPackaged",
+  "base": "DomainResource", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Unique identifier.
+     */  "name": "identifier", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*Textual description.
+     */  "name": "description", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Marketing information.
+     */  "name": "marketingStatus", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "MarketingStatus",
+      "isPrimitive": false }, 
+    { 
+    /*Batch numbering.
+     */  "name": "batchIdentifier", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "MedicinalProductPackaged.BatchIdentifier",
+      "isPrimitive": false }, 
+    { 
+    /*A packaging item, as a contained for medicine, possibly with other packaging items within.
+     */  "name": "packageItem", 
+    
+      "min": "1", 
+      "max": "unbounded", 
+      "type": "MedicinalProductPackaged.PackageItem",
+      "isPrimitive": false }, 
+  ]
+},
+"MedicinalProductPackaged.BatchIdentifier": {
+    /*A medicinal product in a container or package.
+     */
+  "name": "MedicinalProductPackaged.BatchIdentifier",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*A number appearing on the outer packaging of a specific batch.
+     */  "name": "outerPackaging", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*A number appearing on the immediate packaging (and not the outer packaging).
+     */  "name": "immediatePackaging", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+  ]
+},
+"MedicinalProductPackaged.PackageItem": {
+    /*A medicinal product in a container or package.
+     */
+  "name": "MedicinalProductPackaged.PackageItem",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Including possibly Data Carrier Identifier.
+     */  "name": "identifier", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*The physical type of the container of the medicine.
+     */  "name": "type", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The quantity of this package in the medicinal product, at the current level of packaging. The outermost is always 1.
+     */  "name": "quantity", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Quantity",
+      "isPrimitive": false }, 
+    { 
+    /*Material type of the package item.
+     */  "name": "material", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*A possible alternate material for the packaging.
+     */  "name": "alternateMaterial", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Manufacturer of this Package Item.
+     */  "name": "manufacturer", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*A device accompanying a medicinal product.
+     */  "name": "device", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*The manufactured item as contained in the packaged medicinal product.
+     */  "name": "manufacturedItem", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "MedicinalProductPackaged.ManufacturedItem",
+      "isPrimitive": false }, 
+    { 
+    /*Other codeable characteristics.
+     */  "name": "otherCharacteristics", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Allows containers within containers.
+     */  "name": "packageItem", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "MedicinalProductPackaged.PackageItem",
+      "isPrimitive": false }, 
+    { 
+    /*Dimensions, color etc.
+     */  "name": "physicalCharacteristics", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "ProdCharacteristic",
+      "isPrimitive": false }, 
+    { 
+    /*Shelf Life and storage information.
+     */  "name": "shelfLifeStorage", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ProductShelfLife",
+      "isPrimitive": false }, 
+  ]
+},
+"MedicinalProductPackaged.ManufacturedItem": {
+    /*A medicinal product in a container or package.
+     */
+  "name": "MedicinalProductPackaged.ManufacturedItem",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Dose form as manufactured and before any transformation into the pharmaceutical product.
+     */  "name": "manufacturedDoseForm", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The “real world” units in which the quantity of the manufactured item is described.
+     */  "name": "unitOfPresentation", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The quantity or "count number" of the manufactured item.
+     */  "name": "quantity", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Quantity",
+      "isPrimitive": false }, 
+    { 
+    /*Manufacturer of the item (Note that this should be named "manufacturer" but it currently causes technical issues).
+     */  "name": "xManufacturer", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Ingredient.
+     */  "name": "ingredient", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Dimensions, color etc.
+     */  "name": "physicalCharacteristics", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "ProdCharacteristic",
+      "isPrimitive": false }, 
+  ]
+},
+"MedicinalProductPharmaceutical": {
+    /*A pharmaceutical product described in terms of its composition and dose form.If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "MedicinalProductPharmaceutical",
+  "base": "DomainResource", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*An identifier for the pharmaceutical medicinal product.
+     */  "name": "identifier", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*The administrable dose form, after necessary reconstitution.
+     */  "name": "administrableDoseForm", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "unitOfPresentation", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The path by which the pharmaceutical product is taken into or makes contact with the body.
+     */  "name": "routeOfAdministration", 
+    
+      "min": "1", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Ingredient.
+     */  "name": "ingredient", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Accompanying device.
+     */  "name": "device", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Characteristics e.g. a products onset of action.
+     */  "name": "characteristics", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "MedicinalProductPharmaceutical.Characteristics",
+      "isPrimitive": false }, 
+  ]
+},
+"MedicinalProductPharmaceutical.Characteristics": {
+    /*A pharmaceutical product described in terms of its composition and dose form.
+     */
+  "name": "MedicinalProductPharmaceutical.Characteristics",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*A coded characteristic.
+     */  "name": "code", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The status of characteristic e.g. assigned or pending.
+     */  "name": "status", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
   ]
 },
 "MessageDefinition": {
@@ -25780,7 +29886,7 @@ The primary difference between a medication statement and a medication administr
   ],
   "elems": [
     { 
-    /*An absolute URI that is used to identify this message definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this message definition is (or will be) published. The URL SHOULD include the major version of the message definition. For more information see [Technical and Business Versions](resource.html#versions).
+    /*An absolute URI that is used to identify this message definition when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which this message definition is (or will be) published.
      */  "name": "url", 
     
       "min": "0", 
@@ -25820,6 +29926,14 @@ The primary difference between a medication statement and a medication administr
       "type": "string",
       "isPrimitive": true }, 
     { 
+    /*A MessageDefinition that is superseded by this definition.
+     */  "name": "replaces", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "canonical",
+      "isPrimitive": true }, 
+    { 
     /*The status of this message definition. Enables tracking the life-cycle of the content.
      */  "name": "status", 
     
@@ -25828,7 +29942,7 @@ The primary difference between a medication statement and a medication administr
       "type": "PublicationStatus",
       "isPrimitive": true }, 
     { 
-    /*A boolean value to indicate that this message definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+    /*A Boolean value to indicate that this message definition is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.
      */  "name": "experimental", 
     
       "min": "0", 
@@ -25836,7 +29950,7 @@ The primary difference between a medication statement and a medication administr
       "type": "boolean",
       "isPrimitive": true }, 
     { 
-    /*The date  (and optionally time) when the message definition was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the message definition changes.
+    /*The date  (and optionally time) when the message definition was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the message definition changes.
      */  "name": "date", 
     
       "min": "1", 
@@ -25844,7 +29958,7 @@ The primary difference between a medication statement and a medication administr
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*The name of the individual or organization that published the message definition.
+    /*The name of the organization or individual that published the message definition.
      */  "name": "publisher", 
     
       "min": "0", 
@@ -25884,7 +29998,7 @@ The primary difference between a medication statement and a medication administr
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Explaination of why this message definition is needed and why it has been designed as it has.
+    /*Explanation of why this message definition is needed and why it has been designed as it has.
      */  "name": "purpose", 
     
       "min": "0", 
@@ -25905,32 +30019,32 @@ The primary difference between a medication statement and a medication administr
     
       "min": "0", 
       "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
+      "type": "canonical",
+      "isPrimitive": true }, 
     { 
     /*Identifies a protocol or workflow that this MessageDefinition represents a step in.
      */  "name": "parent", 
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*A MessageDefinition that is superseded by this definition.
-     */  "name": "replaces", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*A coded identifier of a supported messaging event.
-     */  "name": "event", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "Coding",
-      "isPrimitive": false }, 
+      "type": "canonical",
+      "isPrimitive": true }, 
+    [ /* Choice */ 
+    /*Event code or link to the EventDefinition.
+     */
+        {   "name": "eventCoding", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Coding",
+          "isPrimitive": false }, 
+        {   "name": "eventUri", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "uri",
+          "isPrimitive": true }, 
+    ], 
     { 
     /*The impact of the content of the message.
      */  "name": "category", 
@@ -25948,12 +30062,12 @@ The primary difference between a medication statement and a medication administr
       "type": "MessageDefinition.Focus",
       "isPrimitive": false }, 
     { 
-    /*Indicates whether a response is required for this message.
+    /*Declare at a message definition level whether a response is required or only upon error or success, or never.
      */  "name": "responseRequired", 
     
       "min": "0", 
       "max": "1", 
-      "type": "boolean",
+      "type": "messageheaderResponseRequest",
       "isPrimitive": true }, 
     { 
     /*Indicates what types of messages may be sent as an application-level response to this message.
@@ -25987,13 +30101,13 @@ The primary difference between a medication statement and a medication administr
     
       "min": "0", 
       "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
+      "type": "canonical",
+      "isPrimitive": true }, 
     { 
     /*Identifies the minimum number of resources of this type that must be pointed to by a message in order for it to be valid against this MessageDefinition.
      */  "name": "min", 
     
-      "min": "0", 
+      "min": "1", 
       "max": "1", 
       "type": "unsignedInt",
       "isPrimitive": true }, 
@@ -26021,8 +30135,8 @@ The primary difference between a medication statement and a medication administr
     
       "min": "1", 
       "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
+      "type": "canonical",
+      "isPrimitive": true }, 
     { 
     /*Provides a description of the circumstances in which this response should be used (as opposed to one of the alternative responses).
      */  "name": "situation", 
@@ -26033,6 +30147,32 @@ The primary difference between a medication statement and a medication administr
       "isPrimitive": true }, 
   ]
 },
+"MessageSignificanceCategory": {
+    /*The impact of the content of a message.If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "MessageSignificanceCategory",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "MessageSignificanceCategory-list" }, 
+  ],
+  "elems": [
+  ]
+},
+"messageheaderResponseRequest": {
+    /*Response definitionIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "messageheaderResponseRequest",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "messageheaderResponseRequest-list" }, 
+  ],
+  "elems": [
+  ]
+},
 "MessageHeader": {
     /*The header for a message exchange that is either requesting or responding to an action.  The reference(s) that are the subject of the action as well as other information related to the action are typically transmitted in a bundle in which the MessageHeader resource instance is the first resource in the bundle.If the element is present, it must have either a @value, an @id, or extensions
      */
@@ -26041,14 +30181,22 @@ The primary difference between a medication statement and a medication administr
   "attrs": [
   ],
   "elems": [
-    { 
-    /*Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification have the system value "http://hl7.org/fhir/message-events".
-     */  "name": "event", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "Coding",
-      "isPrimitive": false }, 
+    [ /* Choice */ 
+    /*Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification have the system value "http://hl7.org/fhir/message-events".  Alternatively uri to the EventDefinition.
+     */
+        {   "name": "eventCoding", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Coding",
+          "isPrimitive": false }, 
+        {   "name": "eventUri", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "uri",
+          "isPrimitive": true }, 
+    ], 
     { 
     /*The destination application which the message is intended for.
      */  "name": "destination", 
@@ -26058,14 +30206,6 @@ The primary difference between a medication statement and a medication administr
       "type": "MessageHeader.Destination",
       "isPrimitive": false }, 
     { 
-    /*Allows data conveyed by a message to be addressed to a particular person or department when routing to a specific application isn't sufficient.
-     */  "name": "receiver", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
     /*Identifies the sending system to allow the use of a trust relationship.
      */  "name": "sender", 
     
@@ -26073,14 +30213,6 @@ The primary difference between a medication statement and a medication administr
       "max": "1", 
       "type": "Reference",
       "isPrimitive": false }, 
-    { 
-    /*The time that the message was sent.
-     */  "name": "timestamp", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "instant",
-      "isPrimitive": true }, 
     { 
     /*The person or device that performed the data entry leading to this message. When there is more than one candidate, pick the most proximal to the message. Can provide other enterers in extensions.
      */  "name": "enterer", 
@@ -26137,6 +30269,14 @@ The primary difference between a medication statement and a medication administr
       "max": "unbounded", 
       "type": "Reference",
       "isPrimitive": false }, 
+    { 
+    /*Permanent link to the MessageDefinition for this message.
+     */  "name": "definition", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "canonical",
+      "isPrimitive": true }, 
   ]
 },
 "MessageHeader.Destination": {
@@ -26169,8 +30309,16 @@ The primary difference between a medication statement and a medication administr
     
       "min": "1", 
       "max": "1", 
-      "type": "uri",
+      "type": "url",
       "isPrimitive": true }, 
+    { 
+    /*Allows data conveyed by a message to be addressed to a particular person or department when routing to a specific application isn't sufficient.
+     */  "name": "receiver", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
   ]
 },
 "MessageHeader.Source": {
@@ -26219,7 +30367,7 @@ The primary difference between a medication statement and a medication administr
     
       "min": "1", 
       "max": "1", 
-      "type": "uri",
+      "type": "url",
       "isPrimitive": true }, 
   ]
 },
@@ -26303,7 +30451,7 @@ The primary difference between a medication statement and a medication administr
       "type": "NamingSystemType",
       "isPrimitive": true }, 
     { 
-    /*The date  (and optionally time) when the naming system was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the naming system changes.
+    /*The date  (and optionally time) when the naming system was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the naming system changes.
      */  "name": "date", 
     
       "min": "1", 
@@ -26311,7 +30459,7 @@ The primary difference between a medication statement and a medication administr
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*The name of the individual or organization that published the naming system.
+    /*The name of the organization or individual that published the naming system.
      */  "name": "publisher", 
     
       "min": "0", 
@@ -26381,14 +30529,6 @@ The primary difference between a medication statement and a medication administr
       "min": "1", 
       "max": "unbounded", 
       "type": "NamingSystem.UniqueId",
-      "isPrimitive": false }, 
-    { 
-    /*For naming systems that are retired, indicates the naming system that should be used in their place (if any).
-     */  "name": "replacedBy", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
       "isPrimitive": false }, 
   ]
 },
@@ -26485,12 +30625,28 @@ The primary difference between a medication statement and a medication administr
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
+    /*The URL pointing to a protocol, guideline, orderset or other definition that is adhered to in whole or in part by this NutritionOrder.
+     */  "name": "instantiates", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "uri",
+      "isPrimitive": true }, 
+    { 
     /*The workflow status of the nutrition order/request.
      */  "name": "status", 
     
-      "min": "0", 
+      "min": "1", 
       "max": "1", 
-      "type": "NutritionOrderStatus",
+      "type": "RequestStatus",
+      "isPrimitive": true }, 
+    { 
+    /*Indicates the level of authority/intentionality associated with the NutrionOrder and where the request fits into the workflow chain.
+     */  "name": "intent", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "RequestIntent",
       "isPrimitive": true }, 
     { 
     /*The person (patient) who needs the nutrition order for an oral diet, nutritional supplement and/or enteral or formula feeding.
@@ -26502,7 +30658,7 @@ The primary difference between a medication statement and a medication administr
       "isPrimitive": false }, 
     { 
     /*An encounter that provides additional information about the healthcare context in which this request is made.
-     */  "name": "encounter", 
+     */  "name": "context", 
     
       "min": "0", 
       "max": "1", 
@@ -26541,7 +30697,7 @@ The primary difference between a medication statement and a medication administr
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*This modifier is used to convey order-specific modifiers about the type of food that should NOT be given. These can be derived from patient allergies, intolerances, or preferences such as No Red Meat, No Soy or No Wheat or  Gluten-Free.  While it should not be necessary to repeat allergy or intolerance information captured in the referenced AllergyIntolerance resource in the excludeFoodModifier, this element may be used to convey additional specificity related to foods that should be eliminated from the patient’s diet for any reason.  This modifier applies to the entire nutrition order inclusive of the oral diet, nutritional supplements and enteral formula feedings.
+    /*This modifier is used to convey Order-specific modifier about the type of oral food or oral fluids that should not be given. These can be derived from patient allergies, intolerances, or preferences such as No Red Meat, No Soy or No Wheat or  Gluten-Free.  While it should not be necessary to repeat allergy or intolerance information captured in the referenced AllergyIntolerance resource in the excludeFoodModifier, this element may be used to convey additional specificity related to foods that should be eliminated from the patient’s diet for any reason.  This modifier applies to the entire nutrition order inclusive of the oral diet, nutritional supplements and enteral formula feedings.
      */  "name": "excludeFoodModifier", 
     
       "min": "0", 
@@ -26571,6 +30727,14 @@ The primary difference between a medication statement and a medication administr
       "min": "0", 
       "max": "1", 
       "type": "NutritionOrder.EnteralFormula",
+      "isPrimitive": false }, 
+    { 
+    /*Comments made about the {{title}} by the requester, performer, subject or other participants.
+     */  "name": "note", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Annotation",
       "isPrimitive": false }, 
   ]
 },
@@ -26858,15 +31022,15 @@ The primary difference between a medication statement and a medication administr
     ], 
   ]
 },
-"NutritionOrderStatus": {
-    /*Codes specifying the state of the request. Describes the lifecycle of the nutrition order.If the element is present, it must have either a @value, an @id, or extensions
+"RequestIntent": {
+    /*Codes indicating the degree of authority/intentionality associated with a nutrition orderIf the element is present, it must have either a @value, an @id, or extensions
      */
-  "name": "NutritionOrderStatus",
+  "name": "RequestIntent",
   "base": "Element", 
   "attrs": [
     { 
       "name": "value", 
-      "type": "NutritionOrderStatus-list" }, 
+      "type": "RequestIntent-list" }, 
   ],
   "elems": [
   ]
@@ -26890,6 +31054,14 @@ The primary difference between a medication statement and a medication administr
     { 
     /*A plan, proposal or order that is fulfilled in whole or in part by this event.
      */  "name": "basedOn", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*A larger event of which this particular Observation is a component or step.  For example,  an observation as part of a procedure.
+     */  "name": "partOf", 
     
       "min": "0", 
       "max": "unbounded", 
@@ -26928,6 +31100,14 @@ The primary difference between a medication statement and a medication administr
       "type": "Reference",
       "isPrimitive": false }, 
     { 
+    /*The actual focus of an observation when it is not the patient of record.  The focus is point of attention when the observation representing something  or someone associated with the patient.  It could be  a  spouse or parent, a fetus or donor.  The focus of an observation could be an existing condition,  an intervention, the subject's diet,  another observation of the subject,  or a body structure such as tumor or implanted device.   An example use case would be using the Observation resource to capture whether the mother is trained to change her child's tracheostomy tube. In this example, the child is the patient of record and the mother is the focus.
+     */  "name": "focus", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
     /*The healthcare event  (e.g. a patient and healthcare provider interaction) during which this observation is made.
      */  "name": "context", 
     
@@ -26950,9 +31130,15 @@ The primary difference between a medication statement and a medication administr
           "max": "1", 
           "type": "Period",
           "isPrimitive": false }, 
+        {   "name": "effectiveTiming", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Timing",
+          "isPrimitive": false }, 
     ], 
     { 
-    /*The date and time this observation was made available to providers, typically after the results have been reviewed and verified.
+    /*The date and time this version of the observation was made available to providers, typically after the results have been reviewed and verified.
      */  "name": "issued", 
     
       "min": "0", 
@@ -26994,6 +31180,12 @@ The primary difference between a medication statement and a medication administr
           "max": "1", 
           "type": "boolean",
           "isPrimitive": true }, 
+        {   "name": "valueInteger", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "integer",
+          "isPrimitive": true }, 
         {   "name": "valueRange", 
         
           "min": "1", 
@@ -27011,12 +31203,6 @@ The primary difference between a medication statement and a medication administr
           "min": "1", 
           "max": "1", 
           "type": "SampledData",
-          "isPrimitive": false }, 
-        {   "name": "valueAttachment", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Attachment",
           "isPrimitive": false }, 
         {   "name": "valueTime", 
         
@@ -27102,12 +31288,20 @@ The primary difference between a medication statement and a medication administr
       "type": "Observation.ReferenceRange",
       "isPrimitive": false }, 
     { 
-    /*A  reference to another resource (usually another Observation) whose relationship is defined by the relationship type code.
-     */  "name": "related", 
+    /*This observation is a group observation (e.g. a battery, a panel of tests, a set of vital sign measurements) that includes the target as a member of the group.
+     */  "name": "hasMember", 
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "Observation.Related",
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*The target resource that represents a measurement from which this observation value is derived. For example, a calculated anion gap or a fetal measurement based on an ultrasound image.
+     */  "name": "derivedFrom", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
       "isPrimitive": false }, 
     { 
     /*Some observations have multiple component observations.  These component observations are expressed as separate code value pairs that share the same attributes.  Examples include systolic and diastolic component observations for blood pressure measurement and multiple component observations for genetics observations.
@@ -27128,7 +31322,7 @@ The primary difference between a medication statement and a medication administr
   ],
   "elems": [
     { 
-    /*The value of the low bound of the reference range.  The low bound of the reference range endpoint is inclusive of the value (e.g.  reference range is >=5 - <=9).   If the low bound is omitted,  it is assumed to be meaningless (e.g. reference range is <=2.3).
+    /*The value of the low bound of the reference range.  The low bound of the reference range endpoint is inclusive of the value (e.g.  reference range is >=5 - <=9). If the low bound is omitted,  it is assumed to be meaningless (e.g. reference range is <=2.3).
      */  "name": "low", 
     
       "min": "0", 
@@ -27136,7 +31330,7 @@ The primary difference between a medication statement and a medication administr
       "type": "Quantity",
       "isPrimitive": false }, 
     { 
-    /*The value of the high bound of the reference range.  The high bound of the reference range endpoint is inclusive of the value (e.g.  reference range is >=5 - <=9).   If the high bound is omitted,  it is assumed to be meaningless (e.g. reference range is >= 2.3).
+    /*The value of the high bound of the reference range.  The high bound of the reference range endpoint is inclusive of the value (e.g.  reference range is >=5 - <=9). If the high bound is omitted,  it is assumed to be meaningless (e.g. reference range is >= 2.3).
      */  "name": "high", 
     
       "min": "0", 
@@ -27168,39 +31362,13 @@ The primary difference between a medication statement and a medication administr
       "type": "Range",
       "isPrimitive": false }, 
     { 
-    /*Text based reference range in an observation which may be used when a quantitative range is not appropriate for an observation.  An example would be a reference value of "Negative" or a list or table of 'normals'.
+    /*Text based reference range in an observation which may be used when a quantitative range is not appropriate for an observation.  An example would be a reference value of "Negative" or a list or table of "normals".
      */  "name": "text", 
     
       "min": "0", 
       "max": "1", 
       "type": "string",
       "isPrimitive": true }, 
-  ]
-},
-"Observation.Related": {
-    /*Measurements and simple assertions made about a patient, device or other subject.
-     */
-  "name": "Observation.Related",
-  "base": "BackboneElement", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*A code specifying the kind of relationship that exists with the target resource.
-     */  "name": "type", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "ObservationRelationshipType",
-      "isPrimitive": true }, 
-    { 
-    /*A reference to the observation or [[[QuestionnaireResponse]]] resource that is related to this observation.
-     */  "name": "target", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
   ]
 },
 "Observation.Component": {
@@ -27240,6 +31408,18 @@ The primary difference between a medication statement and a medication administr
           "max": "1", 
           "type": "string",
           "isPrimitive": true }, 
+        {   "name": "valueBoolean", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "boolean",
+          "isPrimitive": true }, 
+        {   "name": "valueInteger", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "integer",
+          "isPrimitive": true }, 
         {   "name": "valueRange", 
         
           "min": "1", 
@@ -27257,12 +31437,6 @@ The primary difference between a medication statement and a medication administr
           "min": "1", 
           "max": "1", 
           "type": "SampledData",
-          "isPrimitive": false }, 
-        {   "name": "valueAttachment", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Attachment",
           "isPrimitive": false }, 
         {   "name": "valueTime", 
         
@@ -27284,7 +31458,7 @@ The primary difference between a medication statement and a medication administr
           "isPrimitive": false }, 
     ], 
     { 
-    /*Provides a reason why the expected value in the element Observation.value[x] is missing.
+    /*Provides a reason why the expected value in the element Observation.component.value[x] is missing.
      */  "name": "dataAbsentReason", 
     
       "min": "0", 
@@ -27309,17 +31483,500 @@ The primary difference between a medication statement and a medication administr
       "isPrimitive": false }, 
   ]
 },
-"ObservationRelationshipType": {
-    /*Codes specifying how two observations are related.If the element is present, it must have either a @value, an @id, or extensions
+"ObservationDefinition": {
+    /*Set of definitional characteristics for a kind of observation or measurement produced or consumed by an orderable health care service.If the element is present, it must have either a @value, an @id, or extensions
      */
-  "name": "ObservationRelationshipType",
-  "base": "Element", 
+  "name": "ObservationDefinition",
+  "base": "DomainResource", 
   "attrs": [
-    { 
-      "name": "value", 
-      "type": "ObservationRelationshipType-list" }, 
   ],
   "elems": [
+    { 
+    /*A code that classifies the general type of observation.
+     */  "name": "category", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Coding",
+      "isPrimitive": false }, 
+    { 
+    /*Describes what will be observed. Sometimes this is called the observation "name".
+     */  "name": "code", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Coding",
+      "isPrimitive": false }, 
+    { 
+    /*Data type allowed for the result of the observation.
+     */  "name": "permittedDataType", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Coding",
+      "isPrimitive": false }, 
+    { 
+    /*Multiple results allowed for this kind of observation.
+     */  "name": "multipleResultsAllowed", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+    { 
+    /*The method or technique used to perform the observation.
+     */  "name": "method", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The preferred name to be used when reporting the results of this observation.
+     */  "name": "preferredReportName", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Characteristics for quantitative results of this observation.
+     */  "name": "quantitativeDetails", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "ObservationDefinition.QuantitativeDetails",
+      "isPrimitive": false }, 
+    { 
+    /*Reference range for ordinal and continuous observations.
+     */  "name": "qualifiedInterval", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ObservationDefinition.QualifiedInterval",
+      "isPrimitive": false }, 
+    { 
+    /*The set of valid coded results for the observation.
+     */  "name": "validCodedValueSet", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "uri",
+      "isPrimitive": true }, 
+    { 
+    /*The set of normal coded results for the observation.
+     */  "name": "normalCodedValueSet", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "uri",
+      "isPrimitive": true }, 
+    { 
+    /*The set of abnormal coded results for the observation.
+     */  "name": "abnormalCodedValueSet", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "uri",
+      "isPrimitive": true }, 
+    { 
+    /*The set of critical coded results for the observation.
+     */  "name": "criticalCodedValueSet", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "uri",
+      "isPrimitive": true }, 
+  ]
+},
+"ObservationDefinition.QuantitativeDetails": {
+    /*Set of definitional characteristics for a kind of observation or measurement produced or consumed by an orderable health care service.
+     */
+  "name": "ObservationDefinition.QuantitativeDetails",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Customary unit used to report quantitative results of this observation.
+     */  "name": "customaryUnit", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Coding",
+      "isPrimitive": false }, 
+    { 
+    /*SI unit used to report quantitative results of this observation.
+     */  "name": "unit", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Coding",
+      "isPrimitive": false }, 
+    { 
+    /*Factor for converting value expressed with SI unit to value expressed with customary unit.
+     */  "name": "conversionFactor", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "decimal",
+      "isPrimitive": true }, 
+    { 
+    /*Number of digits after decimal separator when the results of this observation are of type Quantity.
+     */  "name": "decimalPrecision", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "integer",
+      "isPrimitive": true }, 
+  ]
+},
+"ObservationDefinition.QualifiedInterval": {
+    /*Set of definitional characteristics for a kind of observation or measurement produced or consumed by an orderable health care service.
+     */
+  "name": "ObservationDefinition.QualifiedInterval",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The category or type of interval.
+     */  "name": "category", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The value and associated unit of the low bound (inclusive) of the reference range.
+     */  "name": "range", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Range",
+      "isPrimitive": false }, 
+    { 
+    /*Codes to indicate what part of the targeted reference population it applies to. For example, the normal or therapeutic range.
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Codes to indicate the target population this reference range applies to.
+     */  "name": "appliesTo", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The age at which this reference range is applicable. This is a neonatal age (e.g. number of weeks at term) if the meaning says so.
+     */  "name": "age", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Range",
+      "isPrimitive": false }, 
+    { 
+    /*The gestational age at which this reference range is applicable, in the context of pregnancy.
+     */  "name": "gestationalAge", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Range",
+      "isPrimitive": false }, 
+    { 
+    /*Text based condition for which the reference range is valid.
+     */  "name": "condition", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+  ]
+},
+"OccupationalData": {
+    /*A person's work information, structured to facilitate individual, population, and public health use; not intended to support billing.If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "OccupationalData",
+  "base": "DomainResource", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Business identifier assigned to the occupational data record.
+     */  "name": "identifier", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*The status of this ODH. Enables tracking the life-cycle of the content.
+     */  "name": "status", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "PublicationStatus",
+      "isPrimitive": true }, 
+    { 
+    /*The occupational data record is about this person (e.g., the patient, a parent of a minor child).
+     */  "name": "subject", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*The date of creation or updating of the occupational data record.
+     */  "name": "date", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+    { 
+    /*The person who created or last updated the occupational data record.
+     */  "name": "recorder", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*The person who provided the subject's health-related occupational data.
+     */  "name": "informant", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*A person's current economic relationship to a job. Employment status refers to whether a person is currently working for compensation, is unemployed (i.e., searching for work for compensation), or is not in the labor force (e.g. disabled, homemaker, chooses not to work, etc.). Employment status is not the same as classification of work.
+     */  "name": "employmentStatus", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "OccupationalData.EmploymentStatus",
+      "isPrimitive": false }, 
+    { 
+    /*A person's self-identified retirement date.  A person may retire multiple times.
+     */  "name": "retirementDate", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+    { 
+    /*The start and end dates for the period of time a person's work is or was in a combat zone. In addition to military personnel, civilians also may work or have worked in a combat zone.
+     */  "name": "combatZonePeriod", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Period",
+      "isPrimitive": false }, 
+    { 
+    /*The type of work a person has held for the longest amount of time during his or her life, regardless of the occupation currently held and regardless of whether or not it has been held for a continuous time.
+     */  "name": "usualWork", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "OccupationalData.UsualWork",
+      "isPrimitive": false }, 
+    { 
+    /*The type of work done by a person during a current or past job. A job is defined by the sum of all the data related to the occupation. A change in occupation, supervisory level, industry, employer, or employer location is considered a new job.
+     */  "name": "pastOrPresentJob", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "OccupationalData.PastOrPresentJob",
+      "isPrimitive": false }, 
+  ]
+},
+"OccupationalData.EmploymentStatus": {
+    /*A person's work information, structured to facilitate individual, population, and public health use; not intended to support billing.
+     */
+  "name": "OccupationalData.EmploymentStatus",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*A code that represents a person's current economic relationship to a job.
+     */  "name": "code", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The start and end dates for a person's current economic relationship to a job.
+     */  "name": "effective", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Period",
+      "isPrimitive": false }, 
+  ]
+},
+"OccupationalData.UsualWork": {
+    /*A person's work information, structured to facilitate individual, population, and public health use; not intended to support billing.
+     */
+  "name": "OccupationalData.UsualWork",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*A code that represents the type of work a person has held for the longest amount of time during his or her life.
+     */  "name": "occupation", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*A code that represents the type of business a person has worked in for the longest total time while in the usual occupation.
+     */  "name": "industry", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The date when a person first started working in their usual occupation.
+     */  "name": "start", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+    { 
+    /*Total of all periods of time a person has spent in the usual occupation, not including intermittent period(s) where the person was not working in that occupation.
+     */  "name": "duration", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Duration",
+      "isPrimitive": false }, 
+  ]
+},
+"OccupationalData.PastOrPresentJob": {
+    /*A person's work information, structured to facilitate individual, population, and public health use; not intended to support billing.
+     */
+  "name": "OccupationalData.PastOrPresentJob",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*A code that represents the type of work done by a person at one job.
+     */  "name": "occupation", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*A code that represents the type of business associated with a person's Past or Present Job; i.e., for one job. A change in industry indicates a change in job.
+     */  "name": "industry", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The start and end dates for one job.  A change in occupation, supervisory level, industry, employer, or employer location is considered a new job.
+     */  "name": "effective", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Period",
+      "isPrimitive": false }, 
+    { 
+    /*The party, be it an individual or an organization, responsible for providing compensation to a person performing work, or in the case of unpaid work, the party responsible for engaging the person in a position. For military occupations, this refers to the name of the person's military home base; the person's Branch of Service is recorded as industry. A change in employer or employer location indicates a change in job.
+     */  "name": "employer", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*The classification of a person's job (one job) as defined by compensation and sector (e.g. paid, unpaid, self-employed, government, etc.). This is different from employment status: a person who is a volunteer (work classification) may have chosen not to be in the labor force (employment status).
+     */  "name": "workClassification", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Reflects the amount of supervisory or management responsibilities of a person at one job. For military jobs, pay grade is used as a proxy because it can be interpreted across branches of service.  A change in supervisory level is considered a new job.
+     */  "name": "supervisoryLevel", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*A regular action performed at a single job.
+     */  "name": "jobDuty", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*A hazard that is specific to a person's work or work environment for a single job and with which the person might come in contact. A hazard is a source of potential harm to an individual's physical or mental health (e.g., biological, chemical, physical, psychological, radiological).
+     */  "name": "occupationalHazard", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Describes a person's typical arrangement of working hours for one job.
+     */  "name": "workSchedule", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "OccupationalData.WorkSchedule",
+      "isPrimitive": false }, 
+  ]
+},
+"OccupationalData.WorkSchedule": {
+    /*A person's work information, structured to facilitate individual, population, and public health use; not intended to support billing.
+     */
+  "name": "OccupationalData.WorkSchedule",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*A code that represents a person's typical arrangement of working hours for one job.
+     */  "name": "code", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The typical number of days worked in a week by a person at one job.
+     */  "name": "weeklyWorkDays", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "decimal",
+      "isPrimitive": true }, 
+    { 
+    /*The number of hours worked in a day or shift at one job by a person. For those working a split shift (divided into two parts that are separated by an interval longer than a normal rest period), it is the total of both periods of time in a shift.
+     */  "name": "dailyWorkHours", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "decimal",
+      "isPrimitive": true }, 
   ]
 },
 "OperationDefinition": {
@@ -27331,7 +31988,7 @@ The primary difference between a medication statement and a medication administr
   ],
   "elems": [
     { 
-    /*An absolute URI that is used to identify this operation definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this operation definition is (or will be) published. The URL SHOULD include the major version of the operation definition. For more information see [Technical and Business Versions](resource.html#versions).
+    /*An absolute URI that is used to identify this operation definition when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which this operation definition is (or will be) published.
      */  "name": "url", 
     
       "min": "0", 
@@ -27371,7 +32028,7 @@ The primary difference between a medication statement and a medication administr
       "type": "OperationKind",
       "isPrimitive": true }, 
     { 
-    /*A boolean value to indicate that this operation definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+    /*A Boolean value to indicate that this operation definition is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.
      */  "name": "experimental", 
     
       "min": "0", 
@@ -27379,7 +32036,7 @@ The primary difference between a medication statement and a medication administr
       "type": "boolean",
       "isPrimitive": true }, 
     { 
-    /*The date  (and optionally time) when the operation definition was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the operation definition changes.
+    /*The date  (and optionally time) when the operation definition was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the operation definition changes.
      */  "name": "date", 
     
       "min": "0", 
@@ -27387,7 +32044,7 @@ The primary difference between a medication statement and a medication administr
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*The name of the individual or organization that published the operation definition.
+    /*The name of the organization or individual that published the operation definition.
      */  "name": "publisher", 
     
       "min": "0", 
@@ -27427,7 +32084,7 @@ The primary difference between a medication statement and a medication administr
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Explaination of why this operation definition is needed and why it has been designed as it has.
+    /*Explanation of why this operation definition is needed and why it has been designed as it has.
      */  "name": "purpose", 
     
       "min": "0", 
@@ -27435,8 +32092,8 @@ The primary difference between a medication statement and a medication administr
       "type": "markdown",
       "isPrimitive": true }, 
     { 
-    /*Operations that are idempotent (see [HTTP specification definition of idempotent](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)) may be invoked by performing an HTTP GET operation instead of a POST.
-     */  "name": "idempotent", 
+    /*Operations that have affects state = false (see [HTTP specification definition of idempotent](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)) may be invoked by performing an HTTP GET operation instead of a POST.
+     */  "name": "affectsState", 
     
       "min": "0", 
       "max": "1", 
@@ -27456,7 +32113,7 @@ The primary difference between a medication statement and a medication administr
     
       "min": "0", 
       "max": "1", 
-      "type": "string",
+      "type": "markdown",
       "isPrimitive": true }, 
     { 
     /*Indicates that this operation definition is a constraining profile on the base.
@@ -27464,8 +32121,8 @@ The primary difference between a medication statement and a medication administr
     
       "min": "0", 
       "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
+      "type": "canonical",
+      "isPrimitive": true }, 
     { 
     /*The types on which this operation can be executed.
      */  "name": "resource", 
@@ -27497,6 +32154,22 @@ The primary difference between a medication statement and a medication administr
       "min": "1", 
       "max": "1", 
       "type": "boolean",
+      "isPrimitive": true }, 
+    { 
+    /*Additional validation information for the in parameters. The profile is a constraint on the parameters resource.
+     */  "name": "inputProfile", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "canonical",
+      "isPrimitive": true }, 
+    { 
+    /*Additional validation information for the out parameters. The profile is a constraint on the parameters resource.
+     */  "name": "outputProfile", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "canonical",
       "isPrimitive": true }, 
     { 
     /*The parameters for the operation/query.
@@ -27573,6 +32246,14 @@ The primary difference between a medication statement and a medication administr
       "type": "FHIRAllTypes",
       "isPrimitive": true }, 
     { 
+    /*If the type is "Reference", then targetProfile lists a one or more profiles that the Reference can refer to.
+     */  "name": "targetProfile", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "canonical",
+      "isPrimitive": true }, 
+    { 
     /*How the parameter is understood as a search parameter. This is only used if the parameter type is 'string'.
      */  "name": "searchType", 
     
@@ -27580,14 +32261,6 @@ The primary difference between a medication statement and a medication administr
       "max": "1", 
       "type": "SearchParamType",
       "isPrimitive": true }, 
-    { 
-    /*A profile the specifies the rules that this parameter must conform to.
-     */  "name": "profile", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
     { 
     /*Binds to a value set if this parameter is coded (code, Coding, CodeableConcept).
      */  "name": "binding", 
@@ -27631,12 +32304,12 @@ The primary difference between a medication statement and a medication administr
           "max": "1", 
           "type": "uri",
           "isPrimitive": true }, 
-        {   "name": "valueSetReference", 
+        {   "name": "valueSetCanonical", 
         
           "min": "1", 
           "max": "1", 
-          "type": "Reference",
-          "isPrimitive": false }, 
+          "type": "canonical",
+          "isPrimitive": true }, 
     ], 
   ]
 },
@@ -27772,7 +32445,7 @@ The primary difference between a medication statement and a medication administr
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*A simple FHIRPath limited to element names, repetition indicators and the default child access that identifies one of the elements in the resource that caused this issue to be raised.
+    /*A [simple subset of FHIRPath](fhirpath.html#simple) limited to element names, repetition indicators and the default child access that identifies one of the elements in the resource that caused this issue to be raised.
      */  "name": "expression", 
     
       "min": "0", 
@@ -27848,7 +32521,7 @@ The primary difference between a medication statement and a medication administr
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*A list of alternate names that the organization is known as, or was known as in the past.
+    /*A list of alternate names that the organization is known as, or was known as in the past.
      */  "name": "alias", 
     
       "min": "0", 
@@ -27939,6 +32612,204 @@ The primary difference between a medication statement and a medication administr
       "isPrimitive": false }, 
   ]
 },
+"OrganizationRole": {
+    /*A specific set of Roles/Locations/specialties/services that a practitioner may perform at an organization for a period of time.If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "OrganizationRole",
+  "base": "DomainResource", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Business Identifiers that are specific to a role/location.
+     */  "name": "identifier", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*Whether this practitioner role record is in active use.
+     */  "name": "active", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+    { 
+    /*The period during which the person is authorized to act as a practitioner in these role(s) for the organization.
+     */  "name": "period", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Period",
+      "isPrimitive": false }, 
+    { 
+    /*The organization where the Practitioner performs the roles associated.
+     */  "name": "organization", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Practitioner that is able to provide the defined services for the organization.
+     */  "name": "participatingOrganization", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*The network(s) this association applies to (if any).
+     */  "name": "network", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Roles which this practitioner is authorized to perform for the organization.
+     */  "name": "code", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Specific specialty of the practitioner.
+     */  "name": "specialty", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The location(s) at which this practitioner provides care.
+     */  "name": "location", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*The list of healthcare services that this worker provides for this role's Organization/Location(s).
+     */  "name": "healthcareService", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Contact details that are specific to the role/location/service.
+     */  "name": "telecom", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ContactPoint",
+      "isPrimitive": false }, 
+    { 
+    /*A collection of times that the Service Site is available.
+     */  "name": "availableTime", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "OrganizationRole.AvailableTime",
+      "isPrimitive": false }, 
+    { 
+    /*The HealthcareService is not available during this period of time due to the provided reason.
+     */  "name": "notAvailable", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "OrganizationRole.NotAvailable",
+      "isPrimitive": false }, 
+    { 
+    /*A description of site availability exceptions, e.g. public holiday availability. Succinctly describing all possible exceptions to normal site availability as details in the available Times and not available Times.
+     */  "name": "availabilityExceptions", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Technical endpoints providing access to services operated for the practitioner with this role.
+     */  "name": "endpoint", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+  ]
+},
+"OrganizationRole.AvailableTime": {
+    /*A specific set of Roles/Locations/specialties/services that a practitioner may perform at an organization for a period of time.
+     */
+  "name": "OrganizationRole.AvailableTime",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Indicates which days of the week are available between the start and end Times.
+     */  "name": "daysOfWeek", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "DaysOfWeek",
+      "isPrimitive": true }, 
+    { 
+    /*Is this always available? (hence times are irrelevant) e.g. 24-hour service.
+     */  "name": "allDay", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+    { 
+    /*The opening time of day. Note: If the AllDay flag is set, then this time is ignored.
+     */  "name": "availableStartTime", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "time",
+      "isPrimitive": true }, 
+    { 
+    /*The closing time of day. Note: If the AllDay flag is set, then this time is ignored.
+     */  "name": "availableEndTime", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "time",
+      "isPrimitive": true }, 
+  ]
+},
+"OrganizationRole.NotAvailable": {
+    /*A specific set of Roles/Locations/specialties/services that a practitioner may perform at an organization for a period of time.
+     */
+  "name": "OrganizationRole.NotAvailable",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The reason that can be presented to the user as to why this time is not available.
+     */  "name": "description", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Service is not available (seasonally or for a public holiday) from this date.
+     */  "name": "during", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Period",
+      "isPrimitive": false }, 
+  ]
+},
 "Parameters": {
     /*This special resource type is used to represent an operation request and response (operations.html). It has no other use, and there is no RESTful endpoint associated with it.If the element is present, it must have either a @value, an @id, or extensions
      */
@@ -27987,6 +32858,12 @@ The primary difference between a medication statement and a medication administr
           "min": "1", 
           "max": "1", 
           "type": "boolean",
+          "isPrimitive": true }, 
+        {   "name": "valueCanonical", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "canonical",
           "isPrimitive": true }, 
         {   "name": "valueCode", 
         
@@ -28071,6 +32948,18 @@ The primary difference between a medication statement and a medication administr
           "min": "1", 
           "max": "1", 
           "type": "uri",
+          "isPrimitive": true }, 
+        {   "name": "valueUrl", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "url",
+          "isPrimitive": true }, 
+        {   "name": "valueUuid", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "uuid",
           "isPrimitive": true }, 
         {   "name": "valueAddress", 
         
@@ -28198,11 +33087,53 @@ The primary difference between a medication statement and a medication administr
           "max": "1", 
           "type": "Timing",
           "isPrimitive": false }, 
-        {   "name": "valueMeta", 
+        {   "name": "valueParameterDefinition", 
         
           "min": "1", 
           "max": "1", 
-          "type": "Meta",
+          "type": "ParameterDefinition",
+          "isPrimitive": false }, 
+        {   "name": "valueDataRequirement", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "DataRequirement",
+          "isPrimitive": false }, 
+        {   "name": "valueRelatedArtifact", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "RelatedArtifact",
+          "isPrimitive": false }, 
+        {   "name": "valueContactDetail", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "ContactDetail",
+          "isPrimitive": false }, 
+        {   "name": "valueContributor", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Contributor",
+          "isPrimitive": false }, 
+        {   "name": "valueTriggerDefinition", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "TriggerDefinition",
+          "isPrimitive": false }, 
+        {   "name": "valueUsageContext", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "UsageContext",
+          "isPrimitive": false }, 
+        {   "name": "valueDosage", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Dosage",
           "isPrimitive": false }, 
     ], 
     { 
@@ -28296,7 +33227,7 @@ The primary difference between a medication statement and a medication administr
           "isPrimitive": true }, 
     ], 
     { 
-    /*Addresses for the individual.
+    /*An address for the individual.
      */  "name": "address", 
     
       "min": "0", 
@@ -28344,15 +33275,7 @@ The primary difference between a medication statement and a medication administr
       "type": "Patient.Contact",
       "isPrimitive": false }, 
     { 
-    /*This patient is known to be an animal.
-     */  "name": "animal", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Patient.Animal",
-      "isPrimitive": false }, 
-    { 
-    /*Languages which may be used to communicate with the patient about his or her health.
+    /*A language which may be used to communicate with the patient about his or her health.
      */  "name": "communication", 
     
       "min": "0", 
@@ -28448,40 +33371,6 @@ The primary difference between a medication statement and a medication administr
       "min": "0", 
       "max": "1", 
       "type": "Period",
-      "isPrimitive": false }, 
-  ]
-},
-"Patient.Animal": {
-    /*Demographics and other administrative information about an individual or animal receiving care or other health-related services.
-     */
-  "name": "Patient.Animal",
-  "base": "BackboneElement", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*Identifies the high level taxonomic categorization of the kind of animal.
-     */  "name": "species", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*Identifies the detailed categorization of the kind of animal.
-     */  "name": "breed", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*Indicates the current state of the animal's reproductive organs.
-     */  "name": "genderStatus", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "CodeableConcept",
       "isPrimitive": false }, 
   ]
 },
@@ -28623,14 +33512,6 @@ The primary difference between a medication statement and a medication administr
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*The organization which is responsible for the services rendered to the patient.
-     */  "name": "organization", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
     /*The payment status, typically paid: payment sent, cleared: payment received.
      */  "name": "paymentStatus", 
     
@@ -28702,8 +33583,8 @@ The primary difference between a medication statement and a medication administr
     
       "min": "0", 
       "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
+      "type": "RemittanceOutcome",
+      "isPrimitive": true }, 
     { 
     /*A description of the status of the adjudication.
      */  "name": "disposition", 
@@ -28715,14 +33596,6 @@ The primary difference between a medication statement and a medication administr
     { 
     /*The practitioner who is responsible for the services rendered to the patient.
      */  "name": "requestProvider", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*The organization which is responsible for the services rendered to the patient.
-     */  "name": "requestOrganization", 
     
       "min": "0", 
       "max": "1", 
@@ -28842,8 +33715,8 @@ The primary difference between a medication statement and a medication administr
     
       "min": "0", 
       "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
+      "type": "NoteType",
+      "isPrimitive": true }, 
     { 
     /*The note text.
      */  "name": "text", 
@@ -28961,7 +33834,7 @@ The primary difference between a medication statement and a medication administr
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*Level of assurance that this link is actually associated with the target resource.
+    /*Level of assurance that this link is associated with the target resource.
      */  "name": "assurance", 
     
       "min": "0", 
@@ -28992,7 +33865,7 @@ The primary difference between a medication statement and a medication administr
   ],
   "elems": [
     { 
-    /*An absolute URI that is used to identify this plan definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this plan definition is (or will be) published. The URL SHOULD include the major version of the plan definition. For more information see [Technical and Business Versions](resource.html#versions).
+    /*An absolute URI that is used to identify this plan definition when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which this plan definition is (or will be) published.
      */  "name": "url", 
     
       "min": "0", 
@@ -29032,7 +33905,15 @@ The primary difference between a medication statement and a medication administr
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*The type of asset the plan definition represents, e.g. an order set, protocol, or event-condition-action rule.
+    /*An explanatory or alternate title for the plan definition giving additional information about its content.
+     */  "name": "subtitle", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*A high-level category for the plan definition that distinguishes the kinds of systems that would be interested in the plan definition.
      */  "name": "type", 
     
       "min": "0", 
@@ -29048,15 +33929,31 @@ The primary difference between a medication statement and a medication administr
       "type": "PublicationStatus",
       "isPrimitive": true }, 
     { 
-    /*A boolean value to indicate that this plan definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+    /*A Boolean value to indicate that this plan definition is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.
      */  "name": "experimental", 
     
       "min": "0", 
       "max": "1", 
       "type": "boolean",
       "isPrimitive": true }, 
+    [ /* Choice */ 
+    /*A code or group definition that describes the intended subject of the plan definition.
+     */
+        {   "name": "subjectCodeableConcept", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "CodeableConcept",
+          "isPrimitive": false }, 
+        {   "name": "subjectReference", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Reference",
+          "isPrimitive": false }, 
+    ], 
     { 
-    /*The date  (and optionally time) when the plan definition was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the plan definition changes.
+    /*The date  (and optionally time) when the plan definition was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the plan definition changes.
      */  "name": "date", 
     
       "min": "0", 
@@ -29064,13 +33961,21 @@ The primary difference between a medication statement and a medication administr
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*The name of the individual or organization that published the plan definition.
+    /*The name of the organization or individual that published the plan definition.
      */  "name": "publisher", 
     
       "min": "0", 
       "max": "1", 
       "type": "string",
       "isPrimitive": true }, 
+    { 
+    /*Contact details to assist a user in finding and communicating with the publisher.
+     */  "name": "contact", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ContactDetail",
+      "isPrimitive": false }, 
     { 
     /*A free text natural language description of the plan definition from a consumer's perspective.
      */  "name": "description", 
@@ -29079,46 +33984,6 @@ The primary difference between a medication statement and a medication administr
       "max": "1", 
       "type": "markdown",
       "isPrimitive": true }, 
-    { 
-    /*Explaination of why this plan definition is needed and why it has been designed as it has.
-     */  "name": "purpose", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "markdown",
-      "isPrimitive": true }, 
-    { 
-    /*A detailed description of how the asset is used from a clinical perspective.
-     */  "name": "usage", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.
-     */  "name": "approvalDate", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "date",
-      "isPrimitive": true }, 
-    { 
-    /*The date on which the resource content was last reviewed. Review happens periodically after approval, but doesn't change the original approval date.
-     */  "name": "lastReviewDate", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "date",
-      "isPrimitive": true }, 
-    { 
-    /*The period during which the plan definition content was or is planned to be in active use.
-     */  "name": "effectivePeriod", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Period",
-      "isPrimitive": false }, 
     { 
     /*The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate plan definition instances.
      */  "name": "useContext", 
@@ -29136,29 +34001,21 @@ The primary difference between a medication statement and a medication administr
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Descriptive topics related to the content of the plan definition. Topics provide a high-level categorization of the definition that can be useful for filtering and searching.
-     */  "name": "topic", 
+    /*Explanation of why this plan definition is needed and why it has been designed as it has.
+     */  "name": "purpose", 
     
       "min": "0", 
-      "max": "unbounded", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
+      "max": "1", 
+      "type": "markdown",
+      "isPrimitive": true }, 
     { 
-    /*A contributor to the content of the asset, including authors, editors, reviewers, and endorsers.
-     */  "name": "contributor", 
+    /*A detailed description of how the plan definition is used from a clinical perspective.
+     */  "name": "usage", 
     
       "min": "0", 
-      "max": "unbounded", 
-      "type": "Contributor",
-      "isPrimitive": false }, 
-    { 
-    /*Contact details to assist a user in finding and communicating with the publisher.
-     */  "name": "contact", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "ContactDetail",
-      "isPrimitive": false }, 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
     { 
     /*A copyright statement relating to the plan definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the plan definition.
      */  "name": "copyright", 
@@ -29167,6 +34024,46 @@ The primary difference between a medication statement and a medication administr
       "max": "1", 
       "type": "markdown",
       "isPrimitive": true }, 
+    { 
+    /*The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.
+     */  "name": "approvalDate", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "date",
+      "isPrimitive": true }, 
+    { 
+    /*The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.
+     */  "name": "lastReviewDate", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "date",
+      "isPrimitive": true }, 
+    { 
+    /*The period during which the plan definition content was or is planned to be in active use.
+     */  "name": "effectivePeriod", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Period",
+      "isPrimitive": false }, 
+    { 
+    /*Descriptive topics related to the content of the plan definition. Topics provide a high-level categorization of the definition that can be useful for filtering and searching.
+     */  "name": "topic", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*A contributor to the content of the plan definition, including authors, editors, reviewers, and endorsers.
+     */  "name": "contributor", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Contributor",
+      "isPrimitive": false }, 
     { 
     /*Related artifacts such as additional documentation, justification, or bibliographic references.
      */  "name": "relatedArtifact", 
@@ -29181,8 +34078,8 @@ The primary difference between a medication statement and a medication administr
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
+      "type": "canonical",
+      "isPrimitive": true }, 
     { 
     /*Goals that describe what the activities within the plan are intended to achieve. For example, weight loss, restoring an activity of daily living, obtaining herd immunity via immunization, meeting a process improvement objective, etc.
      */  "name": "goal", 
@@ -29192,7 +34089,7 @@ The primary difference between a medication statement and a medication administr
       "type": "PlanDefinition.Goal",
       "isPrimitive": false }, 
     { 
-    /*An action to be taken as part of the plan.
+    /*An action or group of actions to be taken as part of the plan.
      */  "name": "action", 
     
       "min": "0", 
@@ -29276,7 +34173,7 @@ The primary difference between a medication statement and a medication administr
   ],
   "elems": [
     { 
-    /*The parameter whose value is to be tracked, e.g. body weigth, blood pressure, or hemoglobin A1c level.
+    /*The parameter whose value is to be tracked, e.g. body weight, blood pressure, or hemoglobin A1c level.
      */  "name": "measure", 
     
       "min": "0", 
@@ -29284,7 +34181,7 @@ The primary difference between a medication statement and a medication administr
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     [ /* Choice */ 
-    /*The target value of the measure to be achieved to signify fulfillment of the goal, e.g. 150 pounds or 7.0%. Either the high or low or both values of the range can be specified. Whan a low value is missing, it indicates that the goal is achieved at any value at or below the high value. Similarly, if the high value is missing, it indicates that the goal is achieved at any value at or above the low value.
+    /*The target value of the measure to be achieved to signify fulfillment of the goal, e.g. 150 pounds or 7.0%. Either the high or low or both values of the range can be specified. When a low value is missing, it indicates that the goal is achieved at any value at or below the high value. Similarly, if the high value is missing, it indicates that the goal is achieved at any value at or above the low value.
      */
         {   "name": "detailQuantity", 
         
@@ -29324,8 +34221,8 @@ The primary difference between a medication statement and a medication administr
   ],
   "elems": [
     { 
-    /*A user-visible label for the action.
-     */  "name": "label", 
+    /*A user-visible prefix for the action.
+     */  "name": "prefix", 
     
       "min": "0", 
       "max": "1", 
@@ -29340,7 +34237,7 @@ The primary difference between a medication statement and a medication administr
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*A short description of the action used to provide a summary to display to the user.
+    /*A brief description of the action used to provide a summary to display to the user.
      */  "name": "description", 
     
       "min": "0", 
@@ -29348,7 +34245,7 @@ The primary difference between a medication statement and a medication administr
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*A text equivalent of the action to be performed. This provides a human-interpretable description of the action when the definition is consumed by a system that may not be capable of interpreting it dynamically.
+    /*A text equivalent of the action to be performed. This provides a human-interpretable description of the action when the definition is consumed by a system that might not be capable of interpreting it dynamically.
      */  "name": "textEquivalent", 
     
       "min": "0", 
@@ -29356,7 +34253,7 @@ The primary difference between a medication statement and a medication administr
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*A code that provides meaning for the action or action group. For example, a section may have a LOINC code for a the section of a documentation template.
+    /*A code that provides meaning for the action or action group. For example, a section may have a LOINC code for the section of a documentation template.
      */  "name": "code", 
     
       "min": "0", 
@@ -29389,14 +34286,14 @@ The primary difference between a medication statement and a medication administr
       "isPrimitive": true }, 
     { 
     /*A description of when the action should be triggered.
-     */  "name": "triggerDefinition", 
+     */  "name": "trigger", 
     
       "min": "0", 
       "max": "unbounded", 
       "type": "TriggerDefinition",
       "isPrimitive": false }, 
     { 
-    /*An expression that describes applicability criteria, or start/stop conditions for the action.
+    /*An expression that describes applicability criteria or start/stop conditions for the action.
      */  "name": "condition", 
     
       "min": "0", 
@@ -29436,6 +34333,12 @@ The primary difference between a medication statement and a medication administr
           "max": "1", 
           "type": "dateTime",
           "isPrimitive": true }, 
+        {   "name": "timingAge", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Age",
+          "isPrimitive": false }, 
         {   "name": "timingPeriod", 
         
           "min": "1", 
@@ -29475,7 +34378,7 @@ The primary difference between a medication statement and a medication administr
     
       "min": "0", 
       "max": "1", 
-      "type": "Coding",
+      "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
     /*Defines the grouping behavior for the action and its children.
@@ -29494,7 +34397,7 @@ The primary difference between a medication statement and a medication administr
       "type": "ActionSelectionBehavior",
       "isPrimitive": true }, 
     { 
-    /*Defines the requiredness behavior for the action.
+    /*Defines the required behavior for the action.
      */  "name": "requiredBehavior", 
     
       "min": "0", 
@@ -29523,16 +34426,16 @@ The primary difference between a medication statement and a medication administr
     
       "min": "0", 
       "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
+      "type": "canonical",
+      "isPrimitive": true }, 
     { 
     /*A reference to a StructureMap resource that defines a transform that can be executed to produce the intent resource using the ActivityDefinition instance as the input.
      */  "name": "transform", 
     
       "min": "0", 
       "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
+      "type": "canonical",
+      "isPrimitive": true }, 
     { 
     /*Customizations that should be applied to the statically defined resource. For example, if the dosage of a medication must be computed based on the patient's weight, a customization would be used to specify an expression that calculated the weight, and the path on the resource that would contain the result.
      */  "name": "dynamicValue", 
@@ -29584,7 +34487,7 @@ The primary difference between a medication statement and a medication administr
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*An expression that returns true or false, indicating whether or not the condition is satisfied.
+    /*An expression that returns true or false, indicating whether the condition is satisfied.
      */  "name": "expression", 
     
       "min": "0", 
@@ -29876,7 +34779,7 @@ Work addresses are not typically entered in this property as they are usually ro
       "type": "Practitioner.Qualification",
       "isPrimitive": false }, 
     { 
-    /*A language the practitioner is able to use in patient communication.
+    /*A language the practitioner can use in patient communication.
      */  "name": "communication", 
     
       "min": "0", 
@@ -29944,7 +34847,7 @@ Work addresses are not typically entered in this property as they are usually ro
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
-    /*Whether this practitioner's record is in active use.
+    /*Whether this practitioner role record is in active use.
      */  "name": "active", 
     
       "min": "0", 
@@ -29960,7 +34863,7 @@ Work addresses are not typically entered in this property as they are usually ro
       "type": "Period",
       "isPrimitive": false }, 
     { 
-    /*Practitioner that is able to provide the defined services for the organation.
+    /*Practitioner that is able to provide the defined services for the organization.
      */  "name": "practitioner", 
     
       "min": "0", 
@@ -30126,7 +35029,7 @@ Work addresses are not typically entered in this property as they are usually ro
   ],
   "elems": [
     { 
-    /*This records identifiers associated with this procedure that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
+    /*Business identifiers assigned to this procedure by the performer or other systems which remain constant as the resource is updated and propagates from server to server.
      */  "name": "identifier", 
     
       "min": "0", 
@@ -30135,12 +35038,12 @@ Work addresses are not typically entered in this property as they are usually ro
       "isPrimitive": false }, 
     { 
     /*A protocol, guideline, orderset or other definition that was adhered to in whole or in part by this procedure.
-     */  "name": "definition", 
+     */  "name": "instantiates", 
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
+      "type": "uri",
+      "isPrimitive": true }, 
     { 
     /*A reference to a resource that contains details of the request for this procedure.
      */  "name": "basedOn", 
@@ -30166,16 +35069,8 @@ Work addresses are not typically entered in this property as they are usually ro
       "type": "EventStatus",
       "isPrimitive": true }, 
     { 
-    /*Set this to true if the record is saying that the procedure was NOT performed.
-     */  "name": "notDone", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "boolean",
-      "isPrimitive": true }, 
-    { 
-    /*A code indicating why the procedure was not performed.
-     */  "name": "notDoneReason", 
+    /*Captures the reason for the current state of the procedure.
+     */  "name": "statusReason", 
     
       "min": "0", 
       "max": "1", 
@@ -30214,7 +35109,7 @@ Work addresses are not typically entered in this property as they are usually ro
       "type": "Reference",
       "isPrimitive": false }, 
     [ /* Choice */ 
-    /*The date(time)/period over which the procedure was performed. Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured.
+    /*Estimated or actual date, date-time, period, or age when the procedure was performed.  Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured.
      */
         {   "name": "performedDateTime", 
         
@@ -30228,7 +35123,41 @@ Work addresses are not typically entered in this property as they are usually ro
           "max": "1", 
           "type": "Period",
           "isPrimitive": false }, 
+        {   "name": "performedString", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "string",
+          "isPrimitive": true }, 
+        {   "name": "performedAge", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Age",
+          "isPrimitive": false }, 
+        {   "name": "performedRange", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Range",
+          "isPrimitive": false }, 
     ], 
+    { 
+    /*Individual who recorded the record and takes responsibility for its content.
+     */  "name": "recorder", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Individual who is making the procedure statement.
+     */  "name": "asserter", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
     { 
     /*Limited to 'real' people rather than equipment.
      */  "name": "performer", 
@@ -30254,7 +35183,7 @@ Work addresses are not typically entered in this property as they are usually ro
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*The condition that is the reason why the procedure was performed.
+    /*The justification of why the procedure was performed.
      */  "name": "reasonReference", 
     
       "min": "0", 
@@ -30278,7 +35207,7 @@ Work addresses are not typically entered in this property as they are usually ro
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*This could be a histology result, pathology report, surgical report, etc..
+    /*This could be a histology result, pathology report, surgical report, etc.
      */  "name": "report", 
     
       "min": "0", 
@@ -30310,7 +35239,7 @@ Work addresses are not typically entered in this property as they are usually ro
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Any other notes about the procedure.  E.g. the operative notes.
+    /*Any other notes and comments about the procedure.
      */  "name": "note", 
     
       "min": "0", 
@@ -30403,285 +35332,6 @@ Work addresses are not typically entered in this property as they are usually ro
       "isPrimitive": false }, 
   ]
 },
-"ProcedureRequest": {
-    /*A record of a request for diagnostic investigations, treatments, or operations to be performed.If the element is present, it must have either a @value, an @id, or extensions
-     */
-  "name": "ProcedureRequest",
-  "base": "DomainResource", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*Identifiers assigned to this order instance by the orderer and/or the receiver and/or order fulfiller.
-     */  "name": "identifier", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Identifier",
-      "isPrimitive": false }, 
-    { 
-    /*Protocol or definition followed by this request.
-     */  "name": "definition", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*Plan/proposal/order fulfilled by this request.
-     */  "name": "basedOn", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*The request takes the place of the referenced completed or terminated request(s).
-     */  "name": "replaces", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*A shared identifier common to all procedure or diagnostic requests that were authorized more or less simultaneously by a single author, representing the composite or group identifier.
-     */  "name": "requisition", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Identifier",
-      "isPrimitive": false }, 
-    { 
-    /*The status of the order.
-     */  "name": "status", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "RequestStatus",
-      "isPrimitive": true }, 
-    { 
-    /*Whether the request is a proposal, plan, an original order or a reflex order.
-     */  "name": "intent", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "RequestIntent",
-      "isPrimitive": true }, 
-    { 
-    /*Indicates how quickly the ProcedureRequest should be addressed with respect to other requests.
-     */  "name": "priority", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "RequestPriority",
-      "isPrimitive": true }, 
-    { 
-    /*Set this to true if the record is saying that the procedure should NOT be performed.
-     */  "name": "doNotPerform", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "boolean",
-      "isPrimitive": true }, 
-    { 
-    /*A code that classifies the procedure for searching, sorting and display purposes (e.g. "Surgical Procedure").
-     */  "name": "category", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*A code that identifies a particular procedure, diagnostic investigation, or panel of investigations, that have been requested.
-     */  "name": "code", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*On whom or what the procedure or diagnostic is to be performed. This is usually a human patient, but can also be requested on animals, groups of humans or animals, devices such as dialysis machines, or even locations (typically for environmental scans).
-     */  "name": "subject", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*An encounter or episode of care that provides additional information about the healthcare context in which this request is made.
-     */  "name": "context", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    [ /* Choice */ 
-    /*The date/time at which the diagnostic testing should occur.
-     */
-        {   "name": "occurrenceDateTime", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "dateTime",
-          "isPrimitive": true }, 
-        {   "name": "occurrencePeriod", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Period",
-          "isPrimitive": false }, 
-        {   "name": "occurrenceTiming", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Timing",
-          "isPrimitive": false }, 
-    ], 
-    [ /* Choice */ 
-    /*If a CodeableConcept is present, it indicates the pre-condition for performing the procedure.  For example "pain", "on flare-up", etc.
-     */
-        {   "name": "asNeededBoolean", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "boolean",
-          "isPrimitive": true }, 
-        {   "name": "asNeededCodeableConcept", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "CodeableConcept",
-          "isPrimitive": false }, 
-    ], 
-    { 
-    /*When the request transitioned to being actionable.
-     */  "name": "authoredOn", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "dateTime",
-      "isPrimitive": true }, 
-    { 
-    /*The individual who initiated the request and has responsibility for its activation.
-     */  "name": "requester", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "ProcedureRequest.Requester",
-      "isPrimitive": false }, 
-    { 
-    /*Desired type of performer for doing the diagnostic testing.
-     */  "name": "performerType", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*The desired perfomer for doing the diagnostic testing.  For example, the surgeon, dermatopathologist, endoscopist, etc.
-     */  "name": "performer", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*An explanation or justification for why this diagnostic investigation is being requested in coded or textual form.   This is often for billing purposes.  May relate to the resources referred to in supportingInformation.
-     */  "name": "reasonCode", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*Indicates another resource that provides a justification for why this diagnostic investigation is being requested.   May relate to the resources referred to in supportingInformation.
-     */  "name": "reasonReference", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*Additional clinical information about the patient or specimen that may influence the procedure or diagnostics or their interpretations.     This information includes diagnosis, clinical findings and other observations.  In laboratory ordering these are typically referred to as "ask at order entry questions (AOEs)".  This includes observations explicitly requested by the producer (filler) to provide context or supporting information needed to complete the order. For example,  reporting the amount of inspired oxygen for blood gas measurements.
-     */  "name": "supportingInfo", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*One or more specimens that the laboratory procedure will use.
-     */  "name": "specimen", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*Anatomic location where the procedure should be performed. This is the target site.
-     */  "name": "bodySite", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*Any other notes and comments made about the service request. For example, letting provider know that "patient hates needles" or other provider instructions.
-     */  "name": "note", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Annotation",
-      "isPrimitive": false }, 
-    { 
-    /*Key events in the history of the request.
-     */  "name": "relevantHistory", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-  ]
-},
-"ProcedureRequest.Requester": {
-    /*A record of a request for diagnostic investigations, treatments, or operations to be performed.
-     */
-  "name": "ProcedureRequest.Requester",
-  "base": "BackboneElement", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*The device, practitioner or organization who initiated the request.
-     */  "name": "agent", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*The organization the device or practitioner was acting on behalf of.
-     */  "name": "onBehalfOf", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-  ]
-},
-"RequestIntent": {
-    /*The kind of procedure or diagnostic requestIf the element is present, it must have either a @value, an @id, or extensions
-     */
-  "name": "RequestIntent",
-  "base": "Element", 
-  "attrs": [
-    { 
-      "name": "value", 
-      "type": "RequestIntent-list" }, 
-  ],
-  "elems": [
-  ]
-},
 "ProcessRequest": {
     /*This resource provides the target, request and response, and action details for an action to be performed by the target on or about existing resources.If the element is present, it must have either a @value, an @id, or extensions
      */
@@ -30733,14 +35383,6 @@ Work addresses are not typically entered in this property as they are usually ro
     { 
     /*The practitioner who is responsible for the action specified in this request.
      */  "name": "provider", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*The organization which is responsible for the action speccified in this request.
-     */  "name": "organization", 
     
       "min": "0", 
       "max": "1", 
@@ -30897,8 +35539,8 @@ Work addresses are not typically entered in this property as they are usually ro
     
       "min": "0", 
       "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
+      "type": "ProcessOutcomeCodes",
+      "isPrimitive": true }, 
     { 
     /*A description of the status of the adjudication or processing.
      */  "name": "disposition", 
@@ -30910,14 +35552,6 @@ Work addresses are not typically entered in this property as they are usually ro
     { 
     /*The practitioner who is responsible for the services rendered to the patient.
      */  "name": "requestProvider", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*The organization which is responsible for the services rendered to the patient.
-     */  "name": "requestOrganization", 
     
       "min": "0", 
       "max": "1", 
@@ -30971,8 +35605,8 @@ Work addresses are not typically entered in this property as they are usually ro
     
       "min": "0", 
       "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
+      "type": "NoteType",
+      "isPrimitive": true }, 
     { 
     /*The note text.
      */  "name": "text", 
@@ -30981,6 +35615,397 @@ Work addresses are not typically entered in this property as they are usually ro
       "max": "1", 
       "type": "string",
       "isPrimitive": true }, 
+  ]
+},
+"ProcessOutcomeCodes": {
+    /*Local status of outcome codesIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "ProcessOutcomeCodes",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "ProcessOutcomeCodes-list" }, 
+  ],
+  "elems": [
+  ]
+},
+"ProductPlan": {
+    /*Details of a Health Insurance product/plan provided by an organization.If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "ProductPlan",
+  "base": "DomainResource", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Identifier for the product/plan that is used to identify it across multiple disparate systems.
+     */  "name": "identifier", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*Whether the organization's record is still in active use.
+     */  "name": "status", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "PublicationStatus",
+      "isPrimitive": true }, 
+    { 
+    /*The type of product/plan.
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Official name of the product/plan (as designated by the owner).
+     */  "name": "name", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*A list of alternate names that the product/plan is known as, or was known as in the past.
+     */  "name": "alias", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The period of time that the product is available.
+     */  "name": "period", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Period",
+      "isPrimitive": false }, 
+    { 
+    /*Owner of the product/plan (typically a payer).
+     */  "name": "ownedBy", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Administrator of the product/plan (e.g. self-insured employer plan administered by a TPA).
+     */  "name": "administeredBy", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*An address for the organization.
+     */  "name": "address", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Address",
+      "isPrimitive": false }, 
+    { 
+    /*The geographic region in which this product/plan is available.
+     */  "name": "coverageArea", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Contact for the product/plan for a certain purpose.
+     */  "name": "contact", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ProductPlan.Contact",
+      "isPrimitive": false }, 
+    { 
+    /*Details about the coverage offered by the insurance product.
+     */  "name": "coverage", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ProductPlan.Coverage",
+      "isPrimitive": false }, 
+    { 
+    /*Details about an insurance plan.
+     */  "name": "plan", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ProductPlan.Plan",
+      "isPrimitive": false }, 
+    { 
+    /*Technical endpoints providing access to services operated for the organization.
+     */  "name": "endpoint", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+  ]
+},
+"ProductPlan.Contact": {
+    /*Details of a Health Insurance product/plan provided by an organization.
+     */
+  "name": "ProductPlan.Contact",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Indicates a purpose for which the contact can be reached.
+     */  "name": "purpose", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*A name associated with the contact.
+     */  "name": "name", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "HumanName",
+      "isPrimitive": false }, 
+    { 
+    /*A contact detail (e.g. a telephone number or an email address) by which the party may be contacted.
+     */  "name": "telecom", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ContactPoint",
+      "isPrimitive": false }, 
+    { 
+    /*Visiting or postal addresses for the contact.
+     */  "name": "address", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Address",
+      "isPrimitive": false }, 
+  ]
+},
+"ProductPlan.Coverage": {
+    /*Details of a Health Insurance product/plan provided by an organization.
+     */
+  "name": "ProductPlan.Coverage",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Type of coverage  (Medical; Dental; Mental Health; Substance Abuse; Vision; Drug; Short Term; Long Term Care; Hospice; Home Health).
+     */  "name": "type", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Specific benefits under this type of coverage.
+     */  "name": "benefit", 
+    
+      "min": "1", 
+      "max": "unbounded", 
+      "type": "ProductPlan.Benefit",
+      "isPrimitive": false }, 
+  ]
+},
+"ProductPlan.Benefit": {
+    /*Details of a Health Insurance product/plan provided by an organization.
+     */
+  "name": "ProductPlan.Benefit",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Type of benefit (primary care; speciality care; inpatient; outpatient).
+     */  "name": "type", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Specific benefit and related value.
+     */  "name": "item", 
+    
+      "min": "1", 
+      "max": "unbounded", 
+      "type": "ProductPlan.Item",
+      "isPrimitive": false }, 
+  ]
+},
+"ProductPlan.Item": {
+    /*Details of a Health Insurance product/plan provided by an organization.
+     */
+  "name": "ProductPlan.Item",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Coded Details of the specific benefit (days; visits).
+     */  "name": "code", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Value of the specific benefit.
+     */  "name": "benefitValue", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Quantity",
+      "isPrimitive": false }, 
+  ]
+},
+"ProductPlan.Plan": {
+    /*Details of a Health Insurance product/plan provided by an organization.
+     */
+  "name": "ProductPlan.Plan",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Type of plan (Platinum; Gold; Silver; Bronze; High Deductable; Low Deductable).
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Additional descriptive content about the plan.
+     */  "name": "description", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Plan premium.
+     */  "name": "premium", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Money",
+      "isPrimitive": false }, 
+    { 
+    /*List of the costs associated with plan benefits.
+     */  "name": "category", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ProductPlan.Category",
+      "isPrimitive": false }, 
+  ]
+},
+"ProductPlan.Category": {
+    /*Details of a Health Insurance product/plan provided by an organization.
+     */
+  "name": "ProductPlan.Category",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*General category of benefit (Medical; Dental; Vision; Drug; Mental Health; Substance Abuse; Hospice, Home Health).
+     */  "name": "code", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*List of the specific benefits under this category of benefit.
+     */  "name": "benefit", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ProductPlan.Benefit1",
+      "isPrimitive": false }, 
+  ]
+},
+"ProductPlan.Benefit1": {
+    /*Details of a Health Insurance product/plan provided by an organization.
+     */
+  "name": "ProductPlan.Benefit1",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Type of specific benefit (preventative; primary care office visit; speciality office visit; hospitalization; emergency room; urgent care).
+     */  "name": "type", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*List of the costs associated with a specific benefit.
+     */  "name": "cost", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ProductPlan.Cost",
+      "isPrimitive": false }, 
+  ]
+},
+"ProductPlan.Cost": {
+    /*Details of a Health Insurance product/plan provided by an organization.
+     */
+  "name": "ProductPlan.Cost",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Type of cost (copay; individual cap; family cap; coinsurance; deductible).
+     */  "name": "type", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Whether the cost applies to in-network or out-of-network providers (in-network; out-of-network; other).
+     */  "name": "applicability", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Coding",
+      "isPrimitive": false }, 
+    { 
+    /*Additional information about the cost, such as information about funding sources (e.g. HSA, HRA, FSA, RRA).
+     */  "name": "qualifiers", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The actual cost value.
+     */  "name": "value", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Quantity",
+      "isPrimitive": false }, 
   ]
 },
 "Provenance": {
@@ -30999,14 +36024,22 @@ Work addresses are not typically entered in this property as they are usually ro
       "max": "unbounded", 
       "type": "Reference",
       "isPrimitive": false }, 
-    { 
+    [ /* Choice */ 
     /*The period during which the activity occurred.
-     */  "name": "period", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Period",
-      "isPrimitive": false }, 
+     */
+        {   "name": "occurredPeriod", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Period",
+          "isPrimitive": false }, 
+        {   "name": "occurredDateTime", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "dateTime",
+          "isPrimitive": true }, 
+    ], 
     { 
     /*The instant of time at which the activity was recorded.
      */  "name": "recorded", 
@@ -31037,7 +36070,7 @@ Work addresses are not typically entered in this property as they are usually ro
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "Coding",
+      "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
     /*An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.
@@ -31045,7 +36078,7 @@ Work addresses are not typically entered in this property as they are usually ro
     
       "min": "0", 
       "max": "1", 
-      "type": "Coding",
+      "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
     /*An actor taking a role in an activity  for which it can be assigned some degree of responsibility for the activity taking place.
@@ -31082,6 +36115,14 @@ Work addresses are not typically entered in this property as they are usually ro
   ],
   "elems": [
     { 
+    /*The participation the agent had with respect to the activity.
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
     /*The function of the agent with respect to the activity. The security role enabling the agent with respect to the activity.
      */  "name": "role", 
     
@@ -31092,12 +36133,12 @@ Work addresses are not typically entered in this property as they are usually ro
     [ /* Choice */ 
     /*The individual, device or organization that participated in the event.
      */
-        {   "name": "whoUri", 
+        {   "name": "whoIdentifier", 
         
           "min": "1", 
           "max": "1", 
-          "type": "uri",
-          "isPrimitive": true }, 
+          "type": "Identifier",
+          "isPrimitive": false }, 
         {   "name": "whoReference", 
         
           "min": "1", 
@@ -31108,12 +36149,12 @@ Work addresses are not typically entered in this property as they are usually ro
     [ /* Choice */ 
     /*The individual, device, or organization for whom the change was made.
      */
-        {   "name": "onBehalfOfUri", 
+        {   "name": "onBehalfOfIdentifier", 
         
           "min": "1", 
           "max": "1", 
-          "type": "uri",
-          "isPrimitive": true }, 
+          "type": "Identifier",
+          "isPrimitive": false }, 
         {   "name": "onBehalfOfReference", 
         
           "min": "1", 
@@ -31121,14 +36162,6 @@ Work addresses are not typically entered in this property as they are usually ro
           "type": "Reference",
           "isPrimitive": false }, 
     ], 
-    { 
-    /*The type of relationship between agents.
-     */  "name": "relatedAgentType", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
   ]
 },
 "Provenance.Entity": {
@@ -31150,23 +36183,17 @@ Work addresses are not typically entered in this property as they are usually ro
     [ /* Choice */ 
     /*Identity of the  Entity used. May be a logical or physical uri and maybe absolute or relative.
      */
-        {   "name": "whatUri", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "uri",
-          "isPrimitive": true }, 
-        {   "name": "whatReference", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Reference",
-          "isPrimitive": false }, 
         {   "name": "whatIdentifier", 
         
           "min": "1", 
           "max": "1", 
           "type": "Identifier",
+          "isPrimitive": false }, 
+        {   "name": "whatReference", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Reference",
           "isPrimitive": false }, 
     ], 
     { 
@@ -31201,7 +36228,7 @@ Work addresses are not typically entered in this property as they are usually ro
   ],
   "elems": [
     { 
-    /*An absolute URI that is used to identify this questionnaire when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this questionnaire is (or will be) published. The URL SHOULD include the major version of the questionnaire. For more information see [Technical and Business Versions](resource.html#versions).
+    /*An absolute URI that is used to identify this questionnaire when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which this questionnaire is (or will be) published.
      */  "name": "url", 
     
       "min": "0", 
@@ -31241,6 +36268,14 @@ Work addresses are not typically entered in this property as they are usually ro
       "type": "string",
       "isPrimitive": true }, 
     { 
+    /*The URL of a Questionnaire that this Questionnaire is based on.
+     */  "name": "derivedFrom", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "canonical",
+      "isPrimitive": true }, 
+    { 
     /*The status of this questionnaire. Enables tracking the life-cycle of the content.
      */  "name": "status", 
     
@@ -31249,7 +36284,7 @@ Work addresses are not typically entered in this property as they are usually ro
       "type": "PublicationStatus",
       "isPrimitive": true }, 
     { 
-    /*A boolean value to indicate that this questionnaire is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+    /*A Boolean value to indicate that this questionnaire is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.
      */  "name": "experimental", 
     
       "min": "0", 
@@ -31257,7 +36292,15 @@ Work addresses are not typically entered in this property as they are usually ro
       "type": "boolean",
       "isPrimitive": true }, 
     { 
-    /*The date  (and optionally time) when the questionnaire was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the questionnaire changes.
+    /*The types of subjects that can be the subject of responses created for the questionnaire.
+     */  "name": "subjectType", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ResourceType",
+      "isPrimitive": true }, 
+    { 
+    /*The date  (and optionally time) when the questionnaire was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the questionnaire changes.
      */  "name": "date", 
     
       "min": "0", 
@@ -31265,13 +36308,21 @@ Work addresses are not typically entered in this property as they are usually ro
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*The name of the individual or organization that published the questionnaire.
+    /*The name of the organization or individual that published the questionnaire.
      */  "name": "publisher", 
     
       "min": "0", 
       "max": "1", 
       "type": "string",
       "isPrimitive": true }, 
+    { 
+    /*Contact details to assist a user in finding and communicating with the publisher.
+     */  "name": "contact", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ContactDetail",
+      "isPrimitive": false }, 
     { 
     /*A free text natural language description of the questionnaire from a consumer's perspective.
      */  "name": "description", 
@@ -31280,38 +36331,6 @@ Work addresses are not typically entered in this property as they are usually ro
       "max": "1", 
       "type": "markdown",
       "isPrimitive": true }, 
-    { 
-    /*Explaination of why this questionnaire is needed and why it has been designed as it has.
-     */  "name": "purpose", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "markdown",
-      "isPrimitive": true }, 
-    { 
-    /*The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.
-     */  "name": "approvalDate", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "date",
-      "isPrimitive": true }, 
-    { 
-    /*The date on which the resource content was last reviewed. Review happens periodically after approval, but doesn't change the original approval date.
-     */  "name": "lastReviewDate", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "date",
-      "isPrimitive": true }, 
-    { 
-    /*The period during which the questionnaire content was or is planned to be in active use.
-     */  "name": "effectivePeriod", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Period",
-      "isPrimitive": false }, 
     { 
     /*The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate questionnaire instances.
      */  "name": "useContext", 
@@ -31329,13 +36348,13 @@ Work addresses are not typically entered in this property as they are usually ro
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Contact details to assist a user in finding and communicating with the publisher.
-     */  "name": "contact", 
+    /*Explanation of why this questionnaire is needed and why it has been designed as it has.
+     */  "name": "purpose", 
     
       "min": "0", 
-      "max": "unbounded", 
-      "type": "ContactDetail",
-      "isPrimitive": false }, 
+      "max": "1", 
+      "type": "markdown",
+      "isPrimitive": true }, 
     { 
     /*A copyright statement relating to the questionnaire and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the questionnaire.
      */  "name": "copyright", 
@@ -31345,6 +36364,30 @@ Work addresses are not typically entered in this property as they are usually ro
       "type": "markdown",
       "isPrimitive": true }, 
     { 
+    /*The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.
+     */  "name": "approvalDate", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "date",
+      "isPrimitive": true }, 
+    { 
+    /*The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.
+     */  "name": "lastReviewDate", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "date",
+      "isPrimitive": true }, 
+    { 
+    /*The period during which the questionnaire content was or is planned to be in active use.
+     */  "name": "effectivePeriod", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Period",
+      "isPrimitive": false }, 
+    { 
     /*An identifier for this question or group of questions in a particular terminology such as LOINC.
      */  "name": "code", 
     
@@ -31352,14 +36395,6 @@ Work addresses are not typically entered in this property as they are usually ro
       "max": "unbounded", 
       "type": "Coding",
       "isPrimitive": false }, 
-    { 
-    /*The types of subjects that can be the subject of responses created for the questionnaire.
-     */  "name": "subjectType", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "ResourceType",
-      "isPrimitive": true }, 
     { 
     /*A particular question, question grouping or display text that is part of the questionnaire.
      */  "name": "item", 
@@ -31387,16 +36422,15 @@ Work addresses are not typically entered in this property as they are usually ro
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*A reference to an [[[ElementDefinition]]] that provides the details for the item. If a definition is provided, then the following element values can be inferred from the definition: 
+    /*A reference to an [[[ElementDefinition]]] that provides the details for the item. If a definition is provided, then the following element values can be derived from the definition:   
 
-* code (ElementDefinition.code)
-* type (ElementDefinition.type)
-* required (ElementDefinition.min)
-* repeats (ElementDefinition.max)
-* maxLength (ElementDefinition.maxLength)
-* options (ElementDefinition.binding)
-
-Any information provided in these elements on a Questionnaire Item overrides the information from the definition.
+* code (ElementDefinition.code) 
+* type (ElementDefinition.type) 
+* required (ElementDefinition.min) 
+* repeats (ElementDefinition.max) 
+* maxLength (ElementDefinition.maxLength) 
+* options (ElementDefinition.binding)  
+Any information provided in these elements on a Questionnaire Item overrides the information from the definition, and some are require for efficient implementation (e.g. enforcing invariants).
      */  "name": "definition", 
     
       "min": "0", 
@@ -31444,6 +36478,14 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "Questionnaire.EnableWhen",
       "isPrimitive": false }, 
     { 
+    /*Controls how multiple enableWhen values are interpreted -  whether all or any must be true.
+     */  "name": "enableBehavior", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "EnableWhenBehavior",
+      "isPrimitive": true }, 
+    { 
     /*An indication, if true, that the item must be present in a "completed" QuestionnaireResponse.  If false, the item may be skipped when answering the questionnaire.
      */  "name": "required", 
     
@@ -31481,8 +36523,8 @@ Any information provided in these elements on a Questionnaire Item overrides the
     
       "min": "0", 
       "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
+      "type": "canonical",
+      "isPrimitive": true }, 
     { 
     /*One of the permitted answers for a "choice" or "open-choice" question.
      */  "name": "option", 
@@ -31491,82 +36533,14 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "max": "unbounded", 
       "type": "Questionnaire.Option",
       "isPrimitive": false }, 
-    [ /* Choice */ 
-    /*The value that should be defaulted when initially rendering the questionnaire for user input.
-     */
-        {   "name": "initialBoolean", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "boolean",
-          "isPrimitive": true }, 
-        {   "name": "initialDecimal", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "decimal",
-          "isPrimitive": true }, 
-        {   "name": "initialInteger", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "integer",
-          "isPrimitive": true }, 
-        {   "name": "initialDate", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "date",
-          "isPrimitive": true }, 
-        {   "name": "initialDateTime", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "dateTime",
-          "isPrimitive": true }, 
-        {   "name": "initialTime", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "time",
-          "isPrimitive": true }, 
-        {   "name": "initialString", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "string",
-          "isPrimitive": true }, 
-        {   "name": "initialUri", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "uri",
-          "isPrimitive": true }, 
-        {   "name": "initialAttachment", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Attachment",
-          "isPrimitive": false }, 
-        {   "name": "initialCoding", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Coding",
-          "isPrimitive": false }, 
-        {   "name": "initialQuantity", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Quantity",
-          "isPrimitive": false }, 
-        {   "name": "initialReference", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Reference",
-          "isPrimitive": false }, 
-    ], 
+    { 
+    /*One or more values that should be pre-populated in the answer when initially rendering the questionnaire for user input.
+     */  "name": "initial", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Questionnaire.Initial",
+      "isPrimitive": false }, 
     { 
     /*Text, questions and other groups to be nested beneath a question or group.
      */  "name": "item", 
@@ -31594,15 +36568,15 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*An indication that this item should be enabled only if the specified question is answered (hasAnswer=true) or not answered (hasAnswer=false).
-     */  "name": "hasAnswer", 
+    /*Specifies the criteria by which the question is enabled.
+     */  "name": "operator", 
     
-      "min": "0", 
+      "min": "1", 
       "max": "1", 
-      "type": "boolean",
+      "type": "QuestionnaireItemOperator",
       "isPrimitive": true }, 
     [ /* Choice */ 
-    /*An answer that the referenced question must match in order for the item to be enabled.
+    /*A value that the referenced question is tested using the specified operator in order for the item to be enabled.
      */
         {   "name": "answerBoolean", 
         
@@ -31646,18 +36620,6 @@ Any information provided in these elements on a Questionnaire Item overrides the
           "max": "1", 
           "type": "string",
           "isPrimitive": true }, 
-        {   "name": "answerUri", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "uri",
-          "isPrimitive": true }, 
-        {   "name": "answerAttachment", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Attachment",
-          "isPrimitive": false }, 
         {   "name": "answerCoding", 
         
           "min": "1", 
@@ -31721,6 +36683,100 @@ Any information provided in these elements on a Questionnaire Item overrides the
           "type": "Coding",
           "isPrimitive": false }, 
     ], 
+    { 
+    /*Indicates whether the option value is selected when the list of options is initially shown.
+     */  "name": "initialSelected", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+  ]
+},
+"Questionnaire.Initial": {
+    /*A structured set of questions intended to guide the collection of answers from end-users. Questionnaires provide detailed control over order, presentation, phraseology and grouping to allow coherent, consistent data collection.
+     */
+  "name": "Questionnaire.Initial",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    [ /* Choice */ 
+    /*The actual value to for an initial answer.
+     */
+        {   "name": "valueBoolean", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "boolean",
+          "isPrimitive": true }, 
+        {   "name": "valueDecimal", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "decimal",
+          "isPrimitive": true }, 
+        {   "name": "valueInteger", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "integer",
+          "isPrimitive": true }, 
+        {   "name": "valueDate", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "date",
+          "isPrimitive": true }, 
+        {   "name": "valueDateTime", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "dateTime",
+          "isPrimitive": true }, 
+        {   "name": "valueTime", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "time",
+          "isPrimitive": true }, 
+        {   "name": "valueString", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "string",
+          "isPrimitive": true }, 
+        {   "name": "valueUri", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "uri",
+          "isPrimitive": true }, 
+        {   "name": "valueAttachment", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Attachment",
+          "isPrimitive": false }, 
+        {   "name": "valueCoding", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Coding",
+          "isPrimitive": false }, 
+        {   "name": "valueQuantity", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Quantity",
+          "isPrimitive": false }, 
+        {   "name": "valueReference", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Reference",
+          "isPrimitive": false }, 
+    ], 
   ]
 },
 "QuestionnaireItemType": {
@@ -31732,6 +36788,32 @@ Any information provided in these elements on a Questionnaire Item overrides the
     { 
       "name": "value", 
       "type": "QuestionnaireItemType-list" }, 
+  ],
+  "elems": [
+  ]
+},
+"EnableWhenBehavior": {
+    /*Controls how multiple enableWhen values are interpreted -  whether all or any must be trueIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "EnableWhenBehavior",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "EnableWhenBehavior-list" }, 
+  ],
+  "elems": [
+  ]
+},
+"QuestionnaireItemOperator": {
+    /*The criteria by which a question is enabledIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "QuestionnaireItemOperator",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "QuestionnaireItemOperator-list" }, 
   ],
   "elems": [
   ]
@@ -31753,7 +36835,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
-    /*The order, proposal or plan that is fulfilled in whole or in part by this QuestionnaireResponse.  For example, a ProcedureRequest seeking an intake assessment or a decision support recommendation to assess for post-partum depression.
+    /*The order, proposal or plan that is fulfilled in whole or in part by this QuestionnaireResponse.  For example, a ServiceRequest seeking an intake assessment or a decision support recommendation to assess for post-partum depression.
      */  "name": "basedOn", 
     
       "min": "0", 
@@ -31762,7 +36844,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "isPrimitive": false }, 
     { 
     /*A procedure or observation that this questionnaire was performed as part of the execution of.  For example, the surgery a checklist was executed as part of.
-     */  "name": "parent", 
+     */  "name": "partOf", 
     
       "min": "0", 
       "max": "unbounded", 
@@ -31774,8 +36856,8 @@ Any information provided in these elements on a Questionnaire Item overrides the
     
       "min": "0", 
       "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
+      "type": "canonical",
+      "isPrimitive": true }, 
     { 
     /*The position of the questionnaire response within its overall lifecycle.
      */  "name": "status", 
@@ -31999,234 +37081,6 @@ Any information provided in these elements on a Questionnaire Item overrides the
   "elems": [
   ]
 },
-"ReferralRequest": {
-    /*Used to record and send details about a request for referral service or transfer of a patient to the care of another provider or provider organization.If the element is present, it must have either a @value, an @id, or extensions
-     */
-  "name": "ReferralRequest",
-  "base": "DomainResource", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*Business identifier that uniquely identifies the referral/care transfer request instance.
-     */  "name": "identifier", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Identifier",
-      "isPrimitive": false }, 
-    { 
-    /*A protocol, guideline, orderset or other definition that is adhered to in whole or in part by this request.
-     */  "name": "definition", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*Indicates any plans, proposals or orders that this request is intended to satisfy - in whole or in part.
-     */  "name": "basedOn", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*Completed or terminated request(s) whose function is taken by this new request.
-     */  "name": "replaces", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*The business identifier of the logical "grouping" request/order that this referral is a part of.
-     */  "name": "groupIdentifier", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Identifier",
-      "isPrimitive": false }, 
-    { 
-    /*The status of the authorization/intention reflected by the referral request record.
-     */  "name": "status", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "RequestStatus",
-      "isPrimitive": true }, 
-    { 
-    /*Distinguishes the "level" of authorization/demand implicit in this request.
-     */  "name": "intent", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "RequestIntent",
-      "isPrimitive": true }, 
-    { 
-    /*An indication of the type of referral (or where applicable the type of transfer of care) request.
-     */  "name": "type", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*An indication of the urgency of referral (or where applicable the type of transfer of care) request.
-     */  "name": "priority", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "RequestPriority",
-      "isPrimitive": true }, 
-    { 
-    /*The service(s) that is/are requested to be provided to the patient.  For example: cardiac pacemaker insertion.
-     */  "name": "serviceRequested", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*The patient who is the subject of a referral or transfer of care request.
-     */  "name": "subject", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*The encounter at which the request for referral or transfer of care is initiated.
-     */  "name": "context", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    [ /* Choice */ 
-    /*The period of time within which the services identified in the referral/transfer of care is specified or required to occur.
-     */
-        {   "name": "occurrenceDateTime", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "dateTime",
-          "isPrimitive": true }, 
-        {   "name": "occurrencePeriod", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Period",
-          "isPrimitive": false }, 
-    ], 
-    { 
-    /*Date/DateTime of creation for draft requests and date of activation for active requests.
-     */  "name": "authoredOn", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "dateTime",
-      "isPrimitive": true }, 
-    { 
-    /*The individual who initiated the request and has responsibility for its activation.
-     */  "name": "requester", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "ReferralRequest.Requester",
-      "isPrimitive": false }, 
-    { 
-    /*Indication of the clinical domain or discipline to which the referral or transfer of care request is sent.  For example: Cardiology Gastroenterology Diabetology.
-     */  "name": "specialty", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*The healthcare provider(s) or provider organization(s) who/which is to receive the referral/transfer of care request.
-     */  "name": "recipient", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*Description of clinical condition indicating why referral/transfer of care is requested.  For example:  Pathological Anomalies, Disabled (physical or mental),  Behavioral Management.
-     */  "name": "reasonCode", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "CodeableConcept",
-      "isPrimitive": false }, 
-    { 
-    /*Indicates another resource whose existence justifies this request.
-     */  "name": "reasonReference", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*The reason element gives a short description of why the referral is being made, the description expands on this to support a more complete clinical summary.
-     */  "name": "description", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*Any additional (administrative, financial or clinical) information required to support request for referral or transfer of care.  For example: Presenting problems/chief complaints Medical History Family History Alerts Allergy/Intolerance and Adverse Reactions Medications Observations/Assessments (may include cognitive and fundtional assessments) Diagnostic Reports Care Plan.
-     */  "name": "supportingInfo", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*Comments made about the referral request by any of the participants.
-     */  "name": "note", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Annotation",
-      "isPrimitive": false }, 
-    { 
-    /*Links to Provenance records for past versions of this resource or fulfilling request or event resources that identify key state transitions or updates that are likely to be relevant to a user looking at the current version of the resource.
-     */  "name": "relevantHistory", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-  ]
-},
-"ReferralRequest.Requester": {
-    /*Used to record and send details about a request for referral service or transfer of a patient to the care of another provider or provider organization.
-     */
-  "name": "ReferralRequest.Requester",
-  "base": "BackboneElement", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*The device, practitioner, etc. who initiated the request.
-     */  "name": "agent", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*The organization the device or practitioner was acting on behalf of.
-     */  "name": "onBehalfOf", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-  ]
-},
 "RelatedPerson": {
     /*Information about a person that is involved in the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.If the element is present, it must have either a @value, an @id, or extensions
      */
@@ -32264,7 +37118,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
      */  "name": "relationship", 
     
       "min": "0", 
-      "max": "1", 
+      "max": "unbounded", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
@@ -32316,7 +37170,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "Attachment",
       "isPrimitive": false }, 
     { 
-    /*The period of time that this relationship is considered to be valid. If there are no dates defined, then the interval is unknown.
+    /*The period of time during which this relationship is or was active. If there are no dates defined, then the interval is unknown.
      */  "name": "period", 
     
       "min": "0", 
@@ -32342,13 +37196,21 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
-    /*A protocol, guideline, orderset or other definition that is adhered to in whole or in part by this request.
-     */  "name": "definition", 
+    /*A canonical URL referencing a FHIR-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this request.
+     */  "name": "instantiatesCanonical", 
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "Reference",
-      "isPrimitive": false }, 
+      "type": "canonical",
+      "isPrimitive": true }, 
+    { 
+    /*A URL referencing an externally defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this request.
+     */  "name": "instantiatesUri", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "uri",
+      "isPrimitive": true }, 
     { 
     /*A plan, proposal or order that is fulfilled in whole or in part by this request.
      */  "name": "basedOn", 
@@ -32398,6 +37260,14 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "RequestPriority",
       "isPrimitive": true }, 
     { 
+    /*A code that identifies what the overall request group is.
+     */  "name": "code", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
     /*The subject for which the request group was created.
      */  "name": "subject", 
     
@@ -32429,22 +37299,22 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "max": "1", 
       "type": "Reference",
       "isPrimitive": false }, 
-    [ /* Choice */ 
-    /*Indicates the reason the request group was created. This is typically provided as a parameter to the evaluation and echoed by the service, although for some use cases, such as subscription- or event-based scenarios, it may provide an indication of the cause for the response.
-     */
-        {   "name": "reasonCodeableConcept", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "CodeableConcept",
-          "isPrimitive": false }, 
-        {   "name": "reasonReference", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Reference",
-          "isPrimitive": false }, 
-    ], 
+    { 
+    /*Describes the reason for the request group in coded or textual form.
+     */  "name": "reasonCode", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Indicates another resource whose existence justifies this request group.
+     */  "name": "reasonReference", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
     { 
     /*Provides a mechanism to communicate additional information about the response.
      */  "name": "note", 
@@ -32472,8 +37342,8 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ],
   "elems": [
     { 
-    /*A user-visible label for the action.
-     */  "name": "label", 
+    /*A user-visible prefix for the action.
+     */  "name": "prefix", 
     
       "min": "0", 
       "max": "1", 
@@ -32496,7 +37366,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*A text equivalent of the action to be performed. This provides a human-interpretable description of the action when the definition is consumed by a system that may not be capable of interpreting it dynamically.
+    /*A text equivalent of the action to be performed. This provides a human-interpretable description of the action when the definition is consumed by a system that might not be capable of interpreting it dynamically.
      */  "name": "textEquivalent", 
     
       "min": "0", 
@@ -32544,6 +37414,12 @@ Any information provided in these elements on a Questionnaire Item overrides the
           "max": "1", 
           "type": "dateTime",
           "isPrimitive": true }, 
+        {   "name": "timingAge", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Age",
+          "isPrimitive": false }, 
         {   "name": "timingPeriod", 
         
           "min": "1", 
@@ -32583,7 +37459,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
     
       "min": "0", 
       "max": "1", 
-      "type": "Coding",
+      "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
     /*Defines the grouping behavior for the action and its children.
@@ -32776,6 +37652,22 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "ResearchStudyStatus",
       "isPrimitive": true }, 
     { 
+    /*The type of study based upon the intent of the study's activities. A classification of the intent of the study.
+     */  "name": "primaryPurposeType", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The stage in the progression of a therapy from initial experimental use in humans in clinical trials to post-market evaluation.
+     */  "name": "phase", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
     /*Codes categorizing the type of study such as investigational vs. observational, type of blinding, type of randomization, safety vs. efficacy, etc.
      */  "name": "category", 
     
@@ -32784,12 +37676,20 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*The condition(s), medication(s), food(s), therapy(ies), device(s) or other concerns or interventions that the study is seeking to gain more information about.
+    /*The medication(s), food(s), therapy(ies), device(s) or other concerns or interventions that the study is seeking to gain more information about.
      */  "name": "focus", 
     
       "min": "0", 
       "max": "unbounded", 
       "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The condition that is the focus of the study.  For example, In a study to examine risk factors for Lupus, might have as an inclusion criterion "healthy volunteer", but the target condition code would be a Lupus SNOMED code.
+     */  "name": "condition", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
       "isPrimitive": false }, 
     { 
     /*Contact details to assist a user in learning more about or engaging with the study.
@@ -32817,7 +37717,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "isPrimitive": false }, 
     { 
     /*Indicates a country, state or other region where the study is taking place.
-     */  "name": "jurisdiction", 
+     */  "name": "location", 
     
       "min": "0", 
       "max": "unbounded", 
@@ -32848,7 +37748,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "Period",
       "isPrimitive": false }, 
     { 
-    /*The organization responsible for the execution of the study.
+    /*An organization that initiates the investigation and is legally responsible for the study.
      */  "name": "sponsor", 
     
       "min": "0", 
@@ -32856,7 +37756,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*Indicates the individual who has primary oversite of the execution of the study.
+    /*A researcher in a study who oversees multiple aspects of the study, such as concept development, protocol writing, protocol submission for IRB approval, participant recruitment, informed consent, data collection, analysis, interpretation and presentation.
      */  "name": "principalInvestigator", 
     
       "min": "0", 
@@ -32864,7 +37764,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*Clinic, hospital or other healthcare location that is participating in the study.
+    /*A facility in which study activities are conducted.
      */  "name": "site", 
     
       "min": "0", 
@@ -32880,7 +37780,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Comments made about the event by the performer, subject or other participants.
+    /*Comments made about the study by the performer, subject or other participants.
      */  "name": "note", 
     
       "min": "0", 
@@ -32894,6 +37794,14 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "min": "0", 
       "max": "unbounded", 
       "type": "ResearchStudy.Arm",
+      "isPrimitive": false }, 
+    { 
+    /*A goal that the study is aiming to achieve in terms of a scientific question to be answered by the analysis of data collected during the study.
+     */  "name": "objective", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ResearchStudy.Objective",
       "isPrimitive": false }, 
   ]
 },
@@ -32915,7 +37823,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "isPrimitive": true }, 
     { 
     /*Categorization of study arm, e.g. experimental, active comparator, placebo comparater.
-     */  "name": "code", 
+     */  "name": "type", 
     
       "min": "0", 
       "max": "1", 
@@ -32929,6 +37837,32 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "max": "1", 
       "type": "string",
       "isPrimitive": true }, 
+  ]
+},
+"ResearchStudy.Objective": {
+    /*A process where a researcher or organization plans and then executes a series of steps intended to increase the field of healthcare-related knowledge.  This includes studies of safety, efficacy, comparative effectiveness and other information about medications, devices, therapies and other interventional and investigative techniques.  A ResearchStudy involves the gathering of information about human or animal subjects.
+     */
+  "name": "ResearchStudy.Objective",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Unique, human-readable label for this objective of the study.
+     */  "name": "name", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The kind of study objective.
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
   ]
 },
 "ResearchStudyStatus": {
@@ -32945,7 +37879,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "ResearchSubject": {
-    /*A process where a researcher or organization plans and then executes a series of steps intended to increase the field of healthcare-related knowledge.  This includes studies of safety, efficacy, comparative effectiveness and other information about medications, devices, therapies and other interventional and investigative techniques.  A ResearchStudy involves the gathering of information about human or animal subjects.If the element is present, it must have either a @value, an @id, or extensions
+    /*A physical entity which is the primary unit of operational and/or administrative interest in a study.If the element is present, it must have either a @value, an @id, or extensions
      */
   "name": "ResearchSubject",
   "base": "DomainResource", 
@@ -32953,11 +37887,11 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ],
   "elems": [
     { 
-    /*Identifiers assigned to this research study by the sponsor or other systems.
+    /*Identifiers assigned to this research subject for a study.
      */  "name": "identifier", 
     
       "min": "0", 
-      "max": "1", 
+      "max": "unbounded", 
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
@@ -33044,7 +37978,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
      */  "name": "identifier", 
     
       "min": "0", 
-      "max": "1", 
+      "max": "unbounded", 
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
@@ -33091,7 +38025,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
     /*The patient or group the risk assessment applies to.
      */  "name": "subject", 
     
-      "min": "0", 
+      "min": "1", 
       "max": "1", 
       "type": "Reference",
       "isPrimitive": false }, 
@@ -33135,24 +38069,24 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "max": "1", 
       "type": "Reference",
       "isPrimitive": false }, 
-    [ /* Choice */ 
-    /*The reason the risk assessment was performed.
-     */
-        {   "name": "reasonCodeableConcept", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "CodeableConcept",
-          "isPrimitive": false }, 
-        {   "name": "reasonReference", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Reference",
-          "isPrimitive": false }, 
-    ], 
     { 
-    /*Indicates the source data considered as part of the assessment (FamilyHistory, Observations, Procedures, Conditions, etc.).
+    /*The reason the risk assessment was performed.
+     */  "name": "reasonCode", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Resources supporting the reason the risk assessment was performed.
+     */  "name": "reasonReference", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Indicates the source data considered as part of the assessment (for example, FamilyHistory, Observations, Procedures, Conditions, etc.).
      */  "name": "basis", 
     
       "min": "0", 
@@ -33177,12 +38111,12 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "isPrimitive": true }, 
     { 
     /*Additional comments about the risk assessment.
-     */  "name": "comment", 
+     */  "name": "note", 
     
       "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
+      "max": "unbounded", 
+      "type": "Annotation",
+      "isPrimitive": false }, 
   ]
 },
 "RiskAssessment.Prediction": {
@@ -33197,12 +38131,12 @@ Any information provided in these elements on a Questionnaire Item overrides the
     /*One of the potential outcomes for the patient (e.g. remission, death,  a particular condition).
      */  "name": "outcome", 
     
-      "min": "1", 
+      "min": "0", 
       "max": "1", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     [ /* Choice */ 
-    /*How likely is the outcome (in the specified timeframe).
+    /*Indicates how likely the outcome is (in the specified timeframe).
      */
         {   "name": "probabilityDecimal", 
         
@@ -33218,7 +38152,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
           "isPrimitive": false }, 
     ], 
     { 
-    /*How likely is the outcome (in the specified timeframe), expressed as a qualitative value (e.g. low, medium, high).
+    /*Indicates how likely the outcome is (in the specified timeframe), expressed as a qualitative value (e.g. low, medium, or high).
      */  "name": "qualitativeRisk", 
     
       "min": "0", 
@@ -33276,7 +38210,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
-    /*Whether this schedule record is in active use, or should not be used (such as was entered in error).
+    /*Whether this schedule record is in active use or should not be used (such as was entered in error).
      */  "name": "active", 
     
       "min": "0", 
@@ -33284,11 +38218,11 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "boolean",
       "isPrimitive": true }, 
     { 
-    /*A broad categorisation of the service that is to be performed during this appointment.
+    /*A broad categorization of the service that is to be performed during this appointment.
      */  "name": "serviceCategory", 
     
       "min": "0", 
-      "max": "1", 
+      "max": "unbounded", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
@@ -33308,7 +38242,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*The resource this Schedule resource is providing availability information for. These are expected to usually be one of HealthcareService, Location, Practitioner, PractitionerRole, Device, Patient or RelatedPerson.
+    /*The resource this Schedule resource is providing availability information for. These are usually expected to be one of HealthcareService, Location, Practitioner, PractitionerRole, Device, Patient or RelatedPerson.
      */  "name": "actor", 
     
       "min": "1", 
@@ -33342,7 +38276,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ],
   "elems": [
     { 
-    /*An absolute URI that is used to identify this search parameter when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this search parameter is (or will be) published. The URL SHOULD include the major version of the search parameter. For more information see [Technical and Business Versions](resource.html#versions).
+    /*An absolute URI that is used to identify this search parameter when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which this search parameter is (or will be) published.
      */  "name": "url", 
     
       "min": "1", 
@@ -33366,6 +38300,14 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "string",
       "isPrimitive": true }, 
     { 
+    /*Where this search parameter is originally defined. If a derivedFrom is provided, then the details in the search parameter must be consistent with the definition from which it is defined. i.e. the parameter should have the same meaning, and (usually) the functionality should be a proper subset of the underlying search parameter.
+     */  "name": "derivedFrom", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "canonical",
+      "isPrimitive": true }, 
+    { 
     /*The status of this search parameter. Enables tracking the life-cycle of the content.
      */  "name": "status", 
     
@@ -33374,7 +38316,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "PublicationStatus",
       "isPrimitive": true }, 
     { 
-    /*A boolean value to indicate that this search parameter is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+    /*A Boolean value to indicate that this search parameter is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.
      */  "name": "experimental", 
     
       "min": "0", 
@@ -33382,7 +38324,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "boolean",
       "isPrimitive": true }, 
     { 
-    /*The date  (and optionally time) when the search parameter was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the search parameter changes.
+    /*The date  (and optionally time) when the search parameter was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the search parameter changes.
      */  "name": "date", 
     
       "min": "0", 
@@ -33390,7 +38332,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*The name of the individual or organization that published the search parameter.
+    /*The name of the organization or individual that published the search parameter.
      */  "name": "publisher", 
     
       "min": "0", 
@@ -33405,6 +38347,14 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "max": "unbounded", 
       "type": "ContactDetail",
       "isPrimitive": false }, 
+    { 
+    /*A free text natural language description of the search parameter from a consumer's perspective. and how it used.
+     */  "name": "description", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "markdown",
+      "isPrimitive": true }, 
     { 
     /*The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate search parameter instances.
      */  "name": "useContext", 
@@ -33422,7 +38372,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Explaination of why this search parameter is needed and why it has been designed as it has.
+    /*Explanation of why this search parameter is needed and why it has been designed as it has.
      */  "name": "purpose", 
     
       "min": "0", 
@@ -33452,22 +38402,6 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "min": "1", 
       "max": "1", 
       "type": "SearchParamType",
-      "isPrimitive": true }, 
-    { 
-    /*Where this search parameter is originally defined. If a derivedFrom is provided, then the details in the search parameter must be consistent with the definition from which it is defined. I.e. the parameter should have the same meaning, and (usually) the functionality should be a proper subset of the underlying search parameter.
-     */  "name": "derivedFrom", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "uri",
-      "isPrimitive": true }, 
-    { 
-    /*A free text natural language description of the search parameter from a consumer's perspective. and how it used.
-     */  "name": "description", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "markdown",
       "isPrimitive": true }, 
     { 
     /*A FHIRPath expression that returns a set of elements for the search parameter.
@@ -33502,6 +38436,22 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "ResourceType",
       "isPrimitive": true }, 
     { 
+    /*Whether multiple values are allowed for each time the parameter exists. Values are separated by commas, and the parameter matches if any of the values match.
+     */  "name": "multipleOr", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+    { 
+    /*Whether multiple parameters are allowed - e.g. more than one parameter with the same name. The search matches if all the parameters match.
+     */  "name": "multipleAnd", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+    { 
     /*Comparators supported for the search parameter.
      */  "name": "comparator", 
     
@@ -33518,7 +38468,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "SearchModifierCode",
       "isPrimitive": true }, 
     { 
-    /*Contains the names of any search parameters which may be chained to the containing search parameter. Chained parameters may be added to search parameters of type reference, and specify that resources will only be returned if they contain a reference to a resource which matches the chained parameter value. Values for this field should be drawn from SearchParameter.code for a parameter on the target resource type.
+    /*Contains the names of any search parameters which may be chained to the containing search parameter. Chained parameters may be added to search parameters of type reference and specify that resources will only be returned if they contain a reference to a resource which matches the chained parameter value. Values for this field should be drawn from SearchParameter.code for a parameter on the target resource type.
      */  "name": "chain", 
     
       "min": "0", 
@@ -33549,8 +38499,8 @@ Any information provided in these elements on a Questionnaire Item overrides the
     
       "min": "1", 
       "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
+      "type": "canonical",
+      "isPrimitive": true }, 
     { 
     /*A sub-expression that defines how to extract values for this component from the output of the main SearchParameter.expression.
      */  "name": "expression", 
@@ -33728,6 +38678,14 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "max": "unbounded", 
       "type": "Reference",
       "isPrimitive": false }, 
+    { 
+    /*Information about chromosome structure variation.
+     */  "name": "structureVariant", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Sequence.StructureVariant",
+      "isPrimitive": false }, 
   ]
 },
 "Sequence.ReferenceSeq": {
@@ -33755,6 +38713,14 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "string",
       "isPrimitive": true }, 
     { 
+    /*A relative reference to a DNA strand based on gene orientation. The strand that contains the open reading frame of the gene is the "sense" strand, and the opposite complementary strand is the "antisense" strand.
+     */  "name": "orientation", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "orientationType",
+      "isPrimitive": true }, 
+    { 
     /*Reference identifier of reference sequence submitted to NCBI. It must match the type in the Sequence.type field. For example, the prefix, “NG_” identifies reference sequence for genes, “NM_” for messenger RNA transcripts, and “NP_” for amino acid sequences.
      */  "name": "referenceSeqId", 
     
@@ -33779,12 +38745,12 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*Directionality of DNA sequence. Available values are "1" for the plus strand (5' to 3')/Watson/Sense/positive  and "-1" for the minus strand(3' to 5')/Crick/Antisense/negative.
+    /*An absolute reference to a strand. The Watson strand is the strand whose 5'-end is on the short arm of the chromosome, and the Crick strand as the one whose 5'-end is on the long arm.
      */  "name": "strand", 
     
       "min": "0", 
       "max": "1", 
-      "type": "integer",
+      "type": "strandType",
       "isPrimitive": true }, 
     { 
     /*Start position of the window on the reference sequence. If the coordinate system is either 0-based or 1-based, then start position is inclusive.
@@ -33982,6 +38948,80 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "max": "1", 
       "type": "decimal",
       "isPrimitive": true }, 
+    { 
+    /*Receiver Operator Characteristic (ROC) Curve  to give sensitivity/specificity tradeoff.
+     */  "name": "roc", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Sequence.Roc",
+      "isPrimitive": false }, 
+  ]
+},
+"Sequence.Roc": {
+    /*Raw data describing a biological sequence.
+     */
+  "name": "Sequence.Roc",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Invidual data point representing the GQ (genotype quality) score threshold.
+     */  "name": "score", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "integer",
+      "isPrimitive": true }, 
+    { 
+    /*The number of true positives if the GQ score threshold was set to "score" field value.
+     */  "name": "numTP", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "integer",
+      "isPrimitive": true }, 
+    { 
+    /*The number of false positives if the GQ score threshold was set to "score" field value.
+     */  "name": "numFP", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "integer",
+      "isPrimitive": true }, 
+    { 
+    /*The number of false negatives if the GQ score threshold was set to "score" field value.
+     */  "name": "numFN", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "integer",
+      "isPrimitive": true }, 
+    { 
+    /*Calculated precision if the GQ score threshold was set to "score" field value.
+     */  "name": "precision", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "decimal",
+      "isPrimitive": true }, 
+    { 
+    /*Calculated sensitivity if the GQ score threshold was set to "score" field value.
+     */  "name": "sensitivity", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "decimal",
+      "isPrimitive": true }, 
+    { 
+    /*Calculated fScore if the GQ score threshold was set to "score" field value.
+     */  "name": "fMeasure", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "decimal",
+      "isPrimitive": true }, 
   ]
 },
 "Sequence.Repository": {
@@ -34042,6 +39082,134 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "isPrimitive": true }, 
   ]
 },
+"Sequence.StructureVariant": {
+    /*Raw data describing a biological sequence.
+     */
+  "name": "Sequence.StructureVariant",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Identify the exact boundaries of variant sequences. Each type of structure variant requires the DNA duplex to be broken and rejoined, and this creates a new sequence of bases at the rejoined sites, known as breakpoints or boundaries.
+     */  "name": "precision", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Structural Variant reported aCGH ratio.
+     */  "name": "reportedaCGHRatio", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "decimal",
+      "isPrimitive": true }, 
+    { 
+    /*Length of the variant choromosome.
+     */  "name": "length", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "integer",
+      "isPrimitive": true }, 
+    { 
+    /*Structural variant outer.
+     */  "name": "outer", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Sequence.Outer",
+      "isPrimitive": false }, 
+    { 
+    /*Structural variant inner.
+     */  "name": "inner", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Sequence.Inner",
+      "isPrimitive": false }, 
+  ]
+},
+"Sequence.Outer": {
+    /*Raw data describing a biological sequence.
+     */
+  "name": "Sequence.Outer",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Structural Variant Outer Start.If the coordinate system is either 0-based or 1-based, then start position is inclusive.
+     */  "name": "start", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "integer",
+      "isPrimitive": true }, 
+    { 
+    /*Structural Variant Outer End. If the coordinate system is 0-based then end is is exclusive and does not include the last position. If the coordinate system is 1-base, then end is inclusive and includes the last position.
+     */  "name": "end", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "integer",
+      "isPrimitive": true }, 
+  ]
+},
+"Sequence.Inner": {
+    /*Raw data describing a biological sequence.
+     */
+  "name": "Sequence.Inner",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Structural Variant Inner Start.If the coordinate system is either 0-based or 1-based, then start position is inclusive.
+     */  "name": "start", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "integer",
+      "isPrimitive": true }, 
+    { 
+    /*Structural Variant Inner End. If the coordinate system is 0-based then end is is exclusive and does not include the last position. If the coordinate system is 1-base, then end is inclusive and includes the last position.
+     */  "name": "end", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "integer",
+      "isPrimitive": true }, 
+  ]
+},
+"strandType": {
+    /*Type for strandIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "strandType",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "strandType-list" }, 
+  ],
+  "elems": [
+  ]
+},
+"orientationType": {
+    /*Type for orientationIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "orientationType",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "orientationType-list" }, 
+  ],
+  "elems": [
+  ]
+},
 "repositoryType": {
     /*Type for access of external URIIf the element is present, it must have either a @value, an @id, or extensions
      */
@@ -34068,24 +39236,16 @@ Any information provided in these elements on a Questionnaire Item overrides the
   "elems": [
   ]
 },
-"ServiceDefinition": {
-    /*The ServiceDefinition describes a unit of decision support functionality that is made available as a service, such as immunization modules or drug-drug interaction checking.If the element is present, it must have either a @value, an @id, or extensions
+"ServiceRequest": {
+    /*A record of a request for service such as diagnostic investigations, treatments, or operations to be performed.If the element is present, it must have either a @value, an @id, or extensions
      */
-  "name": "ServiceDefinition",
+  "name": "ServiceRequest",
   "base": "DomainResource", 
   "attrs": [
   ],
   "elems": [
     { 
-    /*An absolute URI that is used to identify this service definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this service definition is (or will be) published. The URL SHOULD include the major version of the service definition. For more information see [Technical and Business Versions](resource.html#versions).
-     */  "name": "url", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "uri",
-      "isPrimitive": true }, 
-    { 
-    /*A formal identifier that is used to identify this service definition when it is represented in other formats, or referenced in a specification, model, design or an instance. This is used for CMS or NQF identifiers for a measure artifact. Note that at least one identifier is required for non-experimental active artifacts.
+    /*Identifiers assigned to this order instance by the orderer and/or the receiver and/or order fulfiller.
      */  "name": "identifier", 
     
       "min": "0", 
@@ -34093,187 +39253,249 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
-    /*The identifier that is used to identify this version of the service definition when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the service definition author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.
-     */  "name": "version", 
+    /*Protocol or definition followed by this request.
+     */  "name": "instantiates", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "uri",
+      "isPrimitive": true }, 
+    { 
+    /*Plan/proposal/order fulfilled by this request.
+     */  "name": "basedOn", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*The request takes the place of the referenced completed or terminated request(s).
+     */  "name": "replaces", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*A shared identifier common to all service requests that were authorized more or less simultaneously by a single author, representing the composite or group identifier.
+     */  "name": "requisition", 
     
       "min": "0", 
       "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
+      "type": "Identifier",
+      "isPrimitive": false }, 
     { 
-    /*A natural language name identifying the service definition. This name should be usable as an identifier for the module by machine processing applications such as code generation.
-     */  "name": "name", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*A short, descriptive, user-friendly title for the service definition.
-     */  "name": "title", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*The status of this service definition. Enables tracking the life-cycle of the content.
+    /*The status of the order.
      */  "name": "status", 
     
       "min": "1", 
       "max": "1", 
-      "type": "PublicationStatus",
+      "type": "RequestStatus",
       "isPrimitive": true }, 
     { 
-    /*A boolean value to indicate that this service definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
-     */  "name": "experimental", 
+    /*Whether the request is a proposal, plan, an original order or a reflex order.
+     */  "name": "intent", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "RequestIntent",
+      "isPrimitive": true }, 
+    { 
+    /*A code that classifies the service for searching, sorting and display purposes (e.g. "Surgical Procedure").
+     */  "name": "category", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Indicates how quickly the ServiceRequest should be addressed with respect to other requests.
+     */  "name": "priority", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "RequestPriority",
+      "isPrimitive": true }, 
+    { 
+    /*Set this to true if the record is saying that the service/procedure should NOT be performed.
+     */  "name": "doNotPerform", 
     
       "min": "0", 
       "max": "1", 
       "type": "boolean",
       "isPrimitive": true }, 
     { 
-    /*The date  (and optionally time) when the service definition was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the service definition changes.
-     */  "name": "date", 
+    /*A code that identifies a particular service (i.e., procedure, diagnostic investigation, or panel of investigations) that have been requested.
+     */  "name": "code", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Additional details and instructions about the how the services are to be delivered.   For example, and order for a urinary catheter may have an order detail for an external or indwelling catheter, or an order for a bandage may require additional instructions specifying how the bandage should be applied.
+     */  "name": "orderDetail", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*On whom or what the service is to be performed. This is usually a human patient, but can also be requested on animals, groups of humans or animals, devices such as dialysis machines, or even locations (typically for environmental scans).
+     */  "name": "subject", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*An encounter or episode of care that provides additional information about the healthcare context in which this request is made.
+     */  "name": "context", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    [ /* Choice */ 
+    /*The date/time at which the requested service should occur.
+     */
+        {   "name": "occurrenceDateTime", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "dateTime",
+          "isPrimitive": true }, 
+        {   "name": "occurrencePeriod", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Period",
+          "isPrimitive": false }, 
+        {   "name": "occurrenceTiming", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Timing",
+          "isPrimitive": false }, 
+    ], 
+    [ /* Choice */ 
+    /*If a CodeableConcept is present, it indicates the pre-condition for performing the service.  For example "pain", "on flare-up", etc.
+     */
+        {   "name": "asNeededBoolean", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "boolean",
+          "isPrimitive": true }, 
+        {   "name": "asNeededCodeableConcept", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "CodeableConcept",
+          "isPrimitive": false }, 
+    ], 
+    { 
+    /*When the request transitioned to being actionable.
+     */  "name": "authoredOn", 
     
       "min": "0", 
       "max": "1", 
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*The name of the individual or organization that published the service definition.
-     */  "name": "publisher", 
+    /*The individual who initiated the request and has responsibility for its activation.
+     */  "name": "requester", 
     
       "min": "0", 
       "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*A free text natural language description of the service definition from a consumer's perspective.
-     */  "name": "description", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "markdown",
-      "isPrimitive": true }, 
-    { 
-    /*Explaination of why this service definition is needed and why it has been designed as it has.
-     */  "name": "purpose", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "markdown",
-      "isPrimitive": true }, 
-    { 
-    /*A detailed description of how the module is used from a clinical perspective.
-     */  "name": "usage", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "string",
-      "isPrimitive": true }, 
-    { 
-    /*The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.
-     */  "name": "approvalDate", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "date",
-      "isPrimitive": true }, 
-    { 
-    /*The date on which the resource content was last reviewed. Review happens periodically after approval, but doesn't change the original approval date.
-     */  "name": "lastReviewDate", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "date",
-      "isPrimitive": true }, 
-    { 
-    /*The period during which the service definition content was or is planned to be in active use.
-     */  "name": "effectivePeriod", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Period",
+      "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate service definition instances.
-     */  "name": "useContext", 
+    /*Desired type of performer for doing the requested service.
+     */  "name": "performerType", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The desired performer for doing the requested service.  For example, the surgeon, dermatopathologist, endoscopist, etc.
+     */  "name": "performer", 
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "UsageContext",
+      "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*A legal or geographic region in which the service definition is intended to be used.
-     */  "name": "jurisdiction", 
+    /*An explanation or justification for why this service is being requested in coded or textual form.   This is often for billing purposes.  May relate to the resources referred to in supportingInformation.
+     */  "name": "reasonCode", 
     
       "min": "0", 
       "max": "unbounded", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Descriptive topics related to the module. Topics provide a high-level categorization of the module that can be useful for filtering and searching.
-     */  "name": "topic", 
+    /*Indicates another resource that provides a justification for why this service is being requested.   May relate to the resources referred to in supportingInformation.
+     */  "name": "reasonReference", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Insurance plans, coverage extensions, pre-authorizations and/or pre-determinations that may be needed for delivering the requested service.
+     */  "name": "insurance", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Additional clinical information about the patient or specimen that may influence the services or their interpretations.     This information includes diagnosis, clinical findings and other observations.  In laboratory ordering these are typically referred to as "ask at order entry questions (AOEs)".  This includes observations explicitly requested by the producer (filler) to provide context or supporting information needed to complete the order. For example,  reporting the amount of inspired oxygen for blood gas measurements.
+     */  "name": "supportingInfo", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*One or more specimens that the laboratory procedure will use.
+     */  "name": "specimen", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Anatomic location where the procedure should be performed. This is the target site.
+     */  "name": "bodySite", 
     
       "min": "0", 
       "max": "unbounded", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*A contributor to the content of the module, including authors, editors, reviewers, and endorsers.
-     */  "name": "contributor", 
+    /*Any other notes and comments made about the service request. For example, internal billing notes.
+     */  "name": "note", 
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "Contributor",
+      "type": "Annotation",
       "isPrimitive": false }, 
     { 
-    /*Contact details to assist a user in finding and communicating with the publisher.
-     */  "name": "contact", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "ContactDetail",
-      "isPrimitive": false }, 
-    { 
-    /*A copyright statement relating to the service definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the service definition.
-     */  "name": "copyright", 
+    /*Instructions in terms that are understood by the patient or consumer.
+     */  "name": "patientInstruction", 
     
       "min": "0", 
       "max": "1", 
-      "type": "markdown",
+      "type": "string",
       "isPrimitive": true }, 
     { 
-    /*Related resources such as additional documentation, justification, or bibliographic references.
-     */  "name": "relatedArtifact", 
+    /*Key events in the history of the request.
+     */  "name": "relevantHistory", 
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "RelatedArtifact",
-      "isPrimitive": false }, 
-    { 
-    /*The trigger element defines when the rule should be invoked. This information is used by consumers of the rule to determine how to integrate the rule into a specific workflow.
-     */  "name": "trigger", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "TriggerDefinition",
-      "isPrimitive": false }, 
-    { 
-    /*Data requirements are a machine processable description of the data required by the module in order to perform a successful evaluation.
-     */  "name": "dataRequirement", 
-    
-      "min": "0", 
-      "max": "unbounded", 
-      "type": "DataRequirement",
-      "isPrimitive": false }, 
-    { 
-    /*A reference to the operation that is used to invoke this service.
-     */  "name": "operationDefinition", 
-    
-      "min": "0", 
-      "max": "1", 
       "type": "Reference",
       "isPrimitive": false }, 
   ]
@@ -34295,11 +39517,11 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
-    /*A broad categorisation of the service that is to be performed during this appointment.
+    /*A broad categorization of the service that is to be performed during this appointment.
      */  "name": "serviceCategory", 
     
       "min": "0", 
-      "max": "1", 
+      "max": "unbounded", 
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
@@ -34430,7 +39652,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Where the specimen came from. This may be from the patient(s) or from the environment or a device.
+    /*Where the specimen came from. This may be from patient(s),from a location (e.g., the source of an environmental sample), or a sampling of a substance or a device.
      */  "name": "subject", 
     
       "min": "1", 
@@ -34454,7 +39676,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*Details concerning a test or procedure request that required a specimen to be collected.
+    /*Details concerning a service request that required a specimen to be collected.
      */  "name": "request", 
     
       "min": "0", 
@@ -34682,6 +39904,283 @@ Any information provided in these elements on a Questionnaire Item overrides the
   "elems": [
   ]
 },
+"SpecimenDefinition": {
+    /*A kind of specimen with associated set of requirements.If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "SpecimenDefinition",
+  "base": "DomainResource", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*A business identifier associated with the kind of specimen.
+     */  "name": "identifier", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*The kind of material to be collected.
+     */  "name": "typeCollected", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Preparation of the patient for specimen collection.
+     */  "name": "patientPreparation", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Time aspect of specimen collection (duration or offset).
+     */  "name": "timeAspect", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The action to be performed for collecting the specimen.
+     */  "name": "collection", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Specimen conditioned in a container as expected by the testing laboratory.
+     */  "name": "specimenToLab", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "SpecimenDefinition.SpecimenToLab",
+      "isPrimitive": false }, 
+  ]
+},
+"SpecimenDefinition.SpecimenToLab": {
+    /*A kind of specimen with associated set of requirements.
+     */
+  "name": "SpecimenDefinition.SpecimenToLab",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Primary of secondary specimen.
+     */  "name": "isDerived", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+    { 
+    /*The kind of specimen conditioned for testing expected by lab.
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The preference for this type of conditioned specimen.
+     */  "name": "preference", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "SpecimenContainedPreference",
+      "isPrimitive": true }, 
+    { 
+    /*The type of material of the container.
+     */  "name": "containerMaterial", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The type of container used to contain this kind of specimen.
+     */  "name": "containerType", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Color of container cap.
+     */  "name": "containerCap", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The textual description of the kind of container.
+     */  "name": "containerDescription", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The capacity (volume or other measure) of this kind of container.
+     */  "name": "containerCapacity", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Quantity",
+      "isPrimitive": false }, 
+    { 
+    /*The minimum volume to be conditioned in the container.
+     */  "name": "containerMinimumVolume", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Quantity",
+      "isPrimitive": false }, 
+    { 
+    /*Substance introduced in the kind of container to preserve, maintain or enhance the specimen. Examples: Formalin, Citrate, EDTA.
+     */  "name": "containerAdditive", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "SpecimenDefinition.ContainerAdditive",
+      "isPrimitive": false }, 
+    { 
+    /*Special processing that should be applied to the container for this kind of specimen.
+     */  "name": "containerPreparation", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Requirements for delivery and special handling of this kind of conditioned specimen.
+     */  "name": "requirement", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The usual time that a specimen of this kind is retained after the ordered tests are completed, for the purpose of additional testing.
+     */  "name": "retentionTime", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Duration",
+      "isPrimitive": false }, 
+    { 
+    /*Criterion for rejection of the specimen in its container by the laboratory.
+     */  "name": "rejectionCriterion", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Set of instructions for conservation/transport of the specimen at a defined temperature interval, prior the testing process.
+     */  "name": "handling", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "SpecimenDefinition.Handling",
+      "isPrimitive": false }, 
+  ]
+},
+"SpecimenDefinition.ContainerAdditive": {
+    /*A kind of specimen with associated set of requirements.
+     */
+  "name": "SpecimenDefinition.ContainerAdditive",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    [ /* Choice */ 
+    /*Substance introduced in the kind of container to preserve, maintain or enhance the specimen. Examples: Formalin, Citrate, EDTA.
+     */
+        {   "name": "additiveCodeableConcept", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "CodeableConcept",
+          "isPrimitive": false }, 
+        {   "name": "additiveReference", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Reference",
+          "isPrimitive": false }, 
+    ], 
+  ]
+},
+"SpecimenDefinition.Handling": {
+    /*A kind of specimen with associated set of requirements.
+     */
+  "name": "SpecimenDefinition.Handling",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Code representing the set of handling instructions.
+     */  "name": "conditionSet", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The temperature interval for this set of handling instructions.
+     */  "name": "tempRange", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Range",
+      "isPrimitive": false }, 
+    { 
+    /*The maximum time interval of conservation of the specimen with these conditions.
+     */  "name": "maxDuration", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Duration",
+      "isPrimitive": false }, 
+    { 
+    /*Textual instructions regarding the light exposure of the specimen prior testing.
+     */  "name": "lightExposure", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Additional textual instructions for the conservation or transport of the specimen.
+     */  "name": "instruction", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+  ]
+},
+"SpecimenContainedPreference": {
+    /*Degree of preference of a type of conditioned specimenIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "SpecimenContainedPreference",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "SpecimenContainedPreference-list" }, 
+  ],
+  "elems": [
+  ]
+},
 "StructureDefinition": {
     /*A definition of a FHIR structure. This resource is used to describe the underlying resources, data types defined in FHIR, and also for describing extensions and constraints on resources and data types.If the element is present, it must have either a @value, an @id, or extensions
      */
@@ -34691,7 +40190,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ],
   "elems": [
     { 
-    /*An absolute URI that is used to identify this structure definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this structure definition is (or will be) published. The URL SHOULD include the major version of the structure definition. For more information see [Technical and Business Versions](resource.html#versions).
+    /*An absolute URI that is used to identify this structure definition when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which this structure definition is (or will be) published.
      */  "name": "url", 
     
       "min": "1", 
@@ -34739,7 +40238,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "PublicationStatus",
       "isPrimitive": true }, 
     { 
-    /*A boolean value to indicate that this structure definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+    /*A Boolean value to indicate that this structure definition is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.
      */  "name": "experimental", 
     
       "min": "0", 
@@ -34747,7 +40246,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "boolean",
       "isPrimitive": true }, 
     { 
-    /*The date  (and optionally time) when the structure definition was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the structure definition changes.
+    /*The date  (and optionally time) when the structure definition was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the structure definition changes.
      */  "name": "date", 
     
       "min": "0", 
@@ -34755,7 +40254,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*The name of the individual or organization that published the structure definition.
+    /*The name of the organization or individual that published the structure definition.
      */  "name": "publisher", 
     
       "min": "0", 
@@ -34795,7 +40294,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Explaination of why this structure definition is needed and why it has been designed as it has.
+    /*Explanation of why this structure definition is needed and why it has been designed as it has.
      */  "name": "purpose", 
     
       "min": "0", 
@@ -34819,7 +40318,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "Coding",
       "isPrimitive": false }, 
     { 
-    /*The version of the FHIR specification on which this StructureDefinition is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 3.0.1 for this version.
+    /*The version of the FHIR specification on which this StructureDefinition is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 3.3.0 for this version.
      */  "name": "fhirVersion", 
     
       "min": "0", 
@@ -34851,23 +40350,15 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "boolean",
       "isPrimitive": true }, 
     { 
-    /*If this is an extension, Identifies the context within FHIR resources where the extension can be used.
-     */  "name": "contextType", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "ExtensionContext",
-      "isPrimitive": true }, 
-    { 
     /*Identifies the types of resource or data type elements to which the extension can be applied.
      */  "name": "context", 
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "string",
-      "isPrimitive": true }, 
+      "type": "StructureDefinition.Context",
+      "isPrimitive": false }, 
     { 
-    /*A set of rules as Fluent Invariants about when the extension can be used (e.g. co-occurrence variants for the extension).
+    /*A set of rules as FHIRPath Invariants about when the extension can be used (e.g. co-occurrence variants for the extension). All the rules must be true.
      */  "name": "contextInvariant", 
     
       "min": "0", 
@@ -34875,12 +40366,12 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*The type this structure describes. If the derivation kind is 'specialization' then this is the master definition for a type, and there is always one of these (a data type, an extension, a resource, including abstract ones). Otherwise the structure definition is a constraint on the stated type (and in this case, the type cannot be an abstract type).
+    /*The type this structure describes. If the derivation kind is 'specialization' then this is the master definition for a type, and there is always one of these (a data type, an extension, a resource, including abstract ones). Otherwise the structure definition is a constraint on the stated type (and in this case, the type cannot be an abstract type).  References are URLs that are relative to http://hl7.org/fhir/StructureDefinition e.g. "string" is a reference to http://hl7.org/fhir/StructureDefinition/string. Absolute URLs are only allowed in logical models.
      */  "name": "type", 
     
       "min": "1", 
       "max": "1", 
-      "type": "code",
+      "type": "uri",
       "isPrimitive": true }, 
     { 
     /*An absolute URI that is the base structure from which this type is derived, either by specialization or constraint.
@@ -34888,7 +40379,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
     
       "min": "0", 
       "max": "1", 
-      "type": "uri",
+      "type": "canonical",
       "isPrimitive": true }, 
     { 
     /*How the type relates to the baseDefinition.
@@ -34899,7 +40390,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "TypeDerivationRule",
       "isPrimitive": true }, 
     { 
-    /*A snapshot view is expressed in a stand alone form that can be used and interpreted without considering the base StructureDefinition.
+    /*A snapshot view is expressed in a standalone form that can be used and interpreted without considering the base StructureDefinition.
      */  "name": "snapshot", 
     
       "min": "0", 
@@ -34953,6 +40444,32 @@ Any information provided in these elements on a Questionnaire Item overrides the
      */  "name": "comment", 
     
       "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+  ]
+},
+"StructureDefinition.Context": {
+    /*A definition of a FHIR structure. This resource is used to describe the underlying resources, data types defined in FHIR, and also for describing extensions and constraints on resources and data types.
+     */
+  "name": "StructureDefinition.Context",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Defines how to interpret the expression that defines what the context of the extension is.
+     */  "name": "type", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "ExtensionContextType",
+      "isPrimitive": true }, 
+    { 
+    /*An expression that defines where an extension can be used in resources.
+     */  "name": "expression", 
+    
+      "min": "1", 
       "max": "1", 
       "type": "string",
       "isPrimitive": true }, 
@@ -35020,15 +40537,15 @@ Any information provided in these elements on a Questionnaire Item overrides the
   "elems": [
   ]
 },
-"ExtensionContext": {
+"ExtensionContextType": {
     /*How an extension context is interpreted.If the element is present, it must have either a @value, an @id, or extensions
      */
-  "name": "ExtensionContext",
+  "name": "ExtensionContextType",
   "base": "Element", 
   "attrs": [
     { 
       "name": "value", 
-      "type": "ExtensionContext-list" }, 
+      "type": "ExtensionContextType-list" }, 
   ],
   "elems": [
   ]
@@ -35042,7 +40559,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ],
   "elems": [
     { 
-    /*An absolute URI that is used to identify this structure map when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this structure map is (or will be) published. The URL SHOULD include the major version of the structure map. For more information see [Technical and Business Versions](resource.html#versions).
+    /*An absolute URI that is used to identify this structure map when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which this structure map is (or will be) published.
      */  "name": "url", 
     
       "min": "1", 
@@ -35090,7 +40607,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "PublicationStatus",
       "isPrimitive": true }, 
     { 
-    /*A boolean value to indicate that this structure map is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+    /*A Boolean value to indicate that this structure map is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.
      */  "name": "experimental", 
     
       "min": "0", 
@@ -35098,7 +40615,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "boolean",
       "isPrimitive": true }, 
     { 
-    /*The date  (and optionally time) when the structure map was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the structure map changes.
+    /*The date  (and optionally time) when the structure map was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the structure map changes.
      */  "name": "date", 
     
       "min": "0", 
@@ -35106,7 +40623,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*The name of the individual or organization that published the structure map.
+    /*The name of the organization or individual that published the structure map.
      */  "name": "publisher", 
     
       "min": "0", 
@@ -35146,7 +40663,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Explaination of why this structure map is needed and why it has been designed as it has.
+    /*Explanation of why this structure map is needed and why it has been designed as it has.
      */  "name": "purpose", 
     
       "min": "0", 
@@ -35175,10 +40692,10 @@ Any information provided in these elements on a Questionnaire Item overrides the
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "uri",
+      "type": "canonical",
       "isPrimitive": true }, 
     { 
-    /*Organizes the mapping into managable chunks for human review/ease of maintenance.
+    /*Organizes the mapping into manageable chunks for human review/ease of maintenance.
      */  "name": "group", 
     
       "min": "1", 
@@ -35201,7 +40718,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
     
       "min": "1", 
       "max": "1", 
-      "type": "uri",
+      "type": "canonical",
       "isPrimitive": true }, 
     { 
     /*How the referenced structure is used in this mapping.
@@ -35254,7 +40771,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "id",
       "isPrimitive": true }, 
     { 
-    /*If this is the default rule set to apply for thie source type, or this combination of types.
+    /*If this is the default rule set to apply for the source type or this combination of types.
      */  "name": "typeMode", 
     
       "min": "1", 
@@ -35442,6 +40959,12 @@ Any information provided in these elements on a Questionnaire Item overrides the
           "max": "1", 
           "type": "boolean",
           "isPrimitive": true }, 
+        {   "name": "defaultValueCanonical", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "canonical",
+          "isPrimitive": true }, 
         {   "name": "defaultValueCode", 
         
           "min": "1", 
@@ -35525,6 +41048,18 @@ Any information provided in these elements on a Questionnaire Item overrides the
           "min": "1", 
           "max": "1", 
           "type": "uri",
+          "isPrimitive": true }, 
+        {   "name": "defaultValueUrl", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "url",
+          "isPrimitive": true }, 
+        {   "name": "defaultValueUuid", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "uuid",
           "isPrimitive": true }, 
         {   "name": "defaultValueAddress", 
         
@@ -35652,11 +41187,53 @@ Any information provided in these elements on a Questionnaire Item overrides the
           "max": "1", 
           "type": "Timing",
           "isPrimitive": false }, 
-        {   "name": "defaultValueMeta", 
+        {   "name": "defaultValueParameterDefinition", 
         
           "min": "1", 
           "max": "1", 
-          "type": "Meta",
+          "type": "ParameterDefinition",
+          "isPrimitive": false }, 
+        {   "name": "defaultValueDataRequirement", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "DataRequirement",
+          "isPrimitive": false }, 
+        {   "name": "defaultValueRelatedArtifact", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "RelatedArtifact",
+          "isPrimitive": false }, 
+        {   "name": "defaultValueContactDetail", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "ContactDetail",
+          "isPrimitive": false }, 
+        {   "name": "defaultValueContributor", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Contributor",
+          "isPrimitive": false }, 
+        {   "name": "defaultValueTriggerDefinition", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "TriggerDefinition",
+          "isPrimitive": false }, 
+        {   "name": "defaultValueUsageContext", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "UsageContext",
+          "isPrimitive": false }, 
+        {   "name": "defaultValueDosage", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Dosage",
           "isPrimitive": false }, 
     ], 
     { 
@@ -35937,7 +41514,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "Subscription": {
-    /*The subscription resource is used to define a push based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined "channel" so that another system is able to take an appropriate action.If the element is present, it must have either a @value, an @id, or extensions
+    /*The subscription resource is used to define a push-based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined "channel" so that another system can take an appropriate action.If the element is present, it must have either a @value, an @id, or extensions
      */
   "name": "Subscription",
   "base": "DomainResource", 
@@ -36011,7 +41588,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "Subscription.Channel": {
-    /*The subscription resource is used to define a push based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined "channel" so that another system is able to take an appropriate action.
+    /*The subscription resource is used to define a push-based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined "channel" so that another system can take an appropriate action.
      */
   "name": "Subscription.Channel",
   "base": "BackboneElement", 
@@ -36027,12 +41604,12 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "SubscriptionChannelType",
       "isPrimitive": true }, 
     { 
-    /*The uri that describes the actual end-point to send messages to.
+    /*The url that describes the actual end-point to send messages to.
      */  "name": "endpoint", 
     
       "min": "0", 
       "max": "1", 
-      "type": "uri",
+      "type": "url",
       "isPrimitive": true }, 
     { 
     /*The mime type to send the payload in - either application/fhir+xml, or application/fhir+json. If the payload is not present, then there is no payload in the notification, just a notification.
@@ -36225,6 +41802,1224 @@ Any information provided in these elements on a Questionnaire Item overrides the
   "elems": [
   ]
 },
+"SubstancePolymer": {
+    /*Todo.If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "SubstancePolymer",
+  "base": "DomainResource", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Todo.
+     */  "name": "class", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "geometry", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "copolymerConnectivity", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "modification", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Todo.
+     */  "name": "monomerSet", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "SubstancePolymer.MonomerSet",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "repeat", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "SubstancePolymer.Repeat",
+      "isPrimitive": false }, 
+  ]
+},
+"SubstancePolymer.MonomerSet": {
+    /*Todo.
+     */
+  "name": "SubstancePolymer.MonomerSet",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Todo.
+     */  "name": "ratioType", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "startingMaterial", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "SubstancePolymer.StartingMaterial",
+      "isPrimitive": false }, 
+  ]
+},
+"SubstancePolymer.StartingMaterial": {
+    /*Todo.
+     */
+  "name": "SubstancePolymer.StartingMaterial",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Todo.
+     */  "name": "material", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "isDefining", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+    { 
+    /*Todo.
+     */  "name": "amount", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "SubstanceAmount",
+      "isPrimitive": false }, 
+  ]
+},
+"SubstancePolymer.Repeat": {
+    /*Todo.
+     */
+  "name": "SubstancePolymer.Repeat",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Todo.
+     */  "name": "numberOfUnits", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "integer",
+      "isPrimitive": true }, 
+    { 
+    /*Todo.
+     */  "name": "averageMolecularFormula", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Todo.
+     */  "name": "repeatUnitAmountType", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "repeatUnit", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "SubstancePolymer.RepeatUnit",
+      "isPrimitive": false }, 
+  ]
+},
+"SubstancePolymer.RepeatUnit": {
+    /*Todo.
+     */
+  "name": "SubstancePolymer.RepeatUnit",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Todo.
+     */  "name": "orientationOfPolymerisation", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "repeatUnit", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Todo.
+     */  "name": "amount", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "SubstanceAmount",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "degreeOfPolymerisation", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "SubstancePolymer.DegreeOfPolymerisation",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "structuralRepresentation", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "SubstancePolymer.StructuralRepresentation",
+      "isPrimitive": false }, 
+  ]
+},
+"SubstancePolymer.DegreeOfPolymerisation": {
+    /*Todo.
+     */
+  "name": "SubstancePolymer.DegreeOfPolymerisation",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Todo.
+     */  "name": "degree", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "amount", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "SubstanceAmount",
+      "isPrimitive": false }, 
+  ]
+},
+"SubstancePolymer.StructuralRepresentation": {
+    /*Todo.
+     */
+  "name": "SubstancePolymer.StructuralRepresentation",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Todo.
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "representation", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Todo.
+     */  "name": "attachment", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Attachment",
+      "isPrimitive": false }, 
+  ]
+},
+"SubstanceReferenceInformation": {
+    /*Todo.If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "SubstanceReferenceInformation",
+  "base": "DomainResource", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Todo.
+     */  "name": "comment", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Todo.
+     */  "name": "gene", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "SubstanceReferenceInformation.Gene",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "geneElement", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "SubstanceReferenceInformation.GeneElement",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "classification", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "SubstanceReferenceInformation.Classification",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "relationship", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "SubstanceReferenceInformation.Relationship",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "target", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "SubstanceReferenceInformation.Target",
+      "isPrimitive": false }, 
+  ]
+},
+"SubstanceReferenceInformation.Gene": {
+    /*Todo.
+     */
+  "name": "SubstanceReferenceInformation.Gene",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Todo.
+     */  "name": "geneSequenceOrigin", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "gene", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "source", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+  ]
+},
+"SubstanceReferenceInformation.GeneElement": {
+    /*Todo.
+     */
+  "name": "SubstanceReferenceInformation.GeneElement",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Todo.
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "element", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "source", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+  ]
+},
+"SubstanceReferenceInformation.Classification": {
+    /*Todo.
+     */
+  "name": "SubstanceReferenceInformation.Classification",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Todo.
+     */  "name": "domain", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "classification", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "subtype", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "source", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+  ]
+},
+"SubstanceReferenceInformation.Relationship": {
+    /*Todo.
+     */
+  "name": "SubstanceReferenceInformation.Relationship",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    [ /* Choice */ 
+    /*Todo.
+     */
+        {   "name": "substanceReference", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Reference",
+          "isPrimitive": false }, 
+        {   "name": "substanceCodeableConcept", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "CodeableConcept",
+          "isPrimitive": false }, 
+    ], 
+    { 
+    /*Todo.
+     */  "name": "relationship", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "interaction", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "isDefining", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+    [ /* Choice */ 
+    /*Todo.
+     */
+        {   "name": "amountQuantity", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Quantity",
+          "isPrimitive": false }, 
+        {   "name": "amountRange", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Range",
+          "isPrimitive": false }, 
+        {   "name": "amountString", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "string",
+          "isPrimitive": true }, 
+    ], 
+    { 
+    /*Todo.
+     */  "name": "amountType", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "amountText", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Todo.
+     */  "name": "source", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+  ]
+},
+"SubstanceReferenceInformation.Target": {
+    /*Todo.
+     */
+  "name": "SubstanceReferenceInformation.Target",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Todo.
+     */  "name": "target", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "interaction", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "organism", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "organismType", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Todo.
+     */  "name": "source", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    [ /* Choice */ 
+    /*Todo.
+     */
+        {   "name": "amountQuantity", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Quantity",
+          "isPrimitive": false }, 
+        {   "name": "amountRange", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Range",
+          "isPrimitive": false }, 
+        {   "name": "amountString", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "string",
+          "isPrimitive": true }, 
+    ], 
+    { 
+    /*Todo.
+     */  "name": "amountType", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+  ]
+},
+"SubstanceSpecification": {
+    /*The detailed description of a substance, typically at a level beyond what is used for prescribing.If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "SubstanceSpecification",
+  "base": "DomainResource", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Textual comment.
+     */  "name": "comment", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Chemicals may be stoichiometric or non-stoichiometric.
+     */  "name": "stoichiometric", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+    { 
+    /*Identifier by which this substance is known.
+     */  "name": "identifier", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*High level categorization, e.g. polymer or nucleic acid.
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Supporting literature.
+     */  "name": "referenceSource", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Moiety, for structural modifications.
+     */  "name": "moiety", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "SubstanceSpecification.Moiety",
+      "isPrimitive": false }, 
+    { 
+    /*General specifications for this substance, including how it is related to other substances.
+     */  "name": "property", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "SubstanceSpecification.Property",
+      "isPrimitive": false }, 
+    { 
+    /*General information detailing this substance.
+     */  "name": "referenceInformation", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Structural information.
+     */  "name": "structure", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "SubstanceSpecification.Structure",
+      "isPrimitive": false }, 
+    { 
+    /*Codes associated with the substance.
+     */  "name": "substanceCode", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "SubstanceSpecification.SubstanceCode",
+      "isPrimitive": false }, 
+    { 
+    /*Names applicable to this substence.
+     */  "name": "substanceName", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "SubstanceSpecification.SubstanceName",
+      "isPrimitive": false }, 
+    { 
+    /*The molecular weight or weight range (for proteins, polymers or nucleic acids).
+     */  "name": "molecularWeight", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "SubstanceSpecification.MolecularWeight",
+      "isPrimitive": false }, 
+    { 
+    /*Data items specific to polymers.
+     */  "name": "polymer", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+  ]
+},
+"SubstanceSpecification.Moiety": {
+    /*The detailed description of a substance, typically at a level beyond what is used for prescribing.
+     */
+  "name": "SubstanceSpecification.Moiety",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Role that the moiety is playing.
+     */  "name": "role", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Identifier by which this moiety substance is known.
+     */  "name": "identifier", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*Textual name for this moiety substance.
+     */  "name": "name", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Stereochemistry type.
+     */  "name": "stereochemistry", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Optical activity type.
+     */  "name": "opticalActivity", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Molecular formula.
+     */  "name": "molecularFormula", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Quantitative value for this moiety.
+     */  "name": "amount", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+  ]
+},
+"SubstanceSpecification.Property": {
+    /*The detailed description of a substance, typically at a level beyond what is used for prescribing.
+     */
+  "name": "SubstanceSpecification.Property",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Description todo.
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Description todo.
+     */  "name": "name", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*A field that should be used to capture parameters that were used in the measurement of a property.
+     */  "name": "parameters", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Identifier for a substance upon which a defining property depends.
+     */  "name": "substanceId", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*Description todo.
+     */  "name": "substanceName", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Quantitative value for this property.
+     */  "name": "amount", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+  ]
+},
+"SubstanceSpecification.Structure": {
+    /*The detailed description of a substance, typically at a level beyond what is used for prescribing.
+     */
+  "name": "SubstanceSpecification.Structure",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Stereochemistry type.
+     */  "name": "stereochemistry", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Optical activity type.
+     */  "name": "opticalActivity", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Molecular formula.
+     */  "name": "molecularFormula", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Specified per moiety according to the Hill system, i.e. first C, then H, then alphabetical. and each moiety separated by a dot.
+     */  "name": "molecularFormulaByMoiety", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Applicable for single substances that contain a radionuclide or a non-natural isotopic ratio.
+     */  "name": "isotope", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "SubstanceSpecification.Isotope",
+      "isPrimitive": false }, 
+    { 
+    /*The molecular weight or weight range (for proteins, polymers or nucleic acids).
+     */  "name": "molecularWeight", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "SubstanceSpecification.MolecularWeight",
+      "isPrimitive": false }, 
+    { 
+    /*Supporting literature.
+     */  "name": "referenceSource", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Molectular structural representation.
+     */  "name": "structuralRepresentation", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "SubstanceSpecification.StructuralRepresentation",
+      "isPrimitive": false }, 
+  ]
+},
+"SubstanceSpecification.Isotope": {
+    /*The detailed description of a substance, typically at a level beyond what is used for prescribing.
+     */
+  "name": "SubstanceSpecification.Isotope",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Substance identifier for each non-natural or radioisotope.
+     */  "name": "nuclideId", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*Substance name for each non-natural or radioisotope.
+     */  "name": "nuclideName", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The type of isotopic substitution present in a single substance.
+     */  "name": "substitutionType", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Half life - for a non-natural nuclide.
+     */  "name": "nuclideHalfLife", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Quantity",
+      "isPrimitive": false }, 
+    { 
+    /*Quantitative values for this isotope.
+     */  "name": "amount", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The molecular weight or weight range (for proteins, polymers or nucleic acids).
+     */  "name": "molecularWeight", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "SubstanceSpecification.MolecularWeight",
+      "isPrimitive": false }, 
+  ]
+},
+"SubstanceSpecification.MolecularWeight": {
+    /*The detailed description of a substance, typically at a level beyond what is used for prescribing.
+     */
+  "name": "SubstanceSpecification.MolecularWeight",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The method by which the molecular weight was determined.
+     */  "name": "method", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Type of molecular weight such as exact, average (also known as. number average), weight average.
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field.
+     */  "name": "amount", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+  ]
+},
+"SubstanceSpecification.StructuralRepresentation": {
+    /*The detailed description of a substance, typically at a level beyond what is used for prescribing.
+     */
+  "name": "SubstanceSpecification.StructuralRepresentation",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The type of structure (e.g. Full, Partial, Representative).
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The structural representation as text string in a format e.g. InChI, SMILES, MOLFILE, CDX.
+     */  "name": "representation", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*An attached file with the structural representation.
+     */  "name": "attachment", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Attachment",
+      "isPrimitive": false }, 
+  ]
+},
+"SubstanceSpecification.SubstanceCode": {
+    /*The detailed description of a substance, typically at a level beyond what is used for prescribing.
+     */
+  "name": "SubstanceSpecification.SubstanceCode",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The specific code.
+     */  "name": "code", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Status of the code assignment.
+     */  "name": "status", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The date at which the code status is changed as part of the terminology maintenance.
+     */  "name": "statusDate", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+    { 
+    /*Any comment can be provided in this field, if necessary.
+     */  "name": "comment", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Supporting literature.
+     */  "name": "referenceSource", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "string",
+      "isPrimitive": true }, 
+  ]
+},
+"SubstanceSpecification.SubstanceName": {
+    /*The detailed description of a substance, typically at a level beyond what is used for prescribing.
+     */
+  "name": "SubstanceSpecification.SubstanceName",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The actual name.
+     */  "name": "name", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Name type.
+     */  "name": "type", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Language of the name.
+     */  "name": "language", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The use context of this name for example if there is a different name a drug active ingredient as opposed to a food colour additive.
+     */  "name": "domain", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The jurisdiction where this name applies.
+     */  "name": "jurisdiction", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Details of the official nature of this name.
+     */  "name": "officialName", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "SubstanceSpecification.OfficialName",
+      "isPrimitive": false }, 
+    { 
+    /*Supporting literature.
+     */  "name": "referenceSource", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "string",
+      "isPrimitive": true }, 
+  ]
+},
+"SubstanceSpecification.OfficialName": {
+    /*The detailed description of a substance, typically at a level beyond what is used for prescribing.
+     */
+  "name": "SubstanceSpecification.OfficialName",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Which authority uses this official name.
+     */  "name": "authority", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The status of the official name.
+     */  "name": "status", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Date of official name change.
+     */  "name": "date", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+  ]
+},
 "SupplyDelivery": {
     /*Record of delivery of what is supplied.If the element is present, it must have either a @value, an @id, or extensions
      */
@@ -36234,11 +43029,11 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ],
   "elems": [
     { 
-    /*Identifier assigned by the dispensing facility when the item(s) is dispensed.
+    /*Identifier for the supply delivery event that is used to identify it across multiple disparate systems.
      */  "name": "identifier", 
     
       "min": "0", 
-      "max": "1", 
+      "max": "unbounded", 
       "type": "Identifier",
       "isPrimitive": false }, 
     { 
@@ -36424,13 +43219,37 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "max": "1", 
       "type": "RequestPriority",
       "isPrimitive": true }, 
+    [ /* Choice */ 
+    /*The item that is requested to be supplied. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list.
+     */
+        {   "name": "itemCodeableConcept", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "CodeableConcept",
+          "isPrimitive": false }, 
+        {   "name": "itemReference", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Reference",
+          "isPrimitive": false }, 
+    ], 
     { 
-    /*The item being requested.
-     */  "name": "orderedItem", 
+    /*The amount that is being ordered of the indicated item.
+     */  "name": "quantity", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Quantity",
+      "isPrimitive": false }, 
+    { 
+    /*Specific parameters for the ordered item.  For example, the size of the indicated item.
+     */  "name": "parameter", 
     
       "min": "0", 
-      "max": "1", 
-      "type": "SupplyRequest.OrderedItem",
+      "max": "unbounded", 
+      "type": "SupplyRequest.Parameter",
       "isPrimitive": false }, 
     [ /* Choice */ 
     /*When the request should be fulfilled.
@@ -36463,12 +43282,12 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*The individual who initiated the request and has responsibility for its activation.
+    /*The device, practitioner, etc. who initiated the request.
      */  "name": "requester", 
     
       "min": "0", 
       "max": "1", 
-      "type": "SupplyRequest.Requester",
+      "type": "Reference",
       "isPrimitive": false }, 
     { 
     /*Who is intended to fulfill the request.
@@ -36478,22 +43297,22 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "max": "unbounded", 
       "type": "Reference",
       "isPrimitive": false }, 
-    [ /* Choice */ 
-    /*Why the supply item was requested.
-     */
-        {   "name": "reasonCodeableConcept", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "CodeableConcept",
-          "isPrimitive": false }, 
-        {   "name": "reasonReference", 
-        
-          "min": "1", 
-          "max": "1", 
-          "type": "Reference",
-          "isPrimitive": false }, 
-    ], 
+    { 
+    /*The reason why the supply item was requested.
+     */  "name": "reasonCode", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The reason why the supply item was requested.
+     */  "name": "reasonReference", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
     { 
     /*Where the supply is expected to come from.
      */  "name": "deliverFrom", 
@@ -36512,64 +43331,50 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "isPrimitive": false }, 
   ]
 },
-"SupplyRequest.OrderedItem": {
+"SupplyRequest.Parameter": {
     /*A record of a request for a medication, substance or device used in the healthcare setting.
      */
-  "name": "SupplyRequest.OrderedItem",
+  "name": "SupplyRequest.Parameter",
   "base": "BackboneElement", 
   "attrs": [
   ],
   "elems": [
     { 
-    /*The amount that is being ordered of the indicated item.
-     */  "name": "quantity", 
+    /*A code or string that identifies the device detail being asserted.
+     */  "name": "code", 
     
-      "min": "1", 
+      "min": "0", 
       "max": "1", 
-      "type": "Quantity",
+      "type": "CodeableConcept",
       "isPrimitive": false }, 
     [ /* Choice */ 
-    /*The item that is requested to be supplied. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list.
+    /*The value of the device detail.
      */
-        {   "name": "itemCodeableConcept", 
+        {   "name": "valueCodeableConcept", 
         
           "min": "1", 
           "max": "1", 
           "type": "CodeableConcept",
           "isPrimitive": false }, 
-        {   "name": "itemReference", 
+        {   "name": "valueQuantity", 
         
           "min": "1", 
           "max": "1", 
-          "type": "Reference",
+          "type": "Quantity",
           "isPrimitive": false }, 
+        {   "name": "valueRange", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Range",
+          "isPrimitive": false }, 
+        {   "name": "valueBoolean", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "boolean",
+          "isPrimitive": true }, 
     ], 
-  ]
-},
-"SupplyRequest.Requester": {
-    /*A record of a request for a medication, substance or device used in the healthcare setting.
-     */
-  "name": "SupplyRequest.Requester",
-  "base": "BackboneElement", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*The device, practitioner, etc. who initiated the request.
-     */  "name": "agent", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*The organization the device or practitioner was acting on behalf of.
-     */  "name": "onBehalfOf", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
   ]
 },
 "SupplyRequestStatus": {
@@ -36604,13 +43409,13 @@ Any information provided in these elements on a Questionnaire Item overrides the
     [ /* Choice */ 
     /*A reference to a formal or informal definition of the task.  For example, a protocol, a step within a defined workflow definition, etc.
      */
-        {   "name": "definitionUri", 
+        {   "name": "instantiatesUri", 
         
           "min": "1", 
           "max": "1", 
           "type": "uri",
           "isPrimitive": true }, 
-        {   "name": "definitionReference", 
+        {   "name": "instantiatesReference", 
         
           "min": "1", 
           "max": "1", 
@@ -36618,7 +43423,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
           "isPrimitive": false }, 
     ], 
     { 
-    /*BasedOn refers to a higher-level authorization that triggered the creation of the task.  It references a "request" resource such as a ProcedureRequest, MedicationRequest, ProcedureRequest, CarePlan, etc. which is distinct from the "request" resource the task is seeking to fulfil.  This latter resource is referenced by FocusOn.  For example, based on a ProcedureRequest (= BasedOn), a task is created to fulfil a procedureRequest ( = FocusOn ) to collect a specimen from a patient.
+    /*BasedOn refers to a higher-level authorization that triggered the creation of the task.  It references a "request" resource such as a ServiceRequest, MedicationRequest, ServiceRequest, CarePlan, etc. which is distinct from the "request" resource the task is seeking to fulfill.  This latter resource is referenced by FocusOn.  For example, based on a ServiceRequest (= BasedOn), a task is created to fulfill a procedureRequest ( = FocusOn ) to collect a specimen from a patient.
      */  "name": "basedOn", 
     
       "min": "0", 
@@ -36666,7 +43471,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Indicates the "level" of actionability associated with the Task.  I.e. Is this a proposed task, a planned task, an actionable task, etc.
+    /*Indicates the "level" of actionability associated with the Task, i.e. i+R[9]Cs this a proposed task, a planned task, an actionable task, etc.
      */  "name": "intent", 
     
       "min": "1", 
@@ -36751,7 +43556,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
     
       "min": "0", 
       "max": "1", 
-      "type": "Task.Requester",
+      "type": "Reference",
       "isPrimitive": false }, 
     { 
     /*The type of participant that can execute the task.
@@ -36771,11 +43576,19 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "isPrimitive": false }, 
     { 
     /*A description or code indicating why this task needs to be performed.
-     */  "name": "reason", 
+     */  "name": "reasonCode", 
     
       "min": "0", 
       "max": "1", 
       "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*A resource reference indicating why this task needs to be performed.
+     */  "name": "reasonReference", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
       "isPrimitive": false }, 
     { 
     /*Free-text information captured about the task as it progresses.
@@ -36794,7 +43607,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "Reference",
       "isPrimitive": false }, 
     { 
-    /*If the Task.focus is a request resource and the task is seeking fulfillment (i.e is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned.
+    /*If the Task.focus is a request resource and the task is seeking fulfillment (i.e. is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned.
      */  "name": "restriction", 
     
       "min": "0", 
@@ -36816,32 +43629,6 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "min": "0", 
       "max": "unbounded", 
       "type": "Task.Output",
-      "isPrimitive": false }, 
-  ]
-},
-"Task.Requester": {
-    /*A task to be performed.
-     */
-  "name": "Task.Requester",
-  "base": "BackboneElement", 
-  "attrs": [
-  ],
-  "elems": [
-    { 
-    /*The device, practitioner, etc. who initiated the task.
-     */  "name": "agent", 
-    
-      "min": "1", 
-      "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
-    { 
-    /*The organization the device or practitioner was acting on behalf of when they initiated the task.
-     */  "name": "onBehalfOf", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "Reference",
       "isPrimitive": false }, 
   ]
 },
@@ -36910,6 +43697,12 @@ Any information provided in these elements on a Questionnaire Item overrides the
           "max": "1", 
           "type": "boolean",
           "isPrimitive": true }, 
+        {   "name": "valueCanonical", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "canonical",
+          "isPrimitive": true }, 
         {   "name": "valueCode", 
         
           "min": "1", 
@@ -36993,6 +43786,18 @@ Any information provided in these elements on a Questionnaire Item overrides the
           "min": "1", 
           "max": "1", 
           "type": "uri",
+          "isPrimitive": true }, 
+        {   "name": "valueUrl", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "url",
+          "isPrimitive": true }, 
+        {   "name": "valueUuid", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "uuid",
           "isPrimitive": true }, 
         {   "name": "valueAddress", 
         
@@ -37120,11 +43925,53 @@ Any information provided in these elements on a Questionnaire Item overrides the
           "max": "1", 
           "type": "Timing",
           "isPrimitive": false }, 
-        {   "name": "valueMeta", 
+        {   "name": "valueParameterDefinition", 
         
           "min": "1", 
           "max": "1", 
-          "type": "Meta",
+          "type": "ParameterDefinition",
+          "isPrimitive": false }, 
+        {   "name": "valueDataRequirement", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "DataRequirement",
+          "isPrimitive": false }, 
+        {   "name": "valueRelatedArtifact", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "RelatedArtifact",
+          "isPrimitive": false }, 
+        {   "name": "valueContactDetail", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "ContactDetail",
+          "isPrimitive": false }, 
+        {   "name": "valueContributor", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Contributor",
+          "isPrimitive": false }, 
+        {   "name": "valueTriggerDefinition", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "TriggerDefinition",
+          "isPrimitive": false }, 
+        {   "name": "valueUsageContext", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "UsageContext",
+          "isPrimitive": false }, 
+        {   "name": "valueDosage", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Dosage",
           "isPrimitive": false }, 
     ], 
   ]
@@ -37160,6 +44007,12 @@ Any information provided in these elements on a Questionnaire Item overrides the
           "max": "1", 
           "type": "boolean",
           "isPrimitive": true }, 
+        {   "name": "valueCanonical", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "canonical",
+          "isPrimitive": true }, 
         {   "name": "valueCode", 
         
           "min": "1", 
@@ -37243,6 +44096,18 @@ Any information provided in these elements on a Questionnaire Item overrides the
           "min": "1", 
           "max": "1", 
           "type": "uri",
+          "isPrimitive": true }, 
+        {   "name": "valueUrl", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "url",
+          "isPrimitive": true }, 
+        {   "name": "valueUuid", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "uuid",
           "isPrimitive": true }, 
         {   "name": "valueAddress", 
         
@@ -37370,11 +44235,53 @@ Any information provided in these elements on a Questionnaire Item overrides the
           "max": "1", 
           "type": "Timing",
           "isPrimitive": false }, 
-        {   "name": "valueMeta", 
+        {   "name": "valueParameterDefinition", 
         
           "min": "1", 
           "max": "1", 
-          "type": "Meta",
+          "type": "ParameterDefinition",
+          "isPrimitive": false }, 
+        {   "name": "valueDataRequirement", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "DataRequirement",
+          "isPrimitive": false }, 
+        {   "name": "valueRelatedArtifact", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "RelatedArtifact",
+          "isPrimitive": false }, 
+        {   "name": "valueContactDetail", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "ContactDetail",
+          "isPrimitive": false }, 
+        {   "name": "valueContributor", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Contributor",
+          "isPrimitive": false }, 
+        {   "name": "valueTriggerDefinition", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "TriggerDefinition",
+          "isPrimitive": false }, 
+        {   "name": "valueUsageContext", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "UsageContext",
+          "isPrimitive": false }, 
+        {   "name": "valueDosage", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Dosage",
           "isPrimitive": false }, 
     ], 
   ]
@@ -37388,6 +44295,419 @@ Any information provided in these elements on a Questionnaire Item overrides the
     { 
       "name": "value", 
       "type": "TaskStatus-list" }, 
+  ],
+  "elems": [
+  ]
+},
+"TerminologyCapabilities": {
+    /*A Terminology Capabilities documents a set of capabilities (behaviors) of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "TerminologyCapabilities",
+  "base": "DomainResource", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*An absolute URI that is used to identify this terminology capabilities when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which this terminology capabilities is (or will be) published.
+     */  "name": "url", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "uri",
+      "isPrimitive": true }, 
+    { 
+    /*The identifier that is used to identify this version of the terminology capabilities when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the terminology capabilities author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.
+     */  "name": "version", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*A natural language name identifying the terminology capabilities. This name should be usable as an identifier for the module by machine processing applications such as code generation.
+     */  "name": "name", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*A short, descriptive, user-friendly title for the terminology capabilities.
+     */  "name": "title", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The status of this terminology capabilities. Enables tracking the life-cycle of the content.
+     */  "name": "status", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "PublicationStatus",
+      "isPrimitive": true }, 
+    { 
+    /*A Boolean value to indicate that this terminology capabilities is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.
+     */  "name": "experimental", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+    { 
+    /*The date  (and optionally time) when the terminology capabilities was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the terminology capabilities changes.
+     */  "name": "date", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+    { 
+    /*The name of the organization or individual that published the terminology capabilities.
+     */  "name": "publisher", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Contact details to assist a user in finding and communicating with the publisher.
+     */  "name": "contact", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "ContactDetail",
+      "isPrimitive": false }, 
+    { 
+    /*A free text natural language description of the terminology capabilities from a consumer's perspective. Typically, this is used when the capability statement describes a desired rather than an actual solution, for example as a formal expression of requirements as part of an RFP.
+     */  "name": "description", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "markdown",
+      "isPrimitive": true }, 
+    { 
+    /*The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate terminology capabilities instances.
+     */  "name": "useContext", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "UsageContext",
+      "isPrimitive": false }, 
+    { 
+    /*A legal or geographic region in which the terminology capabilities is intended to be used.
+     */  "name": "jurisdiction", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Explanation of why this terminology capabilities is needed and why it has been designed as it has.
+     */  "name": "purpose", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "markdown",
+      "isPrimitive": true }, 
+    { 
+    /*A copyright statement relating to the terminology capabilities and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the terminology capabilities.
+     */  "name": "copyright", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "markdown",
+      "isPrimitive": true }, 
+    { 
+    /*Whether the server supports lockedDate.
+     */  "name": "lockedDate", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+    { 
+    /*Identifies a code system that is supported by the server. If there is a no code system URL, then this declares the general assumptions a client can make about support for any CodeSystem resource.
+     */  "name": "codeSystem", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "TerminologyCapabilities.CodeSystem",
+      "isPrimitive": false }, 
+    { 
+    /*Information about the $expansion operation.
+     */  "name": "expansion", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "TerminologyCapabilities.Expansion",
+      "isPrimitive": false }, 
+    { 
+    /*The degree to which the server supports the code search parameter on ValueSet, if it is supported.
+     */  "name": "codeSearch", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "CodeSearchSupport",
+      "isPrimitive": true }, 
+    { 
+    /*Information about the $validation operation.
+     */  "name": "validateCode", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "TerminologyCapabilities.ValidateCode",
+      "isPrimitive": false }, 
+    { 
+    /*Information about the $translation operation.
+     */  "name": "translation", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "TerminologyCapabilities.Translation",
+      "isPrimitive": false }, 
+    { 
+    /*Whether the $closure operation is supported.
+     */  "name": "closure", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "TerminologyCapabilities.Closure",
+      "isPrimitive": false }, 
+  ]
+},
+"TerminologyCapabilities.CodeSystem": {
+    /*A Terminology Capabilities documents a set of capabilities (behaviors) of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
+     */
+  "name": "TerminologyCapabilities.CodeSystem",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*URI for the Code System.
+     */  "name": "uri", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "canonical",
+      "isPrimitive": true }, 
+    { 
+    /*For the code system, a list of versions that are supported by the server.
+     */  "name": "version", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "TerminologyCapabilities.Version",
+      "isPrimitive": false }, 
+  ]
+},
+"TerminologyCapabilities.Version": {
+    /*A Terminology Capabilities documents a set of capabilities (behaviors) of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
+     */
+  "name": "TerminologyCapabilities.Version",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*For version-less code systems, there should be a single version with no identifier.
+     */  "name": "code", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*If this is the default version for this code system.
+     */  "name": "isDefault", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+    { 
+    /*If the compositional grammar defined by the code system is supported.
+     */  "name": "compositional", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+    { 
+    /*Language Displays supported.
+     */  "name": "language", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "code",
+      "isPrimitive": true }, 
+    { 
+    /*Filter Properties supported.
+     */  "name": "filter", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "TerminologyCapabilities.Filter",
+      "isPrimitive": false }, 
+    { 
+    /*Properties supported for $lookup.
+     */  "name": "property", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "code",
+      "isPrimitive": true }, 
+  ]
+},
+"TerminologyCapabilities.Filter": {
+    /*A Terminology Capabilities documents a set of capabilities (behaviors) of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
+     */
+  "name": "TerminologyCapabilities.Filter",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Code of the property supported.
+     */  "name": "code", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "code",
+      "isPrimitive": true }, 
+    { 
+    /*Operations supported for the property.
+     */  "name": "op", 
+    
+      "min": "1", 
+      "max": "unbounded", 
+      "type": "code",
+      "isPrimitive": true }, 
+  ]
+},
+"TerminologyCapabilities.Expansion": {
+    /*A Terminology Capabilities documents a set of capabilities (behaviors) of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
+     */
+  "name": "TerminologyCapabilities.Expansion",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Whether the server can return nested value sets.
+     */  "name": "hierarchical", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+    { 
+    /*Whether the server supports paging on expansion.
+     */  "name": "paging", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+    { 
+    /*Allow request for incomplete expansions?
+     */  "name": "incomplete", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+    { 
+    /*Supported fields on ExpansionProfile.
+     */  "name": "definition", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "canonical",
+      "isPrimitive": true }, 
+    { 
+    /*Supported expansion profiles.
+     */  "name": "profile", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "canonical",
+      "isPrimitive": true }, 
+    { 
+    /*Documentation about text searching works.
+     */  "name": "textFilter", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "markdown",
+      "isPrimitive": true }, 
+  ]
+},
+"TerminologyCapabilities.ValidateCode": {
+    /*A Terminology Capabilities documents a set of capabilities (behaviors) of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
+     */
+  "name": "TerminologyCapabilities.ValidateCode",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Whether translations are validated.
+     */  "name": "translations", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+  ]
+},
+"TerminologyCapabilities.Translation": {
+    /*A Terminology Capabilities documents a set of capabilities (behaviors) of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
+     */
+  "name": "TerminologyCapabilities.Translation",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Whether the client must identify the map.
+     */  "name": "needsMap", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+  ]
+},
+"TerminologyCapabilities.Closure": {
+    /*A Terminology Capabilities documents a set of capabilities (behaviors) of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
+     */
+  "name": "TerminologyCapabilities.Closure",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*If cross-system closure is supported.
+     */  "name": "translation", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "boolean",
+      "isPrimitive": true }, 
+  ]
+},
+"CodeSearchSupport": {
+    /*The degree to which the server supports the code search parameter on ValueSet, if it is supportedIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "CodeSearchSupport",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "CodeSearchSupport-list" }, 
   ],
   "elems": [
   ]
@@ -37489,7 +44809,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "TestReport.Test",
       "isPrimitive": false }, 
     { 
-    /*The results of the series of operations required to clean up after the all the tests were executed (successfully or otherwise).
+    /*The results of the series of operations required to clean up after all the tests were executed (successfully or otherwise).
      */  "name": "teardown", 
     
       "min": "0", 
@@ -37793,7 +45113,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "TestScript": {
-    /*A structured set of tests against a FHIR server implementation to determine compliance against the FHIR specification.If the element is present, it must have either a @value, an @id, or extensions
+    /*A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.If the element is present, it must have either a @value, an @id, or extensions
      */
   "name": "TestScript",
   "base": "DomainResource", 
@@ -37801,7 +45121,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ],
   "elems": [
     { 
-    /*An absolute URI that is used to identify this test script when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this test script is (or will be) published. The URL SHOULD include the major version of the test script. For more information see [Technical and Business Versions](resource.html#versions).
+    /*An absolute URI that is used to identify this test script when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which this test script is (or will be) published.
      */  "name": "url", 
     
       "min": "1", 
@@ -37849,7 +45169,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "PublicationStatus",
       "isPrimitive": true }, 
     { 
-    /*A boolean value to indicate that this test script is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+    /*A Boolean value to indicate that this test script is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.
      */  "name": "experimental", 
     
       "min": "0", 
@@ -37857,7 +45177,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "boolean",
       "isPrimitive": true }, 
     { 
-    /*The date  (and optionally time) when the test script was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the test script changes.
+    /*The date  (and optionally time) when the test script was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the test script changes.
      */  "name": "date", 
     
       "min": "0", 
@@ -37865,7 +45185,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*The name of the individual or organization that published the test script.
+    /*The name of the organization or individual that published the test script.
      */  "name": "publisher", 
     
       "min": "0", 
@@ -37905,7 +45225,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "CodeableConcept",
       "isPrimitive": false }, 
     { 
-    /*Explaination of why this test script is needed and why it has been designed as it has.
+    /*Explanation of why this test script is needed and why it has been designed as it has.
      */  "name": "purpose", 
     
       "min": "0", 
@@ -38001,7 +45321,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "TestScript.Test",
       "isPrimitive": false }, 
     { 
-    /*A series of operations required to clean up after the all the tests are executed (successfully or otherwise).
+    /*A series of operations required to clean up after all the tests are executed (successfully or otherwise).
      */  "name": "teardown", 
     
       "min": "0", 
@@ -38011,7 +45331,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "TestScript.Origin": {
-    /*A structured set of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+    /*A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
      */
   "name": "TestScript.Origin",
   "base": "BackboneElement", 
@@ -38037,7 +45357,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "TestScript.Destination": {
-    /*A structured set of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+    /*A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
      */
   "name": "TestScript.Destination",
   "base": "BackboneElement", 
@@ -38063,7 +45383,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "TestScript.Metadata": {
-    /*A structured set of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+    /*A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
      */
   "name": "TestScript.Metadata",
   "base": "BackboneElement", 
@@ -38089,7 +45409,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "TestScript.Link": {
-    /*A structured set of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+    /*A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
      */
   "name": "TestScript.Link",
   "base": "BackboneElement", 
@@ -38115,7 +45435,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "TestScript.Capability": {
-    /*A structured set of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+    /*A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
      */
   "name": "TestScript.Capability",
   "base": "BackboneElement", 
@@ -38126,7 +45446,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
     /*Whether or not the test execution will require the given capabilities of the server in order for this test script to execute.
      */  "name": "required", 
     
-      "min": "0", 
+      "min": "1", 
       "max": "1", 
       "type": "boolean",
       "isPrimitive": true }, 
@@ -38134,7 +45454,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
     /*Whether or not the test execution will validate the given capabilities of the server in order for this test script to execute.
      */  "name": "validated", 
     
-      "min": "0", 
+      "min": "1", 
       "max": "1", 
       "type": "boolean",
       "isPrimitive": true }, 
@@ -38176,12 +45496,12 @@ Any information provided in these elements on a Questionnaire Item overrides the
     
       "min": "1", 
       "max": "1", 
-      "type": "Reference",
-      "isPrimitive": false }, 
+      "type": "canonical",
+      "isPrimitive": true }, 
   ]
 },
 "TestScript.Fixture": {
-    /*A structured set of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+    /*A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
      */
   "name": "TestScript.Fixture",
   "base": "BackboneElement", 
@@ -38192,7 +45512,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
     /*Whether or not to implicitly create the fixture during setup. If true, the fixture is automatically created on each server being tested during setup, therefore no create operation is required for this fixture in the TestScript.setup section.
      */  "name": "autocreate", 
     
-      "min": "0", 
+      "min": "1", 
       "max": "1", 
       "type": "boolean",
       "isPrimitive": true }, 
@@ -38200,7 +45520,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
     /*Whether or not to implicitly delete the fixture during teardown. If true, the fixture is automatically deleted on each server being tested during teardown, therefore no delete operation is required for this fixture in the TestScript.teardown section.
      */  "name": "autodelete", 
     
-      "min": "0", 
+      "min": "1", 
       "max": "1", 
       "type": "boolean",
       "isPrimitive": true }, 
@@ -38215,7 +45535,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "TestScript.Variable": {
-    /*A structured set of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+    /*A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
      */
   "name": "TestScript.Variable",
   "base": "BackboneElement", 
@@ -38247,7 +45567,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*The fluentpath expression to evaluate against the fixture body. When variables are defined, only one of either expression, headerField or path must be specified.
+    /*The FHIRPath expression to evaluate against the fixture body. When variables are defined, only one of either expression, headerField or path must be specified.
      */  "name": "expression", 
     
       "min": "0", 
@@ -38289,7 +45609,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "TestScript.Rule": {
-    /*A structured set of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+    /*A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
      */
   "name": "TestScript.Rule",
   "base": "BackboneElement", 
@@ -38315,7 +45635,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "TestScript.Param": {
-    /*A structured set of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+    /*A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
      */
   "name": "TestScript.Param",
   "base": "BackboneElement", 
@@ -38341,7 +45661,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "TestScript.Ruleset": {
-    /*A structured set of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+    /*A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
      */
   "name": "TestScript.Ruleset",
   "base": "BackboneElement", 
@@ -38367,7 +45687,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "TestScript.Rule1": {
-    /*A structured set of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+    /*A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
      */
   "name": "TestScript.Rule1",
   "base": "BackboneElement", 
@@ -38393,7 +45713,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "TestScript.Param1": {
-    /*A structured set of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+    /*A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
      */
   "name": "TestScript.Param1",
   "base": "BackboneElement", 
@@ -38419,7 +45739,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "TestScript.Setup": {
-    /*A structured set of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+    /*A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
      */
   "name": "TestScript.Setup",
   "base": "BackboneElement", 
@@ -38437,7 +45757,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "TestScript.Action": {
-    /*A structured set of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+    /*A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
      */
   "name": "TestScript.Action",
   "base": "BackboneElement", 
@@ -38463,7 +45783,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "TestScript.Operation": {
-    /*A structured set of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+    /*A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
      */
   "name": "TestScript.Operation",
   "base": "BackboneElement", 
@@ -38503,20 +45823,20 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*The content-type or mime-type to use for RESTful operation in the 'Accept' header.
+    /*The mime-type to use for RESTful operation in the 'Accept' header.
      */  "name": "accept", 
     
       "min": "0", 
       "max": "1", 
-      "type": "ContentType",
+      "type": "code",
       "isPrimitive": true }, 
     { 
-    /*The content-type or mime-type to use for RESTful operation in the 'Content-Type' header.
+    /*The mime-type to use for RESTful operation in the 'Content-Type' header.
      */  "name": "contentType", 
     
       "min": "0", 
       "max": "1", 
-      "type": "ContentType",
+      "type": "code",
       "isPrimitive": true }, 
     { 
     /*The server where the request message is destined for.  Must be one of the server numbers listed in TestScript.destination section.
@@ -38530,7 +45850,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
     /*Whether or not to implicitly send the request url in encoded format. The default is true to match the standard RESTful client behavior. Set to false when communicating with a server that does not support encoded url paths.
      */  "name": "encodeRequestUrl", 
     
-      "min": "0", 
+      "min": "1", 
       "max": "1", 
       "type": "boolean",
       "isPrimitive": true }, 
@@ -38601,7 +45921,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "TestScript.RequestHeader": {
-    /*A structured set of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+    /*A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
      */
   "name": "TestScript.RequestHeader",
   "base": "BackboneElement", 
@@ -38627,7 +45947,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "TestScript.Assert": {
-    /*A structured set of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+    /*A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
      */
   "name": "TestScript.Assert",
   "base": "BackboneElement", 
@@ -38667,7 +45987,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*The fluentpath expression to evaluate against the source fixture. When compareToSourceId is defined, either compareToSourceExpression or compareToSourcePath must be defined, but not both.
+    /*The FHIRPath expression to evaluate against the source fixture. When compareToSourceId is defined, either compareToSourceExpression or compareToSourcePath must be defined, but not both.
      */  "name": "compareToSourceExpression", 
     
       "min": "0", 
@@ -38683,15 +46003,15 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "string",
       "isPrimitive": true }, 
     { 
-    /*The content-type or mime-type to use for RESTful operation in the 'Content-Type' header.
+    /*The mime-type contents to compare against the request or response message 'Content-Type' header.
      */  "name": "contentType", 
     
       "min": "0", 
       "max": "1", 
-      "type": "ContentType",
+      "type": "code",
       "isPrimitive": true }, 
     { 
-    /*The fluentpath expression to be evaluated against the request or response message contents - HTTP headers and payload.
+    /*The FHIRPath expression to be evaluated against the request or response message contents - HTTP headers and payload.
      */  "name": "expression", 
     
       "min": "0", 
@@ -38822,14 +46142,14 @@ Any information provided in these elements on a Questionnaire Item overrides the
     /*Whether or not the test execution will produce a warning only on error for this assert.
      */  "name": "warningOnly", 
     
-      "min": "0", 
+      "min": "1", 
       "max": "1", 
       "type": "boolean",
       "isPrimitive": true }, 
   ]
 },
 "TestScript.Rule2": {
-    /*A structured set of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+    /*A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
      */
   "name": "TestScript.Rule2",
   "base": "BackboneElement", 
@@ -38855,7 +46175,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "TestScript.Param2": {
-    /*A structured set of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+    /*A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
      */
   "name": "TestScript.Param2",
   "base": "BackboneElement", 
@@ -38881,7 +46201,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "TestScript.Ruleset1": {
-    /*A structured set of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+    /*A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
      */
   "name": "TestScript.Ruleset1",
   "base": "BackboneElement", 
@@ -38907,7 +46227,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "TestScript.Rule3": {
-    /*A structured set of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+    /*A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
      */
   "name": "TestScript.Rule3",
   "base": "BackboneElement", 
@@ -38933,7 +46253,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "TestScript.Param3": {
-    /*A structured set of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+    /*A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
      */
   "name": "TestScript.Param3",
   "base": "BackboneElement", 
@@ -38959,7 +46279,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "TestScript.Test": {
-    /*A structured set of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+    /*A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
      */
   "name": "TestScript.Test",
   "base": "BackboneElement", 
@@ -38993,7 +46313,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "TestScript.Action1": {
-    /*A structured set of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+    /*A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
      */
   "name": "TestScript.Action1",
   "base": "BackboneElement", 
@@ -39019,7 +46339,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "TestScript.Teardown": {
-    /*A structured set of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+    /*A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
      */
   "name": "TestScript.Teardown",
   "base": "BackboneElement", 
@@ -39037,7 +46357,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "TestScript.Action2": {
-    /*A structured set of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+    /*A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.
      */
   "name": "TestScript.Action2",
   "base": "BackboneElement", 
@@ -39063,19 +46383,6 @@ Any information provided in these elements on a Questionnaire Item overrides the
     { 
       "name": "value", 
       "type": "FHIRDefinedType-list" }, 
-  ],
-  "elems": [
-  ]
-},
-"ContentType": {
-    /*The content or mime type.If the element is present, it must have either a @value, an @id, or extensions
-     */
-  "name": "ContentType",
-  "base": "Element", 
-  "attrs": [
-    { 
-      "name": "value", 
-      "type": "ContentType-list" }, 
   ],
   "elems": [
   ]
@@ -39132,8 +46439,168 @@ Any information provided in these elements on a Questionnaire Item overrides the
   "elems": [
   ]
 },
+"UserSession": {
+    /*Information about a user's current session.If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "UserSession",
+  "base": "DomainResource", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Allows a service to provide a unique, business identifier for the session.
+     */  "name": "identifier", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*A practitioner, patient, device, or related person engaged in the session.
+     */  "name": "user", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Status of the session.
+     */  "name": "status", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "UserSession.Status",
+      "isPrimitive": false }, 
+    { 
+    /*Location that identifies the physical place at which the user's session is occurring. For the purposes of context synchronization, this is intended to represent the user's workstation.
+     */  "name": "workstation", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*The current focus of the user's session. Common values are a reference to a Patient, Encounter, ImagingStudy, etc.
+     */  "name": "focus", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Indicates the timestamp when the user session was first created.
+     */  "name": "created", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "instant",
+      "isPrimitive": true }, 
+    { 
+    /*Indicates the timestamp when the user session will expire (i.e. no longer be valid).
+     */  "name": "expires", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "instant",
+      "isPrimitive": true }, 
+    { 
+    /*Provides additional information associated with the context.
+     */  "name": "context", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "UserSession.Context",
+      "isPrimitive": false }, 
+  ]
+},
+"UserSession.Status": {
+    /*Information about a user's current session.
+     */
+  "name": "UserSession.Status",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The current status of the user session.
+     */  "name": "code", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "UserSessionStatus",
+      "isPrimitive": true }, 
+    { 
+    /*The source of the status code.
+     */  "name": "source", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "UserSessionStatusSource",
+      "isPrimitive": true }, 
+  ]
+},
+"UserSession.Context": {
+    /*Information about a user's current session.
+     */
+  "name": "UserSession.Context",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Indicates which type of context is being provided.
+     */  "name": "type", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    [ /* Choice */ 
+    /*Provides the context value.
+     */
+        {   "name": "valueCodeableConcept", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "CodeableConcept",
+          "isPrimitive": false }, 
+        {   "name": "valueQuantity", 
+        
+          "min": "1", 
+          "max": "1", 
+          "type": "Quantity",
+          "isPrimitive": false }, 
+    ], 
+  ]
+},
+"UserSessionStatus": {
+    /*The status of the user sessionIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "UserSessionStatus",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "UserSessionStatus-list" }, 
+  ],
+  "elems": [
+  ]
+},
+"UserSessionStatusSource": {
+    /*The source of the status of the user sessionIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "UserSessionStatusSource",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "UserSessionStatusSource-list" }, 
+  ],
+  "elems": [
+  ]
+},
 "ValueSet": {
-    /*A value set specifies a set of codes drawn from one or more code systems.If the element is present, it must have either a @value, an @id, or extensions
+    /*A ValueSet resource specifies a set of codes drawn from one or more code systems, intended for use in a particular context. Value sets link between [[[CodeSystem]]] definitions and their use in [coded elements](terminologies.html).If the element is present, it must have either a @value, an @id, or extensions
      */
   "name": "ValueSet",
   "base": "DomainResource", 
@@ -39141,7 +46608,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ],
   "elems": [
     { 
-    /*An absolute URI that is used to identify this value set when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this value set is (or will be) published. The URL SHOULD include the major version of the value set. For more information see [Technical and Business Versions](resource.html#versions).
+    /*An absolute URI that is used to identify this value set when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which this value set is (or will be) published.
      */  "name": "url", 
     
       "min": "0", 
@@ -39189,7 +46656,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "PublicationStatus",
       "isPrimitive": true }, 
     { 
-    /*A boolean value to indicate that this value set is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+    /*A Boolean value to indicate that this value set is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.
      */  "name": "experimental", 
     
       "min": "0", 
@@ -39197,7 +46664,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "boolean",
       "isPrimitive": true }, 
     { 
-    /*The date  (and optionally time) when the value set was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the value set changes. (e.g. the 'content logical definition').
+    /*The date  (and optionally time) when the value set was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the value set changes. (e.g. the 'content logical definition').
      */  "name": "date", 
     
       "min": "0", 
@@ -39205,7 +46672,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "dateTime",
       "isPrimitive": true }, 
     { 
-    /*The name of the individual or organization that published the value set.
+    /*The name of the organization or individual that published the value set.
      */  "name": "publisher", 
     
       "min": "0", 
@@ -39253,7 +46720,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "boolean",
       "isPrimitive": true }, 
     { 
-    /*Explaination of why this value set is needed and why it has been designed as it has.
+    /*Explanation of why this value set is needed and why it has been designed as it has.
      */  "name": "purpose", 
     
       "min": "0", 
@@ -39277,7 +46744,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "boolean",
       "isPrimitive": true }, 
     { 
-    /*A set of criteria that define the content logical definition of the value set by including or excluding codes from outside this value set. This I also known as the "Content Logical Definition" (CLD).
+    /*A set of criteria that define the contents of the value set by including or excluding codes selected from the specified code system(s) that the value set draws from. This is also known as the Content Logical Definition (CLD).
      */  "name": "compose", 
     
       "min": "0", 
@@ -39295,7 +46762,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "ValueSet.Compose": {
-    /*A value set specifies a set of codes drawn from one or more code systems.
+    /*A ValueSet resource specifies a set of codes drawn from one or more code systems, intended for use in a particular context. Value sets link between [[[CodeSystem]]] definitions and their use in [coded elements](terminologies.html).
      */
   "name": "ValueSet.Compose",
   "base": "BackboneElement", 
@@ -39337,7 +46804,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "ValueSet.Include": {
-    /*A value set specifies a set of codes drawn from one or more code systems.
+    /*A ValueSet resource specifies a set of codes drawn from one or more code systems, intended for use in a particular context. Value sets link between [[[CodeSystem]]] definitions and their use in [coded elements](terminologies.html).
      */
   "name": "ValueSet.Include",
   "base": "BackboneElement", 
@@ -39377,17 +46844,17 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "ValueSet.Filter",
       "isPrimitive": false }, 
     { 
-    /*Selects concepts found in this value set. This is an absolute URI that is a reference to ValueSet.url.
+    /*Selects the concepts found in this value set (based on its value set definition). This is an absolute URI that is a reference to ValueSet.url.  If multiple value sets are specified this includes the union of the contents of all of the referenced value sets.
      */  "name": "valueSet", 
     
       "min": "0", 
       "max": "unbounded", 
-      "type": "uri",
+      "type": "canonical",
       "isPrimitive": true }, 
   ]
 },
 "ValueSet.Concept": {
-    /*A value set specifies a set of codes drawn from one or more code systems.
+    /*A ValueSet resource specifies a set of codes drawn from one or more code systems, intended for use in a particular context. Value sets link between [[[CodeSystem]]] definitions and their use in [coded elements](terminologies.html).
      */
   "name": "ValueSet.Concept",
   "base": "BackboneElement", 
@@ -39421,7 +46888,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "ValueSet.Designation": {
-    /*A value set specifies a set of codes drawn from one or more code systems.
+    /*A ValueSet resource specifies a set of codes drawn from one or more code systems, intended for use in a particular context. Value sets link between [[[CodeSystem]]] definitions and their use in [coded elements](terminologies.html).
      */
   "name": "ValueSet.Designation",
   "base": "BackboneElement", 
@@ -39455,7 +46922,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "ValueSet.Filter": {
-    /*A value set specifies a set of codes drawn from one or more code systems.
+    /*A ValueSet resource specifies a set of codes drawn from one or more code systems, intended for use in a particular context. Value sets link between [[[CodeSystem]]] definitions and their use in [coded elements](terminologies.html).
      */
   "name": "ValueSet.Filter",
   "base": "BackboneElement", 
@@ -39484,12 +46951,12 @@ Any information provided in these elements on a Questionnaire Item overrides the
     
       "min": "1", 
       "max": "1", 
-      "type": "code",
+      "type": "string",
       "isPrimitive": true }, 
   ]
 },
 "ValueSet.Expansion": {
-    /*A value set specifies a set of codes drawn from one or more code systems.
+    /*A ValueSet resource specifies a set of codes drawn from one or more code systems, intended for use in a particular context. Value sets link between [[[CodeSystem]]] definitions and their use in [coded elements](terminologies.html).
      */
   "name": "ValueSet.Expansion",
   "base": "BackboneElement", 
@@ -39500,7 +46967,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
     /*An identifier that uniquely identifies this expansion of the valueset. Systems may re-use the same identifier as long as the expansion and the definition remain the same, but are not required to do so.
      */  "name": "identifier", 
     
-      "min": "1", 
+      "min": "0", 
       "max": "1", 
       "type": "uri",
       "isPrimitive": true }, 
@@ -39547,7 +47014,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "ValueSet.Parameter": {
-    /*A value set specifies a set of codes drawn from one or more code systems.
+    /*A ValueSet resource specifies a set of codes drawn from one or more code systems, intended for use in a particular context. Value sets link between [[[CodeSystem]]] definitions and their use in [coded elements](terminologies.html).
      */
   "name": "ValueSet.Parameter",
   "base": "BackboneElement", 
@@ -39605,7 +47072,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
   ]
 },
 "ValueSet.Contains": {
-    /*A value set specifies a set of codes drawn from one or more code systems.
+    /*A ValueSet resource specifies a set of codes drawn from one or more code systems, intended for use in a particular context. Value sets link between [[[CodeSystem]]] definitions and their use in [coded elements](terminologies.html).
      */
   "name": "ValueSet.Contains",
   "base": "BackboneElement", 
@@ -39629,7 +47096,7 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "boolean",
       "isPrimitive": true }, 
     { 
-    /*If the concept is inactive in the code system that defines it. Inactive codes are those that are no longer to be used, but are maintained by the code system for understanding legacy data.
+    /*If the concept is inactive in the code system that defines it. Inactive codes are those that are no longer to be used, but are maintained by the code system for understanding legacy data. It might not be known or specified whether an concept is inactive (and it may depend on the context of use).
      */  "name": "inactive", 
     
       "min": "0", 
@@ -39676,6 +47143,393 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "max": "unbounded", 
       "type": "ValueSet.Contains",
       "isPrimitive": false }, 
+  ]
+},
+"VerificationResult": {
+    /*Describes validation requirements, source(s), status and dates for one or more elements.If the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "VerificationResult",
+  "base": "DomainResource", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*A resource that was validated.
+     */  "name": "target", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*The fhirpath location(s) within the resource that was validated.
+     */  "name": "targetLocation", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*The frequency with which the target must be validated (none; initial; periodic).
+     */  "name": "need", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "need",
+      "isPrimitive": true }, 
+    { 
+    /*The validation status of the target (attested; validated; in process; requires revalidation; validation failed; revalidation failed).
+     */  "name": "status", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "status",
+      "isPrimitive": true }, 
+    { 
+    /*When the validation status was updated.
+     */  "name": "statusDate", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+    { 
+    /*What the target is validated against (nothing; primary source; multiple sources).
+     */  "name": "validationType", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "validationType",
+      "isPrimitive": true }, 
+    { 
+    /*The primary process by which the target is validated (edit check; value set; primary source; multiple sources; standalone; in context).
+     */  "name": "validationProcess", 
+    
+      "min": "1", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Frequency of revalidation.
+     */  "name": "frequency", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Timing",
+      "isPrimitive": false }, 
+    { 
+    /*The date/time validation was last completed (incl. failed validations).
+     */  "name": "lastPerformed", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+    { 
+    /*The date when target is next validated, if appropriate.
+     */  "name": "nextScheduled", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "date",
+      "isPrimitive": true }, 
+    { 
+    /*The result if validation fails (fatal; warning; record only; none).
+     */  "name": "failureAction", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "failureAction",
+      "isPrimitive": true }, 
+    { 
+    /*Information about the primary source(s) involved in validation.
+     */  "name": "primarySource", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "VerificationResult.PrimarySource",
+      "isPrimitive": false }, 
+    { 
+    /*Information about the entity attesting to information.
+     */  "name": "attestation", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "VerificationResult.Attestation",
+      "isPrimitive": false }, 
+    { 
+    /*Information about the entity validating information.
+     */  "name": "validator", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "VerificationResult.Validator",
+      "isPrimitive": false }, 
+  ]
+},
+"VerificationResult.PrimarySource": {
+    /*Describes validation requirements, source(s), status and dates for one or more elements.
+     */
+  "name": "VerificationResult.PrimarySource",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*URI of the primary source for validation.
+     */  "name": "identifier", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*Reference to the primary source.
+     */  "name": "organization", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Type of primary source (License Board; Primary Education; Continuing Education; Postal Service; Relationship owner; Registration Authority; legal source; issuing source; authoritative source).
+     */  "name": "type", 
+    
+      "min": "1", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Method for communicating with the primary source (manual; API; Push).
+     */  "name": "validationProcess", 
+    
+      "min": "1", 
+      "max": "unbounded", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*Status of the validation of the target against the primary source (successful; failed; unknown).
+     */  "name": "validationStatus", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "validationStatus",
+      "isPrimitive": true }, 
+    { 
+    /*When the target was validated against the primary source.
+     */  "name": "validationDate", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "dateTime",
+      "isPrimitive": true }, 
+    { 
+    /*Ability of the primary source to push updates/alerts (yes; no; undetermined).
+     */  "name": "canPushUpdates", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "canPushUpdates",
+      "isPrimitive": true }, 
+    { 
+    /*Type of alerts/updates the primary source can send (specific requested changes; any changes; as defined by source).
+     */  "name": "pushTypeAvailable", 
+    
+      "min": "0", 
+      "max": "unbounded", 
+      "type": "pushTypeAvailable",
+      "isPrimitive": true }, 
+  ]
+},
+"VerificationResult.Attestation": {
+    /*Describes validation requirements, source(s), status and dates for one or more elements.
+     */
+  "name": "VerificationResult.Attestation",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*The individual attesting to information.
+     */  "name": "source", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*The organization attesting to information.
+     */  "name": "organization", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*Who is providing the attested information (owner; authorized representative; authorized intermediary; non-authorized source).
+     */  "name": "method", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "CodeableConcept",
+      "isPrimitive": false }, 
+    { 
+    /*The date the information was attested to.
+     */  "name": "date", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "date",
+      "isPrimitive": true }, 
+    { 
+    /*A digital identity certificate associated with the attestation source.
+     */  "name": "sourceIdentityCertificate", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*A digital identity certificate associated with the proxy entity submitting attested information on behalf of the attestation source.
+     */  "name": "proxyIdentityCertificate", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+  ]
+},
+"VerificationResult.Validator": {
+    /*Describes validation requirements, source(s), status and dates for one or more elements.
+     */
+  "name": "VerificationResult.Validator",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*URI of the validator.
+     */  "name": "identifier", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "Identifier",
+      "isPrimitive": false }, 
+    { 
+    /*Reference to the organization validating information.
+     */  "name": "organization", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "Reference",
+      "isPrimitive": false }, 
+    { 
+    /*A digital identity certificate associated with the validator.
+     */  "name": "identityCertificate", 
+    
+      "min": "0", 
+      "max": "1", 
+      "type": "string",
+      "isPrimitive": true }, 
+    { 
+    /*Date on which the validator last validated the information.
+     */  "name": "dateValidated", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "date",
+      "isPrimitive": true }, 
+  ]
+},
+"failureAction": {
+    /*The result if validation failsIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "failureAction",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "failureAction-list" }, 
+  ],
+  "elems": [
+  ]
+},
+"pushTypeAvailable": {
+    /*Type of alerts/updates the primary source can sendIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "pushTypeAvailable",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "pushTypeAvailable-list" }, 
+  ],
+  "elems": [
+  ]
+},
+"need": {
+    /*The frequency with which the target must be validatedIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "need",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "need-list" }, 
+  ],
+  "elems": [
+  ]
+},
+"validationType": {
+    /*What the target is validated againstIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "validationType",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "validationType-list" }, 
+  ],
+  "elems": [
+  ]
+},
+"validationStatus": {
+    /*Status of the validation of the target against the primary sourceIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "validationStatus",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "validationStatus-list" }, 
+  ],
+  "elems": [
+  ]
+},
+"status": {
+    /*The validation status of the targetIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "status",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "status-list" }, 
+  ],
+  "elems": [
+  ]
+},
+"canPushUpdates": {
+    /*Ability of the primary source to push updates/alertsIf the element is present, it must have either a @value, an @id, or extensions
+     */
+  "name": "canPushUpdates",
+  "base": "Element", 
+  "attrs": [
+    { 
+      "name": "value", 
+      "type": "canPushUpdates-list" }, 
+  ],
+  "elems": [
   ]
 },
 "VisionPrescription": {
@@ -39809,21 +47663,13 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "type": "integer",
       "isPrimitive": true }, 
     { 
-    /*Amount of prism to compensate for eye alignment in fractional units.
+    /*Allows for adjustment on two axis.
      */  "name": "prism", 
     
       "min": "0", 
-      "max": "1", 
-      "type": "decimal",
-      "isPrimitive": true }, 
-    { 
-    /*The relative base, or reference lens edge, for the prism.
-     */  "name": "base", 
-    
-      "min": "0", 
-      "max": "1", 
-      "type": "VisionBase",
-      "isPrimitive": true }, 
+      "max": "unbounded", 
+      "type": "VisionPrescription.Prism",
+      "isPrimitive": false }, 
     { 
     /*Power adjustment for multifocal lenses measured in diopters (0.25 units).
      */  "name": "add", 
@@ -39888,6 +47734,32 @@ Any information provided in these elements on a Questionnaire Item overrides the
       "max": "unbounded", 
       "type": "Annotation",
       "isPrimitive": false }, 
+  ]
+},
+"VisionPrescription.Prism": {
+    /*An authorization for the supply of glasses and/or contact lenses to a patient.
+     */
+  "name": "VisionPrescription.Prism",
+  "base": "BackboneElement", 
+  "attrs": [
+  ],
+  "elems": [
+    { 
+    /*Amount of prism to compensate for eye alignment in fractional units.
+     */  "name": "amount", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "decimal",
+      "isPrimitive": true }, 
+    { 
+    /*The relative base, or reference lens edge, for the prism.
+     */  "name": "base", 
+    
+      "min": "1", 
+      "max": "1", 
+      "type": "VisionBase",
+      "isPrimitive": true }, 
   ]
 },
 "VisionBase": {
@@ -40008,6 +47880,10 @@ this.processChildren = function (
   var elems = [];
   for (var theDef = def; theDef != null; theDef = "base" in theDef ? this.getDef(theDef.base) : null)
     elems = theDef.elems.concat(elems);
+
+    if (typeof obj != "object") {
+	print("child is not an object: ", theObj)
+    }
 
   if ("fhir_comments" in theObj)
     this.out(this.pad(depth-1) + "<!--" + theObj.fhir_comments + "-->\n");
